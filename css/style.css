@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+:root {
+  --navy: #14213d;
+  --saffron: #f4a300;
+  --off-white: #faf8f3;
+  --text: var(--navy);
+  --bg: var(--off-white);
+  --accent: var(--saffron);
+  --border: color-mix(in srgb, var(--navy) 18%, transparent);
+  --radius: 6px;
+  --font: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--font);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--bg);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.875rem 1rem;
+  background: var(--navy);
+  color: var(--off-white);
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+}
+
+.view-toggle {
+  display: inline-flex;
+  border: 1px solid color-mix(in srgb, var(--off-white) 35%, transparent);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.toggle-btn {
+  appearance: none;
+  border: 0;
+  margin: 0;
+  padding: 0.4rem 0.85rem;
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background: transparent;
+  color: var(--off-white);
+  cursor: pointer;
+}
+
+.toggle-btn + .toggle-btn {
+  border-left: 1px solid color-mix(in srgb, var(--off-white) 35%, transparent);
+}
+
+.toggle-btn.is-active,
+.toggle-btn[aria-pressed="true"] {
+  background: var(--saffron);
+  color: var(--navy);
+}
+
+.toggle-btn:focus-visible {
+  outline: 2px solid var(--saffron);
+  outline-offset: 2px;
+}
+
+#app {
+  min-height: calc(100vh - 3.5rem);
+  padding: 1rem;
+}
+
+@media (min-width: 640px) {
+  .site-header {
+    padding: 1rem 1.5rem;
+  }
+
+  .brand {
+    font-size: 1.15rem;
+  }
+
+  #app {
+    padding: 1.5rem;
+  }
+}
