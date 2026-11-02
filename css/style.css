@@ -47,6 +47,8 @@ main { max-width: 1000px; margin: 0 auto; padding: 24px 16px; min-height: 50vh; 
 }
 .notice h2 { margin-top: 0; color: var(--navy); }
 .muted { color: var(--muted); }
+.vacancy-list { list-style: none; padding: 0; margin: 12px 0 0; text-align: left; }
+.vacancy-list li { margin: 6px 0; }
 
 .site-footer { padding: 24px 16px; text-align: center; font-size: .8rem; color: var(--muted); }
 .site-footer a { color: var(--navy); }

@@ -36,13 +36,20 @@ jobs:
         continue-on-error: true
         run: python scripts/fetch_vic_official.py
 
+      - name: Build clean members.json
+        run: python scripts/build_members.py
+
+      - name: Validate members.json
+        id: validate
+        run: python scripts/validate_members.py
+
       - name: Commit and push data if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/vic_raw.json data/vic_official.json
+          git add data/vic_raw.json data/vic_official.json data/members.json
           if git diff --staged --quiet; then
-            echo "No changes to data/vic_raw.json or data/vic_official.json"
+            echo "No changes to Vic member data files"
           else
             git commit -m "chore: update Vic member data"
             git push origin HEAD:main
@@ -51,5 +58,6 @@ jobs:
       - name: Fail if official fetch reported bad chamber counts
         if: steps.official.outcome == 'failure'
         run: |
-          echo "scripts/fetch_vic_official.py failed (likely chamber count mismatch)."
+          echo "scripts/fetch_vic_official.py failed (chamber count mismatch vs raw 88/40)."
+          echo "Known vacancies are applied in build_members.py / validate_members.py."
           exit 1
