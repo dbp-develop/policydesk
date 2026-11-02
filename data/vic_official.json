@@ -1,7 +1,7 @@
 {
   "source": "Parliament of Victoria",
   "source_url": "https://www.parliament.vic.gov.au/members/",
-  "fetched_at": "2026-11-02T23:10:17+00:00",
+  "fetched_at": "2026-11-02T23:13:19+00:00",
   "api_url": "https://www.parliament.vic.gov.au/api/search/members",
   "expected_counts": {
     "Assembly": 88,
