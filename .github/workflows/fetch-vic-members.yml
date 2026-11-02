@@ -1,0 +1,44 @@
+name: Fetch Vic members
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          else
+            echo "No requirements.txt — skipping pip install"
+          fi
+
+      - name: Fetch Vic members
+        run: python scripts/fetch_vic_members.py
+
+      - name: Commit and push data if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/vic_raw.json
+          if git diff --staged --quiet; then
+            echo "No changes to data/vic_raw.json"
+          else
+            git commit -m "chore: update data/vic_raw.json"
+            git push origin HEAD:main
+          fi
