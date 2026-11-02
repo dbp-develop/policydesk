@@ -25,20 +25,31 @@ jobs:
           if [ -f requirements.txt ]; then
             pip install -r requirements.txt
           else
-            echo "No requirements.txt — skipping pip install"
+            echo "No requirements.txt — skipping pip install (stdlib only)"
           fi
 
-      - name: Fetch Vic members
+      - name: Fetch Vic members (Wikidata raw)
         run: python scripts/fetch_vic_members.py
+
+      - name: Fetch Vic members (Parliament of Victoria official)
+        id: official
+        continue-on-error: true
+        run: python scripts/fetch_vic_official.py
 
       - name: Commit and push data if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/vic_raw.json
+          git add data/vic_raw.json data/vic_official.json
           if git diff --staged --quiet; then
-            echo "No changes to data/vic_raw.json"
+            echo "No changes to data/vic_raw.json or data/vic_official.json"
           else
-            git commit -m "chore: update data/vic_raw.json"
+            git commit -m "chore: update Vic member data"
             git push origin HEAD:main
           fi
+
+      - name: Fail if official fetch reported bad chamber counts
+        if: steps.official.outcome == 'failure'
+        run: |
+          echo "scripts/fetch_vic_official.py failed (likely chamber count mismatch)."
+          exit 1

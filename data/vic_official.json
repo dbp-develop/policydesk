@@ -1,0 +1,1028 @@
+{
+  "source": "Parliament of Victoria",
+  "source_url": "https://www.parliament.vic.gov.au/members/",
+  "fetched_at": "2026-11-02T22:55:32+00:00",
+  "api_url": "https://www.parliament.vic.gov.au/api/search/members",
+  "expected_counts": {
+    "Assembly": 88,
+    "Council": 40
+  },
+  "members": [
+    {
+      "name": "Alison Marchant",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/alison-marchant/",
+      "electorate": "Bellarine",
+      "region": null
+    },
+    {
+      "name": "Annabelle Cleeland",
+      "chamber": "Assembly",
+      "party": "The Nationals",
+      "url": "https://www.parliament.vic.gov.au/members/annabelle-cleeland/",
+      "electorate": "Euroa",
+      "region": null
+    },
+    {
+      "name": "Anthony Carbines",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/anthony-carbines/",
+      "electorate": "Ivanhoe",
+      "region": null
+    },
+    {
+      "name": "Anthony Cianflone",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/anthony-cianflone/",
+      "electorate": "Pascoe Vale",
+      "region": null
+    },
+    {
+      "name": "Anthony Marsh",
+      "chamber": "Assembly",
+      "party": "Liberal Party",
+      "url": "https://www.parliament.vic.gov.au/members/anthony-marsh/",
+      "electorate": "Nepean",
+      "region": null
+    },
+    {
+      "name": "Belinda Wilson",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/belinda-wilson/",
+      "electorate": "Narre Warren North",
+      "region": null
+    },
+    {
+      "name": "Ben Carroll",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/ben-carroll/",
+      "electorate": "Niddrie",
+      "region": null
+    },
+    {
+      "name": "Bill Tilley",
+      "chamber": "Assembly",
+      "party": "Liberal Party",
+      "url": "https://www.parliament.vic.gov.au/members/bill-tilley/",
+      "electorate": "Benambra",
+      "region": null
+    },
+    {
+      "name": "Brad Battin",
+      "chamber": "Assembly",
+      "party": "Liberal Party",
+      "url": "https://www.parliament.vic.gov.au/members/brad-battin/",
+      "electorate": "Berwick",
+      "region": null
+    },
+    {
+      "name": "Brad Rowswell",
+      "chamber": "Assembly",
+      "party": "Liberal Party",
+      "url": "https://www.parliament.vic.gov.au/members/brad-rowswell/",
+      "electorate": "Sandringham",
+      "region": null
+    },
+    {
+      "name": "Bridget Vallence",
+      "chamber": "Assembly",
+      "party": "Liberal Party",
+      "url": "https://www.parliament.vic.gov.au/members/bridget-vallence/",
+      "electorate": "Evelyn",
+      "region": null
+    },
+    {
+      "name": "Bronwyn Halfpenny",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/bronwyn-halfpenny/",
+      "electorate": "Thomastown",
+      "region": null
+    },
+    {
+      "name": "Chris Couzens",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/chris-couzens/",
+      "electorate": "Geelong",
+      "region": null
+    },
+    {
+      "name": "Chris Crewther",
+      "chamber": "Assembly",
+      "party": "Liberal Party",
+      "url": "https://www.parliament.vic.gov.au/members/chris-crewther/",
+      "electorate": "Mornington",
+      "region": null
+    },
+    {
+      "name": "Cindy McLeish",
+      "chamber": "Assembly",
+      "party": "Liberal Party",
+      "url": "https://www.parliament.vic.gov.au/members/cindy-mcleish/",
+      "electorate": "Eildon",
+      "region": null
+    },
+    {
+      "name": "Colin Brooks",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/colin-brooks/",
+      "electorate": "Bundoora",
+      "region": null
+    },
+    {
+      "name": "Daniela De Martino",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/daniela-de-martino/",
+      "electorate": "Monbulk",
+      "region": null
+    },
+    {
+      "name": "Danny O'Brien",
+      "chamber": "Assembly",
+      "party": "The Nationals",
+      "url": "https://www.parliament.vic.gov.au/members/danny-obrien/",
+      "electorate": "Gippsland South",
+      "region": null
+    },
+    {
+      "name": "Danny Pearson",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/danny-pearson/",
+      "electorate": "Essendon",
+      "region": null
+    },
+    {
+      "name": "Darren Cheeseman",
+      "chamber": "Assembly",
+      "party": "Independent",
+      "url": "https://www.parliament.vic.gov.au/members/darren-cheeseman/",
+      "electorate": "South Barwon",
+      "region": null
+    },
+    {
+      "name": "David Hodgett",
+      "chamber": "Assembly",
+      "party": "Liberal Party",
+      "url": "https://www.parliament.vic.gov.au/members/david-hodgett/",
+      "electorate": "Croydon",
+      "region": null
+    },
+    {
+      "name": "David Southwick",
+      "chamber": "Assembly",
+      "party": "Liberal Party",
+      "url": "https://www.parliament.vic.gov.au/members/david-southwick/",
+      "electorate": "Caulfield",
+      "region": null
+    },
+    {
+      "name": "Dylan Wight",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/dylan-wight/",
+      "electorate": "Tarneit",
+      "region": null
+    },
+    {
+      "name": "Eden Foster",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/eden-foster/",
+      "electorate": "Mulgrave",
+      "region": null
+    },
+    {
+      "name": "Ella George",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/ella-george/",
+      "electorate": "Lara",
+      "region": null
+    },
+    {
+      "name": "Ellen Sandell",
+      "chamber": "Assembly",
+      "party": "The Australian Greens - Victoria",
+      "url": "https://www.parliament.vic.gov.au/members/ellen-sandell/",
+      "electorate": "Melbourne",
+      "region": null
+    },
+    {
+      "name": "Emma Kealy",
+      "chamber": "Assembly",
+      "party": "The Nationals",
+      "url": "https://www.parliament.vic.gov.au/members/emma-kealy/",
+      "electorate": "Lowan",
+      "region": null
+    },
+    {
+      "name": "Emma Vulin",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/emma-vulin/",
+      "electorate": "Pakenham",
+      "region": null
+    },
+    {
+      "name": "Gabrielle de Vietri",
+      "chamber": "Assembly",
+      "party": "The Australian Greens - Victoria",
+      "url": "https://www.parliament.vic.gov.au/members/gabrielle-de-vietri/",
+      "electorate": "Richmond",
+      "region": null
+    },
+    {
+      "name": "Gabrielle Williams",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/gabrielle-williams/",
+      "electorate": "Dandenong",
+      "region": null
+    },
+    {
+      "name": "Gary Maas",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/gary-maas/",
+      "electorate": "Narre Warren South",
+      "region": null
+    },
+    {
+      "name": "Iwan Walters",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/iwan-walters/",
+      "electorate": "Greenvale",
+      "region": null
+    },
+    {
+      "name": "Jacinta Allan",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/jacinta-allan/",
+      "electorate": "Bendigo East",
+      "region": null
+    },
+    {
+      "name": "Jackson Taylor",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/jackson-taylor/",
+      "electorate": "Bayswater",
+      "region": null
+    },
+    {
+      "name": "Jade Benham",
+      "chamber": "Assembly",
+      "party": "The Nationals",
+      "url": "https://www.parliament.vic.gov.au/members/jade-benham/",
+      "electorate": "Mildura",
+      "region": null
+    },
+    {
+      "name": "James Newbury",
+      "chamber": "Assembly",
+      "party": "Liberal Party",
+      "url": "https://www.parliament.vic.gov.au/members/james-newbury/",
+      "electorate": "Brighton",
+      "region": null
+    },
+    {
+      "name": "Jess Wilson",
+      "chamber": "Assembly",
+      "party": "Liberal Party",
+      "url": "https://www.parliament.vic.gov.au/members/jess-wilson/",
+      "electorate": "Kew",
+      "region": null
+    },
+    {
+      "name": "John Lister",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/john-lister/",
+      "electorate": "Werribee",
+      "region": null
+    },
+    {
+      "name": "John Mullahy",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/john-mullahy/",
+      "electorate": "Glen Waverley",
+      "region": null
+    },
+    {
+      "name": "John Pesutto",
+      "chamber": "Assembly",
+      "party": "Liberal Party",
+      "url": "https://www.parliament.vic.gov.au/members/john-pesutto/",
+      "electorate": "Hawthorn",
+      "region": null
+    },
+    {
+      "name": "Jordan Crugnale",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/jordan-crugnale/",
+      "electorate": "Bass",
+      "region": null
+    },
+    {
+      "name": "Josh Bull",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/josh-bull/",
+      "electorate": "Sunbury",
+      "region": null
+    },
+    {
+      "name": "Juliana Addison",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/juliana-addison/",
+      "electorate": "Wendouree",
+      "region": null
+    },
+    {
+      "name": "Kat Theophanous",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/kat-theophanous/",
+      "electorate": "Northcote",
+      "region": null
+    },
+    {
+      "name": "Kathleen Matthews-Ward",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/kathleen-matthews-ward/",
+      "electorate": "Broadmeadows",
+      "region": null
+    },
+    {
+      "name": "Katie Hall",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/katie-hall/",
+      "electorate": "Footscray",
+      "region": null
+    },
+    {
+      "name": "Kim O'Keeffe",
+      "chamber": "Assembly",
+      "party": "The Nationals",
+      "url": "https://www.parliament.vic.gov.au/members/kim-okeeffe/",
+      "electorate": "Shepparton",
+      "region": null
+    },
+    {
+      "name": "Kim Wells",
+      "chamber": "Assembly",
+      "party": "Liberal Party",
+      "url": "https://www.parliament.vic.gov.au/members/kim-wells/",
+      "electorate": "Rowville",
+      "region": null
+    },
+    {
+      "name": "Lauren Kathage",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/lauren-kathage/",
+      "electorate": "Yan Yean",
+      "region": null
+    },
+    {
+      "name": "Lily D'Ambrosio",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/lily-dambrosio/",
+      "electorate": "Mill Park",
+      "region": null
+    },
+    {
+      "name": "Luba Grigorovitch",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/luba-grigorovitch/",
+      "electorate": "Kororoit",
+      "region": null
+    },
+    {
+      "name": "Maree Edwards",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/maree-edwards/",
+      "electorate": "Bendigo West",
+      "region": null
+    },
+    {
+      "name": "Martha Haylett",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/martha-haylett/",
+      "electorate": "Ripon",
+      "region": null
+    },
+    {
+      "name": "Martin Cameron",
+      "chamber": "Assembly",
+      "party": "The Nationals",
+      "url": "https://www.parliament.vic.gov.au/members/martin-cameron/",
+      "electorate": "Morwell",
+      "region": null
+    },
+    {
+      "name": "Mary-Anne Thomas",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/mary-anne-thomas/",
+      "electorate": "Macedon",
+      "region": null
+    },
+    {
+      "name": "Mathew Hilakari",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/mathew-hilakari/",
+      "electorate": "Point Cook",
+      "region": null
+    },
+    {
+      "name": "Matt Fregon",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/matt-fregon/",
+      "electorate": "Ashwood",
+      "region": null
+    },
+    {
+      "name": "Matthew Guy",
+      "chamber": "Assembly",
+      "party": "Liberal Party",
+      "url": "https://www.parliament.vic.gov.au/members/matthew-guy/",
+      "electorate": "Bulleen",
+      "region": null
+    },
+    {
+      "name": "Melissa Horne",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/melissa-horne/",
+      "electorate": "Williamstown",
+      "region": null
+    },
+    {
+      "name": "Meng Heang Tak",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/meng-heang-tak/",
+      "electorate": "Clarinda",
+      "region": null
+    },
+    {
+      "name": "Michael O'Brien",
+      "chamber": "Assembly",
+      "party": "Liberal Party",
+      "url": "https://www.parliament.vic.gov.au/members/michael-obrien/",
+      "electorate": "Malvern",
+      "region": null
+    },
+    {
+      "name": "Michaela Settle",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/michaela-settle/",
+      "electorate": "Eureka",
+      "region": null
+    },
+    {
+      "name": "Natalie Hutchins",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/natalie-hutchins/",
+      "electorate": "Sydenham",
+      "region": null
+    },
+    {
+      "name": "Natalie Suleyman",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/natalie-suleyman/",
+      "electorate": "St Albans",
+      "region": null
+    },
+    {
+      "name": "Nathan Lambert",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/nathan-lambert/",
+      "electorate": "Preston",
+      "region": null
+    },
+    {
+      "name": "Nick Staikos",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/nick-staikos/",
+      "electorate": "Bentleigh",
+      "region": null
+    },
+    {
+      "name": "Nicole Werner",
+      "chamber": "Assembly",
+      "party": "Liberal Party",
+      "url": "https://www.parliament.vic.gov.au/members/nicole-werner/",
+      "electorate": "Warrandyte",
+      "region": null
+    },
+    {
+      "name": "Nina Taylor",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/nina-taylor/",
+      "electorate": "Albert Park",
+      "region": null
+    },
+    {
+      "name": "Paul Edbrooke",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/paul-edbrooke/",
+      "electorate": "Frankston",
+      "region": null
+    },
+    {
+      "name": "Paul Hamer",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/paul-hamer/",
+      "electorate": "Box Hill",
+      "region": null
+    },
+    {
+      "name": "Paul Mercurio",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/paul-mercurio/",
+      "electorate": "Hastings",
+      "region": null
+    },
+    {
+      "name": "Pauline Richards",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/pauline-richards/",
+      "electorate": "Cranbourne",
+      "region": null
+    },
+    {
+      "name": "Peter Walsh",
+      "chamber": "Assembly",
+      "party": "The Nationals",
+      "url": "https://www.parliament.vic.gov.au/members/peter-walsh/",
+      "electorate": "Murray Plains",
+      "region": null
+    },
+    {
+      "name": "Rachel Westaway",
+      "chamber": "Assembly",
+      "party": "Liberal Party",
+      "url": "https://www.parliament.vic.gov.au/members/rachel-westaway/",
+      "electorate": "Prahran",
+      "region": null
+    },
+    {
+      "name": "Richard Riordan",
+      "chamber": "Assembly",
+      "party": "Liberal Party",
+      "url": "https://www.parliament.vic.gov.au/members/richard-riordan/",
+      "electorate": "Polwarth",
+      "region": null
+    },
+    {
+      "name": "Roma Britnell",
+      "chamber": "Assembly",
+      "party": "Liberal Party",
+      "url": "https://www.parliament.vic.gov.au/members/roma-britnell/",
+      "electorate": "South-West Coast",
+      "region": null
+    },
+    {
+      "name": "Ros Spence",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/ros-spence/",
+      "electorate": "Kalkallo",
+      "region": null
+    },
+    {
+      "name": "Sarah Connolly",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/sarah-connolly/",
+      "electorate": "Laverton",
+      "region": null
+    },
+    {
+      "name": "Sonya Kilkenny",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/sonya-kilkenny/",
+      "electorate": "Carrum",
+      "region": null
+    },
+    {
+      "name": "Steve Dimopoulos",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/steve-dimopoulos/",
+      "electorate": "Oakleigh",
+      "region": null
+    },
+    {
+      "name": "Steve McGhie",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/steve-mcghie/",
+      "electorate": "Melton",
+      "region": null
+    },
+    {
+      "name": "Tim Bull",
+      "chamber": "Assembly",
+      "party": "The Nationals",
+      "url": "https://www.parliament.vic.gov.au/members/tim-bull/",
+      "electorate": "Gippsland East",
+      "region": null
+    },
+    {
+      "name": "Tim McCurdy",
+      "chamber": "Assembly",
+      "party": "The Nationals",
+      "url": "https://www.parliament.vic.gov.au/members/tim-mccurdy/",
+      "electorate": "Ovens Valley",
+      "region": null
+    },
+    {
+      "name": "Tim Richardson",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/tim-richardson/",
+      "electorate": "Mordialloc",
+      "region": null
+    },
+    {
+      "name": "Vicki Ward",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/vicki-ward/",
+      "electorate": "Eltham",
+      "region": null
+    },
+    {
+      "name": "Wayne Farnham",
+      "chamber": "Assembly",
+      "party": "Liberal Party",
+      "url": "https://www.parliament.vic.gov.au/members/wayne-farnham/",
+      "electorate": "Narracan",
+      "region": null
+    },
+    {
+      "name": "Will Fowles",
+      "chamber": "Assembly",
+      "party": "Independent",
+      "url": "https://www.parliament.vic.gov.au/members/will-fowles/",
+      "electorate": "Ringwood",
+      "region": null
+    },
+    {
+      "name": "Adem Somyurek",
+      "chamber": "Council",
+      "party": "Independent",
+      "url": "https://www.parliament.vic.gov.au/members/adem-somyurek/",
+      "electorate": null,
+      "region": "Northern Metropolitan"
+    },
+    {
+      "name": "Aiv Puglielli",
+      "chamber": "Council",
+      "party": "The Australian Greens - Victoria",
+      "url": "https://www.parliament.vic.gov.au/members/aiv-puglielli/",
+      "electorate": null,
+      "region": "North-Eastern Metropolitan"
+    },
+    {
+      "name": "Anasina Gray-Barberio",
+      "chamber": "Council",
+      "party": "The Australian Greens - Victoria",
+      "url": "https://www.parliament.vic.gov.au/members/anasina-gray-barberio/",
+      "electorate": null,
+      "region": "Northern Metropolitan"
+    },
+    {
+      "name": "Ann-Marie Hermans",
+      "chamber": "Council",
+      "party": "Liberal Party",
+      "url": "https://www.parliament.vic.gov.au/members/ann-marie-hermans/",
+      "electorate": null,
+      "region": "South-Eastern Metropolitan"
+    },
+    {
+      "name": "Bev McArthur",
+      "chamber": "Council",
+      "party": "Liberal Party",
+      "url": "https://www.parliament.vic.gov.au/members/bev-mcarthur/",
+      "electorate": null,
+      "region": "Western Victoria"
+    },
+    {
+      "name": "David Davis",
+      "chamber": "Council",
+      "party": "Liberal Party",
+      "url": "https://www.parliament.vic.gov.au/members/david-davis/",
+      "electorate": null,
+      "region": "Southern Metropolitan"
+    },
+    {
+      "name": "David Ettershank",
+      "chamber": "Council",
+      "party": "Legalise Cannabis Victoria",
+      "url": "https://www.parliament.vic.gov.au/members/david-ettershank/",
+      "electorate": null,
+      "region": "Western Metropolitan"
+    },
+    {
+      "name": "David Limbrick",
+      "chamber": "Council",
+      "party": "Libertarian Party",
+      "url": "https://www.parliament.vic.gov.au/members/david-limbrick/",
+      "electorate": null,
+      "region": "South-Eastern Metropolitan"
+    },
+    {
+      "name": "Enver Erdogan",
+      "chamber": "Council",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/enver-erdogan/",
+      "electorate": null,
+      "region": "Northern Metropolitan"
+    },
+    {
+      "name": "Evan Mulholland",
+      "chamber": "Council",
+      "party": "Liberal Party",
+      "url": "https://www.parliament.vic.gov.au/members/evan-mulholland/",
+      "electorate": null,
+      "region": "Northern Metropolitan"
+    },
+    {
+      "name": "Gaelle Broad",
+      "chamber": "Council",
+      "party": "The Nationals",
+      "url": "https://www.parliament.vic.gov.au/members/gaelle-broad/",
+      "electorate": null,
+      "region": "Northern Victoria"
+    },
+    {
+      "name": "Gayle Tierney",
+      "chamber": "Council",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/gayle-tierney/",
+      "electorate": null,
+      "region": "Western Victoria"
+    },
+    {
+      "name": "Georgie Crozier",
+      "chamber": "Council",
+      "party": "Liberal Party",
+      "url": "https://www.parliament.vic.gov.au/members/georgie-crozier/",
+      "electorate": null,
+      "region": "Southern Metropolitan"
+    },
+    {
+      "name": "Georgie Purcell",
+      "chamber": "Council",
+      "party": "Animal Justice Party",
+      "url": "https://www.parliament.vic.gov.au/members/georgie-purcell/",
+      "electorate": null,
+      "region": "Northern Victoria"
+    },
+    {
+      "name": "Harriet Shing",
+      "chamber": "Council",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/harriet-shing/",
+      "electorate": null,
+      "region": "Eastern Victoria"
+    },
+    {
+      "name": "Ingrid Stitt",
+      "chamber": "Council",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/ingrid-stitt/",
+      "electorate": null,
+      "region": "Western Metropolitan"
+    },
+    {
+      "name": "Jacinta Ermacora",
+      "chamber": "Council",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/jacinta-ermacora/",
+      "electorate": null,
+      "region": "Western Victoria"
+    },
+    {
+      "name": "Jaclyn Symes",
+      "chamber": "Council",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/jaclyn-symes/",
+      "electorate": null,
+      "region": "Northern Victoria"
+    },
+    {
+      "name": "Jeff Bourman",
+      "chamber": "Council",
+      "party": "Shooters, Fishers and Farmers Party Victoria",
+      "url": "https://www.parliament.vic.gov.au/members/jeff-bourman/",
+      "electorate": null,
+      "region": "Eastern Victoria"
+    },
+    {
+      "name": "Joe McCracken",
+      "chamber": "Council",
+      "party": "Liberal Party",
+      "url": "https://www.parliament.vic.gov.au/members/joe-mccracken/",
+      "electorate": null,
+      "region": "Western Victoria"
+    },
+    {
+      "name": "John Berger",
+      "chamber": "Council",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/john-berger/",
+      "electorate": null,
+      "region": "Southern Metropolitan"
+    },
+    {
+      "name": "Katherine Copsey",
+      "chamber": "Council",
+      "party": "The Australian Greens - Victoria",
+      "url": "https://www.parliament.vic.gov.au/members/katherine-copsey/",
+      "electorate": null,
+      "region": "Southern Metropolitan"
+    },
+    {
+      "name": "Lee Tarlamis",
+      "chamber": "Council",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/lee-tarlamis/",
+      "electorate": null,
+      "region": "South-Eastern Metropolitan"
+    },
+    {
+      "name": "Lizzie Blandthorn",
+      "chamber": "Council",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/lizzie-blandthorn/",
+      "electorate": null,
+      "region": "Western Metropolitan"
+    },
+    {
+      "name": "Melina Bath",
+      "chamber": "Council",
+      "party": "The Nationals",
+      "url": "https://www.parliament.vic.gov.au/members/melina-bath/",
+      "electorate": null,
+      "region": "Eastern Victoria"
+    },
+    {
+      "name": "Michael Galea",
+      "chamber": "Council",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/michael-galea/",
+      "electorate": null,
+      "region": "South-Eastern Metropolitan"
+    },
+    {
+      "name": "Moira Deeming",
+      "chamber": "Council",
+      "party": "Family First Victoria",
+      "url": "https://www.parliament.vic.gov.au/members/moira-deeming/",
+      "electorate": null,
+      "region": "Western Metropolitan"
+    },
+    {
+      "name": "Nick McGowan",
+      "chamber": "Council",
+      "party": "Liberal Party",
+      "url": "https://www.parliament.vic.gov.au/members/nicholas-mcgowan/",
+      "electorate": null,
+      "region": "North-Eastern Metropolitan"
+    },
+    {
+      "name": "Rachel Payne",
+      "chamber": "Council",
+      "party": "Legalise Cannabis Victoria",
+      "url": "https://www.parliament.vic.gov.au/members/rachel-payne/",
+      "electorate": null,
+      "region": "South-Eastern Metropolitan"
+    },
+    {
+      "name": "Renee Heath",
+      "chamber": "Council",
+      "party": "Liberal Party",
+      "url": "https://www.parliament.vic.gov.au/members/renee-heath/",
+      "electorate": null,
+      "region": "Eastern Victoria"
+    },
+    {
+      "name": "Richard Welch",
+      "chamber": "Council",
+      "party": "Liberal Party",
+      "url": "https://www.parliament.vic.gov.au/members/richard-welch/",
+      "electorate": null,
+      "region": "North-Eastern Metropolitan"
+    },
+    {
+      "name": "Rikkie-Lee Tyrrell",
+      "chamber": "Council",
+      "party": "One Nation Victoria",
+      "url": "https://www.parliament.vic.gov.au/members/rikkielee-tyrrell/",
+      "electorate": null,
+      "region": "Northern Victoria"
+    },
+    {
+      "name": "Ryan Batchelor",
+      "chamber": "Council",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/ryan-batchelor/",
+      "electorate": null,
+      "region": "Southern Metropolitan"
+    },
+    {
+      "name": "Sarah Mansfield",
+      "chamber": "Council",
+      "party": "The Australian Greens - Victoria",
+      "url": "https://www.parliament.vic.gov.au/members/sarah-mansfield/",
+      "electorate": null,
+      "region": "Western Victoria"
+    },
+    {
+      "name": "Shaun Leane",
+      "chamber": "Council",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/shaun-leane/",
+      "electorate": null,
+      "region": "North-Eastern Metropolitan"
+    },
+    {
+      "name": "Sheena Watt",
+      "chamber": "Council",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/sheena-watt/",
+      "electorate": null,
+      "region": "Northern Metropolitan"
+    },
+    {
+      "name": "Sonja Terpstra",
+      "chamber": "Council",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/sonja-terpstra/",
+      "electorate": null,
+      "region": "North-Eastern Metropolitan"
+    },
+    {
+      "name": "Tom McIntosh",
+      "chamber": "Council",
+      "party": "Australian Labor Party",
+      "url": "https://www.parliament.vic.gov.au/members/tom-mcintosh/",
+      "electorate": null,
+      "region": "Eastern Victoria"
+    },
+    {
+      "name": "Trung Luu",
+      "chamber": "Council",
+      "party": "Liberal Party",
+      "url": "https://www.parliament.vic.gov.au/members/trung-luu/",
+      "electorate": null,
+      "region": "Western Metropolitan"
+    },
+    {
+      "name": "Wendy Lovell",
+      "chamber": "Council",
+      "party": "Liberal Party",
+      "url": "https://www.parliament.vic.gov.au/members/wendy-lovell/",
+      "electorate": null,
+      "region": "Northern Victoria"
+    }
+  ]
+}
