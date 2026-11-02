@@ -59,8 +59,9 @@ Top-level object (not a bare array):
 }
 ```
 
-Build with `python scripts/build_members.py` from `data/vic_official.json`, then
-`python scripts/validate_members.py` (Assembly members + vacancies = 88; Council = 40).
+Build with `python scripts/build_members.py` from `data/vic_official.json` plus
+hand-edited `data/vacancies.json`, then `python scripts/validate_members.py`
+(Assembly members + vacancies = 88; Council = 40).
 
 ## Updating the raw data
 

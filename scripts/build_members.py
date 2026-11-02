@@ -12,6 +12,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "data" / "vic_official.json"
+VACANCIES_PATH = ROOT / "data" / "vacancies.json"
 OUT = ROOT / "data" / "members.json"
 
 PARTY_SHORT = {
@@ -27,17 +28,6 @@ PARTY_SHORT = {
     "Family First Victoria": "FFV",
     "One Nation Victoria": "ONP",
 }
-
-# Known current vacancies relative to the 88 Assembly seats.
-VACANCIES = [
-    {
-        "electorate": "Brunswick",
-        "chamber": "Assembly",
-        "reason": (
-            "Death of sitting member; no by-election; to be decided 28 Nov 2026"
-        ),
-    }
-]
 
 
 def slugify(name: str) -> str:
@@ -110,12 +100,26 @@ def transform(raw: dict, used_ids: set[str], last_updated: str) -> dict:
     }
 
 
+def load_vacancies() -> list[dict]:
+    if not VACANCIES_PATH.exists():
+        print(
+            f"WARNING: missing {VACANCIES_PATH.relative_to(ROOT)}; using empty vacancies",
+            file=sys.stderr,
+        )
+        return []
+    data = json.loads(VACANCIES_PATH.read_text(encoding="utf-8"))
+    if not isinstance(data, list):
+        raise ValueError("data/vacancies.json must be a JSON array")
+    return data
+
+
 def main() -> int:
     if not SRC.exists():
         print(f"ERROR: missing {SRC.relative_to(ROOT)}", file=sys.stderr)
         return 1
 
     official = json.loads(SRC.read_text(encoding="utf-8"))
+    vacancies = load_vacancies()
     last_updated = iso_date(official.get("fetched_at"))
     used_ids: set[str] = set()
     members = [
@@ -127,7 +131,7 @@ def main() -> int:
         "source": "Parliament of Victoria",
         "parliament": "vic",
         "last_updated": last_updated,
-        "vacancies": VACANCIES,
+        "vacancies": vacancies,
         "members": members,
     }
     OUT.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
@@ -136,10 +140,12 @@ def main() -> int:
     upper = sum(1 for m in members if m["chamber"] == "upper")
     print("=== build_members ===")
     print(f"Wrote {OUT.relative_to(ROOT)}")
+    print(f"Read vacancies from {VACANCIES_PATH.relative_to(ROOT)}")
     print(f"members: {len(members)} (lower={lower}, upper={upper})")
-    print(f"vacancies: {len(VACANCIES)}")
-    for v in VACANCIES:
-        print(f"  {v['chamber']} / {v['electorate']}: {v['reason']}")
+    print(f"vacancies: {len(vacancies)}")
+    for v in vacancies:
+        seat = v.get("electorate") or v.get("region") or "?"
+        print(f"  {v.get('chamber')} / {seat}: {v.get('reason')}")
     print(f"last_updated: {last_updated}")
     return 0
 

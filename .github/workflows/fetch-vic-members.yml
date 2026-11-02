@@ -32,15 +32,12 @@ jobs:
         run: python scripts/fetch_vic_members.py
 
       - name: Fetch Vic members (Parliament of Victoria official)
-        id: official
-        continue-on-error: true
         run: python scripts/fetch_vic_official.py
 
       - name: Build clean members.json
         run: python scripts/build_members.py
 
       - name: Validate members.json
-        id: validate
         run: python scripts/validate_members.py
 
       - name: Commit and push data if changed
@@ -54,10 +51,3 @@ jobs:
             git commit -m "chore: update Vic member data"
             git push origin HEAD:main
           fi
-
-      - name: Fail if official fetch reported bad chamber counts
-        if: steps.official.outcome == 'failure'
-        run: |
-          echo "scripts/fetch_vic_official.py failed (chamber count mismatch vs raw 88/40)."
-          echo "Known vacancies are applied in build_members.py / validate_members.py."
-          exit 1
