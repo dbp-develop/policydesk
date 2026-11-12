@@ -14,6 +14,7 @@ own licences and credits:
 - **Wikidata** facts: CC0.
 - **Photos from Wikimedia Commons**: each file's own licence and author credit.
 - **Parliament and government content**: the relevant parliament's copyright terms.
+- **Vicmap Admin 2022 state electoral boundaries** (district and region polygons in `data/vic_boundaries.json`): Creative Commons Attribution 4.0 International. Credit: State of Victoria (Victorian Electoral Commission). Dataset: https://discover.data.vic.gov.au/dataset/vicmap-admin-state-assembly-polygon-2022
 - **News headlines and links**: remain the property of their publishers.
 
 Source code is licensed separately under AGPL-3.0 (see `LICENSE`).

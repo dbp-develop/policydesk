@@ -7,8 +7,9 @@ Non-partisan. Every party is listed in the same way.
 
 ## Status
 
-Early build. Starting with Victoria ahead of the 28 November 2026 state election,
-then federal and the other states.
+Victorian directory is live: a searchable member list and an electorate map for
+the current Parliament, ahead of the 28 November 2026 state election. Federal
+and the other states are not in the dataset yet.
 
 ## Licence
 
@@ -62,6 +63,21 @@ Top-level object (not a bare array):
 Build with `python scripts/build_members.py` from `data/vic_official.json` plus
 hand-edited `data/vacancies.json`, then `python scripts/validate_members.py`
 (Assembly members + vacancies = 88; Council = 40).
+
+## Map boundaries
+
+`data/vic_boundaries.json` is a simplified extract of the 2022 Victorian
+Legislative Assembly districts and Legislative Council regions from
+[Vicmap Admin](https://discover.data.vic.gov.au/dataset/vicmap-admin-state-assembly-polygon-2022)
+(CC BY 4.0). Refresh it manually — boundaries change at a redistribution, not
+with the weekly member update:
+
+```bash
+python scripts/fetch_vic_boundaries.py
+```
+
+The script checks that every district and region name matches `members.json`
+and `vacancies.json`. `validate_members.py` checks the same thing.
 
 ## Updating the raw data
 
