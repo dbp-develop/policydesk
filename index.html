@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Victorian MPs directory · The Policy Desk AU</title>
+  <meta name="description" content="A neutral, open-source directory of members of the Parliament of Victoria. Search by name, party, chamber, electorate or region.">
+  <meta name="theme-color" content="#14213D">
+  <link rel="preload" href="fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#results">Skip to results</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <p class="brand">The Policy Desk <span class="brand-au">AU</span></p>
+      <h1>Members of the Parliament of Victoria</h1>
+      <p class="lede">Find your state MP. Search by name, party, chamber, electorate or region.</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="notice" aria-label="About this data">
+      <p id="data-line">Loading data…</p>
+      <p>The Victorian state election is on 28 November 2026. This list shows members before the election and will be updated once results are official.</p>
+    </section>
+
+    <form id="filters" class="filters" role="search" aria-label="Filter members">
+      <div class="field field-search">
+        <label for="q">Search name or seat</label>
+        <input id="q" name="q" type="search" autocomplete="off" placeholder="e.g. Bendigo or Smith">
+      </div>
+      <div class="field">
+        <label for="chamber">Chamber</label>
+        <select id="chamber" name="chamber">
+          <option value="">Both chambers</option>
+          <option value="lower">Legislative Assembly</option>
+          <option value="upper">Legislative Council</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="party">Party</label>
+        <select id="party" name="party">
+          <option value="">All parties</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="seat">Electorate or region</label>
+        <select id="seat" name="seat">
+          <option value="">All electorates and regions</option>
+        </select>
+      </div>
+      <div class="field field-actions">
+        <button type="reset" class="btn">Clear filters</button>
+      </div>
+    </form>
+
+    <p id="count" class="count" role="status" aria-live="polite"></p>
+
+    <section id="results" aria-label="Results" tabindex="-1">
+      <ul id="list" class="cards"></ul>
+    </section>
+
+    <noscript>
+      <p class="notice">This directory needs JavaScript to search. The raw data is available at
+        <a href="data/members.json">data/members.json</a>.</p>
+    </noscript>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p><strong>Created by The Policy Desk AU (@PolicyDeskAU)</strong></p>
+      <p>Member facts: <a href="https://www.parliament.vic.gov.au/members/">Parliament of Victoria</a>.
+        This site is independent and not affiliated with the Parliament of Victoria or any party.</p>
+      <p>Code: <a href="https://github.com/dbp-develop/policydesk/blob/main/LICENSE">AGPL-3.0</a>.
+        Our data and text: <a href="https://github.com/dbp-develop/policydesk/blob/main/LICENSE-DATA.md">CC BY-SA 4.0</a>.
+        Third-party material keeps its own licence.
+        Font: Inter, <a href="fonts/OFL.txt">SIL Open Font License</a>.</p>
+      <p><a href="https://github.com/dbp-develop/policydesk">Source code on GitHub</a></p>
+    </div>
+  </footer>
+
+  <script src="js/app.js" defer></script>
+</body>
+</html>

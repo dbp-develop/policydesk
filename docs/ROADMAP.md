@@ -4,9 +4,9 @@ Status: ✅ done · 🔄 in progress · ⏳ not started · ⛔ blocked
 
 | # | Stage | Status | Notes |
 |---|-------|--------|-------|
-| 0 | Audit and setup | 🔄 | CLAUDE.md, this roadmap, Cursor site files removed |
-| 1 | Move hosting to Cloudflare Pages | ⏳ | Dashboard checklist; repo-side CNAME/README; verify HTTPS on policydesk.au |
-| 2 | List view | ⏳ | Search, filters, alphabetical, "Data as of" line, vacancies shown, accessibility |
+| 0 | Audit and setup | ✅ | CLAUDE.md, this roadmap, Cursor site files removed |
+| 1 | Move hosting to Cloudflare Pages | 🔄 | Dashboard checklist; repo-side CNAME/README; verify HTTPS on policydesk.au |
+| 2 | List view | 🔄 | Search, filters, alphabetical, "Data as of" line, vacancies shown, accessibility |
 | 3 | Map view | ⏳ | Needs boundary data with a reuse licence; else stop. Text-only fallback |
 | 4 | News | ⏳ | Plan first: GitHub Action vs n8n. Static `data/news/`, validator |
 | 5 | Photos and socials | ⏳ | Commons photos only with licence; official handles only; review report |
