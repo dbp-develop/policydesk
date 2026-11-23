@@ -7,7 +7,8 @@
 2. Fetches only the names (no shapes) of the layer we use and checks they
    still match data/boundaries/*.json.
 
-Exit 0 = still current. Exit 1 = action needed (the workflow then opens an issue).
+Exit 0 = still current. Exit 1 = boundaries need updating. Exit 2 = the check itself failed
+(network error, service moved). The workflow opens an issue for 1 or 2.
 """
 
 from __future__ import annotations
@@ -69,4 +70,8 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    try:
+        sys.exit(main())
+    except Exception as exc:  # noqa: BLE001 - report any failure as "check failed"
+        print(f"CHECK FAILED: {type(exc).__name__}: {exc}")
+        sys.exit(2)
