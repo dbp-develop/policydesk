@@ -152,7 +152,7 @@
           li.appendChild(a);
           li.appendChild(el("p", "meta", i.source + " · " + formatDate(i.published)));
           if (!i.verified) {
-            li.appendChild(el("p", "news-flag", "Unverified: the name appears in the article text, not the headline or summary."));
+            li.appendChild(el("p", "news-flag", "Unverified match: the name is in the article text, not the headline or summary."));
           }
           list.appendChild(li);
         });
@@ -186,7 +186,7 @@
 
     // Only rebuild the cards when the result actually changed. A "change" event fires when
     // the search box loses focus; rebuilding then would swallow the tap on a card button.
-    var listKey = [q, chamber, party, seat, newsIndex ? newsIndex.generated_at : ""].join("|");
+    var listKey = [rows.length, q, chamber, party, seat, newsIndex ? newsIndex.generated_at : ""].join("|");
     if (listKey !== lastListKey) {
       lastListKey = listKey;
       var frag = document.createDocumentFragment();
@@ -576,9 +576,13 @@
       if (!idx) return;
       newsIndex = idx;
       var c = document.getElementById("news-credit");
-      if (c) c.textContent = "Headlines from " + idx.source + " (" + idx.licence +
-        "), matched by exact full name with a Victorian context. We show the headline, date and link only. " +
-        "Updated " + formatDate(String(idx.generated_at).slice(0, 10)) + ".";
+      if (c && /^https:\/\//.test(idx.source_url) && /^https:\/\//.test(idx.licence_url)) {
+        var src = el("a", null, idx.source); src.href = idx.source_url;
+        var lic = el("a", null, idx.licence); lic.href = idx.licence_url;
+        c.replaceChildren(document.createTextNode("Headlines from "), src, document.createTextNode(" ("), lic,
+          document.createTextNode("), matched by exact full name with a Victorian context and checked daily. " +
+            "We show the headline, date and link only."));
+      }
       if (rows.length) render();
     })
     .catch(function () { /* news is optional */ });

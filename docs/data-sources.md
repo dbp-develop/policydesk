@@ -218,7 +218,7 @@ Crawl-Delay: 10
 
 ---
 
-# Data sources — News (Stage 4 research, no code built)
+# Data sources — News (Stage 4)
 
 **Date checked:** 2026-11-23 · **User-Agent:** `PolicyDeskAU/1.0 (https://policydesk.au)`
 **Question:** may we automatically collect headline + source + date + link for named Victorian MPs, on a site that allows reuse and monetisation with credit?
@@ -237,7 +237,7 @@ Crawl-Delay: 10
 |---|---|---|---|---|
 | ABC | `/news/feed/51120/rss.xml` | Yes (`Crawl-delay: 5`) | Terms pages returned HTTP 403 to our client (`help.abc.net.au/...ABC-Terms-of-Use`, `/conditions`) | **Unknown** — terms not readable |
 | The Guardian | `/au/rss`, `/australia-news/rss` | Yes | "Your use of the Guardian Site and Guardian Content is for your own personal and non-commercial use only." Not allowed "for any text and data aggregation, analysis or mining purposes". "These terms and conditions shall prevail in all respects over our robots.txt notice." RSS help: "for personal, non-commercial purposes" | **No** |
-| The Conversation | per-topic/author feeds (`/au/feeds`) | Yes (`Crawl-delay: 10`) | "publish all our work under a Creative Commons — Attribution/No Derivatives" licence; "You can't systematically republish all of our articles."; "Commercial, non-journalism usage: license fees may apply." | **Possible** for headline + link; low coverage of state MPs |
+| The Conversation | per-topic/author feeds (`/au/feeds`) | Yes (no crawl-delay for `*`; `Crawl-delay: 10` applies to bingbot only) | "publish all our work under a Creative Commons — Attribution/No Derivatives" licence; "You can't systematically republish all of our articles."; "Commercial, non-journalism usage: license fees may apply." | **Possible** for headline + link; low coverage of state MPs |
 | SBS | `/news/feed` | Yes | "You may retrieve Material for personal, non-commercial purposes only." "Any commercial exploitation of Material included on the Network is expressly forbidden." | **No** |
 | The Age (Nine) | `/rss/national/victoria.xml` etc. | Yes | Terms redirect to `login.nine.com.au/terms` (not reachable from our environment) | **Unknown** |
 | Herald Sun | `/rss`, `/au/rss` | **No** (robots disallows) | Homepage HTTP 403 | **No** |
@@ -251,7 +251,8 @@ Crawl-Delay: 10
 ## Decision (owner, 2026-11-23): The Conversation only
 
 - Feeds used: `https://theconversation.com/au/articles.atom` and the AU section feeds (politics, business, education, environment, health, technology, arts, books). 5-second delay between requests; one run per day (`.github/workflows/fetch-news.yml`).
-- robots.txt (`https://theconversation.com/robots.txt`), `User-Agent: *` group: disallows `/metrics/`, `/auth/`, `/content/`, `/comments/*`, `/*/search?`, `/profiles/*/articles` and similar; feed paths are not disallowed. A separate group of named AI crawlers has `Disallow: /`; our fetcher is not one of them and does not train models.
+- robots.txt (`https://theconversation.com/robots.txt`), `User-Agent: *` group: disallows `/metrics/`, `/auth/`, `/content/`, `/comments/*`, `/*/search?`, `/profiles/*/articles` and similar; feed paths are not disallowed. A separate group of named AI agents has `Disallow: /` for the whole site, including `anthropic-ai`, `ClaudeBot`, `Claude-User`, `Claude-SearchBot`, `Claude-Web` and **`Claude-Code`**. Our production fetcher is the daily GitHub Action with User-Agent `PolicyDeskAU/1.0`, a plain feed reader that does not train models. **It must only run in that Action, never from an AI coding session.**
+- **Disclosure:** on 2026-11-23, before this robots group was noticed, Claude Code fetched theconversation.com from its development session (robots.txt, feeds page, 9 feeds a few times, terms pages) to research and test. That went against the site's stated wishes for Claude-Code. All news items collected that way were deleted; `data/news` was reset to empty and is filled only by the Action.
 - Licence: CC BY-ND 4.0. We store the headline unchanged plus source, date and link; no summaries or article text. Credit shown in the popup and the footer.
 - Matching (`scripts/build_news.py`): exact full name, case-sensitive, word boundaries, plus a Victorian context word or the member's own seat in the article. Name in headline/standfirst = verified; name only in the article body = shown with an "Unverified" label. The article text is read for matching only and never stored.
 - Not covered: per-department/ministerial news (no permitted source found).

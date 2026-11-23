@@ -11,6 +11,8 @@ Stdlib only. Rules (see CLAUDE.md "News rules" and docs/data-sources.md):
   Name in headline or standfirst -> verified. Name only in the article body ->
   kept but labelled unverified.
 - Runs add to existing items (feeds only hold ~1 week), so coverage builds up.
+- Runs ONLY in the GitHub Action (.github/workflows/fetch-news.yml). The Conversation's
+  robots.txt disallows AI agents such as Claude-Code, so never run it from an AI session.
 """
 
 from __future__ import annotations
@@ -43,7 +45,7 @@ FEEDS = [
 ]
 DELAY_SEC = 5
 MAX_ITEMS = 5
-MAX_AGE_DAYS = 365
+MAX_AGE_DAYS = 90
 NS = {"a": "http://www.w3.org/2005/Atom"}
 VIC_WORDS = re.compile(r"\b(Victoria|Victorian|Victorians|Melbourne|Spring Street)\b")
 
@@ -63,6 +65,11 @@ def fetch(url: str) -> bytes:
 def plain(s: str | None) -> str:
     s = re.sub(r"<[^>]+>", " ", s or "")
     return re.sub(r"\s+", " ", s).strip()
+
+
+def fold(s: str) -> str:
+    """Matching only: curly apostrophes/quotes -> straight, so O'Brien matches O’Brien."""
+    return s.replace("\u2019", "'").replace("\u2018", "'")
 
 
 def parse(xml: bytes) -> list[dict]:
@@ -114,13 +121,13 @@ def main() -> int:
     index = {}
     new_total = 0
     for m in members:
-        rx = name_re(m["name"])
+        rx = name_re(fold(m["name"]))
         seat = m.get("electorate") or m.get("region") or ""
         seat_rx = re.compile(r"\b" + re.escape(seat) + r"\b") if seat else None
         found = []
         for e in entries.values():
-            in_head = bool(rx.search(e["title"]) or rx.search(e["_lead"]))
-            in_body = bool(rx.search(e["_body"]))
+            in_head = bool(rx.search(fold(e["title"])) or rx.search(fold(e["_lead"])))
+            in_body = bool(rx.search(fold(e["_body"])))
             if not (in_head or in_body):
                 continue
             text = " ".join((e["title"], e["_lead"], e["_body"]))
@@ -161,6 +168,11 @@ def main() -> int:
         "counts": index,
     }
     (OUT / "index.json").write_text(json.dumps(idx, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+    # remove files for people who are no longer members (e.g. after the election)
+    for stale in OUT.glob("*.json"):
+        if stale.name != "index.json" and stale.stem not in index:
+            stale.unlink()
+            print(f"removed news file for former member: {stale.stem}")
     with_news = sum(1 for v in index.values() if v)
     print(f"members with news: {with_news}/{len(members)}; new items this run: {new_total}")
     return 0

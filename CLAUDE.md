@@ -58,6 +58,8 @@ Owner is a non-developer on iPad/phone: short, plain-English replies.
 - Same rules for every party. Uncertain name matches dropped or labelled unverified.
 - Checked 2026-11-23: Google News RSS is blocked by robots.txt; most AU publishers forbid
   commercial reuse. Owner chose The Conversation only (CC BY-ND). See docs/data-sources.md.
+- NEVER fetch theconversation.com from a Claude session: its robots.txt disallows Claude-Code.
+  build_news.py runs only in the fetch-news GitHub Action.
 
 ## Out of scope until owner says so
 Federal and other states, user accounts, comments, ads, newsletter, any paid service.
@@ -74,7 +76,7 @@ scripts/validate_members.py     Data gate: 88 Assembly seats (incl. vacancies), 
 scripts/build_boundaries.py     VEC boundaries (Vicmap WFS) -> data/boundaries/*.json (SVG paths)
 scripts/validate_boundaries.py  Boundary gate: 88 districts + 8 regions, names match members.json
 scripts/check_boundaries.py     Is a newer redivision published? (network; used by yearly workflow)
-scripts/build_news.py           The Conversation feeds -> data/news/<member-id>.json (network)
+scripts/build_news.py           The Conversation feeds -> data/news/ (GitHub Action ONLY)
 scripts/validate_news.py        News gate: max 5, allowed keys only, source/licence, ids match
 data/members.json               Clean member list used by the site
 data/vacancies.json             Recorded vacancies (no source field yet; fix in Stage 6)

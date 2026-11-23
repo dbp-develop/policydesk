@@ -68,7 +68,7 @@ def main() -> int:
                 errors.append(f"{mid}: url/licence does not match source {i['source']}")
             if not DATE.match(i["published"]):
                 errors.append(f"{mid}: bad date {i['published']!r}")
-            if not (5 <= len(i["title"]) <= 300) or "<" in i["title"]:
+            if not (5 <= len(i["title"]) <= 200) or "<" in i["title"] or "\n" in i["title"]:
                 errors.append(f"{mid}: suspicious title {i['title'][:60]!r}")
             if not isinstance(i["verified"], bool):
                 errors.append(f"{mid}: verified must be true/false")
