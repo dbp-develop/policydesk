@@ -40,7 +40,8 @@ Owner is a non-developer on iPad/phone: short, plain-English replies.
 ## Data rules
 - Parliament of Victoria official list = primary source for facts only
   (name, chamber, electorate/region, party, profile URL).
-- Wikidata enriches X handles and photo credits, matched by name; every match reviewable.
+- Wikidata enriches X handles and photo credits, matched by name; every match reviewable
+  (matching not built yet; build_members.py does not read vic_raw.json).
 - No copied biographies. No hotlinked or copied parliament portraits.
 - Photos: Wikimedia Commons only, if licence permits reuse, with creator, licence,
   Commons link. Otherwise initials placeholder.
@@ -67,7 +68,7 @@ scripts/fetch_vic_members.py    Wikidata SPARQL -> data/vic_raw.json (enrichment
 scripts/build_members.py        vic_official + vacancies -> data/members.json
 scripts/validate_members.py     Data gate: 88 Assembly seats (incl. vacancies), 40 Council
 data/members.json               Clean member list used by the site
-data/vacancies.json             Recorded vacancies (source: Parliament of Victoria)
+data/vacancies.json             Recorded vacancies (no source field yet; fix in Stage 6)
 data/vic_official.json          Raw official fetch
 data/vic_raw.json               Raw Wikidata fetch
 docs/data-sources.md            robots.txt + terms record for each source
