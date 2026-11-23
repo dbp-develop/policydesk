@@ -34,8 +34,9 @@ Owner is a non-developer on iPad/phone: short, plain-English replies.
   Credit line: "Created by The Policy Desk AU (@PolicyDeskAU)".
 - Stack: plain HTML, CSS, vanilla JS. No framework, no build step.
   Scripts: Python standard library only.
-- Hosting: GitHub = source of truth; Cloudflare Pages hosts (DNS already in Cloudflare).
-  No Worker unless the owner approves.
+- Hosting: GitHub = source of truth; Cloudflare Pages project `policydesk` deploys `main`
+  (repo root, no build). policydesk.au + www (www 301 -> apex via Redirect Rule).
+  Zoho email DNS records must never be touched. No Worker unless the owner approves.
 
 ## Data rules
 - Parliament of Victoria official list = primary source for facts only
