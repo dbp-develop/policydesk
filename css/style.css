@@ -208,3 +208,80 @@ a:hover { text-decoration-thickness: 2px; }
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; }
 }
+
+/* View toggle */
+.view-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  margin: 8px 0 12px;
+}
+.view-bar .count { margin: 0; }
+.view-toggle { display: inline-flex; border: 2px solid var(--navy); border-radius: 8px; overflow: hidden; }
+.toggle {
+  font: inherit;
+  font-weight: 600;
+  min-height: 44px;
+  min-width: 72px;
+  padding: 8px 16px;
+  border: 0;
+  background: var(--white);
+  color: var(--navy);
+  cursor: pointer;
+}
+.toggle[aria-pressed="true"] { background: var(--navy); color: var(--paper); }
+
+/* Map */
+.map-view { margin-bottom: 32px; }
+.map-layer { margin: 0 0 8px; font-size: 0.9375rem; }
+.map-controls { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+.btn-small { min-height: 44px; min-width: 44px; padding: 8px 12px; font-size: 0.9375rem; }
+.map-frame {
+  position: relative;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.map { display: block; width: 100%; height: auto; aspect-ratio: 1 / 0.72; max-height: 70vh; }
+.map-status { position: absolute; inset: auto 0 0 0; margin: 0; padding: 8px 12px; font-size: 0.875rem; color: var(--muted); }
+.map-status:empty { display: none; }
+.seat {
+  fill: #E7EAF1;
+  stroke: var(--navy);
+  stroke-width: 0.8;
+  vector-effect: non-scaling-stroke;
+  cursor: pointer;
+}
+.seat.is-match { fill: #76839F; }          /* 3.4:1 against dimmed seats */
+.seat.is-dim { fill: #F3F2EE; stroke: #8A8577; }
+.seat:hover { fill: #FBDFA6; }
+.seat.is-selected { fill: var(--saffron); stroke-width: 2; }
+.map-detail {
+  margin-top: 12px;
+  padding: 12px 14px;
+  background: var(--white);
+  border-left: 4px solid var(--saffron);
+  border-radius: 6px;
+}
+.map-detail h2 { margin: 0 0 8px; font-size: 1.125rem; }
+.map-detail .cards { margin: 0; }
+.map-detail p { margin: 0; }
+.seat-list { margin-top: 12px; }
+.seat-list summary { cursor: pointer; font-weight: 600; min-height: 44px; display: flex; align-items: center; }
+.seat-list ul { list-style: none; padding: 0; margin: 8px 0 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.seat-btn {
+  font: inherit;
+  font-size: 0.9375rem;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid #8A8577;
+  border-radius: 8px;
+  background: var(--white);
+  color: var(--navy);
+  cursor: pointer;
+}
+.seat-btn[aria-current="true"] { background: var(--navy); color: var(--paper); border-color: var(--navy); }
+.map-credit { font-size: 0.8125rem; color: var(--muted); margin: 12px 0 0; }

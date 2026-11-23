@@ -150,3 +150,68 @@ No separate official “download current members as CSV/JSON” page or publishe
 **(b) automated access:** terms pages found **do not mention** automated access, scraping, bots, or robots (other than privacy language about the server *automatically* recording visits).
 
 **(c) reusing member names, parties and electorates (facts only):** **unclear**. The Copyright page restricts reproduction of “copyright material” on the website to personal non-commercial use, research or study, or use within an organisation, and requires Presiding Officers’ permission beyond that — but the quoted text does **not** specifically mention member names, parties, or electorates, and does **not** state whether those facts alone are “copyright material.”
+
+---
+
+# Data sources — Electoral boundaries (Stage 3)
+
+**Date checked:** 2026-11-23
+**Checker User-Agent:** `PolicyDeskAU/1.0 (https://policydesk.au)`
+**Intended use:** download Legislative Assembly district and Legislative Council region boundaries once (and again after any redivision), simplify them, and publish them as static files for the map view.
+
+## Datasets
+
+| | Districts (88) | Regions (8) |
+|---|---|---|
+| Title | Vicmap Admin - State Assembly Polygon 2022 | Vicmap Admin - State Council Polygon 2022 |
+| Publisher (DataVic organisation) | Victorian Electoral Commission | Victorian Electoral Commission |
+| Landing page | https://discover.data.vic.gov.au/dataset/vicmap-admin-state-assembly-polygon-2022 | https://discover.data.vic.gov.au/dataset/vicmap-admin-state-council-polygon-2022 |
+| Download used | Vicmap WFS, layer `open-data-platform:state_assembly_2022`, GeoJSON, EPSG:4326 | Vicmap WFS, layer `open-data-platform:state_council_2022`, GeoJSON, EPSG:4326 |
+| Licence (as listed in the DataVic catalogue record) | Creative Commons Attribution 4.0 International | Creative Commons Attribution 4.0 International |
+
+WFS base: `https://opendata.maps.vic.gov.au/geoserver/wfs`
+
+**Dataset description (quote):**
+
+> These boundaries are the result of the 2020-21 State Redivision conducted under requirements of the Electoral Boundaries Commission Act 1982. These boundaries will apply at the Victorian State Election in 2022.
+
+## Do these boundaries apply at the 28 Nov 2026 election?
+
+From https://www.vec.vic.gov.au/electoral-boundaries/state-boundary-reviews (quotes):
+
+> The last redivision completed in October 2021, and all changes came into effect on 1 November 2022, when the writ for the 2022 State election was issued.
+
+> When the next redivision is called, we will provide more information.
+
+The VEC district and region pages (`/electoral-boundaries/state-districts`, `/state-regions`) list profile pages "to find your 2026 state election candidates". All 88 district names and 8 region names in the boundary data match `data/members.json` exactly (checked by `scripts/validate_boundaries.py`).
+
+## Attribution
+
+Neither dataset record gives a specific attribution wording. The wording below is ours: it names the publisher as listed on DataVic, the licence, and our changes.
+
+> Electoral boundaries: Victorian Electoral Commission, via DataVic (Vicmap Admin), CC BY 4.0. Simplified by The Policy Desk AU.
+
+**Changes made (required by CC BY 4.0):** simplified with Douglas-Peucker (~96 m tolerance), slivers under ~0.026 km² (25,691 m²) dropped, projected to SVG coordinates. This is recorded in each output file's `modified` field.
+
+## robots.txt
+
+- `https://opendata.maps.vic.gov.au/robots.txt`: HTTP 404 (no robots file). No rules restrict the WFS.
+- `https://discover.data.vic.gov.au/robots.txt` (quote):
+
+```
+User-agent: *
+Disallow: /dataset/rate/
+Disallow: /revision/
+Disallow: /dataset/*/history
+Disallow: /api/
+Crawl-Delay: 10
+```
+
+**Note:** during research on 2026-11-23, five catalogue lookups were made to `discover.data.vic.gov.au/api/3/action/...` before this robots file was read. `/api/` is disallowed. The build script does not use that API; it only calls the WFS above. Future checks of the dataset pages must respect the 10-second crawl delay.
+
+- `https://www.vec.vic.gov.au/robots.txt`: `User-agent: *` disallows `/assets/`, `/upload/`, `*.ashx` and other internal paths; the boundary pages we read are not disallowed.
+
+## Not used
+
+- VEC boundary map PDFs and the interactive map: not needed.
+- Base map tiles (OpenStreetMap, Google, etc.): not used. The map draws only the boundaries, so it makes no third-party requests.
