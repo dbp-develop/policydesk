@@ -399,8 +399,84 @@
     renderDetail(shown);
   }
 
+  /* Drag to move, pinch (or ctrl + scroll / trackpad pinch) to zoom. */
+  var pointers = {};       // pointerId -> {x, y}
+  var gesture = null;      // {vb, x, y, dist, moved}
+  var suppressClick = false;
+
+  function unitsPerPx() {
+    var r = els.map.getBoundingClientRect();
+    return Math.max(viewBox[2] / r.width, viewBox[3] / r.height);  // "meet" scaling
+  }
+  function toMap(clientX, clientY) {
+    var r = els.map.getBoundingClientRect(), k = unitsPerPx();
+    return [
+      viewBox[0] + viewBox[2] / 2 + (clientX - (r.left + r.width / 2)) * k,
+      viewBox[1] + viewBox[3] / 2 + (clientY - (r.top + r.height / 2)) * k
+    ];
+  }
+  function zoomAround(clientX, clientY, factor) {
+    var pt = toMap(clientX, clientY);
+    var w = viewBox[2] * factor, h = viewBox[3] * factor;
+    var fx = (pt[0] - viewBox[0]) / viewBox[2], fy = (pt[1] - viewBox[1]) / viewBox[3];
+    setViewBox([pt[0] - fx * w, pt[1] - fy * h, w, h]);
+  }
+  function pointerList() { return Object.keys(pointers).map(function (k) { return pointers[k]; }); }
+  function startGesture() {
+    var ps = pointerList();
+    if (!ps.length) { gesture = null; return; }
+    var cx = ps.reduce(function (a, p) { return a + p.x; }, 0) / ps.length;
+    var cy = ps.reduce(function (a, p) { return a + p.y; }, 0) / ps.length;
+    var dist = ps.length > 1 ? Math.hypot(ps[0].x - ps[1].x, ps[0].y - ps[1].y) : 0;
+    gesture = { vb: viewBox.slice(), x: cx, y: cy, dist: dist, k: unitsPerPx(), moved: gesture ? gesture.moved : false };
+  }
+
+  els.map.addEventListener("pointerdown", function (e) {
+    if (!boundaries || (e.pointerType === "mouse" && e.button !== 0)) return;
+    pointers[e.pointerId] = { x: e.clientX, y: e.clientY };
+    try { els.map.setPointerCapture(e.pointerId); } catch (err) { /* ignore */ }
+    if (Object.keys(pointers).length === 1) gesture = null;
+    startGesture();
+  });
+  els.map.addEventListener("pointermove", function (e) {
+    if (!gesture || !pointers[e.pointerId]) return;
+    pointers[e.pointerId] = { x: e.clientX, y: e.clientY };
+    var ps = pointerList();
+    var cx = ps.reduce(function (a, p) { return a + p.x; }, 0) / ps.length;
+    var cy = ps.reduce(function (a, p) { return a + p.y; }, 0) / ps.length;
+    if (!gesture.moved && Math.hypot(cx - gesture.x, cy - gesture.y) < 6 && ps.length < 2) return;
+    gesture.moved = true;
+    var scale = ps.length > 1 && gesture.dist > 0
+      ? gesture.dist / Math.hypot(ps[0].x - ps[1].x, ps[0].y - ps[1].y) : 1;
+    var vb = gesture.vb;
+    // point under the gesture start stays under the fingers
+    var r = els.map.getBoundingClientRect();
+    var ax = vb[0] + vb[2] / 2 + (gesture.x - (r.left + r.width / 2)) * gesture.k;
+    var ay = vb[1] + vb[3] / 2 + (gesture.y - (r.top + r.height / 2)) * gesture.k;
+    var w = vb[2] * scale, h = vb[3] * scale, k = gesture.k * scale;
+    var ncx = ax - (cx - (r.left + r.width / 2)) * k;
+    var ncy = ay - (cy - (r.top + r.height / 2)) * k;
+    setViewBox([ncx - w / 2, ncy - h / 2, w, h]);
+  });
+  function endPointer(e) {
+    if (!pointers[e.pointerId]) return;
+    delete pointers[e.pointerId];
+    if (gesture && gesture.moved) suppressClick = true;
+    if (Object.keys(pointers).length) startGesture(); else gesture = null;
+  }
+  els.map.addEventListener("pointerup", endPointer);
+  els.map.addEventListener("pointercancel", endPointer);
+  els.map.addEventListener("wheel", function (e) {
+    if (!boundaries || !e.ctrlKey) return;  // plain scroll keeps scrolling the page
+    e.preventDefault();
+    zoomAround(e.clientX, e.clientY, Math.exp(e.deltaY * 0.01));
+  }, { passive: false });
+
   els.map.addEventListener("click", function (e) {
-    var p = e.target.closest && e.target.closest("path.seat");
+    if (suppressClick) { suppressClick = false; return; }
+    // pointer capture makes the SVG the click target, so find the area under the pointer
+    var hit = document.elementFromPoint(e.clientX, e.clientY);
+    var p = hit && hit.closest && hit.closest("path.seat");
     if (p) select(p.dataset.name, false);
   });
   els.mapView.querySelectorAll("[data-zoom]").forEach(function (b) {

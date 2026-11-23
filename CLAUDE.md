@@ -64,12 +64,14 @@ Federal and other states, user accounts, comments, ads, newsletter, any paid ser
 ## Folder map
 ```
 .github/workflows/fetch-vic-members.yml  Manual data refresh (workflow_dispatch)
+.github/workflows/check-boundaries.yml   Yearly (1 Mar) boundary check; opens an issue if outdated
 scripts/fetch_vic_official.py   Parliament of Victoria API -> data/vic_official.json
 scripts/fetch_vic_members.py    Wikidata SPARQL -> data/vic_raw.json (enrichment)
 scripts/build_members.py        vic_official + vacancies -> data/members.json
 scripts/validate_members.py     Data gate: 88 Assembly seats (incl. vacancies), 40 Council
 scripts/build_boundaries.py     VEC boundaries (Vicmap WFS) -> data/boundaries/*.json (SVG paths)
 scripts/validate_boundaries.py  Boundary gate: 88 districts + 8 regions, names match members.json
+scripts/check_boundaries.py     Is a newer redivision published? (network; used by yearly workflow)
 data/members.json               Clean member list used by the site
 data/vacancies.json             Recorded vacancies (no source field yet; fix in Stage 6)
 data/vic_official.json          Raw official fetch
