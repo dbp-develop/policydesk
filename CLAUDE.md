@@ -56,7 +56,10 @@ Owner is a non-developer on iPad/phone: short, plain-English replies.
   department news.
 - Show headline, source name, date, link only. No summaries or copied text. Max 5 items.
 - Same rules for every party. Uncertain name matches dropped or labelled unverified.
-- Check Google News RSS terms first; record result in `docs/data-sources.md`.
+- Checked 2026-11-23: Google News RSS is blocked by robots.txt; most AU publishers forbid
+  commercial reuse. Owner chose The Conversation only (CC BY-ND). See docs/data-sources.md.
+- NEVER fetch theconversation.com from a Claude session: its robots.txt disallows Claude-Code.
+  build_news.py runs only in the fetch-news GitHub Action.
 
 ## Out of scope until owner says so
 Federal and other states, user accounts, comments, ads, newsletter, any paid service.
@@ -65,6 +68,7 @@ Federal and other states, user accounts, comments, ads, newsletter, any paid ser
 ```
 .github/workflows/fetch-vic-members.yml  Manual data refresh (workflow_dispatch)
 .github/workflows/check-boundaries.yml   Yearly (1 Mar) boundary check; opens an issue if outdated
+.github/workflows/fetch-news.yml         Daily news build -> data/news, validated, committed to main
 scripts/fetch_vic_official.py   Parliament of Victoria API -> data/vic_official.json
 scripts/fetch_vic_members.py    Wikidata SPARQL -> data/vic_raw.json (enrichment)
 scripts/build_members.py        vic_official + vacancies -> data/members.json
@@ -72,11 +76,14 @@ scripts/validate_members.py     Data gate: 88 Assembly seats (incl. vacancies), 
 scripts/build_boundaries.py     VEC boundaries (Vicmap WFS) -> data/boundaries/*.json (SVG paths)
 scripts/validate_boundaries.py  Boundary gate: 88 districts + 8 regions, names match members.json
 scripts/check_boundaries.py     Is a newer redivision published? (network; used by yearly workflow)
+scripts/build_news.py           The Conversation feeds -> data/news/ (GitHub Action ONLY)
+scripts/validate_news.py        News gate: max 5, allowed keys only, source/licence, ids match
 data/members.json               Clean member list used by the site
 data/vacancies.json             Recorded vacancies (no source field yet; fix in Stage 6)
 data/vic_official.json          Raw official fetch
 data/vic_raw.json               Raw Wikidata fetch
 data/boundaries/                Simplified VEC boundaries, CC BY 4.0 (2020-21 redivision)
+data/news/                      Headline/source/date/link per member + index.json
 docs/data-sources.md            robots.txt + terms record for each source
 docs/ROADMAP.md                 Stages and status
 LICENSE / LICENSE-DATA.md       AGPL-3.0 / CC BY-SA 4.0
@@ -90,6 +97,7 @@ python3 scripts/validate_members.py     # data gate; must print OK and exit 0
 python3 scripts/fetch_vic_official.py   # refresh official list (network)
 python3 scripts/build_members.py        # rebuild members.json
 python3 scripts/validate_boundaries.py  # boundary gate; must print OK
+python3 scripts/validate_news.py        # news gate; must print OK
 python3 scripts/build_boundaries.py     # re-fetch + simplify boundaries (network)
 ```
 Local preview (from Stage 2): `python3 -m http.server 8000` in the repo root.

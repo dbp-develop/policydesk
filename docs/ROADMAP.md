@@ -8,7 +8,7 @@ Status: ✅ done · 🔄 in progress · ⏳ not started · ⛔ blocked
 | 1 | Move hosting to Cloudflare Pages | ✅ | Pages project `policydesk` (policydesk-2u0.pages.dev), auto-deploys from `main`. policydesk.au live on HTTPS; www 301-redirects to apex; GitHub Pages off |
 | 2 | List view | ✅ | Search, filters, alphabetical, "Data as of" line, vacancies shown, accessibility |
 | 3 | Map view | ✅ | Needs boundary data with a reuse licence; else stop. Text-only fallback |
-| 4 | News | ⏳ | Plan first: GitHub Action vs n8n. Static `data/news/`, validator |
+| 4 | News | 🔄 | Plan first: GitHub Action vs n8n. Static `data/news/`, validator |
 | 5 | Photos and socials | ⏳ | Commons photos only with licence; official handles only; review report |
 | 6 | Post-election refresh (after 28 Nov 2026) | ⏳ | Update data + vacancies.json; validators green |
 | 7 | Compliance and launch | ⛔ | About page, sitemap, robots.txt, privacy, final review. See blockers |

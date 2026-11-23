@@ -31,6 +31,8 @@
 
   var collator = new Intl.Collator("en-AU", { sensitivity: "base" });
   var rows = [];
+  var newsIndex = null;   // data/news/index.json, loaded in the background
+  var lastListKey = null;
 
   function seatOf(m) { return m.chamber === "lower" ? m.electorate : m.region; }
 
@@ -117,9 +119,55 @@
       a.appendChild(sr);
       body.appendChild(a);
     }
+    var n = !r.vacant && newsIndex && newsIndex.counts ? newsIndex.counts[r.id] : 0;
+    if (n > 0) {
+      var nb = el("button", "news-btn", "Recent news (" + n + ")");
+      nb.type = "button";
+      nb.setAttribute("aria-haspopup", "dialog");
+      nb.appendChild(el("span", "visually-hidden", " about " + r.name));
+      nb.addEventListener("click", function () { openNews(r); });
+      body.appendChild(nb);
+    }
     li.appendChild(body);
     return li;
   }
+
+  /* ---------- News popup (pre-built static files, never fetched from publishers) ---------- */
+  var newsDialog = document.getElementById("news-dialog");
+
+  function openNews(r) {
+    var list = document.getElementById("news-list");
+    document.getElementById("news-title").textContent = "Recent news: " + r.name;
+    list.replaceChildren(el("li", "meta", "Loading…"));
+    if (newsDialog.showModal) newsDialog.showModal(); else newsDialog.setAttribute("open", "");
+    fetch("data/news/" + encodeURIComponent(r.id) + ".json", { cache: "no-cache" })
+      .then(function (res) { if (!res.ok) throw new Error("HTTP " + res.status); return res.json(); })
+      .then(function (doc) {
+        list.replaceChildren();
+        (doc.items || []).forEach(function (i) {
+          if (!/^https:\/\//.test(i.url)) return;
+          var li = el("li", "news-item");
+          var a = el("a", null, i.title);
+          a.href = i.url;
+          li.appendChild(a);
+          li.appendChild(el("p", "meta", i.source + " · " + formatDate(i.published)));
+          if (!i.verified) {
+            li.appendChild(el("p", "news-flag", "Unverified match: the name is in the article text, not the headline or summary."));
+          }
+          list.appendChild(li);
+        });
+        if (!list.children.length) list.appendChild(el("li", "meta", "No recent news found."));
+      })
+      .catch(function () {
+        list.replaceChildren(el("li", "meta", "Sorry, news could not be loaded."));
+      });
+  }
+  document.getElementById("news-close").addEventListener("click", function () {
+    if (newsDialog.close) newsDialog.close(); else newsDialog.removeAttribute("open");
+  });
+  newsDialog.addEventListener("click", function (e) {
+    if (e.target === newsDialog && newsDialog.close) newsDialog.close();  // click on backdrop
+  });
 
   function render() {
     syncSeatGroups();
@@ -136,12 +184,17 @@
       return true;
     });
 
-    var frag = document.createDocumentFragment();
-    shown.forEach(function (r) { frag.appendChild(card(r)); });
-    els.list.replaceChildren(frag);
-
-    if (!shown.length) {
-      els.list.appendChild(el("li", "empty", "No members match these filters."));
+    // Only rebuild the cards when the result actually changed. A "change" event fires when
+    // the search box loses focus; rebuilding then would swallow the tap on a card button.
+    var listKey = [rows.length, q, chamber, party, seat, newsIndex ? newsIndex.generated_at : ""].join("|");
+    if (listKey !== lastListKey) {
+      lastListKey = listKey;
+      var frag = document.createDocumentFragment();
+      shown.forEach(function (r) { frag.appendChild(card(r)); });
+      els.list.replaceChildren(frag);
+      if (!shown.length) {
+        els.list.appendChild(el("li", "empty", "No members match these filters."));
+      }
     }
     if (view === "map") renderMap(shown);
     var vacant = shown.filter(function (r) { return r.vacant; }).length;
@@ -154,6 +207,7 @@
   function load(data) {
     var members = (data.members || []).map(function (m) {
       return {
+        id: m.id,
         name: m.name,
         party: m.party,
         chamber: m.chamber,
@@ -515,6 +569,23 @@
     var want = location.hash === "#map" ? "map" : "list";
     if (want !== view) setView(want, false);
   });
+
+  fetch("data/news/index.json", { cache: "no-cache" })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (idx) {
+      if (!idx) return;
+      newsIndex = idx;
+      var c = document.getElementById("news-credit");
+      if (c && /^https:\/\//.test(idx.source_url) && /^https:\/\//.test(idx.licence_url)) {
+        var src = el("a", null, idx.source); src.href = idx.source_url;
+        var lic = el("a", null, idx.licence); lic.href = idx.licence_url;
+        c.replaceChildren(document.createTextNode("Headlines from "), src, document.createTextNode(" ("), lic,
+          document.createTextNode("), matched by exact full name with a Victorian context and checked daily. " +
+            "We show the headline, date and link only."));
+      }
+      if (rows.length) render();
+    })
+    .catch(function () { /* news is optional */ });
 
   fetch("data/members.json", { cache: "no-cache" })
     .then(function (r) {
