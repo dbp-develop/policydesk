@@ -68,15 +68,18 @@ scripts/fetch_vic_official.py   Parliament of Victoria API -> data/vic_official.
 scripts/fetch_vic_members.py    Wikidata SPARQL -> data/vic_raw.json (enrichment)
 scripts/build_members.py        vic_official + vacancies -> data/members.json
 scripts/validate_members.py     Data gate: 88 Assembly seats (incl. vacancies), 40 Council
+scripts/build_boundaries.py     VEC boundaries (Vicmap WFS) -> data/boundaries/*.json (SVG paths)
+scripts/validate_boundaries.py  Boundary gate: 88 districts + 8 regions, names match members.json
 data/members.json               Clean member list used by the site
 data/vacancies.json             Recorded vacancies (no source field yet; fix in Stage 6)
 data/vic_official.json          Raw official fetch
 data/vic_raw.json               Raw Wikidata fetch
+data/boundaries/                Simplified VEC boundaries, CC BY 4.0 (2020-21 redivision)
 docs/data-sources.md            robots.txt + terms record for each source
 docs/ROADMAP.md                 Stages and status
 LICENSE / LICENSE-DATA.md       AGPL-3.0 / CC BY-SA 4.0
 ```
-index.html, css/style.css, js/app.js  List view (Stage 2)
+index.html, css/style.css, js/app.js  List + map views (map: own SVG, no tiles/libraries)
 fonts/                          Self-hosted Inter + OFL licence (no Google Fonts calls)
 
 ## Commands
@@ -84,5 +87,7 @@ fonts/                          Self-hosted Inter + OFL licence (no Google Fonts
 python3 scripts/validate_members.py     # data gate; must print OK and exit 0
 python3 scripts/fetch_vic_official.py   # refresh official list (network)
 python3 scripts/build_members.py        # rebuild members.json
+python3 scripts/validate_boundaries.py  # boundary gate; must print OK
+python3 scripts/build_boundaries.py     # re-fetch + simplify boundaries (network)
 ```
 Local preview (from Stage 2): `python3 -m http.server 8000` in the repo root.
