@@ -214,7 +214,7 @@ def main() -> int:
             "dataset_url": cfg["dataset_url"],
             "licence": "CC BY 4.0",
             "licence_url": "https://creativecommons.org/licenses/by/4.0/",
-            "credit": "Electoral boundaries © State of Victoria (Victorian Electoral Commission), CC BY 4.0. Simplified by The Policy Desk AU.",
+            "credit": "Electoral boundaries: Victorian Electoral Commission, via DataVic (Vicmap Admin), CC BY 4.0. Simplified by The Policy Desk AU.",
             "boundary_version": "2020-21 State Redivision, in effect from 1 November 2022",
             "modified": f"Simplified (Douglas-Peucker, ~{TOLERANCE * km_per_unit * 1000:.0f} m tolerance), slivers under ~{MIN_RING_AREA * km_per_unit ** 2 * 1e6:.0f} m² dropped, projected to SVG units",
             "fetched_at": fetched,

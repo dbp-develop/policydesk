@@ -14,8 +14,8 @@ own licences and credits:
 - **Wikidata** facts: CC0.
 - **Photos from Wikimedia Commons**: each file's own licence and author credit.
 - **Parliament and government content**: the relevant parliament's copyright terms.
-- **Electoral boundaries** (`data/boundaries/`): © State of Victoria (Victorian Electoral Commission),
-  CC BY 4.0, simplified by The Policy Desk AU. See `docs/data-sources.md`.
+- **Electoral boundaries** (`data/boundaries/`): Victorian Electoral Commission, via DataVic
+  (Vicmap Admin), CC BY 4.0, simplified by The Policy Desk AU. See `docs/data-sources.md`.
 - **News headlines and links**: remain the property of their publishers.
 
 Source code is licensed separately under AGPL-3.0 (see `LICENSE`).

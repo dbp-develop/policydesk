@@ -237,7 +237,7 @@ a:hover { text-decoration-thickness: 2px; }
 .map-view { margin-bottom: 32px; }
 .map-layer { margin: 0 0 8px; font-size: 0.9375rem; }
 .map-controls { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
-.btn-small { min-height: 44px; padding: 8px 12px; font-size: 0.9375rem; }
+.btn-small { min-height: 44px; min-width: 44px; padding: 8px 12px; font-size: 0.9375rem; }
 .map-frame {
   position: relative;
   background: var(--white);
@@ -255,7 +255,8 @@ a:hover { text-decoration-thickness: 2px; }
   vector-effect: non-scaling-stroke;
   cursor: pointer;
 }
-.seat.is-dim { fill: #F3F2EE; stroke: #B9B5AA; }
+.seat.is-match { fill: #76839F; }          /* 3.4:1 against dimmed seats */
+.seat.is-dim { fill: #F3F2EE; stroke: #8A8577; }
 .seat:hover { fill: #FBDFA6; }
 .seat.is-selected { fill: var(--saffron); stroke-width: 2; }
 .map-detail {

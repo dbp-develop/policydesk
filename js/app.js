@@ -198,6 +198,8 @@
   var selected = null;        // seat name
   var viewBox = null;         // [x, y, w, h]
   var lastShown = [];
+  var lastSeatFilter = "";
+  var detailKey = "";
 
   function loadBoundaries() {
     if (!boundaryPromise) {
@@ -209,12 +211,14 @@
       })).then(function (docs) {
         boundaries = { districts: docs[0], regions: docs[1] };
         var d = docs[0];
-        els.mapCredit.textContent = "";
-        els.mapCredit.appendChild(document.createTextNode(d.credit + " Source: "));
-        var a = el("a", null, d.dataset + " and State Council Polygon 2022");
-        a.href = d.dataset_url;
-        els.mapCredit.appendChild(a);
-        els.mapCredit.appendChild(document.createTextNode(" (" + d.boundary_version + ")."));
+        var r = docs[1];
+        function link(text, href) { var a = el("a", null, text); a.href = href; return a; }
+        function txt(t) { return document.createTextNode(t); }
+        els.mapCredit.replaceChildren(
+          txt("Electoral boundaries: Victorian Electoral Commission, via DataVic ("),
+          link("districts", d.dataset_url), txt(", "), link("regions", r.dataset_url),
+          txt("), licensed under "), link("CC BY 4.0", d.licence_url),
+          txt(". Simplified by The Policy Desk AU. " + d.boundary_version + "."));
         els.mapStatus.textContent = "";
       }).catch(function () {
         boundaryPromise = null;
@@ -243,8 +247,12 @@
     var full = boundaries.districts.viewBox;
     var w = Math.max(b[2], 40), h = Math.max(b[3], 40);
     if (h / w > ratio) w = h / ratio; else h = w * ratio;
-    w = Math.min(w, full[2] * 1.02); h = Math.min(h, full[3] * 1.02);
+    var maxW = full[2] * 1.02, maxH = full[2] * 1.02 * ratio;
+    if (w > maxW) { w = maxW; h = maxH; }
     var cx = b[0] + b[2] / 2, cy = b[1] + b[3] / 2;
+    // keep the map in view: clamp the centre so we never drift off the state
+    cx = w >= full[2] ? full[2] / 2 : Math.min(Math.max(cx, w / 2), full[2] - w / 2);
+    cy = h >= full[3] ? full[3] / 2 : Math.min(Math.max(cy, h / 2), full[3] - h / 2);
     viewBox = [cx - w / 2, cy - h / 2, w, h];
     els.map.setAttribute("viewBox", viewBox.map(function (n) { return Math.round(n); }).join(" "));
   }
@@ -287,6 +295,12 @@
   }
 
   function renderDetail(shown) {
+    var chamberKey = layerKey === "regions" ? "upper" : "lower";
+    var key = layerKey + "|" + selected + "|" + shown.filter(function (r) {
+      return r.seat === selected && r.chamber === chamberKey;
+    }).map(function (r) { return r.name; }).join(",");
+    if (key === detailKey) return;
+    detailKey = key;
     els.mapDetail.replaceChildren();
     if (!selected) {
       els.mapDetail.appendChild(el("p", "meta", "Tap or click an area on the map, or pick a seat from the list below."));
@@ -330,7 +344,9 @@
       els.map.replaceChildren(els.map.querySelector("title"), g);
       if (!viewBox) setViewBox(boundaries.districts.viewBox);
     }
-    if (seat && seat !== selected && boundaries[layerKey].features.some(function (f) { return f.name === seat; })) {
+    var seatChanged = seat !== lastSeatFilter;
+    lastSeatFilter = seat;
+    if (seat && seatChanged && boundaries[layerKey].features.some(function (f) { return f.name === seat; })) {
       selected = seat;
       var b = bboxOf([seat]);
       if (b) setViewBox([b[0] - b[2] * 0.4, b[1] - b[3] * 0.4, b[2] * 1.8, b[3] * 1.8]);
@@ -340,18 +356,26 @@
     var matchSeats = {};
     shown.forEach(function (r) { if (r.chamber === chamber) matchSeats[r.seat] = true; });
 
+    var filtering = !!(els.q.value.trim() || els.party.value || els.seat.value);
     els.map.querySelectorAll("path.seat").forEach(function (p) {
       var n = p.dataset.name;
-      p.classList.toggle("is-dim", !matchSeats[n]);
+      p.classList.toggle("is-match", filtering && !!matchSeats[n]);
+      p.classList.toggle("is-dim", filtering && !matchSeats[n]);
       p.classList.toggle("is-selected", n === selected);
     });
     var sel = els.map.querySelector("path.is-selected");
     if (sel) sel.parentNode.appendChild(sel);  // draw selected outline on top
 
+    var councilMatches = shown.filter(function (r) { return r.chamber === "upper"; }).length;
     els.mapLayer.textContent = chamber === "upper"
-      ? "Showing the 8 Legislative Council regions. Each region elects 5 members."
+      ? "Showing the 8 Legislative Council regions. Each region elects 5 members." +
+        (filtering ? " Highlighted regions match your filters." : "")
       : "Showing the 88 Legislative Assembly districts." +
-        (els.chamber.value ? "" : " Choose Legislative Council under Chamber to see regions.");
+        (filtering ? " Highlighted districts match your filters." : "") +
+        (els.chamber.value ? "" : (filtering && councilMatches
+          ? " " + councilMatches + " matching Legislative Council member" + (councilMatches > 1 ? "s are" : " is") +
+            " not shown here: choose Legislative Council under Chamber to see regions."
+          : " Choose Legislative Council under Chamber to see regions."));
 
     var names = boundaries[layerKey].features.map(function (f) { return f.name; })
       .filter(function (n) { return matchSeats[n]; });
@@ -362,7 +386,12 @@
       var b = el("button", "seat-btn", n);
       b.type = "button";
       if (n === selected) b.setAttribute("aria-current", "true");
-      b.addEventListener("click", function () { select(n, true); els.mapDetail.scrollIntoView({ block: "nearest" }); });
+      b.dataset.name = n;
+      b.addEventListener("click", function () {
+        select(n, true);
+        var again = els.seatButtons.querySelector('[data-name="' + CSS.escape(n) + '"]');
+        if (again) again.focus();
+      });
       li.appendChild(b);
       frag.appendChild(li);
     });
@@ -383,7 +412,15 @@
   els.form.addEventListener("input", render);
   els.form.addEventListener("change", render);
   els.form.addEventListener("submit", function (e) { e.preventDefault(); });
-  els.form.addEventListener("reset", function () { selected = null; setTimeout(render, 0); });
+  els.form.addEventListener("reset", function () {
+    selected = null;
+    setTimeout(function () { if (boundaries) setViewBox(boundaries.districts.viewBox); render(); }, 0);
+  });
+  window.addEventListener("hashchange", function () {
+    if (!rows.length) return;
+    var want = location.hash === "#map" ? "map" : "list";
+    if (want !== view) setView(want, false);
+  });
 
   fetch("data/members.json", { cache: "no-cache" })
     .then(function (r) {

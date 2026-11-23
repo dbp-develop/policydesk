@@ -167,7 +167,7 @@ No separate official “download current members as CSV/JSON” page or publishe
 | Publisher (DataVic organisation) | Victorian Electoral Commission | Victorian Electoral Commission |
 | Landing page | https://discover.data.vic.gov.au/dataset/vicmap-admin-state-assembly-polygon-2022 | https://discover.data.vic.gov.au/dataset/vicmap-admin-state-council-polygon-2022 |
 | Download used | Vicmap WFS, layer `open-data-platform:state_assembly_2022`, GeoJSON, EPSG:4326 | Vicmap WFS, layer `open-data-platform:state_council_2022`, GeoJSON, EPSG:4326 |
-| Licence (as listed) | Creative Commons Attribution 4.0 International | Creative Commons Attribution 4.0 International |
+| Licence (as listed in the DataVic catalogue record) | Creative Commons Attribution 4.0 International | Creative Commons Attribution 4.0 International |
 
 WFS base: `https://opendata.maps.vic.gov.au/geoserver/wfs`
 
@@ -187,11 +187,11 @@ The VEC district and region pages (`/electoral-boundaries/state-districts`, `/st
 
 ## Attribution
 
-Neither dataset record gives a specific attribution wording. We use a standard CC BY 4.0 credit naming the publisher and noting our changes:
+Neither dataset record gives a specific attribution wording. The wording below is ours: it names the publisher as listed on DataVic, the licence, and our changes.
 
-> Electoral boundaries © State of Victoria (Victorian Electoral Commission), CC BY 4.0. Simplified by The Policy Desk AU.
+> Electoral boundaries: Victorian Electoral Commission, via DataVic (Vicmap Admin), CC BY 4.0. Simplified by The Policy Desk AU.
 
-**Changes made (required by CC BY 4.0):** simplified with Douglas-Peucker (~96 m tolerance), slivers under ~0.03 km² dropped, projected to SVG coordinates. This is recorded in each output file's `modified` field.
+**Changes made (required by CC BY 4.0):** simplified with Douglas-Peucker (~96 m tolerance), slivers under ~0.026 km² (25,691 m²) dropped, projected to SVG coordinates. This is recorded in each output file's `modified` field.
 
 ## robots.txt
 
