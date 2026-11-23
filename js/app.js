@@ -33,6 +33,9 @@
   var rows = [];
   var newsIndex = null;   // data/news/index.json, loaded in the background
   var lastListKey = null;
+  var photos = {};        // data/photos.json: id -> {local_path, creator, licence, licence_url, commons_url}
+  var socials = {};       // data/socials.json: owner-approved links only
+  var extrasVersion = 0;  // bumps when photos/socials load, so cards re-render
 
   function seatOf(m) { return m.chamber === "lower" ? m.electorate : m.region; }
 
@@ -102,9 +105,20 @@
 
   function card(r) {
     var li = el("li", r.vacant ? "card card-vacant" : "card");
-    var avatar = el("span", "avatar", r.vacant ? "–" : initials(r.name));
-    avatar.setAttribute("aria-hidden", "true");
-    li.appendChild(avatar);
+    var photo = !r.vacant && photos[r.id];
+    if (photo && /^images\/members\/[\w.-]+$/.test(photo.local_path)) {
+      var img = document.createElement("img");
+      img.className = "avatar avatar-photo";
+      img.src = photo.local_path;
+      img.alt = "Photo of " + r.name;
+      img.width = 48; img.height = 48;
+      img.loading = "lazy";
+      li.appendChild(img);
+    } else {
+      var avatar = el("span", "avatar", r.vacant ? "–" : initials(r.name));
+      avatar.setAttribute("aria-hidden", "true");
+      li.appendChild(avatar);
+    }
 
     var body = el("div", "card-body");
     body.appendChild(el("h2", null, r.vacant ? "Vacant seat" : r.name));
@@ -118,6 +132,32 @@
       var sr = el("span", "visually-hidden", " for " + r.name + " on the Parliament of Victoria website");
       a.appendChild(sr);
       body.appendChild(a);
+    }
+    var soc = !r.vacant && socials[r.id];
+    if (soc && soc.links) {
+      var sp = el("p", "socials");
+      [["x", "X"], ["facebook", "Facebook"], ["instagram", "Instagram"]].forEach(function (k) {
+        var u = soc.links[k[0]];
+        if (u && /^https:\/\//.test(u)) {
+          var sa = el("a", null, k[1]);
+          sa.href = u;
+          sa.appendChild(el("span", "visually-hidden", " (" + r.name + ")"));
+          sp.appendChild(sa);
+        }
+      });
+      if (sp.children.length) body.appendChild(sp);
+    }
+    if (photo) {
+      var cr = el("p", "photo-credit");
+      cr.appendChild(document.createTextNode("Photo: " + photo.creator + ", "));
+      var la = el("a", null, photo.licence);
+      if (photo.licence_url && /^https?:\/\//.test(photo.licence_url)) la.href = photo.licence_url;
+      cr.appendChild(la);
+      cr.appendChild(document.createTextNode(", "));
+      var ca = el("a", null, "Wikimedia Commons");
+      ca.href = photo.commons_url;
+      cr.appendChild(ca);
+      body.appendChild(cr);
     }
     var n = !r.vacant && newsIndex && newsIndex.counts ? newsIndex.counts[r.id] : 0;
     if (n > 0) {
@@ -186,7 +226,7 @@
 
     // Only rebuild the cards when the result actually changed. A "change" event fires when
     // the search box loses focus; rebuilding then would swallow the tap on a card button.
-    var listKey = [rows.length, q, chamber, party, seat, newsIndex ? newsIndex.generated_at : ""].join("|");
+    var listKey = [rows.length, extrasVersion, q, chamber, party, seat, newsIndex ? newsIndex.generated_at : ""].join("|");
     if (listKey !== lastListKey) {
       lastListKey = listKey;
       var frag = document.createDocumentFragment();
@@ -586,6 +626,14 @@
       if (rows.length) render();
     })
     .catch(function () { /* news is optional */ });
+
+  [["data/photos.json", function (d) { photos = d.photos || {}; }],
+   ["data/socials.json", function (d) { socials = d.socials || {}; }]].forEach(function (x) {
+    fetch(x[0], { cache: "no-cache" })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) { if (!d) return; x[1](d); extrasVersion++; if (rows.length) render(); })
+      .catch(function () { /* optional */ });
+  });
 
   fetch("data/members.json", { cache: "no-cache" })
     .then(function (r) {
