@@ -108,10 +108,10 @@ def claim_values(entity: dict, prop: str) -> list:
 
 def commons_licence(file_name: str) -> dict:
     url = "https://commons.wikimedia.org/wiki/File:" + urllib.parse.quote(file_name.replace(" ", "_"))
-    page = get(url)
-    shorts = [text(s) for s in re.findall(r'class="[^"]*licensetpl_short[^"]*"[^>]*>(.*?)</', page, re.S)]
-    links = re.findall(r'class="[^"]*licensetpl_link[^"]*"[^>]*>(.*?)</', page, re.S)
-    attr = [text(s) for s in re.findall(r'class="[^"]*licensetpl_attr[^"]*"[^>]*>(.*?)</', page, re.S)]
+    page = get(url).replace("&#95;", "_")  # Commons encodes "_" in these class names
+    shorts = [text(s) for s in re.findall(r'class="(?:[^"]*\s)?licensetpl_short(?:\s[^"]*)?"[^>]*>(.*?)</', page, re.S)]
+    links = re.findall(r'class="(?:[^"]*\s)?licensetpl_link(?:\s[^"]*)?"[^>]*>(.*?)</', page, re.S)
+    attr = [text(s) for s in re.findall(r'class="(?:[^"]*\s)?licensetpl_attr(?:\s[^"]*)?"[^>]*>(.*?)</', page, re.S)]
     aut = re.search(r'id="fileinfotpl_aut"[^>]*>.*?</td>\s*<td[^>]*>(.*?)</td>', page, re.S)
     creator = (attr[0] if attr else (text(aut.group(1)) if aut else "")) or None
     return {"commons_url": url, "licences": [s for s in shorts if s],
