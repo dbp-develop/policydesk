@@ -247,3 +247,11 @@ Crawl-Delay: 10
 | 9News | — | robots.txt HTTP 404 | not checked | Not checked |
 
 **Summary:** no publisher checked clearly permits automated reuse of headlines on a site that allows monetisation. The Conversation's CC BY-ND licence is the only clear permission found. ABC, The Age and 7NEWS terms could not be read automatically and need a human check or written permission.
+
+## Decision (owner, 2026-11-23): The Conversation only
+
+- Feeds used: `https://theconversation.com/au/articles.atom` and the AU section feeds (politics, business, education, environment, health, technology, arts, books). 5-second delay between requests; one run per day (`.github/workflows/fetch-news.yml`).
+- robots.txt (`https://theconversation.com/robots.txt`), `User-Agent: *` group: disallows `/metrics/`, `/auth/`, `/content/`, `/comments/*`, `/*/search?`, `/profiles/*/articles` and similar; feed paths are not disallowed. A separate group of named AI crawlers has `Disallow: /`; our fetcher is not one of them and does not train models.
+- Licence: CC BY-ND 4.0. We store the headline unchanged plus source, date and link; no summaries or article text. Credit shown in the popup and the footer.
+- Matching (`scripts/build_news.py`): exact full name, case-sensitive, word boundaries, plus a Victorian context word or the member's own seat in the article. Name in headline/standfirst = verified; name only in the article body = shown with an "Unverified" label. The article text is read for matching only and never stored.
+- Not covered: per-department/ministerial news (no permitted source found).

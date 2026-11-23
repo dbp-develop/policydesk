@@ -290,3 +290,37 @@ a:hover { text-decoration-thickness: 2px; }
 }
 .seat-btn[aria-current="true"] { background: var(--navy); color: var(--paper); border-color: var(--navy); }
 .map-credit { font-size: 0.8125rem; color: var(--muted); margin: 12px 0 0; }
+
+/* News */
+.news-btn {
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-top: 8px;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 2px solid var(--navy);
+  border-radius: 8px;
+  background: var(--white);
+  color: var(--navy);
+  cursor: pointer;
+}
+.news-btn:hover { background: var(--navy); color: var(--paper); }
+.news-dialog {
+  width: min(560px, calc(100vw - 32px));
+  max-height: calc(100vh - 64px);
+  border: 0;
+  border-top: 4px solid var(--saffron);
+  border-radius: var(--radius);
+  padding: 16px;
+  background: var(--paper);
+  color: var(--ink);
+}
+.news-dialog::backdrop { background: rgba(20, 33, 61, 0.55); }
+.news-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.news-head h2 { margin: 0; font-size: 1.125rem; line-height: 1.3; }
+.news-list { list-style: none; padding: 0; margin: 12px 0 0; }
+.news-item { padding: 10px 0; border-bottom: 1px solid var(--line); }
+.news-item a { font-weight: 600; }
+.news-item p { margin: 4px 0 0; font-size: 0.875rem; }
+.news-flag { color: var(--muted); font-style: italic; }
