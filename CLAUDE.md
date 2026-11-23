@@ -75,7 +75,8 @@ docs/data-sources.md            robots.txt + terms record for each source
 docs/ROADMAP.md                 Stages and status
 LICENSE / LICENSE-DATA.md       AGPL-3.0 / CC BY-SA 4.0
 ```
-No site files yet. They were removed in Stage 0 and get rebuilt in Stage 2.
+index.html, css/style.css, js/app.js  List view (Stage 2)
+fonts/                          Self-hosted Inter + OFL licence (no Google Fonts calls)
 
 ## Commands
 ```bash
