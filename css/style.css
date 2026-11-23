@@ -324,3 +324,10 @@ a:hover { text-decoration-thickness: 2px; }
 .news-item a { font-weight: 600; }
 .news-item p { margin: 4px 0 0; font-size: 0.875rem; }
 .news-flag { color: var(--muted); font-style: italic; }
+
+/* Photos and socials */
+.avatar-photo { object-fit: cover; padding: 0; background: var(--line); }
+.photo-credit { font-size: 0.75rem !important; color: var(--muted); margin-top: 6px !important; overflow-wrap: anywhere; }
+.photo-credit a { color: var(--muted); }
+.socials { display: flex; flex-wrap: wrap; gap: 4px 14px; margin-top: 6px !important; font-size: 0.875rem; }
+.socials a { display: inline-flex; align-items: center; min-height: 32px; }

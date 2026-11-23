@@ -256,3 +256,40 @@ Crawl-Delay: 10
 - Licence: CC BY-ND 4.0. We store the headline unchanged plus source, date and link; no summaries or article text. Credit shown in the popup and the footer.
 - Matching (`scripts/build_news.py`): exact full name, case-sensitive, word boundaries, plus a Victorian context word or the member's own seat in the article. Name in headline/standfirst = verified; name only in the article body = shown with an "Unverified" label. The article text is read for matching only and never stored.
 - Not covered: per-department/ministerial news (no permitted source found).
+
+---
+
+# Data sources — Photos and social handles (Stage 5)
+
+**Date checked:** 2026-11-23 · **User-Agent:** `PolicyDeskAU/1.0 (https://policydesk.au)` · 1 request per second.
+
+## robots.txt
+
+| Host | Paths we use | Allowed? | Not used (disallowed) |
+|---|---|---|---|
+| en.wikipedia.org | `/wiki/Members_of_the_Victorian_Legislative_{Assembly,Council},_2022–2026`, `/wiki/<member>` | Yes (`can_fetch` True, also for Claude agents; no Claude-specific rules) | — |
+| www.wikidata.org | `/wiki/Special:EntityData/<Q>.json` | Yes | `/w/` (API) — `Disallow: /w/` |
+| query.wikidata.org | — | — | `/sparql` — `Disallow: /sparql` |
+| commons.wikimedia.org | `/wiki/File:<name>`, `/wiki/Special:FilePath/<name>?width=240` | Yes | `/w/api.php` |
+| upload.wikimedia.org | image files (redirect target) | Yes (only `/wikipedia/commons/archive/` disallowed) | — |
+| www.parliament.vic.gov.au | member profile pages | **Server returned HTTP 403** to this session on 2026-11-23, even with our User-Agent; not worked around | — |
+
+**Note:** the older `scripts/fetch_vic_members.py` (written before Stage 0) queries `query.wikidata.org/sparql`, which robots.txt disallows. It is not used by the site; flagged for replacement in Stage 6.
+
+## Matching (`scripts/build_photos_socials.py`)
+
+1. Member name must exactly match a link on the Wikipedia list page for their chamber.
+2. The linked article's Wikidata item should hold "Member of the Victorian Legislative Assembly" (Q18534408) or "... Council" (Q19185341) (property P39). If it does not, the list-page match is kept but marked **CHECK** in the report for the owner (8 members on 2026-11-23, 7 Labor and 1 Nationals; rejecting them would have removed photos unevenly).
+3. Results for every member are in `docs/review/stage5-review.md` (2026-11-23: 118 verified by P39, 8 list-only (CHECK), 1 not found).
+
+## Photos (Wikimedia Commons)
+
+- Image from Wikidata P18. Licence and creator are read from the Commons file page's machine-readable licence markup (`licensetpl_short`, `licensetpl_link`, `licensetpl_attr`).
+- Accepted: CC0, "Public domain", CC BY, CC BY-SA (any version). Rejected: anything else (GFDL-only, NC, ND, other PD tags), a missing/"Unknown" creator, or a Commons *Source* field that points to a parliament site (no parliament portraits).
+- A 240px copy is stored in `images/members/` (no hotlinking); each card shows "Photo: creator, licence (link), Wikimedia Commons (link)". Photos keep their own licences (see `LICENSE-DATA.md`).
+- 2026-11-23: 66 accepted; rejected: Adem Somyurek (source is an archived parliament.vic.gov.au page), Kim Wells (creator "Unknown"), Tim Bull (GFDL 1.2 only); 61 members show initials. Cards say "Photo (resized)" to indicate the change.
+
+## Social handles
+
+- Owner decision (2026-11-23): Parliament profiles were blocked (403), so candidates come from **Wikidata (CC0)**: X (P2002), Facebook (P2013), Instagram (P2003).
+- They are written to `data/socials_review.json` with `"approved": false`. **Nothing is shown on the site** until the owner approves; approved handles are copied to `data/socials.json` with an `approved_by` note.

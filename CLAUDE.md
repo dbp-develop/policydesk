@@ -79,12 +79,18 @@ scripts/validate_boundaries.py  Boundary gate: 88 districts + 8 regions, names m
 scripts/check_boundaries.py     Is a newer redivision published? (network; used by yearly workflow)
 scripts/build_news.py           The Conversation feeds -> data/news/ (GitHub Action ONLY)
 scripts/validate_news.py        News gate: max 5, allowed keys only, source/licence, ids match
+scripts/build_photos_socials.py Wikipedia lists -> Wikidata -> Commons: photos + social candidates (network)
+scripts/validate_photos_socials.py  Photo licence/creator/local copy; socials only if approved
 data/members.json               Clean member list used by the site
 data/vacancies.json             Recorded vacancies (no source field yet; fix in Stage 6)
 data/vic_official.json          Raw official fetch
 data/vic_raw.json               Raw Wikidata fetch
 data/boundaries/                Simplified VEC boundaries, CC BY 4.0 (2020-21 redivision)
 data/news/                      Headline/source/date/link per member + index.json
+data/photos.json                Accepted Commons photos (creator, licence, link, local copy)
+data/socials_review.json        Wikidata social candidates, unapproved; data/socials.json = approved only
+images/members/                 240px photo copies (own licences)
+docs/review/stage5-review.md    Match/decision report for every member
 docs/data-sources.md            robots.txt + terms record for each source
 docs/ROADMAP.md                 Stages and status
 LICENSE / LICENSE-DATA.md       AGPL-3.0 / CC BY-SA 4.0
@@ -99,6 +105,7 @@ python3 scripts/fetch_vic_official.py   # refresh official list (network)
 python3 scripts/build_members.py        # rebuild members.json
 python3 scripts/validate_boundaries.py  # boundary gate; must print OK
 python3 scripts/validate_news.py        # news gate; must print OK
+python3 scripts/validate_photos_socials.py  # photo/socials gate; must print OK
 python3 scripts/build_boundaries.py     # re-fetch + simplify boundaries (network)
 ```
 Local preview (from Stage 2): `python3 -m http.server 8000` in the repo root.
