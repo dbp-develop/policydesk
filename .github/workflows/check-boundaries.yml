@@ -1,0 +1,62 @@
+name: Yearly boundary check
+
+# Checks once a year whether the VEC has published new electoral boundaries.
+# If something changed, or the check itself fails, it opens one GitHub issue
+# (never a duplicate) so the owner gets an email.
+# Note: GitHub pauses scheduled workflows after 60 days with no repo activity.
+# If that happens, GitHub emails the owner; re-enable it under Actions.
+on:
+  schedule:
+    - cron: "17 22 1 3 *"   # 1 March, 22:17 UTC (2 March morning in Melbourne)
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check boundaries are current
+        id: check
+        run: |
+          set +e
+          python scripts/check_boundaries.py > check.log 2>&1
+          code=$?
+          cat check.log
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          exit $code
+
+      - name: Open an issue if action is needed
+        if: failure() && steps.check.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CODE: ${{ steps.check.outputs.code }}
+        run: |
+          if [ "$CODE" = "1" ]; then
+            title="Electoral boundaries need updating"
+          else
+            title="Yearly boundary check could not run"
+          fi
+          existing=$(gh issue list --state open --search "in:title \"$title\"" --json number --jq 'length')
+          if [ "$existing" != "0" ]; then
+            echo "An open issue titled '$title' already exists; not opening another."
+            exit 0
+          fi
+          {
+            echo "The yearly boundary check needs attention."
+            echo
+            echo '```'
+            cat check.log
+            echo '```'
+            echo
+            echo "Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          } > body.md
+          gh issue create --title "$title" --body-file body.md

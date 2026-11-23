@@ -223,6 +223,8 @@
       }).catch(function () {
         boundaryPromise = null;
         els.mapStatus.textContent = "Sorry, the map could not be loaded. The list view still works.";
+        var hint = document.getElementById("map-hint");
+        if (hint) hint.hidden = true;
       });
     }
     return boundaryPromise;
@@ -254,6 +256,7 @@
     cx = w >= full[2] ? full[2] / 2 : Math.min(Math.max(cx, w / 2), full[2] - w / 2);
     cy = h >= full[3] ? full[3] / 2 : Math.min(Math.max(cy, h / 2), full[3] - h / 2);
     viewBox = [cx - w / 2, cy - h / 2, w, h];
+    els.map.classList.toggle("is-zoomed", w < full[2] * 0.98);
     els.map.setAttribute("viewBox", viewBox.map(function (n) { return Math.round(n); }).join(" "));
   }
 
@@ -399,9 +402,100 @@
     renderDetail(shown);
   }
 
-  els.map.addEventListener("click", function (e) {
-    var p = e.target.closest && e.target.closest("path.seat");
+  /* Drag to move, pinch (or ctrl + scroll / trackpad pinch) to zoom. */
+  var pointers = {};       // pointerId -> {x, y}
+  var gesture = null;      // {vb, x, y, dist, moved}
+  var suppressClick = false;
+  var lastTouchSelect = 0;  // touch taps select on pointerup; ignore the click that may follow
+
+  function selectAt(x, y) {
+    var hit = document.elementFromPoint(x, y);
+    var p = hit && hit.closest && hit.closest("path.seat");
     if (p) select(p.dataset.name, false);
+  }
+
+  function unitsPerPx() {
+    var r = els.map.getBoundingClientRect();
+    return Math.max(viewBox[2] / r.width, viewBox[3] / r.height);  // "meet" scaling
+  }
+  function toMap(clientX, clientY) {
+    var r = els.map.getBoundingClientRect(), k = unitsPerPx();
+    return [
+      viewBox[0] + viewBox[2] / 2 + (clientX - (r.left + r.width / 2)) * k,
+      viewBox[1] + viewBox[3] / 2 + (clientY - (r.top + r.height / 2)) * k
+    ];
+  }
+  function zoomAround(clientX, clientY, factor) {
+    var pt = toMap(clientX, clientY);
+    var w = viewBox[2] * factor, h = viewBox[3] * factor;
+    var fx = (pt[0] - viewBox[0]) / viewBox[2], fy = (pt[1] - viewBox[1]) / viewBox[3];
+    setViewBox([pt[0] - fx * w, pt[1] - fy * h, w, h]);
+  }
+  function pointerList() { return Object.keys(pointers).map(function (k) { return pointers[k]; }); }
+  function startGesture() {
+    var ps = pointerList();
+    if (!ps.length) { gesture = null; return; }
+    var cx = ps.reduce(function (a, p) { return a + p.x; }, 0) / ps.length;
+    var cy = ps.reduce(function (a, p) { return a + p.y; }, 0) / ps.length;
+    var dist = ps.length > 1 ? Math.hypot(ps[0].x - ps[1].x, ps[0].y - ps[1].y) : 0;
+    gesture = { vb: viewBox.slice(), x: cx, y: cy, dist: dist, k: unitsPerPx(),
+      moved: gesture ? gesture.moved : false, multi: (gesture && gesture.multi) || ps.length > 1 };
+  }
+
+  els.map.addEventListener("pointerdown", function (e) {
+    if (!boundaries || (e.pointerType === "mouse" && e.button !== 0)) return;
+    pointers[e.pointerId] = { x: e.clientX, y: e.clientY };
+    try { els.map.setPointerCapture(e.pointerId); } catch (err) { /* ignore */ }
+    if (Object.keys(pointers).length === 1) { gesture = null; suppressClick = false; }
+    startGesture();
+  });
+  els.map.addEventListener("pointermove", function (e) {
+    if (!gesture || !pointers[e.pointerId]) return;
+    pointers[e.pointerId] = { x: e.clientX, y: e.clientY };
+    var ps = pointerList();
+    var cx = ps.reduce(function (a, p) { return a + p.x; }, 0) / ps.length;
+    var cy = ps.reduce(function (a, p) { return a + p.y; }, 0) / ps.length;
+    if (!gesture.moved && Math.hypot(cx - gesture.x, cy - gesture.y) < 6 && ps.length < 2) return;
+    gesture.moved = true;
+    var scale = ps.length > 1 && gesture.dist > 0
+      ? gesture.dist / Math.hypot(ps[0].x - ps[1].x, ps[0].y - ps[1].y) : 1;
+    var vb = gesture.vb;
+    // point under the gesture start stays under the fingers
+    var r = els.map.getBoundingClientRect();
+    var ax = vb[0] + vb[2] / 2 + (gesture.x - (r.left + r.width / 2)) * gesture.k;
+    var ay = vb[1] + vb[3] / 2 + (gesture.y - (r.top + r.height / 2)) * gesture.k;
+    var w = vb[2] * scale, h = vb[3] * scale, k = gesture.k * scale;
+    var ncx = ax - (cx - (r.left + r.width / 2)) * k;
+    var ncy = ay - (cy - (r.top + r.height / 2)) * k;
+    setViewBox([ncx - w / 2, ncy - h / 2, w, h]);
+  });
+  function endPointer(e) {
+    if (!pointers[e.pointerId]) return;
+    delete pointers[e.pointerId];
+    // a mouse drag is followed by a click we must ignore; touch drags fire no click
+    if (e.type === "pointerup" && e.pointerType === "mouse" && gesture && gesture.moved) suppressClick = true;
+    if (e.type === "pointerup" && e.pointerType !== "mouse" && gesture && !gesture.moved && !gesture.multi &&
+        !Object.keys(pointers).length) {
+      lastTouchSelect = Date.now();
+      selectAt(e.clientX, e.clientY);
+    }
+    if (Object.keys(pointers).length) startGesture(); else gesture = null;
+  }
+  els.map.addEventListener("pointerup", endPointer);
+  els.map.addEventListener("pointercancel", endPointer);
+  els.map.addEventListener("wheel", function (e) {
+    if (!boundaries || !e.ctrlKey) return;  // plain scroll keeps scrolling the page
+    e.preventDefault();
+    var dy = e.deltaMode === 1 ? e.deltaY * 33 : e.deltaY;          // lines -> pixels
+    var step = Math.max(-0.35, Math.min(0.35, dy * 0.005));       // at most ~1.4x per event
+    zoomAround(e.clientX, e.clientY, Math.exp(step));
+  }, { passive: false });
+
+  els.map.addEventListener("click", function (e) {
+    if (suppressClick) { suppressClick = false; return; }
+    if (Date.now() - lastTouchSelect < 800) return;  // already handled on pointerup
+    // pointer capture makes the SVG the click target, so find the area under the pointer
+    selectAt(e.clientX, e.clientY);
   });
   els.mapView.querySelectorAll("[data-zoom]").forEach(function (b) {
     b.addEventListener("click", function () { zoomTo(b.dataset.zoom); });
