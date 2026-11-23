@@ -1,0 +1,44 @@
+name: Yearly boundary check
+
+# Checks once a year whether the VEC has published new electoral boundaries.
+# If something changed, it opens a GitHub issue so the owner gets an email.
+on:
+  schedule:
+    - cron: "17 22 1 3 *"   # 1 March, 22:17 UTC (2 March morning in Melbourne)
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check boundaries are current
+        id: check
+        run: |
+          set -o pipefail
+          python scripts/check_boundaries.py | tee check.log
+
+      - name: Open an issue if action is needed
+        if: failure() && steps.check.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          {
+            echo "The yearly boundary check found something to act on."
+            echo
+            echo '```'
+            cat check.log
+            echo '```'
+            echo
+            echo "Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          } > body.md
+          gh issue create --title "Electoral boundaries need updating" --body-file body.md
