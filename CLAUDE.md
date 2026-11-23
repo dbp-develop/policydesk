@@ -62,7 +62,8 @@ Owner is a non-developer on iPad/phone: short, plain-English replies.
   build_news.py runs only in the fetch-news GitHub Action.
 
 ## Out of scope until owner says so
-Federal and other states, user accounts, comments, ads, newsletter, any paid service.
+User accounts, comments, ads, newsletter, any paid service.
+Federal and other states: approved for later, as Stages 8-15 after Victoria (see docs/ROADMAP.md).
 
 ## Folder map
 ```
