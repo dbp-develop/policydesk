@@ -9,7 +9,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-OK_LICENCE = re.compile(r"^(CC0( 1\.0)?|Public domain|PD.*|CC BY(-SA)? \d\.\d( [A-Za-z\-]+)?)$", re.I)
+OK_LICENCE = re.compile(r"^(CC0( 1\.0)?|Public domain|CC BY(-SA)? \d\.\d( [A-Za-z\-]+)?)$", re.I)
 PHOTO_KEYS = {"file", "commons_url", "creator", "licence", "licence_url", "local_path", "source"}
 SOCIAL_HOSTS = {"x": "https://x.com/", "facebook": "https://www.facebook.com/", "instagram": "https://www.instagram.com/"}
 MAX_BYTES = 200_000
@@ -30,13 +30,18 @@ def main() -> int:
             continue
         if not OK_LICENCE.match(p["licence"]) or re.search(r"\b(NC|ND)\b", p["licence"]):
             errors.append(f"{mid}: licence not allowed: {p['licence']}")
-        if not p["creator"]:
-            errors.append(f"{mid}: missing creator")
+        if not p["creator"] or re.match(r"^(unknown|anonymous)", p["creator"], re.I):
+            errors.append(f"{mid}: missing or unknown creator")
+        if p["licence"].startswith("CC BY") and not (p["licence_url"] or "").startswith(("http://", "https://")):
+            errors.append(f"{mid}: CC BY licence needs a licence link")
         if not p["commons_url"].startswith("https://commons.wikimedia.org/wiki/File:"):
             errors.append(f"{mid}: bad Commons link")
         f = ROOT / p["local_path"]
         if not (p["local_path"].startswith("images/members/") and f.exists()):
             errors.append(f"{mid}: local image missing {p['local_path']}")
+        elif f.read_bytes()[:4] not in (b"\xff\xd8\xff\xe0", b"\xff\xd8\xff\xe1", b"\xff\xd8\xff\xdb", b"\x89PNG", b"RIFF") \
+                and f.read_bytes()[:3] != b"\xff\xd8\xff":
+            errors.append(f"{mid}: file is not a JPEG/PNG/WebP image")
         elif f.stat().st_size > MAX_BYTES:
             errors.append(f"{mid}: image too large ({f.stat().st_size} bytes)")
     used = {p["local_path"] for p in photos.get("photos", {}).values()}

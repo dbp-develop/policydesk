@@ -45,7 +45,9 @@ POSITIONS = {"Q18534408": "Member of the Victorian Legislative Assembly",
 SOCIAL_PROPS = {"P2002": ("x", "https://x.com/{}"),
                 "P2013": ("facebook", "https://www.facebook.com/{}"),
                 "P2003": ("instagram", "https://www.instagram.com/{}/")}
-OK_LICENCE = re.compile(r"^(CC0( 1\.0)?|Public domain|PD.*|CC BY(-SA)? \d\.\d( [A-Za-z\-]+)?)$", re.I)
+OK_LICENCE = re.compile(r"^(CC0( 1\.0)?|Public domain|CC BY(-SA)? \d\.\d( [A-Za-z\-]+)?)$", re.I)
+BAD_CREATOR = re.compile(r"^(unknown|anonymous|unknown author|author unknown)\b", re.I)
+PARLIAMENT_SOURCE = re.compile(r"parliament|parl\.|aph\.gov\.au", re.I)
 BAD_LICENCE = re.compile(r"\b(NC|ND)\b")
 THUMB_WIDTH = 240
 
@@ -113,10 +115,12 @@ def commons_licence(file_name: str) -> dict:
     links = re.findall(r'class="(?:[^"]*\s)?licensetpl_link(?:\s[^"]*)?"[^>]*>(.*?)</', page, re.S)
     attr = [text(s) for s in re.findall(r'class="(?:[^"]*\s)?licensetpl_attr(?:\s[^"]*)?"[^>]*>(.*?)</', page, re.S)]
     aut = re.search(r'id="fileinfotpl_aut"[^>]*>.*?</td>\s*<td[^>]*>(.*?)</td>', page, re.S)
+    src = re.search(r'id="fileinfotpl_src"[^>]*>.*?</td>\s*<td[^>]*>(.*?)</td>', page, re.S)
     creator = (attr[0] if attr else (text(aut.group(1)) if aut else "")) or None
-    return {"commons_url": url, "licences": [s for s in shorts if s],
-            "licence_url": text(links[0]) if links else None,
-            "creator": creator[:160] if creator else None}
+    return {"commons_url": url, "licences": shorts,
+            "licence_urls": [text(x) for x in links],
+            "creator": creator[:160] if creator else None,
+            "source_text": (text(src.group(1)) + " " + " ".join(re.findall(r'href="([^"]+)"', src.group(1)))) if src else ""}
 
 
 def main() -> int:
@@ -125,6 +129,8 @@ def main() -> int:
     photos, socials, report = {}, {}, []
     img_dir = ROOT / "images" / "members"
     img_dir.mkdir(parents=True, exist_ok=True)
+    for old in img_dir.glob("*"):
+        old.unlink()
 
     for m in sorted(members, key=lambda x: x["id"]):
         row = {"id": m["id"], "name": m["name"], "article": None, "qid": None,
@@ -152,14 +158,18 @@ def main() -> int:
             row["check"] = f"Wikidata fetch failed: {e}"
             continue
         held = {v for v, _ in claim_values(ent, "P39")} & set(POSITIONS)
-        if not held:
-            row["check"] = "REJECTED: Wikidata item has no Victorian Parliament seat"
-            continue
-        row["check"] = "OK: " + "; ".join(POSITIONS[h] for h in sorted(held))
+        if held:
+            row["check"] = "OK: " + "; ".join(POSITIONS[h] for h in sorted(held))
+        else:
+            # The exact-name link on the official-term member list page is still a strong match,
+            # but Wikidata does not record the seat: keep it and flag it for the owner's review.
+            row["check"] = "CHECK: matched by Wikipedia member list only (no Victorian seat on Wikidata)"
 
         cands = {}
         for prop, (key, fmt) in SOCIAL_PROPS.items():
-            vals = [str(v) for v, _ in claim_values(ent, prop)]
+            pairs = claim_values(ent, prop)
+            pairs.sort(key=lambda vc: 0 if vc[1].get("rank") == "preferred" else 1)
+            vals = [str(v) for v, _ in pairs]
             if vals:
                 handle = vals[0].lstrip("@")
                 cands[key] = {"handle": handle, "url": fmt.format(urllib.parse.quote(handle, safe="._-"))}
@@ -176,15 +186,30 @@ def main() -> int:
         except Exception as e:  # noqa: BLE001
             row["photo"] = f"licence check failed: {e}"
             continue
-        good = [s for s in lic["licences"] if OK_LICENCE.match(s) and not BAD_LICENCE.search(s)]
-        if not good or not lic["creator"]:
+        good_i = [i for i, s in enumerate(lic["licences"]) if OK_LICENCE.match(s) and not BAD_LICENCE.search(s)]
+        if not good_i or not lic["creator"] or BAD_CREATOR.match(lic["creator"]):
             row["photo"] = f"rejected: licence {lic['licences'] or 'not found'}, creator {lic['creator'] or 'not found'}"
             continue
-        try:
-            body, ctype, final = get("https://commons.wikimedia.org/wiki/Special:FilePath/"
-                                     + urllib.parse.quote(imgs[0].replace(" ", "_")) + f"?width={THUMB_WIDTH}", binary=True)
-        except Exception as e:  # noqa: BLE001
-            row["photo"] = f"download failed: {e}"
+        if PARLIAMENT_SOURCE.search(lic["source_text"]):
+            row["photo"] = f"rejected: source looks like a parliament site ({lic['source_text'][:80]})"
+            continue
+        gi = good_i[0]
+        lic_name = lic["licences"][gi]
+        lic_url = lic["licence_urls"][gi] if gi < len(lic["licence_urls"]) else None
+        if not lic_url and lic_name.lower().startswith(("cc0", "public domain")):
+            lic_url = "https://creativecommons.org/publicdomain/zero/1.0/" if lic_name.lower().startswith("cc0") else None
+        body = ctype = None
+        for width in (THUMB_WIDTH, 160):  # retry smaller if the file is too big
+            try:
+                body, ctype, final = get("https://commons.wikimedia.org/wiki/Special:FilePath/"
+                                         + urllib.parse.quote(imgs[0].replace(" ", "_")) + f"?width={width}", binary=True)
+            except Exception as e:  # noqa: BLE001
+                body = None
+                row["photo"] = f"download failed: {e}"
+                break
+            if len(body) <= 200_000:
+                break
+        if body is None:
             continue
         ext = {"image/jpeg": "jpg", "image/png": "png", "image/webp": "webp"}.get(ctype.split(";")[0])
         if not ext or len(body) > 200_000:
@@ -193,9 +218,9 @@ def main() -> int:
         local = f"images/members/{m['id']}.{ext}"
         (ROOT / local).write_bytes(body)
         photos[m["id"]] = {"file": imgs[0], "commons_url": lic["commons_url"], "creator": lic["creator"],
-                           "licence": good[0], "licence_url": lic["licence_url"], "local_path": local,
+                           "licence": lic_name, "licence_url": lic_url, "local_path": local,
                            "source": "Wikimedia Commons via Wikidata " + qid}
-        row["photo"] = f"OK: {good[0]}, by {lic['creator']}"
+        row["photo"] = f"OK: {lic_name}, by {lic['creator']}"
 
     now = datetime.now(timezone.utc).replace(microsecond=0).isoformat()
     (ROOT / "data/photos.json").write_text(json.dumps(

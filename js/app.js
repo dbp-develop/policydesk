@@ -110,7 +110,7 @@
       var img = document.createElement("img");
       img.className = "avatar avatar-photo";
       img.src = photo.local_path;
-      img.alt = "Photo of " + r.name;
+      img.alt = "";  // the name is the heading right next to it
       img.width = 48; img.height = 48;
       img.loading = "lazy";
       li.appendChild(img);
@@ -149,13 +149,14 @@
     }
     if (photo) {
       var cr = el("p", "photo-credit");
-      cr.appendChild(document.createTextNode("Photo: " + photo.creator + ", "));
+      cr.appendChild(document.createTextNode("Photo (resized): " + photo.creator + ", "));
       var la = el("a", null, photo.licence);
       if (photo.licence_url && /^https?:\/\//.test(photo.licence_url)) la.href = photo.licence_url;
       cr.appendChild(la);
       cr.appendChild(document.createTextNode(", "));
       var ca = el("a", null, "Wikimedia Commons");
       ca.href = photo.commons_url;
+      ca.appendChild(el("span", "visually-hidden", " (photo of " + r.name + ")"));
       cr.appendChild(ca);
       body.appendChild(cr);
     }
