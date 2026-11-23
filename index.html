@@ -56,10 +56,40 @@
       </div>
     </form>
 
-    <p id="count" class="count" role="status" aria-live="polite"></p>
+    <div class="view-bar">
+      <p id="count" class="count" role="status" aria-live="polite"></p>
+      <div class="view-toggle" role="group" aria-label="View">
+        <button type="button" id="view-list" class="toggle" aria-pressed="true">List</button>
+        <button type="button" id="view-map" class="toggle" aria-pressed="false">Map</button>
+      </div>
+    </div>
 
     <section id="results" aria-label="Results" tabindex="-1">
       <ul id="list" class="cards"></ul>
+    </section>
+
+    <section id="map-view" class="map-view" aria-label="Map" tabindex="-1" hidden>
+      <p id="map-layer" class="map-layer"></p>
+      <div class="map-controls" role="group" aria-label="Map zoom">
+        <button type="button" class="btn btn-small" data-zoom="state">Whole state</button>
+        <button type="button" class="btn btn-small" data-zoom="melbourne">Melbourne</button>
+        <button type="button" class="btn btn-small" data-zoom="in" aria-label="Zoom in">+</button>
+        <button type="button" class="btn btn-small" data-zoom="out" aria-label="Zoom out">−</button>
+      </div>
+      <div class="map-frame">
+        <svg id="map" class="map" role="img" aria-labelledby="map-desc" preserveAspectRatio="xMidYMid meet">
+          <title id="map-desc">Map of Victorian electoral boundaries. Use the text list of seats below to choose a seat with a keyboard or screen reader.</title>
+        </svg>
+        <p id="map-status" class="map-status">Loading map…</p>
+      </div>
+      <div id="map-detail" class="map-detail" aria-live="polite">
+        <p class="meta">Tap or click an area on the map, or pick a seat from the list below.</p>
+      </div>
+      <details class="seat-list">
+        <summary>Text list of seats on this map (<span id="seat-count">0</span>)</summary>
+        <ul id="seat-buttons"></ul>
+      </details>
+      <p id="map-credit" class="map-credit"></p>
     </section>
 
     <noscript>
@@ -76,6 +106,7 @@
       <p>Code: <a href="https://github.com/dbp-develop/policydesk/blob/main/LICENSE">AGPL-3.0</a>.
         Our data and text: <a href="https://github.com/dbp-develop/policydesk/blob/main/LICENSE-DATA.md">CC BY-SA 4.0</a>.
         Third-party material keeps its own licence.
+        Electoral boundaries: Victorian Electoral Commission via DataVic, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, simplified by us.
         Font: Inter, <a href="fonts/OFL.txt">SIL Open Font License</a>.</p>
       <p><a href="https://github.com/dbp-develop/policydesk">Source code on GitHub</a></p>
     </div>
