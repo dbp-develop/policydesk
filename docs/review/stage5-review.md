@@ -1,10 +1,10 @@
 # Stage 5 review: photo and social matches
 
-Generated 2026-11-23T21:05:13+00:00. Every member, how they were matched, and what was decided.
+Generated 2026-11-23T21:19:05+00:00. Every member, how they were matched, and what was decided.
 
 | Member | Wikidata | Match check | Photo | Social candidates (need approval) |
 |---|---|---|---|---|
-| Adem Somyurek | [Q4682122](https://www.wikidata.org/wiki/Q4682122) | OK: Member of the Victorian Legislative Council | OK: CC BY-SA 3.0 au, by Adem Somyurek MP | x: AdemSomyurek, facebook: ademsomyurek |
+| Adem Somyurek | [Q4682122](https://www.wikidata.org/wiki/Q4682122) | OK: Member of the Victorian Legislative Council | rejected: source looks like a parliament site (https://web.archive.org/web/20150324082934/https://www.parliament.vic.gov.au/mem) | x: AdemSomyurek, facebook: ademsomyurek |
 | Aiv Puglielli | [Q115557735](https://www.wikidata.org/wiki/Q115557735) | OK: Member of the Victorian Legislative Council | OK: CC BY-SA 2.5 au, by Australian Greens website – Australian Greens | instagram: aivgoesgreen |
 | Alison Marchant | [Q115477068](https://www.wikidata.org/wiki/Q115477068) | OK: Member of the Victorian Legislative Assembly | none (initials) | — |
 | Anasina Gray-Barberio | [Q130241870](https://www.wikidata.org/wiki/Q130241870) | OK: Member of the Victorian Legislative Council | OK: CC BY-SA 2.5 au, by Australian Greens website – Australian Greens | — |
@@ -13,7 +13,7 @@ Generated 2026-11-23T21:05:13+00:00. Every member, how they were matched, and wh
 | Anthony Carbines | [Q4772216](https://www.wikidata.org/wiki/Q4772216) | OK: Member of the Victorian Legislative Assembly | OK: CC BY 3.0, by Yoorrook Justice Commission | — |
 | Anthony Cianflone | [Q115471728](https://www.wikidata.org/wiki/Q115471728) | OK: Member of the Victorian Legislative Assembly | OK: CC BY-SA 4.0, by Alison Newman | — |
 | Anthony Marsh | [Q139487746](https://www.wikidata.org/wiki/Q139487746) | OK: Member of the Victorian Legislative Assembly | none (initials) | facebook: AnthonyMarshNepean |
-| Belinda Wilson | [Q115471282](https://www.wikidata.org/wiki/Q115471282) | REJECTED: Wikidata item has no Victorian Parliament seat | none (initials) | — |
+| Belinda Wilson | [Q115471282](https://www.wikidata.org/wiki/Q115471282) | CHECK: matched by Wikipedia member list only (no Victorian seat on Wikidata) | none (initials) | — |
 | Ben Carroll | [Q4885393](https://www.wikidata.org/wiki/Q4885393) | OK: Member of the Victorian Legislative Assembly | OK: CC BY-SA 4.0, by Emily Kulich/Melbourne Press Club | x: BenCarrollMP, facebook: bencarrollmp, instagram: bencarrollmp |
 | Bev McArthur | [Q59656353](https://www.wikidata.org/wiki/Q59656353) | OK: Member of the Victorian Legislative Council | none (initials) | — |
 | Bill Tilley | [Q4911152](https://www.wikidata.org/wiki/Q4911152) | OK: Member of the Victorian Legislative Assembly | none (initials) | — |
@@ -25,7 +25,7 @@ Generated 2026-11-23T21:05:13+00:00. Every member, how they were matched, and wh
 | Chris Crewther | [Q25756186](https://www.wikidata.org/wiki/Q25756186) | OK: Member of the Victorian Legislative Assembly | OK: CC BY-SA 4.0, by Chrisjc19 | x: ChrisCrewtherMP |
 | Cindy McLeish | [Q5120560](https://www.wikidata.org/wiki/Q5120560) | OK: Member of the Victorian Legislative Assembly | none (initials) | x: CindyMcLeishMP |
 | Colin Brooks | [Q5144918](https://www.wikidata.org/wiki/Q5144918) | OK: Member of the Victorian Legislative Assembly | none (initials) | — |
-| Daniela De Martino | [Q115477066](https://www.wikidata.org/wiki/Q115477066) | REJECTED: Wikidata item has no Victorian Parliament seat | none (initials) | — |
+| Daniela De Martino | [Q115477066](https://www.wikidata.org/wiki/Q115477066) | CHECK: matched by Wikipedia member list only (no Victorian seat on Wikidata) | none (initials) | — |
 | Danny O'Brien | [Q16202431](https://www.wikidata.org/wiki/Q16202431) | OK: Member of the Victorian Legislative Assembly; Member of the Victorian Legislative Council | OK: CC BY-SA 4.0, by Alison Newman | — |
 | Danny Pearson | [Q19520049](https://www.wikidata.org/wiki/Q19520049) | OK: Member of the Victorian Legislative Assembly | none (initials) | — |
 | Darren Cheeseman | [Q5224837](https://www.wikidata.org/wiki/Q5224837) | OK: Member of the Victorian Legislative Assembly | OK: CC BY 2.0, by Clean Energy Map | — |
@@ -37,7 +37,7 @@ Generated 2026-11-23T21:05:13+00:00. Every member, how they were matched, and wh
 | Dylan Wight | [Q115477072](https://www.wikidata.org/wiki/Q115477072) | OK: Member of the Victorian Legislative Assembly | none (initials) | — |
 | Eden Foster | [Q123475727](https://www.wikidata.org/wiki/Q123475727) | OK: Member of the Victorian Legislative Assembly | none (initials) | — |
 | Ella George | [Q115477076](https://www.wikidata.org/wiki/Q115477076) | OK: Member of the Victorian Legislative Assembly | none (initials) | — |
-| Ellen Sandell | [Q17017384](https://www.wikidata.org/wiki/Q17017384) | OK: Member of the Victorian Legislative Assembly | OK: CC BY-SA 2.5 au, by Australian Greens website – Australian Greens | x: ellensandell, instagram: elleninmelbourne |
+| Ellen Sandell | [Q17017384](https://www.wikidata.org/wiki/Q17017384) | OK: Member of the Victorian Legislative Assembly | download failed: could not fetch https://commons.wikimedia.org/wiki/Special:FilePath/Ellen_Sandell_Melbourne.jpg?width=240 | x: ellensandell, instagram: elleninmelbourne |
 | Emma Kealy | [Q19664385](https://www.wikidata.org/wiki/Q19664385) | OK: Member of the Victorian Legislative Assembly | none (initials) | x: EmmaKealyMP |
 | Emma Vulin | [Q115672471](https://www.wikidata.org/wiki/Q115672471) | OK: Member of the Victorian Legislative Assembly | OK: CC BY 4.0, by Beaumiso | — |
 | Enver Erdogan | [Q67623548](https://www.wikidata.org/wiki/Q67623548) | OK: Member of the Victorian Legislative Council | OK: CC BY-SA 4.0, by Marcnut1996 | — |
@@ -73,15 +73,15 @@ Generated 2026-11-23T21:05:13+00:00. Every member, how they were matched, and wh
 | Kathleen Matthews-Ward | [Q115477075](https://www.wikidata.org/wiki/Q115477075) | OK: Member of the Victorian Legislative Assembly | OK: CC BY-SA 4.0, by Alison Newman | — |
 | Katie Hall | [Q59177174](https://www.wikidata.org/wiki/Q59177174) | OK: Member of the Victorian Legislative Assembly | none (initials) | x: Katie_Footscray, facebook: KatieHallMP, instagram: katie_for_footscray |
 | Kim O'Keeffe | [Q115466972](https://www.wikidata.org/wiki/Q115466972) | OK: Member of the Victorian Legislative Assembly | none (initials) | — |
-| Kim Wells | [Q6409556](https://www.wikidata.org/wiki/Q6409556) | OK: Member of the Victorian Legislative Assembly | OK: CC BY-SA 3.0, by Unknown | — |
+| Kim Wells | [Q6409556](https://www.wikidata.org/wiki/Q6409556) | OK: Member of the Victorian Legislative Assembly | rejected: licence ['CC BY-SA 3.0'], creator Unknown | — |
 | Lauren Kathage | [Q115477062](https://www.wikidata.org/wiki/Q115477062) | OK: Member of the Victorian Legislative Assembly | none (initials) | — |
 | Lee Tarlamis | [Q373488](https://www.wikidata.org/wiki/Q373488) | OK: Member of the Victorian Legislative Council | none (initials) | — |
 | Lily D'Ambrosio | [Q16195488](https://www.wikidata.org/wiki/Q16195488) | OK: Member of the Victorian Legislative Assembly | OK: CC BY-SA 2.0, by John Englart | facebook: lily.dambrosio.7 |
 | Lizzie Blandthorn | [Q18684847](https://www.wikidata.org/wiki/Q18684847) | OK: Member of the Victorian Legislative Assembly; Member of the Victorian Legislative Council | none (initials) | — |
 | Luba Grigorovitch | [Q115521072](https://www.wikidata.org/wiki/Q115521072) | OK: Member of the Victorian Legislative Assembly | none (initials) | — |
 | Maree Edwards | [Q6758772](https://www.wikidata.org/wiki/Q6758772) | OK: Member of the Victorian Legislative Assembly | none (initials) | — |
-| Martha Haylett | [Q115477058](https://www.wikidata.org/wiki/Q115477058) | REJECTED: Wikidata item has no Victorian Parliament seat | none (initials) | — |
-| Martin Cameron | [Q115471012](https://www.wikidata.org/wiki/Q115471012) | REJECTED: Wikidata item has no Victorian Parliament seat | none (initials) | — |
+| Martha Haylett | [Q115477058](https://www.wikidata.org/wiki/Q115477058) | CHECK: matched by Wikipedia member list only (no Victorian seat on Wikidata) | OK: CC BY-SA 4.0, by 8newsvic | — |
+| Martin Cameron | [Q115471012](https://www.wikidata.org/wiki/Q115471012) | CHECK: matched by Wikipedia member list only (no Victorian seat on Wikidata) | none (initials) | — |
 | Mary-Anne Thomas | [Q19663937](https://www.wikidata.org/wiki/Q19663937) | OK: Member of the Victorian Legislative Assembly | none (initials) | — |
 | Mathew Hilakari | [Q115477071](https://www.wikidata.org/wiki/Q115477071) | OK: Member of the Victorian Legislative Assembly | none (initials) | — |
 | Matt Fregon | [Q59180533](https://www.wikidata.org/wiki/Q59180533) | OK: Member of the Victorian Legislative Assembly | none (initials) | — |
@@ -89,20 +89,20 @@ Generated 2026-11-23T21:05:13+00:00. Every member, how they were matched, and wh
 | Melina Bath | [Q19871162](https://www.wikidata.org/wiki/Q19871162) | OK: Member of the Victorian Legislative Council | none (initials) | — |
 | Melissa Horne | [Q59177944](https://www.wikidata.org/wiki/Q59177944) | OK: Member of the Victorian Legislative Assembly | none (initials) | — |
 | Meng Heang Tak | [Q59180521](https://www.wikidata.org/wiki/Q59180521) | OK: Member of the Victorian Legislative Assembly | none (initials) | — |
-| Michael Galea | [Q116814218](https://www.wikidata.org/wiki/Q116814218) | REJECTED: Wikidata item has no Victorian Parliament seat | none (initials) | — |
+| Michael Galea | [Q116814218](https://www.wikidata.org/wiki/Q116814218) | CHECK: matched by Wikipedia member list only (no Victorian seat on Wikidata) | none (initials) | — |
 | Michael O'Brien | [Q6833128](https://www.wikidata.org/wiki/Q6833128) | OK: Member of the Victorian Legislative Assembly | OK: CC BY-SA 4.0, by Celco85 | — |
 | Michaela Settle | [Q59173410](https://www.wikidata.org/wiki/Q59173410) | OK: Member of the Victorian Legislative Assembly | OK: CC BY-SA 4.0, by Alison Newman | x: michaelasettle |
 | Moira Deeming | [Q113269448](https://www.wikidata.org/wiki/Q113269448) | OK: Member of the Victorian Legislative Council | OK: CC BY-SA 4.0, by Alison Newman | — |
 | Natalie Hutchins | [Q6968180](https://www.wikidata.org/wiki/Q6968180) | OK: Member of the Victorian Legislative Assembly | OK: CC BY-SA 4.0, by Alison Newman | — |
 | Natalie Suleyman | [Q17022238](https://www.wikidata.org/wiki/Q17022238) | OK: Member of the Victorian Legislative Assembly | OK: CC BY-SA 4.0, by Alison Newman | x: NatalieSuleyman |
-| Nathan Lambert | [Q115633601](https://www.wikidata.org/wiki/Q115633601) | REJECTED: Wikidata item has no Victorian Parliament seat | none (initials) | — |
+| Nathan Lambert | [Q115633601](https://www.wikidata.org/wiki/Q115633601) | CHECK: matched by Wikipedia member list only (no Victorian seat on Wikidata) | none (initials) | — |
 | Nick McGowan | [Q116637622](https://www.wikidata.org/wiki/Q116637622) | OK: Member of the Victorian Legislative Council | none (initials) | — |
 | Nick Staikos | [Q19519978](https://www.wikidata.org/wiki/Q19519978) | OK: Member of the Victorian Legislative Assembly | OK: CC BY-SA 4.0, by User:Bentleigh electorate | — |
 | Nicole Werner | [Q121863825](https://www.wikidata.org/wiki/Q121863825) | OK: Member of the Victorian Legislative Assembly | OK: CC0, by WarrandyteLocal | instagram: nicolewerner_warrandyte |
 | Nina Taylor | [Q59660397](https://www.wikidata.org/wiki/Q59660397) | OK: Member of the Victorian Legislative Assembly; Member of the Victorian Legislative Council | OK: CC BY-SA 4.0, by Dominicroquegonzales | — |
 | Paul Edbrooke | [Q18685846](https://www.wikidata.org/wiki/Q18685846) | OK: Member of the Victorian Legislative Assembly | OK: CC BY 3.0, by MTF | x: paul4frankston |
 | Paul Hamer | [Q59179398](https://www.wikidata.org/wiki/Q59179398) | OK: Member of the Victorian Legislative Assembly | OK: CC BY-SA 4.0, by TheScrubby | x: paulhamermp |
-| Paul Mercurio | [Q325406](https://www.wikidata.org/wiki/Q325406) | REJECTED: Wikidata item has no Victorian Parliament seat | none (initials) | — |
+| Paul Mercurio | [Q325406](https://www.wikidata.org/wiki/Q325406) | CHECK: matched by Wikipedia member list only (no Victorian seat on Wikidata) | OK: CC BY-SA 4.0, by Alison Newman | — |
 | Pauline Richards | [Q59179393](https://www.wikidata.org/wiki/Q59179393) | OK: Member of the Victorian Legislative Assembly | none (initials) | — |
 | Peter Walsh | [Q51777857](https://www.wikidata.org/wiki/Q51777857) | OK: Member of the Victorian Legislative Assembly | none (initials) | x: PeterWalshMP |
 | Rachel Payne | [Q116642617](https://www.wikidata.org/wiki/Q116642617) | OK: Member of the Victorian Legislative Council | none (initials) | — |
@@ -125,7 +125,7 @@ Generated 2026-11-23T21:05:13+00:00. Every member, how they were matched, and wh
 | Tim Bull | [Q7803243](https://www.wikidata.org/wiki/Q7803243) | OK: Member of the Victorian Legislative Assembly | rejected: licence ['GFDL 1.2'], creator jjron | — |
 | Tim McCurdy | [Q7803935](https://www.wikidata.org/wiki/Q7803935) | OK: Member of the Victorian Legislative Assembly | OK: CC BY-SA 4.0, by Barling07 | — |
 | Tim Richardson | [Q19520075](https://www.wikidata.org/wiki/Q19520075) | OK: Member of the Victorian Legislative Assembly | none (initials) | — |
-| Tom McIntosh | [Q113677111](https://www.wikidata.org/wiki/Q113677111) | REJECTED: Wikidata item has no Victorian Parliament seat | none (initials) | — |
+| Tom McIntosh | [Q113677111](https://www.wikidata.org/wiki/Q113677111) | CHECK: matched by Wikipedia member list only (no Victorian seat on Wikidata) | none (initials) | — |
 | Trung Luu | [Q116797548](https://www.wikidata.org/wiki/Q116797548) | OK: Member of the Victorian Legislative Council | OK: CC BY-SA 4.0, by Marcnut1996 | — |
 | Vicki Ward | [Q19519926](https://www.wikidata.org/wiki/Q19519926) | OK: Member of the Victorian Legislative Assembly | none (initials) | — |
 | Wayne Farnham | [Q116457705](https://www.wikidata.org/wiki/Q116457705) | OK: Member of the Victorian Legislative Assembly | none (initials) | — |

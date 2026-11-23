@@ -279,15 +279,15 @@ Crawl-Delay: 10
 ## Matching (`scripts/build_photos_socials.py`)
 
 1. Member name must exactly match a link on the Wikipedia list page for their chamber.
-2. The linked article's Wikidata item must hold "Member of the Victorian Legislative Assembly" (Q18534408) or "... Council" (Q19185341) (property P39). Otherwise rejected.
-3. Results for every member are in `docs/review/stage5-review.md` (118/127 matched and verified, 8 rejected, 1 not found on 2026-11-23).
+2. The linked article's Wikidata item should hold "Member of the Victorian Legislative Assembly" (Q18534408) or "... Council" (Q19185341) (property P39). If it does not, the list-page match is kept but marked **CHECK** in the report for the owner (8 members on 2026-11-23, 7 Labor and 1 Nationals; rejecting them would have removed photos unevenly).
+3. Results for every member are in `docs/review/stage5-review.md` (2026-11-23: 118 verified by P39, 8 list-only (CHECK), 1 not found).
 
 ## Photos (Wikimedia Commons)
 
 - Image from Wikidata P18. Licence and creator are read from the Commons file page's machine-readable licence markup (`licensetpl_short`, `licensetpl_link`, `licensetpl_attr`).
-- Accepted: CC0, public domain, CC BY, CC BY-SA (any version). Rejected: anything else (e.g. GFDL-only, NC, ND) or no creator.
+- Accepted: CC0, "Public domain", CC BY, CC BY-SA (any version). Rejected: anything else (GFDL-only, NC, ND, other PD tags), a missing/"Unknown" creator, or a Commons *Source* field that points to a parliament site (no parliament portraits).
 - A 240px copy is stored in `images/members/` (no hotlinking); each card shows "Photo: creator, licence (link), Wikimedia Commons (link)". Photos keep their own licences (see `LICENSE-DATA.md`).
-- 2026-11-23: 67 accepted, 1 rejected (GFDL 1.2), 59 members show initials.
+- 2026-11-23: 66 accepted; rejected: Adem Somyurek (source is an archived parliament.vic.gov.au page), Kim Wells (creator "Unknown"), Tim Bull (GFDL 1.2 only); 61 members show initials. Cards say "Photo (resized)" to indicate the change.
 
 ## Social handles
 

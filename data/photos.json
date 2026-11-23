@@ -1,16 +1,7 @@
 {
  "source": "Wikimedia Commons (via Wikidata, matched through Wikipedia member lists)",
- "generated_at": "2026-11-23T21:05:13+00:00",
+ "generated_at": "2026-11-23T21:19:05+00:00",
  "photos": {
-  "adem-somyurek": {
-   "file": "Adem Somyurek portrait, 2015.jpg",
-   "commons_url": "https://commons.wikimedia.org/wiki/File:Adem_Somyurek_portrait%2C_2015.jpg",
-   "creator": "Adem Somyurek MP",
-   "licence": "CC BY-SA 3.0 au",
-   "licence_url": "https://creativecommons.org/licenses/by-sa/3.0/au/deed.en",
-   "local_path": "images/members/adem-somyurek.jpg",
-   "source": "Wikimedia Commons via Wikidata Q4682122"
-  },
   "aiv-puglielli": {
    "file": "Aiv Puglielli.png",
    "commons_url": "https://commons.wikimedia.org/wiki/File:Aiv_Puglielli.png",
@@ -154,15 +145,6 @@
    "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
    "local_path": "images/members/david-southwick.jpg",
    "source": "Wikimedia Commons via Wikidata Q5239965"
-  },
-  "ellen-sandell": {
-   "file": "Ellen Sandell Melbourne.jpg",
-   "commons_url": "https://commons.wikimedia.org/wiki/File:Ellen_Sandell_Melbourne.jpg",
-   "creator": "Australian Greens website – Australian Greens",
-   "licence": "CC BY-SA 2.5 au",
-   "licence_url": "https://creativecommons.org/licenses/by-sa/2.5/au/deed.en",
-   "local_path": "images/members/ellen-sandell.jpg",
-   "source": "Wikimedia Commons via Wikidata Q17017384"
   },
   "emma-vulin": {
    "file": "Vulin,Emma-electorate030424 (23 of 286).jpg",
@@ -353,15 +335,6 @@
    "local_path": "images/members/kathleen-matthews-ward.jpg",
    "source": "Wikimedia Commons via Wikidata Q115477075"
   },
-  "kim-wells": {
-   "file": "Kim Wells.jpg",
-   "commons_url": "https://commons.wikimedia.org/wiki/File:Kim_Wells.jpg",
-   "creator": "Unknown",
-   "licence": "CC BY-SA 3.0",
-   "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
-   "local_path": "images/members/kim-wells.jpg",
-   "source": "Wikimedia Commons via Wikidata Q6409556"
-  },
   "lily-d-ambrosio": {
    "file": "Lily D'Ambrosio - Labor MP for Mill Park, Minister for Energy - Climate emergency - IMG 8825.jpg",
    "commons_url": "https://commons.wikimedia.org/wiki/File:Lily_D%27Ambrosio_-_Labor_MP_for_Mill_Park%2C_Minister_for_Energy_-_Climate_emergency_-_IMG_8825.jpg",
@@ -370,6 +343,15 @@
    "licence_url": "https://creativecommons.org/licenses/by-sa/2.0",
    "local_path": "images/members/lily-d-ambrosio.jpg",
    "source": "Wikimedia Commons via Wikidata Q16195488"
+  },
+  "martha-haylett": {
+   "file": "Martha Haylett MP - Ripon.png",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Martha_Haylett_MP_-_Ripon.png",
+   "creator": "8newsvic",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/martha-haylett.png",
+   "source": "Wikimedia Commons via Wikidata Q115477058"
   },
   "matthew-guy": {
    "file": "Matthew Guy at ABC Suburban Rail Loop forum (2) (cropped).jpg",
@@ -469,6 +451,15 @@
    "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
    "local_path": "images/members/paul-hamer.jpg",
    "source": "Wikimedia Commons via Wikidata Q59179398"
+  },
+  "paul-mercurio": {
+   "file": "Paul Mercurio at Peninsula Aero Club Toy Run 2025 (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Paul_Mercurio_at_Peninsula_Aero_Club_Toy_Run_2025_%28cropped%29.jpg",
+   "creator": "Alison Newman",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/paul-mercurio.jpg",
+   "source": "Wikimedia Commons via Wikidata Q325406"
   },
   "rachel-westaway": {
    "file": "Rachel Westaway and Georgie Crozier at Prahran community forum, June 2026 (1) (cropped for Rachel Westaway).jpg",
