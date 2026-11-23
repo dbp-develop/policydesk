@@ -12,7 +12,7 @@
   --paper: #FAF8F3;
   --white: #FFFFFF;
   --ink: #14213D;
-  --muted: #4A5468;   /* 7.6:1 on paper */
+  --muted: #4A5468;   /* 7.2:1 on paper, 7.6:1 on white */
   --line: #D9D5CA;
   --radius: 10px;
 }
@@ -34,9 +34,12 @@ a { color: var(--navy); text-underline-offset: 2px; }
 a:hover { text-decoration-thickness: 2px; }
 
 :focus-visible {
-  outline: 3px solid var(--saffron);
+  outline: 3px solid var(--navy);
   outline-offset: 2px;
+  box-shadow: 0 0 0 6px var(--saffron);
 }
+.site-header :focus-visible,
+.site-footer :focus-visible { outline-color: var(--saffron); box-shadow: none; }
 
 .wrap {
   width: 100%;

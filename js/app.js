@@ -95,11 +95,11 @@
     body.appendChild(el("h2", null, r.vacant ? "Vacant seat" : r.name));
     if (!r.vacant) body.appendChild(el("p", null, r.party));
     body.appendChild(el("p", "meta", r.seat + " · " + CHAMBER[r.chamber]));
+    if (r.vacant) body.appendChild(el("p", "meta", "Vacancy recorded by The Policy Desk AU; official source not yet linked."));
 
-    if (r.url) {
+    if (r.url && /^https:\/\//.test(r.url)) {
       var a = el("a", "profile", "Official profile");
       a.href = r.url;
-      a.rel = "noopener";
       var sr = el("span", "visually-hidden", " for " + r.name + " on the Parliament of Victoria website");
       a.appendChild(sr);
       body.appendChild(a);
