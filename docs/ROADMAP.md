@@ -9,31 +9,35 @@ Status: ✅ done · 🔄 in progress · ⏳ not started · ⛔ blocked
 | 2 | List view | ✅ | Search, filters, alphabetical, "Data as of" line, vacancies shown, accessibility |
 | 3 | Map view | ✅ | Needs boundary data with a reuse licence; else stop. Text-only fallback |
 | 4 | News | ✅ | Daily GitHub Action; The Conversation only (CC BY-ND), headline + link. Google News blocked by robots.txt |
-| 5 | Photos and socials | ✅ | Commons photos only with licence; official handles only; review report |
-| 6 | Post-election refresh (after 28 Nov 2026) | ⏳ | Update data + vacancies.json; validators green |
-| 7 | Compliance and launch | ⛔ | About page, sitemap, robots.txt, privacy, final review. See blockers |
+| 5 | Photos and socials | ✅ | Commons photos (66) with licence; owner-approved official handles (31) in `data/socials.json` (PR #13); review report |
 
-## National coverage (owner decision 2026-11-23: after Victoria, one parliament per stage)
+## National coverage (owner decision 2026-11-23; order refreshed after Stage 5)
 
-Each stage repeats the Victorian pattern: check robots.txt and terms for the parliament's
-member list and the boundary data, build + validate members, add boundaries to the map,
-then news/photos/socials under the same rules. Stop and report if a source does not allow reuse.
+Do these **before** the Vic post-election refresh. Each stage must deliver, for that
+parliament: **list view, map view, news, photos, official socials, and official websites**.
+Check robots.txt and terms for the member list and boundary data; build + validate members;
+add boundaries to the map; then news/photos/socials/websites under the same rules. Stop and
+report if a source does not allow reuse.
 
 | # | Parliament | Status | Notes |
 |---|-----------|--------|-------|
-| 8 | Federal (House of Representatives + Senate) | ⏳ | AEC boundaries; Senate = states/territories |
-| 9 | New South Wales | ⏳ | |
-| 10 | Queensland | ⏳ | Unicameral |
-| 11 | Western Australia | ⏳ | |
-| 12 | South Australia | ⏳ | |
-| 13 | Tasmania | ⏳ | Multi-member divisions |
-| 14 | Australian Capital Territory | ⏳ | Unicameral, multi-member |
-| 15 | Northern Territory | ⏳ | Unicameral |
+| 6 | Federal (House of Representatives + Senate) | ⏳ | AEC boundaries; Senate = states/territories. Plan site changes here (parliament picker, per-parliament data, map switch) |
+| 7 | New South Wales | ⏳ | |
+| 8 | Queensland | ⏳ | Unicameral |
+| 9 | Western Australia | ⏳ | |
+| 10 | South Australia | ⏳ | |
+| 11 | Tasmania | ⏳ | Multi-member divisions |
+| 12 | Australian Capital Territory | ⏳ | Unicameral, multi-member |
+| 13 | Northern Territory | ⏳ | Unicameral |
 
-Site changes needed for national coverage (plan in Stage 8): a parliament picker, per-parliament
-data files and "Data as of" lines, and a map that switches between parliaments.
+## Later Vic and launch
 
-## Stage 7 blockers
+| # | Stage | Status | Notes |
+|---|-------|--------|-------|
+| 14 | Post-election refresh (after 28 Nov 2026 results) | ⏳ | Paused until results. Update Vic data + vacancies.json; validators green. Do not start now |
+| 15 | Compliance and launch | ⛔ | Last phase. About page, sitemap, robots.txt, privacy, final review. See blockers |
+
+## Stage 15 blockers
 - Parliament of Victoria copyright page allows only "personal, non-commercial use,
   research or study, use within your organisation" and asks for permission beyond
   that (see `docs/data-sources.md` §2, verdict (c) "unclear"). This conflicts with
