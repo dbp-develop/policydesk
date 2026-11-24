@@ -1,1 +1,234 @@
-{"source":"Owner-approved handles (see data/socials_review.json)","approved_by":null,"socials":{}}
+{
+ "source": "Wikidata (CC0) candidates in data/socials_review.json, approved by the owner",
+ "approved_by": "Owner, 2026-11-24: approved all candidates except Jordan Crugnale, Katie Hall, Lily D'Ambrosio, Paul Edbrooke, Sarah Connolly (campaign/personal accounts)",
+ "socials": {
+  "adem-somyurek": {
+   "name": "Adem Somyurek",
+   "links": {
+    "x": "https://x.com/AdemSomyurek",
+    "facebook": "https://www.facebook.com/ademsomyurek"
+   },
+   "source": "https://www.wikidata.org/wiki/Q4682122"
+  },
+  "aiv-puglielli": {
+   "name": "Aiv Puglielli",
+   "links": {
+    "instagram": "https://www.instagram.com/aivgoesgreen/"
+   },
+   "source": "https://www.wikidata.org/wiki/Q115557735"
+  },
+  "anthony-marsh": {
+   "name": "Anthony Marsh",
+   "links": {
+    "facebook": "https://www.facebook.com/AnthonyMarshNepean"
+   },
+   "source": "https://www.wikidata.org/wiki/Q139487746"
+  },
+  "ben-carroll": {
+   "name": "Ben Carroll",
+   "links": {
+    "x": "https://x.com/BenCarrollMP",
+    "facebook": "https://www.facebook.com/bencarrollmp",
+    "instagram": "https://www.instagram.com/bencarrollmp/"
+   },
+   "source": "https://www.wikidata.org/wiki/Q4885393"
+  },
+  "brad-rowswell": {
+   "name": "Brad Rowswell",
+   "links": {
+    "x": "https://x.com/BradRowswell"
+   },
+   "source": "https://www.wikidata.org/wiki/Q59306437"
+  },
+  "chris-crewther": {
+   "name": "Chris Crewther",
+   "links": {
+    "x": "https://x.com/ChrisCrewtherMP"
+   },
+   "source": "https://www.wikidata.org/wiki/Q25756186"
+  },
+  "cindy-mcleish": {
+   "name": "Cindy McLeish",
+   "links": {
+    "x": "https://x.com/CindyMcLeishMP"
+   },
+   "source": "https://www.wikidata.org/wiki/Q5120560"
+  },
+  "ellen-sandell": {
+   "name": "Ellen Sandell",
+   "links": {
+    "x": "https://x.com/ellensandell",
+    "instagram": "https://www.instagram.com/elleninmelbourne/"
+   },
+   "source": "https://www.wikidata.org/wiki/Q17017384"
+  },
+  "emma-kealy": {
+   "name": "Emma Kealy",
+   "links": {
+    "x": "https://x.com/EmmaKealyMP"
+   },
+   "source": "https://www.wikidata.org/wiki/Q19664385"
+  },
+  "gabrielle-de-vietri": {
+   "name": "Gabrielle de Vietri",
+   "links": {
+    "x": "https://x.com/GabrielledeVie"
+   },
+   "source": "https://www.wikidata.org/wiki/Q115467071"
+  },
+  "georgie-purcell": {
+   "name": "Georgie Purcell",
+   "links": {
+    "instagram": "https://www.instagram.com/georgie.purcell.ajp/"
+   },
+   "source": "https://www.wikidata.org/wiki/Q116642610"
+  },
+  "harriet-shing": {
+   "name": "Harriet Shing",
+   "links": {
+    "x": "https://x.com/ShingvWorld"
+   },
+   "source": "https://www.wikidata.org/wiki/Q18720249"
+  },
+  "ingrid-stitt": {
+   "name": "Ingrid Stitt",
+   "links": {
+    "x": "https://x.com/IngridStitt"
+   },
+   "source": "https://www.wikidata.org/wiki/Q59660398"
+  },
+  "jacinta-allan": {
+   "name": "Jacinta Allan",
+   "links": {
+    "x": "https://x.com/JacintaAllanMP",
+    "facebook": "https://www.facebook.com/JacintaAllanBendigoEast",
+    "instagram": "https://www.instagram.com/jacintaallanmp/"
+   },
+   "source": "https://www.wikidata.org/wiki/Q6110749"
+  },
+  "jackson-taylor": {
+   "name": "Jackson Taylor",
+   "links": {
+    "x": "https://x.com/JacksonTaylorMP"
+   },
+   "source": "https://www.wikidata.org/wiki/Q59412736"
+  },
+  "jaclyn-symes": {
+   "name": "Jaclyn Symes",
+   "links": {
+    "x": "https://x.com/JaclynSymes"
+   },
+   "source": "https://www.wikidata.org/wiki/Q19605122"
+  },
+  "james-newbury": {
+   "name": "James Newbury",
+   "links": {
+    "x": "https://x.com/newbury3186"
+   },
+   "source": "https://www.wikidata.org/wiki/Q59180516"
+  },
+  "john-berger": {
+   "name": "John Berger",
+   "links": {
+    "facebook": "https://www.facebook.com/johnbergermp",
+    "instagram": "https://www.instagram.com/johnbergermp/"
+   },
+   "source": "https://www.wikidata.org/wiki/Q116814697"
+  },
+  "kat-theophanous": {
+   "name": "Kat Theophanous",
+   "links": {
+    "instagram": "https://www.instagram.com/kattheomp/"
+   },
+   "source": "https://www.wikidata.org/wiki/Q59167929"
+  },
+  "matthew-guy": {
+   "name": "Matthew Guy",
+   "links": {
+    "x": "https://x.com/MatthewGuyMP",
+    "facebook": "https://www.facebook.com/MatthewGuyMP",
+    "instagram": "https://www.instagram.com/matthewguymp/"
+   },
+   "source": "https://www.wikidata.org/wiki/Q6790609"
+  },
+  "michaela-settle": {
+   "name": "Michaela Settle",
+   "links": {
+    "x": "https://x.com/michaelasettle"
+   },
+   "source": "https://www.wikidata.org/wiki/Q59173410"
+  },
+  "natalie-suleyman": {
+   "name": "Natalie Suleyman",
+   "links": {
+    "x": "https://x.com/NatalieSuleyman"
+   },
+   "source": "https://www.wikidata.org/wiki/Q17022238"
+  },
+  "nicole-werner": {
+   "name": "Nicole Werner",
+   "links": {
+    "instagram": "https://www.instagram.com/nicolewerner_warrandyte/"
+   },
+   "source": "https://www.wikidata.org/wiki/Q121863825"
+  },
+  "paul-hamer": {
+   "name": "Paul Hamer",
+   "links": {
+    "x": "https://x.com/paulhamermp"
+   },
+   "source": "https://www.wikidata.org/wiki/Q59179398"
+  },
+  "peter-walsh": {
+   "name": "Peter Walsh",
+   "links": {
+    "x": "https://x.com/PeterWalshMP"
+   },
+   "source": "https://www.wikidata.org/wiki/Q51777857"
+  },
+  "rachel-westaway": {
+   "name": "Rachel Westaway",
+   "links": {
+    "instagram": "https://www.instagram.com/rachelwestawayprahran/"
+   },
+   "source": "https://www.wikidata.org/wiki/Q132177892"
+  },
+  "ryan-batchelor": {
+   "name": "Ryan Batchelor",
+   "links": {
+    "x": "https://x.com/ryanbatchelor",
+    "facebook": "https://www.facebook.com/ryanbatchelormp",
+    "instagram": "https://www.instagram.com/ryanbatchelormp/"
+   },
+   "source": "https://www.wikidata.org/wiki/Q116637635"
+  },
+  "sheena-watt": {
+   "name": "Sheena Watt",
+   "links": {
+    "x": "https://x.com/sheenajwatt"
+   },
+   "source": "https://www.wikidata.org/wiki/Q100327610"
+  },
+  "sonya-kilkenny": {
+   "name": "Sonya Kilkenny",
+   "links": {
+    "x": "https://x.com/SonyaKilkenny"
+   },
+   "source": "https://www.wikidata.org/wiki/Q18640479"
+  },
+  "steve-dimopoulos": {
+   "name": "Steve Dimopoulos",
+   "links": {
+    "x": "https://x.com/Steve_Dimo"
+   },
+   "source": "https://www.wikidata.org/wiki/Q18685736"
+  },
+  "steve-mcghie": {
+   "name": "Steve McGhie",
+   "links": {
+    "x": "https://x.com/McghieMp"
+   },
+   "source": "https://www.wikidata.org/wiki/Q59487902"
+  }
+ }
+}
