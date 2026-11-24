@@ -54,6 +54,32 @@
       mapDesc: "Map of Australian federal electoral boundaries. Use the text list of seats below to choose a seat with a keyboard or screen reader.",
       footerFactsHtml: 'Member facts: <a href="https://handbook.aph.gov.au/">Parliament of Australia (Parliamentary Handbook)</a>. This site is independent and not affiliated with any parliament or party.',
       footerBoundariesHtml: 'Electoral boundaries: Australian Electoral Commission under the <a href="https://www.aec.gov.au/Electorates/gis/licence.htm">AEC data download licence</a>, simplified by us.'
+    },
+    nsw: {
+      label: "New South Wales",
+      title: "Members of the Parliament of New South Wales",
+      lede: "Find your NSW MP or MLC. Search by name, party, chamber or electorate.",
+      electionNote: "Legislative Assembly and Legislative Council. Official websites link to each member’s Parliament of NSW profile.",
+      membersUrl: "data/nsw/members.json",
+      sourceDefault: "Parliament of New South Wales",
+      sourceHref: "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/downloadable-lists",
+      profileSr: " on the Parliament of New South Wales website",
+      chamber: { lower: "Legislative Assembly", upper: "Legislative Council" },
+      vacancyChamber: { Assembly: "lower", Council: "upper", lower: "lower", upper: "upper" },
+      layers: { lower: "districts", upper: "state" },
+      boundaryFiles: { districts: "data/boundaries/nsw_districts.json", state: "data/boundaries/nsw_state.json" },
+      seatLabel: { lower: " District", upper: "" },
+      zoomExtent: "Whole state",
+      zoomMetro: "Sydney",
+      showMetro: true,
+      mapLower: "Showing the 93 Legislative Assembly districts.",
+      mapUpper: "Showing New South Wales as one area. Legislative Council members are elected statewide.",
+      mapOtherHint: " Choose Legislative Council under Chamber to see the statewide map.",
+      seatFilterLabel: "Electorate or state",
+      seatAllLabel: "All electorates",
+      mapDesc: "Map of New South Wales electoral boundaries. Use the text list of seats below to choose a seat with a keyboard or screen reader.",
+      footerFactsHtml: 'Member facts: <a href="https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/downloadable-lists">Parliament of New South Wales</a>. This site is independent and not affiliated with any parliament or party.',
+      footerBoundariesHtml: 'Electoral boundaries: Administrative Boundaries © Geoscape Australia, Commonwealth of Australia, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, simplified by us.'
     }
   };
 
@@ -502,6 +528,10 @@
       if (parliamentKey === "federal") {
         // Rough south-east Australia crop of the national viewBox.
         return setViewBox([full[0] + full[2] * 0.55, full[1] + full[3] * 0.45, full[2] * 0.4, full[3] * 0.45]);
+      }
+      if (parliamentKey === "nsw") {
+        // Rough Sydney / coastal crop of the statewide viewBox.
+        return setViewBox([full[0] + full[2] * 0.55, full[1] + full[3] * 0.55, full[2] * 0.4, full[3] * 0.4]);
       }
       var metro = boundaries[upperLayer()].features.filter(function (f) { return METRO.test(f.name); });
       var b = [Infinity, Infinity, -Infinity, -Infinity];
