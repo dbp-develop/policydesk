@@ -671,6 +671,9 @@
       w < full[2] * 0.98 || h < full[3] * 0.98
     );
     els.map.setAttribute("viewBox", viewBox.map(function (n) { return Math.round(n); }).join(" "));
+    // Match the SVG box to the active viewBox so portrait states (QLD) are not
+    // letterboxed/clipped by the default landscape CSS aspect-ratio.
+    els.map.style.aspectRatio = Math.round(w) + " / " + Math.round(h);
   }
 
   function bboxOf(names) {
