@@ -6,8 +6,8 @@ Stdlib only. Rules (see CLAUDE.md "News rules" and docs/data-sources.md):
 - Store headline, source name, date and link ONLY. No summaries, no article text.
 - Max 5 items per member, newest first. Same rules for every member and party.
 - Match = the member's exact full name (word boundaries, case-sensitive) in the
-  article AND a Victorian context word (Victoria/Victorian/Melbourne/Spring Street or
-  the member's own electorate/region). Anything else is dropped.
+  article AND a parliament context word (Vic or Federal) or the member's own
+  electorate/region. Anything else is dropped.
   Name in headline or standfirst -> verified. Name only in the article body ->
   kept but labelled unverified.
 - Runs add to existing items (feeds only hold ~1 week), so coverage builds up.
@@ -27,7 +27,10 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-MEMBERS = ROOT / "data" / "members.json"
+MEMBER_FILES = [
+    ROOT / "data" / "members.json",
+    ROOT / "data" / "federal" / "members.json",
+]
 OUT = ROOT / "data" / "news"
 USER_AGENT = "PolicyDeskAU/1.0 (https://policydesk.au)"
 SOURCE = "The Conversation"
@@ -48,6 +51,10 @@ MAX_ITEMS = 5
 MAX_AGE_DAYS = 90
 NS = {"a": "http://www.w3.org/2005/Atom"}
 VIC_WORDS = re.compile(r"\b(Victoria|Victorian|Victorians|Melbourne|Spring Street)\b")
+FED_WORDS = re.compile(
+    r"\b(Canberra|Federal|Parliament House|House of Representatives|Senate|"
+    r"Senator|MP|MPs|Coalition|Labor|Greens)\b"
+)
 
 
 def fetch(url: str) -> bytes:
@@ -94,9 +101,36 @@ def name_re(name: str) -> re.Pattern:
     return re.compile(r"(?<![\w-])" + re.escape(name) + r"(?![\w-])")
 
 
+def load_members() -> list[dict]:
+    members: list[dict] = []
+    for path in MEMBER_FILES:
+        if not path.exists():
+            print(f"WARNING: missing {path.relative_to(ROOT)}", file=sys.stderr)
+            continue
+        data = json.loads(path.read_text(encoding="utf-8"))
+        parliament = data.get("parliament") or (
+            "federal" if "federal" in str(path) else "vic"
+        )
+        for m in data.get("members") or []:
+            m = dict(m)
+            m["_parliament"] = m.get("parliament") or parliament
+            members.append(m)
+    return members
+
+
+def context_ok(parliament: str, text: str, seat_rx: re.Pattern | None) -> bool:
+    if seat_rx and seat_rx.search(text):
+        return True
+    if parliament == "federal":
+        return bool(FED_WORDS.search(text))
+    return bool(VIC_WORDS.search(text))
+
+
 def main() -> int:
-    data = json.loads(MEMBERS.read_text(encoding="utf-8"))
-    members = data["members"]
+    members = load_members()
+    if not members:
+        print("ERROR: no members loaded", file=sys.stderr)
+        return 1
 
     entries: dict[str, dict] = {}
     failures = 0
@@ -131,8 +165,8 @@ def main() -> int:
             if not (in_head or in_body):
                 continue
             text = " ".join((e["title"], e["_lead"], e["_body"]))
-            if not (VIC_WORDS.search(text) or (seat_rx and seat_rx.search(text))):
-                continue  # same name, but no sign it is about this Victorian MP
+            if not context_ok(m["_parliament"], text, seat_rx):
+                continue
             found.append({
                 "title": e["title"],
                 "source": SOURCE,
@@ -149,8 +183,11 @@ def main() -> int:
             if i["url"] not in merged:
                 new_total += 1
             merged[i["url"]] = i
-        items = sorted((i for i in merged.values() if i["published"] >= cutoff),
-                       key=lambda i: (i["published"], i["url"]), reverse=True)[:MAX_ITEMS]
+        items = sorted(
+            (i for i in merged.values() if i["published"] >= cutoff),
+            key=lambda i: (i["published"], i["url"]),
+            reverse=True,
+        )[:MAX_ITEMS]
         doc = {"member_id": m["id"], "member_name": m["name"], "items": items}
         text = json.dumps(doc, indent=1, ensure_ascii=False) + "\n"
         if not path.exists() or path.read_text(encoding="utf-8") != text:
@@ -162,13 +199,13 @@ def main() -> int:
         "source_url": "https://theconversation.com/au",
         "licence": LICENCE,
         "licence_url": "https://creativecommons.org/licenses/by-nd/4.0/",
-        "rules": "Headline, source, date and link only. Exact full-name match with Victorian context; "
-                 "name only in article body = unverified. Max 5 per member.",
+        "rules": "Headline, source, date and link only. Exact full-name match with "
+                 "Victorian or Federal context; name only in article body = unverified. "
+                 "Max 5 per member.",
         "generated_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
         "counts": index,
     }
     (OUT / "index.json").write_text(json.dumps(idx, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
-    # remove files for people who are no longer members (e.g. after the election)
     for stale in OUT.glob("*.json"):
         if stale.name != "index.json" and stale.stem not in index:
             stale.unlink()

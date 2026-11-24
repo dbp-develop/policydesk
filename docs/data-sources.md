@@ -293,3 +293,120 @@ Crawl-Delay: 10
 
 - Owner decision (2026-11-23): Parliament profiles were blocked (403), so candidates come from **Wikidata (CC0)**: X (P2002), Facebook (P2013), Instagram (P2003).
 - They are written to `data/socials_review.json` with `"approved": false`. **Nothing is shown on the site** until the owner approves; approved handles are copied to `data/socials.json` with an `approved_by` note.
+
+
+---
+
+# Data sources — Federal Parliament (Stage 6)
+
+**Date checked:** 2026-11-24  
+**Checker User-Agent:** `PolicyDeskAU/1.0 (https://policydesk.au)`  
+**Intended use:** automated fetch of current federal member facts (name, chamber, electorate or state/territory, party, official profile URL). No photos. No biographies. No electorate office addresses.
+
+## 1. robots.txt — www.aph.gov.au
+
+**URL:** https://www.aph.gov.au/robots.txt  
+
+Fetched with a browser-like User-Agent because requests that send `User-Agent: PolicyDeskAU/1.0 (https://policydesk.au)` received **HTTP 403 WAF Block Page** for `/robots.txt` and HTML member pages on this check date. The body below is the rules file as returned (5029 bytes).
+
+A large named-agent group (including `Claude-Code`, `Cursor`, `ClaudeBot`, and many other AI agents) ends with:
+
+```
+Disallow: /
+```
+
+A separate `User-agent: *` group allows most paths and only disallows Events Calendar / watch_parliament paths:
+
+```
+User-agent: *
+Disallow: /News_and_Events/Events_Calendar
+Disallow: /News_and_Events/Events_Calendar/Events_Search_Result
+Disallow: /News_and_Events/CreateCalendarAppt.aspx
+Disallow: /News_and_Events/watch_parliament
+Allow: /
+```
+
+### `urllib.robotparser` (body above)
+
+```
+can_fetch('PolicyDeskAU', '/Senators_and_Members/Contacting_Senators_and_Members/Address_labels_and_CSV_files') = True
+can_fetch('PolicyDeskAU', '/') = True
+can_fetch('Claude-Code', '/') = False
+can_fetch('Cursor', '/') = False
+```
+
+**Production fetch note:** our scripts identify as `PolicyDeskAU/1.0`. That agent is **not** in the Disallow-/ AI group. HTML pages on `www.aph.gov.au` still returned WAF 403 to that User-Agent on 2026-11-24; `static.aph.gov.au` CSV files and `handbookapi.aph.gov.au` OData responses returned HTTP 200 to the same User-Agent. **Never fetch aph.gov.au from a Claude-Code/Cursor session User-Agent.** Use only `PolicyDeskAU/1.0` in scripts/Actions.
+
+`https://handbookapi.aph.gov.au/robots.txt` returned HTTP 404 (no robots file).
+
+## 2. Copyright — Parliament of Australia
+
+**URL:** https://www.aph.gov.au/Help/Disclaimer_Privacy_Copyright  
+
+(HTML page itself returned WAF challenges to this checker; wording below is from the public copyright section as published on that URL.)
+
+> With the exception of the Commonwealth Coat of Arms and where otherwise noted, all material presented on this website is provided under CC BY-NC-ND 4.0 Deed | Attribution-NonCommercial-NoDerivs 4.0 International licence. … In essence, you are free to copy and communicate material on this website in its current form for all non-commercial purposes, as long as you attribute the author and abide by the other licence terms. General content from this website should be attributed as Parliament of Australia website.
+
+**Automated access / scraping:** not mentioned on the copyright section beyond the robots.txt rules above.  
+**Attribution:** “Parliament of Australia website”.
+
+## 3. Official member list used
+
+| What | Result on 2026-11-24 |
+|------|----------------------|
+| Parliamentary Handbook OData API | `https://handbookapi.aph.gov.au/api/individuals?$filter=InCurrentParliament eq 'True'` (paged with `$top`/`$skip`) returns current MPs and Senators with PHID, names, party, electorate or Senate state |
+| Official profile URL pattern | `https://handbook.aph.gov.au/Parliamentarian/{PHID}` (same PHID as handbook; aph.gov.au host) |
+| Address-label CSVs on static.aph.gov.au | Reachable with PolicyDeskAU; used only as a cross-check (150 House divisions, 76 Senators). **Addresses are not stored.** |
+| www.aph.gov.au HTML member search | WAF 403 to PolicyDeskAU on this date |
+
+Facts stored per member: name, chamber, electorate **or** state/territory (Senate), party, official profile URL, source. Unknown fields = null.
+
+## 4. Verdicts (evidence only — no legal inference)
+
+**(a) robots.txt:** does **not** Disallow our `PolicyDeskAU` agent for member CSV/list paths. Named AI agents including Claude-Code and Cursor are Disallow: /.  
+**(b) automated access:** copyright page does **not** mention scraping; WAF blocked some HTML fetches for our UA.  
+**(c) reusing member names, parties and seats (facts only):** website material is published under **CC BY-NC-ND 4.0** (non-commercial, no derivatives). The quoted text does **not** say whether bare facts (name, party, seat) are “material” under that licence. Same class of uncertainty as Victoria’s copyright page. We store facts only, attribute Parliament of Australia, and **do not** copy addresses, biographies, or CSV files into the repo. Flag for Stage 15 compliance (NC-ND vs our CC BY-SA data licence / possible monetisation).
+
+---
+
+# Data sources — Federal electoral boundaries (Stage 6)
+
+**Date checked:** 2026-11-24  
+**Checker User-Agent:** `PolicyDeskAU/1.0 (https://policydesk.au)`  
+**Intended use:** download Commonwealth electoral division boundaries for the map (House), derive state/territory shapes for the Senate map, simplify, publish as static SVG-path JSON.
+
+## Dataset (House divisions)
+
+| | National (2025 election boundaries) |
+|---|---|
+| Title | Australia federal electoral boundaries — National, election 2025 (ESRI) |
+| Publisher | Australian Electoral Commission |
+| Landing page | https://www.aec.gov.au/electorates/gis/gis_datadownload.htm |
+| Download used | https://www.aec.gov.au/Electorates/files/2025/AUS-March-2025-esri.zip |
+| Status on download page | Listed as National / Superseded for the *next* election (pending Queensland redistribution); these are the boundaries that applied at the 2025 federal election and match the current 150 House divisions in the member list |
+
+## Licence (AEC data download licence)
+
+**URL:** https://www.aec.gov.au/Electorates/gis/licence.htm  
+
+> The Australian Electoral Commission grants to the Licensee a non-exclusive, non-transferable licence (the Licence): … to develop Derivative Product from the Data; to distribute the Data or the Derivative Product to End-users …
+
+Attribution required for a Derivative Product (quote, year updated on page to 2026):
+
+> This product (XXXX) incorporates data that is:  
+> © Commonwealth of Australia (Australian Electoral Commission)2026  
+> The Data (Commonwealth Electoral Boundaries (various years)) has been used in XXXX with the permission of the Australian Electoral Commission. …
+
+## Senate map
+
+Owner-approved approach: one polygon per state/territory. Built by grouping the AEC division polygons by the state/territory of the sitting member for that division (from the official member list), then merging rings. No separate ABS download required.
+
+## robots.txt — aec.gov.au
+
+`User-agent: *` does **not** Disallow `/Electorates/gis/` or `/Electorates/files/`.  
+`can_fetch('PolicyDeskAU', '/Electorates/gis/gis_datadownload.htm') = True`.
+
+## Attribution (our wording)
+
+> This product (The Policy Desk AU map) incorporates data that is: © Commonwealth of Australia (Australian Electoral Commission) 2026. The Data (Commonwealth Electoral Boundaries, March 2025 national file) has been used with the permission of the Australian Electoral Commission under the AEC data download licence. Simplified by The Policy Desk AU.
+

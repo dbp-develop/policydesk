@@ -1,33 +1,32 @@
 #!/usr/bin/env python3
-"""Stage 5: find reusable photos and candidate social handles (stdlib only).
+"""Find reusable photos and candidate social handles (stdlib only).
 
 Only robots.txt-allowed pages are used (no /w/api.php, no /sparql):
-  1. en.wikipedia.org/wiki/Members_of_the_Victorian_Legislative_{Assembly,Council},_2022–2026
-     -> link to each member's article (matched by exact link text = member name)
-  2. the member's Wikipedia article -> its Wikidata item id (Q-number)
-  3. www.wikidata.org/wiki/Special:EntityData/<Q>.json
-     -> CHECK: "position held" (P39) includes Member of the Victorian Legislative
-        Assembly (Q18534408) or Council (Q19185341); otherwise the match is rejected
-     -> image (P18), X (P2002), Facebook (P2013), Instagram (P2003)
-  4. commons.wikimedia.org/wiki/File:<image> page -> licence, creator
-     Accepted licences: CC0, public domain, CC BY, CC BY-SA (no NC/ND).
-  5. A 240px copy is saved under images/members/ (no hotlinking).
+  1. Wikipedia chamber member-list pages -> exact link text = member name
+  2. member Wikipedia article -> Wikidata Q-id
+  3. Special:EntityData/<Q>.json -> P39 check, P18 image, social props
+  4. Commons file page -> licence + creator; 240px local copy
 
 Outputs:
-  data/photos.json            accepted photos with creator, licence and Commons link
-  data/socials_review.json    candidate handles from Wikidata, all "approved": false
-  docs/review/stage5-review.md  human-readable report of every match and decision
-Social handles are shown on the site only after the owner approves them
-(they are then copied into data/socials.json).
+  data/photos.json
+  data/socials_review.json  (approved: false until owner approves)
+  docs/review/stage5-review.md and/or docs/review/stage6-federal-review.md
+
+Usage:
+  python3 scripts/build_photos_socials.py              # both parliaments
+  python3 scripts/build_photos_socials.py --parliament vic
+  python3 scripts/build_photos_socials.py --parliament federal
 """
 
 from __future__ import annotations
 
+import argparse
 import html
 import json
 import re
 import sys
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
@@ -36,16 +35,48 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 UA = "PolicyDeskAU/1.0 (https://policydesk.au)"
 DELAY = 1.0
-LIST_PAGES = {
-    "lower": "https://en.wikipedia.org/wiki/Members_of_the_Victorian_Legislative_Assembly,_2022%E2%80%932026",
-    "upper": "https://en.wikipedia.org/wiki/Members_of_the_Victorian_Legislative_Council,_2022%E2%80%932026",
+
+PARLIAMENTS = {
+    "vic": {
+        "members": ROOT / "data" / "members.json",
+        "list_pages": {
+            "lower": "https://en.wikipedia.org/wiki/Members_of_the_Victorian_Legislative_Assembly,_2022%E2%80%932026",
+            "upper": "https://en.wikipedia.org/wiki/Members_of_the_Victorian_Legislative_Council,_2022%E2%80%932026",
+        },
+        "positions": {
+            "Q18534408": "Member of the Victorian Legislative Assembly",
+            "Q19185341": "Member of the Victorian Legislative Council",
+        },
+        "review": ROOT / "docs" / "review" / "stage5-review.md",
+        "review_title": "Stage 5 review: photo and social matches (Victoria)",
+        "check_label": "Victorian seat",
+    },
+    "federal": {
+        "members": ROOT / "data" / "federal" / "members.json",
+        "list_pages": {
+            "lower": "https://en.wikipedia.org/wiki/Members_of_the_Australian_House_of_Representatives,_2025%E2%80%932028",
+            "upper": "https://en.wikipedia.org/wiki/Members_of_the_Australian_Senate,_2025%E2%80%932028",
+        },
+        "positions": {
+            "Q18944227": "Member of the Australian House of Representatives",
+            "Q6814428": "Member of the Australian Senate",
+            # Common alternate / related position items seen on sitting members:
+            "Q18912794": "Member of the House of Representatives (Australia)",
+        },
+        "review": ROOT / "docs" / "review" / "stage6-federal-review.md",
+        "review_title": "Stage 6 review: photo and social matches (Federal)",
+        "check_label": "federal seat",
+    },
 }
-POSITIONS = {"Q18534408": "Member of the Victorian Legislative Assembly",
-             "Q19185341": "Member of the Victorian Legislative Council"}
-SOCIAL_PROPS = {"P2002": ("x", "https://x.com/{}"),
-                "P2013": ("facebook", "https://www.facebook.com/{}"),
-                "P2003": ("instagram", "https://www.instagram.com/{}/")}
-OK_LICENCE = re.compile(r"^(CC0( 1\.0)?|Public domain|CC BY(-SA)? \d\.\d( [A-Za-z\-]+)?)$", re.I)
+
+SOCIAL_PROPS = {
+    "P2002": ("x", "https://x.com/{}"),
+    "P2013": ("facebook", "https://www.facebook.com/{}"),
+    "P2003": ("instagram", "https://www.instagram.com/{}/"),
+}
+OK_LICENCE = re.compile(
+    r"^(CC0( 1\.0)?|Public domain|CC BY(-SA)? \d\.\d( [A-Za-z\-]+)?)$", re.I
+)
 BAD_CREATOR = re.compile(r"^(unknown|anonymous|unknown author|author unknown)\b", re.I)
 PARLIAMENT_SOURCE = re.compile(r"parliament|parl\.|aph\.gov\.au", re.I)
 BAD_LICENCE = re.compile(r"\b(NC|ND)\b")
@@ -64,7 +95,11 @@ def get(url: str, binary: bool = False):
             with urllib.request.urlopen(req, timeout=60) as r:
                 _last[0] = time.time()
                 body = r.read()
-                return (body, r.headers.get("content-type", ""), r.url) if binary else body.decode("utf-8", "replace")
+                return (
+                    (body, r.headers.get("content-type", ""), r.url)
+                    if binary
+                    else body.decode("utf-8", "replace")
+                )
         except urllib.error.HTTPError as e:
             if e.code == 404:
                 raise
@@ -83,9 +118,11 @@ def norm(s: str) -> str:
 
 
 def article_links(page: str) -> dict[str, str]:
-    """link text -> absolute article URL, for every wiki link on the page."""
     out = {}
-    pat = r'<a\b[^>]*href="(?:https://en\.wikipedia\.org/wiki/|/wiki/|\./)([^"#?]+)"[^>]*>(.*?)</a>'
+    pat = (
+        r'<a\b[^>]*href="(?:https://en\.wikipedia\.org/wiki/|/wiki/|\./)([^"#?]+)"[^>]*>'
+        r"(.*?)</a>"
+    )
     for m in re.finditer(pat, page, re.S):
         title, label = m.group(1), text(m.group(2))
         if ":" in urllib.parse.unquote(title):
@@ -109,32 +146,64 @@ def claim_values(entity: dict, prop: str) -> list:
 
 
 def commons_licence(file_name: str) -> dict:
-    url = "https://commons.wikimedia.org/wiki/File:" + urllib.parse.quote(file_name.replace(" ", "_"))
-    page = get(url).replace("&#95;", "_")  # Commons encodes "_" in these class names
-    shorts = [text(s) for s in re.findall(r'class="(?:[^"]*\s)?licensetpl_short(?:\s[^"]*)?"[^>]*>(.*?)</', page, re.S)]
-    links = re.findall(r'class="(?:[^"]*\s)?licensetpl_link(?:\s[^"]*)?"[^>]*>(.*?)</', page, re.S)
-    attr = [text(s) for s in re.findall(r'class="(?:[^"]*\s)?licensetpl_attr(?:\s[^"]*)?"[^>]*>(.*?)</', page, re.S)]
-    aut = re.search(r'id="fileinfotpl_aut"[^>]*>.*?</td>\s*<td[^>]*>(.*?)</td>', page, re.S)
-    src = re.search(r'id="fileinfotpl_src"[^>]*>.*?</td>\s*<td[^>]*>(.*?)</td>', page, re.S)
+    url = "https://commons.wikimedia.org/wiki/File:" + urllib.parse.quote(
+        file_name.replace(" ", "_")
+    )
+    page = get(url).replace("&#95;", "_")
+    shorts = [
+        text(s)
+        for s in re.findall(
+            r'class="(?:[^"]*\s)?licensetpl_short(?:\s[^"]*)?"[^>]*>(.*?)</', page, re.S
+        )
+    ]
+    links = re.findall(
+        r'class="(?:[^"]*\s)?licensetpl_link(?:\s[^"]*)?"[^>]*>(.*?)</', page, re.S
+    )
+    attr = [
+        text(s)
+        for s in re.findall(
+            r'class="(?:[^"]*\s)?licensetpl_attr(?:\s[^"]*)?"[^>]*>(.*?)</', page, re.S
+        )
+    ]
+    aut = re.search(
+        r'id="fileinfotpl_aut"[^>]*>.*?</td>\s*<td[^>]*>(.*?)</td>', page, re.S
+    )
+    src = re.search(
+        r'id="fileinfotpl_src"[^>]*>.*?</td>\s*<td[^>]*>(.*?)</td>', page, re.S
+    )
     creator = (attr[0] if attr else (text(aut.group(1)) if aut else "")) or None
-    return {"commons_url": url, "licences": shorts,
-            "licence_urls": [text(x) for x in links],
-            "creator": creator[:160] if creator else None,
-            "source_text": (text(src.group(1)) + " " + " ".join(re.findall(r'href="([^"]+)"', src.group(1)))) if src else ""}
+    return {
+        "commons_url": url,
+        "licences": shorts,
+        "licence_urls": [text(x) for x in links],
+        "creator": creator[:160] if creator else None,
+        "source_text": (
+            (text(src.group(1)) + " " + " ".join(re.findall(r'href="([^"]+)"', src.group(1))))
+            if src
+            else ""
+        ),
+    }
 
 
-def main() -> int:
-    members = json.loads((ROOT / "data/members.json").read_text(encoding="utf-8"))["members"]
-    lists = {k: article_links(get(u)) for k, u in LIST_PAGES.items()}
-    photos, socials, report = {}, {}, []
+def process_parliament(key: str, photos: dict, socials: dict) -> tuple[list[dict], int]:
+    cfg = PARLIAMENTS[key]
+    members = json.loads(cfg["members"].read_text(encoding="utf-8"))["members"]
+    lists = {k: article_links(get(u)) for k, u in cfg["list_pages"].items()}
+    positions = cfg["positions"]
+    report = []
     img_dir = ROOT / "images" / "members"
     img_dir.mkdir(parents=True, exist_ok=True)
-    for old in img_dir.glob("*"):
-        old.unlink()
 
     for m in sorted(members, key=lambda x: x["id"]):
-        row = {"id": m["id"], "name": m["name"], "article": None, "qid": None,
-               "check": "", "photo": "none (initials)", "socials": ""}
+        row = {
+            "id": m["id"],
+            "name": m["name"],
+            "article": None,
+            "qid": None,
+            "check": "",
+            "photo": "none (initials)",
+            "socials": "",
+        }
         report.append(row)
         art = lists[m["chamber"]].get(norm(m["name"]))
         if not art:
@@ -152,30 +221,40 @@ def main() -> int:
             continue
         qid = row["qid"] = q.group(1)
         try:
-            ent = json.loads(get(f"https://www.wikidata.org/wiki/Special:EntityData/{qid}.json"))["entities"]
+            ent = json.loads(
+                get(f"https://www.wikidata.org/wiki/Special:EntityData/{qid}.json")
+            )["entities"]
             ent = ent.get(qid) or next(iter(ent.values()))
         except Exception as e:  # noqa: BLE001
             row["check"] = f"Wikidata fetch failed: {e}"
             continue
-        held = {v for v, _ in claim_values(ent, "P39")} & set(POSITIONS)
+        held = {v for v, _ in claim_values(ent, "P39")} & set(positions)
         if held:
-            row["check"] = "OK: " + "; ".join(POSITIONS[h] for h in sorted(held))
+            row["check"] = "OK: " + "; ".join(positions[h] for h in sorted(held))
         else:
-            # The exact-name link on the official-term member list page is still a strong match,
-            # but Wikidata does not record the seat: keep it and flag it for the owner's review.
-            row["check"] = "CHECK: matched by Wikipedia member list only (no Victorian seat on Wikidata)"
+            row["check"] = (
+                f"CHECK: matched by Wikipedia member list only "
+                f"(no {cfg['check_label']} on Wikidata)"
+            )
 
         cands = {}
-        for prop, (key, fmt) in SOCIAL_PROPS.items():
+        for prop, (skey, fmt) in SOCIAL_PROPS.items():
             pairs = claim_values(ent, prop)
             pairs.sort(key=lambda vc: 0 if vc[1].get("rank") == "preferred" else 1)
             vals = [str(v) for v, _ in pairs]
             if vals:
                 handle = vals[0].lstrip("@")
-                cands[key] = {"handle": handle, "url": fmt.format(urllib.parse.quote(handle, safe="._-"))}
+                cands[skey] = {
+                    "handle": handle,
+                    "url": fmt.format(urllib.parse.quote(handle, safe="._-")),
+                }
         if cands:
-            socials[m["id"]] = {"name": m["name"], "wikidata": f"https://www.wikidata.org/wiki/{qid}",
-                                "candidates": cands, "approved": False}
+            socials[m["id"]] = {
+                "name": m["name"],
+                "wikidata": f"https://www.wikidata.org/wiki/{qid}",
+                "candidates": cands,
+                "approved": False,
+            }
             row["socials"] = ", ".join(f"{k}: {v['handle']}" for k, v in cands.items())
 
         imgs = [v for v, _ in claim_values(ent, "P18")]
@@ -186,23 +265,41 @@ def main() -> int:
         except Exception as e:  # noqa: BLE001
             row["photo"] = f"licence check failed: {e}"
             continue
-        good_i = [i for i, s in enumerate(lic["licences"]) if OK_LICENCE.match(s) and not BAD_LICENCE.search(s)]
+        good_i = [
+            i
+            for i, s in enumerate(lic["licences"])
+            if OK_LICENCE.match(s) and not BAD_LICENCE.search(s)
+        ]
         if not good_i or not lic["creator"] or BAD_CREATOR.match(lic["creator"]):
-            row["photo"] = f"rejected: licence {lic['licences'] or 'not found'}, creator {lic['creator'] or 'not found'}"
+            row["photo"] = (
+                f"rejected: licence {lic['licences'] or 'not found'}, "
+                f"creator {lic['creator'] or 'not found'}"
+            )
             continue
         if PARLIAMENT_SOURCE.search(lic["source_text"]):
-            row["photo"] = f"rejected: source looks like a parliament site ({lic['source_text'][:80]})"
+            row["photo"] = (
+                f"rejected: source looks like a parliament site "
+                f"({lic['source_text'][:80]})"
+            )
             continue
         gi = good_i[0]
         lic_name = lic["licences"][gi]
         lic_url = lic["licence_urls"][gi] if gi < len(lic["licence_urls"]) else None
         if not lic_url and lic_name.lower().startswith(("cc0", "public domain")):
-            lic_url = "https://creativecommons.org/publicdomain/zero/1.0/" if lic_name.lower().startswith("cc0") else None
+            lic_url = (
+                "https://creativecommons.org/publicdomain/zero/1.0/"
+                if lic_name.lower().startswith("cc0")
+                else None
+            )
         body = ctype = None
-        for width in (THUMB_WIDTH, 160):  # retry smaller if the file is too big
+        for width in (THUMB_WIDTH, 160):
             try:
-                body, ctype, final = get("https://commons.wikimedia.org/wiki/Special:FilePath/"
-                                         + urllib.parse.quote(imgs[0].replace(" ", "_")) + f"?width={width}", binary=True)
+                body, ctype, _final = get(
+                    "https://commons.wikimedia.org/wiki/Special:FilePath/"
+                    + urllib.parse.quote(imgs[0].replace(" ", "_"))
+                    + f"?width={width}",
+                    binary=True,
+                )
             except Exception as e:  # noqa: BLE001
                 body = None
                 row["photo"] = f"download failed: {e}"
@@ -211,40 +308,149 @@ def main() -> int:
                 break
         if body is None:
             continue
-        ext = {"image/jpeg": "jpg", "image/png": "png", "image/webp": "webp"}.get(ctype.split(";")[0])
+        ext = {
+            "image/jpeg": "jpg",
+            "image/png": "png",
+            "image/webp": "webp",
+        }.get(ctype.split(";")[0])
         if not ext or len(body) > 200_000:
             row["photo"] = f"rejected: type {ctype}, {len(body)} bytes"
             continue
         local = f"images/members/{m['id']}.{ext}"
         (ROOT / local).write_bytes(body)
-        photos[m["id"]] = {"file": imgs[0], "commons_url": lic["commons_url"], "creator": lic["creator"],
-                           "licence": lic_name, "licence_url": lic_url, "local_path": local,
-                           "source": "Wikimedia Commons via Wikidata " + qid}
+        photos[m["id"]] = {
+            "file": imgs[0],
+            "commons_url": lic["commons_url"],
+            "creator": lic["creator"],
+            "licence": lic_name,
+            "licence_url": lic_url,
+            "local_path": local,
+            "source": "Wikimedia Commons via Wikidata " + qid,
+        }
         row["photo"] = f"OK: {lic_name}, by {lic['creator']}"
 
-    now = datetime.now(timezone.utc).replace(microsecond=0).isoformat()
-    (ROOT / "data/photos.json").write_text(json.dumps(
-        {"source": "Wikimedia Commons (via Wikidata, matched through Wikipedia member lists)",
-         "generated_at": now, "photos": photos}, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
-    (ROOT / "data/socials_review.json").write_text(json.dumps(
-        {"source": "Wikidata (CC0): P2002 X, P2013 Facebook, P2003 Instagram",
-         "note": "Candidates only. Nothing here is shown on the site until the owner approves it.",
-         "generated_at": now, "candidates": socials}, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
-
-    lines = ["# Stage 5 review: photo and social matches", "",
-             f"Generated {now}. Every member, how they were matched, and what was decided.", "",
-             "| Member | Wikidata | Match check | Photo | Social candidates (need approval) |",
-             "|---|---|---|---|---|"]
+    lines = [
+        f"# {cfg['review_title']}",
+        "",
+        f"Generated {datetime.now(timezone.utc).replace(microsecond=0).isoformat()}. "
+        "Every member, how they were matched, and what was decided.",
+        "",
+        "| Member | Wikidata | Match check | Photo | Social candidates (need approval) |",
+        "|---|---|---|---|---|",
+    ]
     for r in report:
         q = f"[{r['qid']}](https://www.wikidata.org/wiki/{r['qid']})" if r["qid"] else "—"
-        lines.append(f"| {r['name']} | {q} | {r['check']} | {r['photo']} | {r['socials'] or '—'} |")
-    out = ROOT / "docs/review/stage5-review.md"
-    out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text("\n".join(lines) + "\n", encoding="utf-8")
-
+        lines.append(
+            f"| {r['name']} | {q} | {r['check']} | {r['photo']} | {r['socials'] or '—'} |"
+        )
+    cfg["review"].parent.mkdir(parents=True, exist_ok=True)
+    cfg["review"].write_text("\n".join(lines) + "\n", encoding="utf-8")
     ok = sum(1 for r in report if r["check"].startswith("OK"))
-    print(f"matched+verified: {ok}/{len(members)}; photos accepted: {len(photos)}; "
-          f"members with social candidates: {len(socials)}")
+    return report, ok
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser()
+    ap.add_argument(
+        "--parliament",
+        choices=["vic", "federal", "all"],
+        default="all",
+        help="which parliament(s) to refresh (default: all)",
+    )
+    args = ap.parse_args()
+    targets = ["vic", "federal"] if args.parliament == "all" else [args.parliament]
+
+    photos_path = ROOT / "data" / "photos.json"
+    socials_path = ROOT / "data" / "socials_review.json"
+    photos = (
+        json.loads(photos_path.read_text(encoding="utf-8")).get("photos", {})
+        if photos_path.exists()
+        else {}
+    )
+    socials = (
+        json.loads(socials_path.read_text(encoding="utf-8")).get("candidates", {})
+        if socials_path.exists()
+        else {}
+    )
+
+    # Drop entries for members we are about to rebuild, so removals stick.
+    for key in targets:
+        ids = {
+            m["id"]
+            for m in json.loads(PARLIAMENTS[key]["members"].read_text(encoding="utf-8"))[
+                "members"
+            ]
+        }
+        for mid in list(photos):
+            if mid in ids:
+                # remove old local file if we replace or drop the photo
+                old = photos.pop(mid)
+                p = ROOT / old.get("local_path", "")
+                if p.exists() and p.is_file():
+                    p.unlink()
+        for mid in list(socials):
+            if mid in ids:
+                socials.pop(mid)
+
+    totals = []
+    for key in targets:
+        print(f"=== {key} ===")
+        report, ok = process_parliament(key, photos, socials)
+        members_n = len(report)
+        photos_n = sum(
+            1
+            for m in report
+            if m["id"] in photos
+        )
+        socials_n = sum(1 for m in report if m["id"] in socials)
+        print(
+            f"{key}: matched+verified {ok}/{members_n}; "
+            f"photos accepted this parliament: {photos_n}; "
+            f"social candidates: {socials_n}"
+        )
+        totals.append((key, ok, members_n, photos_n, socials_n))
+
+    now = datetime.now(timezone.utc).replace(microsecond=0).isoformat()
+    photos_path.write_text(
+        json.dumps(
+            {
+                "source": "Wikimedia Commons (via Wikidata, matched through Wikipedia member lists)",
+                "generated_at": now,
+                "photos": photos,
+            },
+            indent=1,
+            ensure_ascii=False,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    socials_path.write_text(
+        json.dumps(
+            {
+                "source": "Wikidata (CC0): P2002 X, P2013 Facebook, P2003 Instagram",
+                "note": "Candidates only. Nothing here is shown on the site until the owner approves it.",
+                "generated_at": now,
+                "candidates": socials,
+            },
+            indent=1,
+            ensure_ascii=False,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
+    # Orphan image cleanup against the merged photos map.
+    used = {p["local_path"] for p in photos.values()}
+    for f in (ROOT / "images" / "members").glob("*"):
+        rel = f"images/members/{f.name}"
+        if rel not in used:
+            f.unlink()
+            print(f"removed orphan image {rel}")
+
+    print("=== totals ===")
+    for row in totals:
+        print(row)
+    print(f"photos.json entries: {len(photos)}; socials_review candidates: {len(socials)}")
     return 0
 
 

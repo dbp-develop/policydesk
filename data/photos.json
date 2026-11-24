@@ -1,6 +1,6 @@
 {
  "source": "Wikimedia Commons (via Wikidata, matched through Wikipedia member lists)",
- "generated_at": "2026-11-23T21:19:05+00:00",
+ "generated_at": "2026-11-24T21:25:07+00:00",
  "photos": {
   "aiv-puglielli": {
    "file": "Aiv Puglielli.png",
@@ -595,6 +595,1095 @@
    "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
    "local_path": "images/members/will-fowles.jpg",
    "source": "Wikimedia Commons via Wikidata Q8002810"
+  },
+  "fed-alison-byrnes": {
+   "file": "Alison Byrnes MP email footer.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Alison_Byrnes_MP_email_footer.jpg",
+   "creator": "Commonwealth of Australia (Department of Climate Change, Energy, the Environment and Water)",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0",
+   "local_path": "images/members/fed-alison-byrnes.jpg",
+   "source": "Wikimedia Commons via Wikidata Q111772495"
+  },
+  "fed-allegra-spender": {
+   "file": "Allegra Spender Unearthed Entrepreneurs 2018 (cropped).png",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Allegra_Spender_Unearthed_Entrepreneurs_2018_%28cropped%29.png",
+   "creator": "Penshurst Girls Campus, Georges River College, State of New South Wales (Department of Education)",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0",
+   "local_path": "images/members/fed-allegra-spender.png",
+   "source": "Wikimedia Commons via Wikidata Q109652019"
+  },
+  "fed-amanda-rishworth": {
+   "file": "Amanda Rishworth 2022.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Amanda_Rishworth_2022.jpg",
+   "creator": "Luke Anderson",
+   "licence": "CC BY 2.0",
+   "licence_url": "https://creativecommons.org/licenses/by/2.0",
+   "local_path": "images/members/fed-amanda-rishworth.jpg",
+   "source": "Wikimedia Commons via Wikidata Q4739745"
+  },
+  "fed-andrew-bragg": {
+   "file": "Headshot of Senator Andrew Bragg, Parliament House Canberra, ACT.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Headshot_of_Senator_Andrew_Bragg%2C_Parliament_House_Canberra%2C_ACT.jpg",
+   "creator": "David Foote (AUSPIC)",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/fed-andrew-bragg.jpg",
+   "source": "Wikimedia Commons via Wikidata Q64152252"
+  },
+  "fed-andrew-charlton": {
+   "file": "Andrew Charlton speaking at CeBIT (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Andrew_Charlton_speaking_at_CeBIT_%28cropped%29.jpg",
+   "creator": "CEBIT AUSTRALIA",
+   "licence": "CC BY 2.0",
+   "licence_url": "https://creativecommons.org/licenses/by/2.0",
+   "local_path": "images/members/fed-andrew-charlton.jpg",
+   "source": "Wikimedia Commons via Wikidata Q112567447"
+  },
+  "fed-andrew-gee": {
+   "file": "Andrew Gee (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Andrew_Gee_%28cropped%29.jpg",
+   "creator": "Commonwealth of Australia",
+   "licence": "CC BY 3.0 au",
+   "licence_url": "https://creativecommons.org/licenses/by/3.0/au/deed.en",
+   "local_path": "images/members/fed-andrew-gee.jpg",
+   "source": "Wikimedia Commons via Wikidata Q4757071"
+  },
+  "fed-andrew-giles": {
+   "file": "Andrew Giles.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Andrew_Giles.jpg",
+   "creator": "Mattdawson4",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/fed-andrew-giles.jpg",
+   "source": "Wikimedia Commons via Wikidata Q16214422"
+  },
+  "fed-andrew-hastie": {
+   "file": "A Hastie 2023 (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:A_Hastie_2023_%28cropped%29.jpg",
+   "creator": "DavidEpsom",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0",
+   "local_path": "images/members/fed-andrew-hastie.jpg",
+   "source": "Wikimedia Commons via Wikidata Q21066082"
+  },
+  "fed-andrew-mclachlan": {
+   "file": "McLachlan Profile.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:McLachlan_Profile.jpg",
+   "creator": "B.vermeer",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/fed-andrew-mclachlan.jpg",
+   "source": "Wikimedia Commons via Wikidata Q16732352"
+  },
+  "fed-andrew-wallace": {
+   "file": "Andrew Wallace.png",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Andrew_Wallace.png",
+   "creator": "Australian Parliament Fan",
+   "licence": "CC BY-SA 3.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+   "local_path": "images/members/fed-andrew-wallace.png",
+   "source": "Wikimedia Commons via Wikidata Q25756194"
+  },
+  "fed-andrew-wilkie": {
+   "file": "Andrew Wilkie 2.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Andrew_Wilkie_2.jpg",
+   "creator": "Barrylb at English Wikipedia",
+   "licence": "Public domain",
+   "licence_url": null,
+   "local_path": "images/members/fed-andrew-wilkie.jpg",
+   "source": "Wikimedia Commons via Wikidata Q4758919"
+  },
+  "fed-andrew-willcox": {
+   "file": "Andrew Wilcox Bridget McKenzie Steven Miles 2021 (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Andrew_Wilcox_Bridget_McKenzie_Steven_Miles_2021_%28cropped%29.jpg",
+   "creator": "The State of Queensland (Department of the Premier and Cabinet)",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0",
+   "local_path": "images/members/fed-andrew-willcox.jpg",
+   "source": "Wikimedia Commons via Wikidata Q112114763"
+  },
+  "fed-angus-taylor": {
+   "file": "Angus Taylor 2018 portrait black.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Angus_Taylor_2018_portrait_black.jpg",
+   "creator": "Department of Climate Change, Energy, the Environment and Water. 2022. https://www.dcceew.gov.au © Department of Climate Change, Energy, the Environment and Wat",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0",
+   "local_path": "images/members/fed-angus-taylor.jpg",
+   "source": "Wikimedia Commons via Wikidata Q16196728"
+  },
+  "fed-anika-wells": {
+   "file": "Anika Wells 2023.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Anika_Wells_2023.jpg",
+   "creator": "Department of Foreign Affairs and Trade website – www.dfat.gov.au",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0",
+   "local_path": "images/members/fed-anika-wells.jpg",
+   "source": "Wikimedia Commons via Wikidata Q64205577"
+  },
+  "fed-anne-aly": {
+   "file": "Hon Anne Aly MP - Official Portrait - 000187612 (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Hon_Anne_Aly_MP_-_Official_Portrait_-_000187612_%28cropped%29.jpg",
+   "creator": "Department of Foreign Affairs and Trade website – www.dfat.gov.au",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0",
+   "local_path": "images/members/fed-anne-aly.jpg",
+   "source": "Wikimedia Commons via Wikidata Q20631311"
+  },
+  "fed-anne-ruston": {
+   "file": "Anne Ruston 2018-11-21.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Anne_Ruston_2018-11-21.jpg",
+   "creator": "Gabinete Primeiru-Ministru: S.Exa. Taur Matan Ruak",
+   "licence": "Public domain",
+   "licence_url": "//commons.wikimedia.org/wiki/File:Anne_Ruston_2018-11-21.jpg",
+   "local_path": "images/members/fed-anne-ruston.jpg",
+   "source": "Wikimedia Commons via Wikidata Q4768766"
+  },
+  "fed-anne-stanley": {
+   "file": "Anne Stanley Brendon Viora 2016 (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Anne_Stanley_Brendon_Viora_2016_%28cropped%29.jpg",
+   "creator": "State of New South Wales (Department of Education)",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0",
+   "local_path": "images/members/fed-anne-stanley.jpg",
+   "source": "Wikimedia Commons via Wikidata Q25768264"
+  },
+  "fed-anthony-albanese": {
+   "file": "Anthony Albanese portrait (re-crop).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Anthony_Albanese_portrait_%28re-crop%29.jpg",
+   "creator": "Australian Government",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0",
+   "local_path": "images/members/fed-anthony-albanese.jpg",
+   "source": "Wikimedia Commons via Wikidata Q335697"
+  },
+  "fed-anthony-chisholm": {
+   "file": "Senator Chisholm.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Senator_Chisholm.jpg",
+   "creator": "Auspolhelp",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/fed-anthony-chisholm.jpg",
+   "source": "Wikimedia Commons via Wikidata Q18719336"
+  },
+  "fed-barbara-pocock": {
+   "file": "Barbara Pocock (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Barbara_Pocock_%28cropped%29.jpg",
+   "creator": "Australian Greens website – Australian Greens",
+   "licence": "CC BY-SA 2.5 au",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/2.5/au/deed.en",
+   "local_path": "images/members/fed-barbara-pocock.jpg",
+   "source": "Wikimedia Commons via Wikidata Q63405944"
+  },
+  "fed-barnaby-joyce": {
+   "file": "Senator Barnaby Joyce.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Senator_Barnaby_Joyce.jpg",
+   "creator": "Bidgee",
+   "licence": "CC BY-SA 3.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+   "local_path": "images/members/fed-barnaby-joyce.jpg",
+   "source": "Wikimedia Commons via Wikidata Q4861362"
+  },
+  "fed-basem-abdo": {
+   "file": "Basem Abdo at 2025 Calwell results declaration (cropped).JPG",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Basem_Abdo_at_2025_Calwell_results_declaration_%28cropped%29.JPG",
+   "creator": "Alison Newman",
+   "licence": "CC0",
+   "licence_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "local_path": "images/members/fed-basem-abdo.jpg",
+   "source": "Wikimedia Commons via Wikidata Q134311976"
+  },
+  "fed-bridget-mckenzie": {
+   "file": "Bridget McKenzie 2014-02.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Bridget_McKenzie_2014-02.jpg",
+   "creator": "CNBP Flickr account",
+   "licence": "CC BY 2.0",
+   "licence_url": "https://creativecommons.org/licenses/by/2.0",
+   "local_path": "images/members/fed-bridget-mckenzie.jpg",
+   "source": "Wikimedia Commons via Wikidata Q4966734"
+  },
+  "fed-carina-garland": {
+   "file": "Carina Garland at ECLC Chisholm federal election candidates forum (1) — May 2022.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Carina_Garland_at_ECLC_Chisholm_federal_election_candidates_forum_%281%29_%E2%80%94_May_2022.jpg",
+   "creator": "Alison Newman",
+   "licence": "CC0",
+   "licence_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "local_path": "images/members/fed-carina-garland.jpg",
+   "source": "Wikimedia Commons via Wikidata Q112108318"
+  },
+  "fed-carol-brown": {
+   "file": "Carol Brown.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Carol_Brown.jpg",
+   "creator": "Commonwealth of Australia",
+   "licence": "CC BY 3.0 au",
+   "licence_url": "https://creativecommons.org/licenses/by/3.0/au/deed.en",
+   "local_path": "images/members/fed-carol-brown.jpg",
+   "source": "Wikimedia Commons via Wikidata Q5044273"
+  },
+  "fed-catherine-king": {
+   "file": "Catherine King Headshot.JPG",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Catherine_King_Headshot.JPG",
+   "creator": "Office of Catherine King",
+   "licence": "CC BY-SA 3.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+   "local_path": "images/members/fed-catherine-king.jpg",
+   "source": "Wikimedia Commons via Wikidata Q5052776"
+  },
+  "fed-charlotte-walker": {
+   "file": "Charlotte Walker at the PIRA Federal Election Forum.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Charlotte_Walker_at_the_PIRA_Federal_Election_Forum.jpg",
+   "creator": "Yu Chu Chin",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/fed-charlotte-walker.jpg",
+   "source": "Wikimedia Commons via Wikidata Q134590436"
+  },
+  "fed-clare-o-neil": {
+   "file": "Clare O'Neil (2023).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Clare_O%27Neil_%282023%29.jpg",
+   "creator": "Department of Foreign Affairs and Trade website – www.dfat.gov.au",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0",
+   "local_path": "images/members/fed-clare-o-neil.jpg",
+   "source": "Wikimedia Commons via Wikidata Q5126228"
+  },
+  "fed-colin-boyce": {
+   "file": "Colin Boyce at the \"Start Rockhampton Ring Road\" Rally.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Colin_Boyce_at_the_%22Start_Rockhampton_Ring_Road%22_Rally.jpg",
+   "creator": "RegionalQueenslander",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/fed-colin-boyce.jpg",
+   "source": "Wikimedia Commons via Wikidata Q43724669"
+  },
+  "fed-dai-le": {
+   "file": "Dai Le headshot.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Dai_Le_headshot.jpg",
+   "creator": "Drpc7 at en.wikipedia",
+   "licence": "CC BY-SA 3.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+   "local_path": "images/members/fed-dai-le.jpg",
+   "source": "Wikimedia Commons via Wikidata Q111909058"
+  },
+  "fed-dan-repacholi": {
+   "file": "Dan Repacholi Milbrodale Matters.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Dan_Repacholi_Milbrodale_Matters.jpg",
+   "creator": "State of New South Wales (Department of Education) - Milbrodale Public School",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0",
+   "local_path": "images/members/fed-dan-repacholi.jpg",
+   "source": "Wikimedia Commons via Wikidata Q5218565"
+  },
+  "fed-daniel-mulino": {
+   "file": "Daniel Mulino 2022.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Daniel_Mulino_2022.jpg",
+   "creator": "TheScrubby",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/fed-daniel-mulino.jpg",
+   "source": "Wikimedia Commons via Wikidata Q19518195"
+  },
+  "fed-david-farley": {
+   "file": "David Farley.png",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:David_Farley.png",
+   "creator": "The Australia Institute",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0",
+   "local_path": "images/members/fed-david-farley.png",
+   "source": "Wikimedia Commons via Wikidata Q139718547"
+  },
+  "fed-david-littleproud": {
+   "file": "David Littleproud July 2018.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:David_Littleproud_July_2018.jpg",
+   "creator": "U.S. Department of Agriculture Preston Keres/Office of Communications-Photography Services Center",
+   "licence": "Public domain",
+   "licence_url": null,
+   "local_path": "images/members/fed-david-littleproud.jpg",
+   "source": "Wikimedia Commons via Wikidata Q25756209"
+  },
+  "fed-david-pocock": {
+   "file": "David Pocock park (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:David_Pocock_park_%28cropped%29.jpg",
+   "creator": "Magee425",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/fed-david-pocock.jpg",
+   "source": "Wikimedia Commons via Wikidata Q2777809"
+  },
+  "fed-david-shoebridge": {
+   "file": "David Shoebridge MLC, 2019.png",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:David_Shoebridge_MLC%2C_2019.png",
+   "creator": "Australian Greens website – Australian Greens",
+   "licence": "CC BY-SA 2.5 au",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/2.5/au/deed.en",
+   "local_path": "images/members/fed-david-shoebridge.png",
+   "source": "Wikimedia Commons via Wikidata Q5239754"
+  },
+  "fed-david-smith": {
+   "file": "Senator David Smith.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Senator_David_Smith.jpg",
+   "creator": "UCStudentActivist97",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/fed-david-smith.jpg",
+   "source": "Wikimedia Commons via Wikidata Q53960880"
+  },
+  "fed-dean-smith": {
+   "file": "Senator Dean Smith (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Senator_Dean_Smith_%28cropped%29.jpg",
+   "creator": "Department of Foreign Affairs and Trade website – www.dfat.gov.au",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0",
+   "local_path": "images/members/fed-dean-smith.jpg",
+   "source": "Wikimedia Commons via Wikidata Q5246470"
+  },
+  "fed-deborah-o-neill": {
+   "file": "Deborah O'Neill - Portrait.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Deborah_O%27Neill_-_Portrait.jpg",
+   "creator": "Deborah O'Neill",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/fed-deborah-o-neill.jpg",
+   "source": "Wikimedia Commons via Wikidata Q5248341"
+  },
+  "fed-dorinda-cox": {
+   "file": "Senator Dorinda Cox.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Senator_Dorinda_Cox.jpg",
+   "creator": "Australian Greens website – Australian Greens",
+   "licence": "CC BY-SA 2.5 au",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/2.5/au/deed.en",
+   "local_path": "images/members/fed-dorinda-cox.jpg",
+   "source": "Wikimedia Commons via Wikidata Q108441696"
+  },
+  "fed-elizabeth-watson-brown": {
+   "file": "Elizabeth Watson-Brown.png",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Elizabeth_Watson-Brown.png",
+   "creator": "Australian Greens website – Australian Greens",
+   "licence": "CC BY-SA 2.5 au",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/2.5/au/deed.en",
+   "local_path": "images/members/fed-elizabeth-watson-brown.png",
+   "source": "Wikimedia Commons via Wikidata Q18813613"
+  },
+  "fed-emma-mcbride": {
+   "file": "Emma McBride Tacoma Public School 2017 (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Emma_McBride_Tacoma_Public_School_2017_%28cropped%29.jpg",
+   "creator": "Tacoma Public School, State of New South Wales (Department of Education)",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0",
+   "local_path": "images/members/fed-emma-mcbride.jpg",
+   "source": "Wikimedia Commons via Wikidata Q25844494"
+  },
+  "fed-fatima-payman": {
+   "file": "Fatima Payman-2023.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Fatima_Payman-2023.jpg",
+   "creator": "Lucy Cucumber/Lucy Segal",
+   "licence": "Public domain",
+   "licence_url": null,
+   "local_path": "images/members/fed-fatima-payman.jpg",
+   "source": "Wikimedia Commons via Wikidata Q112152550"
+  },
+  "fed-fiona-phillips": {
+   "file": "Fiona Philips, MP for federal electorate of Gilmore, Australia.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Fiona_Philips%2C_MP_for_federal_electorate_of_Gilmore%2C_Australia.jpg",
+   "creator": "Tony1",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/fed-fiona-phillips.jpg",
+   "source": "Wikimedia Commons via Wikidata Q64038637"
+  },
+  "fed-garth-hamilton": {
+   "file": "Garth Hamilton Geoscience Australia 2022 (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Garth_Hamilton_Geoscience_Australia_2022_%28cropped%29.jpg",
+   "creator": "Commonwealth of Australia (Geoscience Australia)",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0",
+   "local_path": "images/members/fed-garth-hamilton.jpg",
+   "source": "Wikimedia Commons via Wikidata Q102420453"
+  },
+  "fed-helen-haines": {
+   "file": "Cropped portrait of Helen Haines — June 2022.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Cropped_portrait_of_Helen_Haines_%E2%80%94_June_2022.jpg",
+   "creator": "Alison Newman",
+   "licence": "CC0",
+   "licence_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "local_path": "images/members/fed-helen-haines.jpg",
+   "source": "Wikimedia Commons via Wikidata Q41662205"
+  },
+  "fed-helen-polley": {
+   "file": "Senator Helen Polley.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Senator_Helen_Polley.jpg",
+   "creator": "Bidgee",
+   "licence": "CC BY-SA 3.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+   "local_path": "images/members/fed-helen-polley.jpg",
+   "source": "Wikimedia Commons via Wikidata Q16189453"
+  },
+  "fed-jacinta-nampijinpa-price": {
+   "file": "Jacinta Nampijinpa Price at CPAC launch.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Jacinta_Nampijinpa_Price_at_CPAC_launch.jpg",
+   "creator": "Pellowe Talk",
+   "licence": "CC BY 3.0",
+   "licence_url": "https://creativecommons.org/licenses/by/3.0",
+   "local_path": "images/members/fed-jacinta-nampijinpa-price.jpg",
+   "source": "Wikimedia Commons via Wikidata Q106869875"
+  },
+  "fed-james-mcgrath": {
+   "file": "James McGrath 2017.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:James_McGrath_2017.jpg",
+   "creator": "Commonwealth of Australia",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0",
+   "local_path": "images/members/fed-james-mcgrath.jpg",
+   "source": "Wikimedia Commons via Wikidata Q16732314"
+  },
+  "fed-james-paterson": {
+   "file": "James Paterson at Fraser Symposium (3) (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:James_Paterson_at_Fraser_Symposium_%283%29_%28cropped%29.jpg",
+   "creator": "Alison Newman",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/fed-james-paterson.jpg",
+   "source": "Wikimedia Commons via Wikidata Q23016290"
+  },
+  "fed-jana-stewart": {
+   "file": "Jana Stewart 2019.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Jana_Stewart_2019.jpg",
+   "creator": "julian meehan from Melbourne, Australia",
+   "licence": "CC BY 2.0",
+   "licence_url": "https://creativecommons.org/licenses/by/2.0",
+   "local_path": "images/members/fed-jana-stewart.jpg",
+   "source": "Wikimedia Commons via Wikidata Q111513180"
+  },
+  "fed-jason-clare": {
+   "file": "Jason Clare at the state funeral of Peter Buckskin (DSCF7676).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Jason_Clare_at_the_state_funeral_of_Peter_Buckskin_%28DSCF7676%29.jpg",
+   "creator": "Yu Chu Chin",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/fed-jason-clare.jpg",
+   "source": "Wikimedia Commons via Wikidata Q6162219"
+  },
+  "fed-jason-wood": {
+   "file": "Jason Wood Assistant Minister.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Jason_Wood_Assistant_Minister.jpg",
+   "creator": "Commonwealth of Australia (Department of Home Affairs)",
+   "licence": "CC BY 3.0",
+   "licence_url": "https://creativecommons.org/licenses/by/3.0",
+   "local_path": "images/members/fed-jason-wood.jpg",
+   "source": "Wikimedia Commons via Wikidata Q6163809"
+  },
+  "fed-jerome-laxale": {
+   "file": "Jerome Laxale Portrait.png",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Jerome_Laxale_Portrait.png",
+   "creator": "Blinton2112",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0",
+   "local_path": "images/members/fed-jerome-laxale.png",
+   "source": "Wikimedia Commons via Wikidata Q112116312"
+  },
+  "fed-jess-walsh": {
+   "file": "JWHeadshotCrop.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:JWHeadshotCrop.jpg",
+   "creator": "Rubysaurus",
+   "licence": "CC0",
+   "licence_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "local_path": "images/members/fed-jess-walsh.jpg",
+   "source": "Wikimedia Commons via Wikidata Q64711059"
+  },
+  "fed-jo-briskey": {
+   "file": "Jo Briskey at 2025 Maribyrnong results declaration (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Jo_Briskey_at_2025_Maribyrnong_results_declaration_%28cropped%29.jpg",
+   "creator": "Alison Newman",
+   "licence": "CC0",
+   "licence_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "local_path": "images/members/fed-jo-briskey.jpg",
+   "source": "Wikimedia Commons via Wikidata Q134312684"
+  },
+  "fed-jodie-belyea": {
+   "file": "Jodie.belyea.mp image.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Jodie.belyea.mp_image.jpg",
+   "creator": "Srnagak",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/fed-jodie-belyea.jpg",
+   "source": "Wikimedia Commons via Wikidata Q124714701"
+  },
+  "fed-jonathon-duniam": {
+   "file": "Senator Jonathon Duniam.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Senator_Jonathon_Duniam.jpg",
+   "creator": "Parliamentary Education Office",
+   "licence": "CC BY 3.0",
+   "licence_url": "https://creativecommons.org/licenses/by/3.0",
+   "local_path": "images/members/fed-jonathon-duniam.jpg",
+   "source": "Wikimedia Commons via Wikidata Q25268390"
+  },
+  "fed-jordon-steele-john": {
+   "file": "Jordon Steele-John.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Jordon_Steele-John.jpg",
+   "creator": "Australian Greens website – Australian Greens",
+   "licence": "CC BY-SA 2.5 au",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/2.5/au/deed.en",
+   "local_path": "images/members/fed-jordon-steele-john.jpg",
+   "source": "Wikimedia Commons via Wikidata Q33139188"
+  },
+  "fed-josh-dolega": {
+   "file": "04.30 副總統接見「澳大利亞跨黨派國會議員團」 - 55239966163.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:04.30_%E5%89%AF%E7%B8%BD%E7%B5%B1%E6%8E%A5%E8%A6%8B%E3%80%8C%E6%BE%B3%E5%A4%A7%E5%88%A9%E4%BA%9E%E8%B7%A8%E9%BB%A8%E6%B4%BE%E5%9C%8B%E6%9C%83%E8%AD%B0%E5%93%A1%E5%9C%98%E3%80%8D_-_55239966163.jpg",
+   "creator": "Taiwan Presidential Office",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0",
+   "local_path": "images/members/fed-josh-dolega.jpg",
+   "source": "Wikimedia Commons via Wikidata Q134563137"
+  },
+  "fed-julian-hill": {
+   "file": "Julian Hill MP.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Julian_Hill_MP.jpg",
+   "creator": "Parliamentary Education Office",
+   "licence": "CC BY 3.0",
+   "licence_url": "https://creativecommons.org/licenses/by/3.0",
+   "local_path": "images/members/fed-julian-hill.jpg",
+   "source": "Wikimedia Commons via Wikidata Q27435059"
+  },
+  "fed-julian-leeser": {
+   "file": "Julian Leeser 2023.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Julian_Leeser_2023.jpg",
+   "creator": "Lucy Cucumber",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/fed-julian-leeser.jpg",
+   "source": "Wikimedia Commons via Wikidata Q24191457"
+  },
+  "fed-kate-chaney": {
+   "file": "Kate Chaney MP.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Kate_Chaney_MP.jpg",
+   "creator": "Kate Chaney for Curtin",
+   "licence": "CC BY 3.0",
+   "licence_url": "https://creativecommons.org/licenses/by/3.0",
+   "local_path": "images/members/fed-kate-chaney.jpg",
+   "source": "Wikimedia Commons via Wikidata Q112103422"
+  },
+  "fed-kate-thwaites": {
+   "file": "Kate Thwaites 2019 (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Kate_Thwaites_2019_%28cropped%29.jpg",
+   "creator": "Thescrubbythug",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/fed-kate-thwaites.jpg",
+   "source": "Wikimedia Commons via Wikidata Q64225759"
+  },
+  "fed-kerrynne-liddle": {
+   "file": "Kerrynne Liddle 2019.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Kerrynne_Liddle_2019.jpg",
+   "creator": "Commonwealth of Australia (Transparency Portal)",
+   "licence": "CC BY 3.0",
+   "licence_url": "https://creativecommons.org/licenses/by/3.0",
+   "local_path": "images/members/fed-kerrynne-liddle.jpg",
+   "source": "Wikimedia Commons via Wikidata Q112581963"
+  },
+  "fed-kevin-hogan": {
+   "file": "Kevin Hogan (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Kevin_Hogan_%28cropped%29.jpg",
+   "creator": "State of New South Wales (Department of Education)",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0",
+   "local_path": "images/members/fed-kevin-hogan.jpg",
+   "source": "Wikimedia Commons via Wikidata Q16195119"
+  },
+  "fed-kristy-mcbain": {
+   "file": "Kristy McBain.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Kristy_McBain.jpg",
+   "creator": "Commonwealth of Australia",
+   "licence": "CC BY 3.0 au",
+   "licence_url": "https://creativecommons.org/licenses/by/3.0/au/deed.en",
+   "local_path": "images/members/fed-kristy-mcbain.jpg",
+   "source": "Wikimedia Commons via Wikidata Q96970848"
+  },
+  "fed-larissa-waters": {
+   "file": "Larissa Waters infobox crop.png",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Larissa_Waters_infobox_crop.png",
+   "creator": "Australian Greens website – Australian Greens",
+   "licence": "CC BY-SA 2.5 au",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/2.5/au/deed.en",
+   "local_path": "images/members/fed-larissa-waters.png",
+   "source": "Wikimedia Commons via Wikidata Q6489515"
+  },
+  "fed-leon-rebello": {
+   "file": "04.30 副總統接見「澳大利亞跨黨派國會議員團」 - 55238919412.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:04.30_%E5%89%AF%E7%B8%BD%E7%B5%B1%E6%8E%A5%E8%A6%8B%E3%80%8C%E6%BE%B3%E5%A4%A7%E5%88%A9%E4%BA%9E%E8%B7%A8%E9%BB%A8%E6%B4%BE%E5%9C%8B%E6%9C%83%E8%AD%B0%E5%93%A1%E5%9C%98%E3%80%8D_-_55238919412.jpg",
+   "creator": "Taiwan Presidential Office",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0",
+   "local_path": "images/members/fed-leon-rebello.jpg",
+   "source": "Wikimedia Commons via Wikidata Q134355836"
+  },
+  "fed-lidia-thorpe": {
+   "file": "Lidia Thorpe.jpeg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Lidia_Thorpe.jpeg",
+   "creator": "Australian Greens website – Australian Greens",
+   "licence": "CC BY-SA 2.5 au",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/2.5/au/deed.en",
+   "local_path": "images/members/fed-lidia-thorpe.jpg",
+   "source": "Wikimedia Commons via Wikidata Q43285578"
+  },
+  "fed-lisa-chesters": {
+   "file": "Lisa Chesters with volunteers.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Lisa_Chesters_with_volunteers.jpg",
+   "creator": "Thescrubbythug",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/fed-lisa-chesters.jpg",
+   "source": "Wikimedia Commons via Wikidata Q16727986"
+  },
+  "fed-lisa-darmanin": {
+   "file": "Lisa Darmanin (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Lisa_Darmanin_%28cropped%29.jpg",
+   "creator": "Matt Hrkac at Matt Hrkac Photography .",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/fed-lisa-darmanin.jpg",
+   "source": "Wikimedia Commons via Wikidata Q125854047"
+  },
+  "fed-louise-miller-frost": {
+   "file": "Louise Miller-Frost at the 2026 Annual Hawke Lecture, Adelaide Convention Centre (028A5395).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Louise_Miller-Frost_at_the_2026_Annual_Hawke_Lecture%2C_Adelaide_Convention_Centre_%28028A5395%29.jpg",
+   "creator": "Yu Chu Chin",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/fed-louise-miller-frost.jpg",
+   "source": "Wikimedia Commons via Wikidata Q112112804"
+  },
+  "fed-luke-gosling": {
+   "file": "ANPB 2019 Luke Gosling MP 2019.10.14 07.25 DSC8139-2 (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:ANPB_2019_Luke_Gosling_MP_2019.10.14_07.25_DSC8139-2_%28cropped%29.jpg",
+   "creator": "M Chan",
+   "licence": "Public domain",
+   "licence_url": null,
+   "local_path": "images/members/fed-luke-gosling.jpg",
+   "source": "Wikimedia Commons via Wikidata Q25288450"
+  },
+  "fed-madeleine-king": {
+   "file": "Gary Gray .jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Gary_Gray_.jpg",
+   "creator": "Petkli05",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/fed-madeleine-king.jpg",
+   "source": "Wikimedia Commons via Wikidata Q25756137"
+  },
+  "fed-malarndirri-mccarthy": {
+   "file": "Malarndirri McCarthy PMC 2022.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Malarndirri_McCarthy_PMC_2022.jpg",
+   "creator": "Australian Government",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0",
+   "local_path": "images/members/fed-malarndirri-mccarthy.jpg",
+   "source": "Wikimedia Commons via Wikidata Q6741359"
+  },
+  "fed-malcolm-roberts": {
+   "file": "Malcolm Roberts 2020.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Malcolm_Roberts_2020.jpg",
+   "creator": "Joshua Ryan",
+   "licence": "CC0",
+   "licence_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "local_path": "images/members/fed-malcolm-roberts.jpg",
+   "source": "Wikimedia Commons via Wikidata Q26848575"
+  },
+  "fed-marion-scrymgour": {
+   "file": "Marion Scrymgour MLA (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Marion_Scrymgour_MLA_%28cropped%29.jpg",
+   "creator": "librarianidol",
+   "licence": "CC BY 2.0",
+   "licence_url": "https://creativecommons.org/licenses/by/2.0",
+   "local_path": "images/members/fed-marion-scrymgour.jpg",
+   "source": "Wikimedia Commons via Wikidata Q1899245"
+  },
+  "fed-mark-butler": {
+   "file": "Mark Butler at the 2026 Australian Labor Party National Conference (028A8940).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Mark_Butler_at_the_2026_Australian_Labor_Party_National_Conference_%28028A8940%29.jpg",
+   "creator": "Yu Chu Chin",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/fed-mark-butler.jpg",
+   "source": "Wikimedia Commons via Wikidata Q6766947"
+  },
+  "fed-mark-dreyfus": {
+   "file": "Mark Dreyfus, Australian Labor MP in 2005.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Mark_Dreyfus%2C_Australian_Labor_MP_in_2005.jpg",
+   "creator": "w:en:User:Adam Carr",
+   "licence": "CC BY-SA 3.0",
+   "licence_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+   "local_path": "images/members/fed-mark-dreyfus.jpg",
+   "source": "Wikimedia Commons via Wikidata Q6767411"
+  },
+  "fed-mary-doyle": {
+   "file": "Mary Doyle at 2025 Aston results declaration (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Mary_Doyle_at_2025_Aston_results_declaration_%28cropped%29.jpg",
+   "creator": "Alison Newman",
+   "licence": "CC0",
+   "licence_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "local_path": "images/members/fed-mary-doyle.jpg",
+   "source": "Wikimedia Commons via Wikidata Q117356133"
+  },
+  "fed-matt-smith": {
+   "file": "Matt Smith at the 2026 Australian Labor Party National Conference (028A9046).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Matt_Smith_at_the_2026_Australian_Labor_Party_National_Conference_%28028A9046%29.jpg",
+   "creator": "Yu Chu Chin",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/fed-matt-smith.jpg",
+   "source": "Wikimedia Commons via Wikidata Q134386290"
+  },
+  "fed-mehreen-faruqi": {
+   "file": "Mehreen Faruqi 2015.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Mehreen_Faruqi_2015.jpg",
+   "creator": "Kate Ausburn",
+   "licence": "CC BY 2.0",
+   "licence_url": "https://creativecommons.org/licenses/by/2.0",
+   "local_path": "images/members/fed-mehreen-faruqi.jpg",
+   "source": "Wikimedia Commons via Wikidata Q16728926"
+  },
+  "fed-melissa-mcintosh": {
+   "file": "M McIntosh Parliamentary function CBR 16 May 2024.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:M_McIntosh_Parliamentary_function_CBR_16_May_2024.jpg",
+   "creator": "MatthewDalhousie",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/fed-melissa-mcintosh.jpg",
+   "source": "Wikimedia Commons via Wikidata Q64038211"
+  },
+  "fed-melissa-price": {
+   "file": "Melissa Price MP.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Melissa_Price_MP.jpg",
+   "creator": "Department of the Environment and Energy, Commonwealth of Australia 2018.",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0",
+   "local_path": "images/members/fed-melissa-price.jpg",
+   "source": "Wikimedia Commons via Wikidata Q16195275"
+  },
+  "fed-meryl-swanson": {
+   "file": "Meryl Swanson Irrawang High School 2012 (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Meryl_Swanson_Irrawang_High_School_2012_%28cropped%29.jpg",
+   "creator": "State of New South Wales (Department of Education)",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0",
+   "local_path": "images/members/fed-meryl-swanson.jpg",
+   "source": "Wikimedia Commons via Wikidata Q25350223"
+  },
+  "fed-michael-mccormack": {
+   "file": "Michael McCormack 2018-01 (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Michael_McCormack_2018-01_%28cropped%29.jpg",
+   "creator": "Bidgee",
+   "licence": "CC BY-SA 3.0 au",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/3.0/au/deed.en",
+   "local_path": "images/members/fed-michael-mccormack.jpg",
+   "source": "Wikimedia Commons via Wikidata Q6832641"
+  },
+  "fed-michaelia-cash": {
+   "file": "Michaelia Cash March 2014.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Michaelia_Cash_March_2014.jpg",
+   "creator": "Department of Foreign Affairs and Trade website – www.dfat.gov.au",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0",
+   "local_path": "images/members/fed-michaelia-cash.jpg",
+   "source": "Wikimedia Commons via Wikidata Q572783"
+  },
+  "fed-michelle-ananda-rajah": {
+   "file": "Michelle Ananda-Rajah at the 2026 Australian Labor Party National Conference (028A9108).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Michelle_Ananda-Rajah_at_the_2026_Australian_Labor_Party_National_Conference_%28028A9108%29.jpg",
+   "creator": "Yu Chu Chin",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/fed-michelle-ananda-rajah.jpg",
+   "source": "Wikimedia Commons via Wikidata Q90398588"
+  },
+  "fed-michelle-landry": {
+   "file": "Michelle Landry 2016.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Michelle_Landry_2016.jpg",
+   "creator": "Department of Foreign Affairs and Trade website – www.dfat.gov.au",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0",
+   "local_path": "images/members/fed-michelle-landry.jpg",
+   "source": "Wikimedia Commons via Wikidata Q16194644"
+  },
+  "fed-michelle-rowland": {
+   "file": "Michelle Rowland.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Michelle_Rowland.jpg",
+   "creator": "Commonwealth of Australia",
+   "licence": "CC BY 3.0 au",
+   "licence_url": "https://creativecommons.org/licenses/by/3.0/au/deed.en",
+   "local_path": "images/members/fed-michelle-rowland.jpg",
+   "source": "Wikimedia Commons via Wikidata Q6837228"
+  },
+  "fed-monique-ryan": {
+   "file": "Monique Ryan 2023.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Monique_Ryan_2023.jpg",
+   "creator": "Matt Hrkac",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/fed-monique-ryan.jpg",
+   "source": "Wikimedia Commons via Wikidata Q42696287"
+  },
+  "fed-murray-watt": {
+   "file": "Murray Watt 2022.png",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Murray_Watt_2022.png",
+   "creator": "Department of Agriculture, Water and the Environment",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0",
+   "local_path": "images/members/fed-murray-watt.png",
+   "source": "Wikimedia Commons via Wikidata Q6939517"
+  },
+  "fed-nicolette-boele": {
+   "file": "Nicolette Boele MP.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Nicolette_Boele_MP.jpg",
+   "creator": "Nick Fiennes",
+   "licence": "CC0",
+   "licence_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "local_path": "images/members/fed-nicolette-boele.jpg",
+   "source": "Wikimedia Commons via Wikidata Q133500279"
+  },
+  "fed-nita-green": {
+   "file": "Assistant Minister for Pacific Island Affairs Assistant Minister for Tourism Assistant Minister for Northern Australia Nita Louise Green.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Assistant_Minister_for_Pacific_Island_Affairs_Assistant_Minister_for_Tourism_Assistant_Minister_for_Northern_Australia_Nita_Louise_Green.jpg",
+   "creator": "Department of Foreign Affairs and Trade website – www.dfat.gov.au",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0",
+   "local_path": "images/members/fed-nita-green.jpg",
+   "source": "Wikimedia Commons via Wikidata Q64151668"
+  },
+  "fed-patrick-gorman": {
+   "file": "Patrick Gorman PMC 2022.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Patrick_Gorman_PMC_2022.jpg",
+   "creator": "Department of the Prime Minister and Cabinet, Commonwealth of Australia",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0",
+   "local_path": "images/members/fed-patrick-gorman.jpg",
+   "source": "Wikimedia Commons via Wikidata Q55807656"
+  },
+  "fed-pauline-hanson": {
+   "file": "Pauline Hanson 2017 05 (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Pauline_Hanson_2017_05_%28cropped%29.jpg",
+   "creator": "jfish92",
+   "licence": "CC0",
+   "licence_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "local_path": "images/members/fed-pauline-hanson.jpg",
+   "source": "Wikimedia Commons via Wikidata Q466220"
+  },
+  "fed-penny-allman-payne": {
+   "file": "Penny Allman-Payne (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Penny_Allman-Payne_%28cropped%29.jpg",
+   "creator": "Australian Greens website – Australian Greens",
+   "licence": "CC BY-SA 2.5 au",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/2.5/au/deed.en",
+   "local_path": "images/members/fed-penny-allman-payne.jpg",
+   "source": "Wikimedia Commons via Wikidata Q112149315"
+  },
+  "fed-peter-khalil": {
+   "file": "Peter Khalil 2016 (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Peter_Khalil_2016_%28cropped%29.jpg",
+   "creator": "John Englart (Takver)",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/fed-peter-khalil.jpg",
+   "source": "Wikimedia Commons via Wikidata Q25756187"
+  },
+  "fed-phillip-thompson": {
+   "file": "Phillip Thompson (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Phillip_Thompson_%28cropped%29.jpg",
+   "creator": "Phillip Thompson Townsville",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/fed-phillip-thompson.jpg",
+   "source": "Wikimedia Commons via Wikidata Q64009045"
+  },
+  "fed-rebecca-white": {
+   "file": "Rebecca White MP.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Rebecca_White_MP.jpg",
+   "creator": "Bryce Roney",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/fed-rebecca-white.jpg",
+   "source": "Wikimedia Commons via Wikidata Q7301966"
+  },
+  "fed-rebekha-sharkie": {
+   "file": "Rebekha Sharkie House.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Rebekha_Sharkie_House.jpg",
+   "creator": "Parliamentary Education Office",
+   "licence": "CC BY 3.0",
+   "licence_url": "https://creativecommons.org/licenses/by/3.0",
+   "local_path": "images/members/fed-rebekha-sharkie.jpg",
+   "source": "Wikimedia Commons via Wikidata Q25324881"
+  },
+  "fed-renee-coffey": {
+   "file": "Renee Coffey at the 2026 Australian Labor Party National Conference (028A9148).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Renee_Coffey_at_the_2026_Australian_Labor_Party_National_Conference_%28028A9148%29.jpg",
+   "creator": "Yu Chu Chin",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/fed-renee-coffey.jpg",
+   "source": "Wikimedia Commons via Wikidata Q134312718"
+  },
+  "fed-richard-colbeck": {
+   "file": "Richard Colbeck.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Richard_Colbeck.jpg",
+   "creator": "Department of Foreign Affairs and Trade website – www.dfat.gov.au",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0",
+   "local_path": "images/members/fed-richard-colbeck.jpg",
+   "source": "Wikimedia Commons via Wikidata Q7324825"
+  },
+  "fed-richard-marles": {
+   "file": "Richard Marles at the Pentagon on December 5, 2022 - 221205-D-PM193-1029 (52544902277) (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Richard_Marles_at_the_Pentagon_on_December_5%2C_2022_-_221205-D-PM193-1029_%2852544902277%29_%28cropped%29.jpg",
+   "creator": "U.S. Secretary of Defense",
+   "licence": "CC BY 2.0",
+   "licence_url": "https://creativecommons.org/licenses/by/2.0",
+   "local_path": "images/members/fed-richard-marles.jpg",
+   "source": "Wikimedia Commons via Wikidata Q7327642"
+  },
+  "fed-sally-sitou": {
+   "file": "Sally Sitou 2023.png",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Sally_Sitou_2023.png",
+   "creator": "ANU TV",
+   "licence": "CC BY 3.0",
+   "licence_url": "https://creativecommons.org/licenses/by/3.0",
+   "local_path": "images/members/fed-sally-sitou.png",
+   "source": "Wikimedia Commons via Wikidata Q112108474"
+  },
+  "fed-sarah-hanson-young": {
+   "file": "Sarah Hanson-Young Headshot.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Sarah_Hanson-Young_Headshot.jpg",
+   "creator": "Australian Greens website – Australian Greens",
+   "licence": "CC BY-SA 2.5 au",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/2.5/au/deed.en",
+   "local_path": "images/members/fed-sarah-hanson-young.jpg",
+   "source": "Wikimedia Commons via Wikidata Q2224379"
+  },
+  "fed-sarah-henderson": {
+   "file": "Sarah Henderson 2016.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Sarah_Henderson_2016.jpg",
+   "creator": "Lock the Gate Alliance",
+   "licence": "CC BY 2.0",
+   "licence_url": "https://creativecommons.org/licenses/by/2.0",
+   "local_path": "images/members/fed-sarah-henderson.jpg",
+   "source": "Wikimedia Commons via Wikidata Q7422387"
+  },
+  "fed-sarah-witty": {
+   "file": "Sarah Witty at 2025 Melbourne results declaration (cropped).JPG",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Sarah_Witty_at_2025_Melbourne_results_declaration_%28cropped%29.JPG",
+   "creator": "Alison Newman",
+   "licence": "CC0",
+   "licence_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "local_path": "images/members/fed-sarah-witty.jpg",
+   "source": "Wikimedia Commons via Wikidata Q134384419"
+  },
+  "fed-scott-buchholz": {
+   "file": "Scott Buchholz Penelope Wensley 2013 (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Scott_Buchholz_Penelope_Wensley_2013_%28cropped%29.jpg",
+   "creator": "Sergeant Matthew Thomson, The State of Queensland (Queensland Police Service)",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0",
+   "local_path": "images/members/fed-scott-buchholz.jpg",
+   "source": "Wikimedia Commons via Wikidata Q7436060"
+  },
+  "fed-shayne-neumann": {
+   "file": "Shayne Neumann 2018 (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Shayne_Neumann_2018_%28cropped%29.jpg",
+   "creator": "State of Queensland (Queensland Police Service)",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0",
+   "local_path": "images/members/fed-shayne-neumann.jpg",
+   "source": "Wikimedia Commons via Wikidata Q7491712"
+  },
+  "fed-sophie-scamps": {
+   "file": "Sophie Scamps 2022.png",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Sophie_Scamps_2022.png",
+   "creator": "waynerichmond",
+   "licence": "CC BY 3.0",
+   "licence_url": "https://creativecommons.org/licenses/by/3.0",
+   "local_path": "images/members/fed-sophie-scamps.png",
+   "source": "Wikimedia Commons via Wikidata Q112110660"
+  },
+  "fed-steph-hodgins-may": {
+   "file": "Steph Hodgins-May is Greens candidate for Melbourne Ports...jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Steph_Hodgins-May_is_Greens_candidate_for_Melbourne_Ports...jpg",
+   "creator": "Fadehunter",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/fed-steph-hodgins-may.jpg",
+   "source": "Wikimedia Commons via Wikidata Q110084949"
+  },
+  "fed-susan-templeman": {
+   "file": "Susan Templeman MP.png",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Susan_Templeman_MP.png",
+   "creator": "Lachlan Hyde",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/fed-susan-templeman.png",
+   "source": "Wikimedia Commons via Wikidata Q25753992"
+  },
+  "fed-tammy-tyrrell": {
+   "file": "Tammy Tyrrell 2024.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Tammy_Tyrrell_2024.jpg",
+   "creator": "Jaycoopersydney",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/fed-tammy-tyrrell.jpg",
+   "source": "Wikimedia Commons via Wikidata Q112129143"
+  },
+  "fed-tanya-plibersek": {
+   "file": "Tanya Plibersek 2013 (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Tanya_Plibersek_2013_%28cropped%29.jpg",
+   "creator": "Department of Foreign Affairs and Trade website – www.dfat.gov.au",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0",
+   "local_path": "images/members/fed-tanya-plibersek.jpg",
+   "source": "Wikimedia Commons via Wikidata Q7684036"
+  },
+  "fed-terry-young": {
+   "file": "Terry Young 2023.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Terry_Young_2023.jpg",
+   "creator": "Lucy Cucumber",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/fed-terry-young.jpg",
+   "source": "Wikimedia Commons via Wikidata Q64216512"
+  },
+  "fed-tyron-whitten": {
+   "file": "Tyron Whitten.png",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Tyron_Whitten.png",
+   "creator": "SIX News Australia",
+   "licence": "CC BY 3.0",
+   "licence_url": "https://creativecommons.org/licenses/by/3.0",
+   "local_path": "images/members/fed-tyron-whitten.png",
+   "source": "Wikimedia Commons via Wikidata Q134612355"
+  },
+  "fed-vanessa-bleyer": {
+   "file": "Vanessa Bleyer headshot (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Vanessa_Bleyer_headshot_%28cropped%29.jpg",
+   "creator": "Australian Greens website – Australian Greens",
+   "licence": "CC BY-SA 2.5 au",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/2.5/au/deed.en",
+   "local_path": "images/members/fed-vanessa-bleyer.jpg",
+   "source": "Wikimedia Commons via Wikidata Q140467157"
+  },
+  "fed-zali-steggall": {
+   "file": "Zali Steggall official campaign image.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Zali_Steggall_official_campaign_image.jpg",
+   "creator": "Zali Steggall",
+   "licence": "CC BY-SA 3.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+   "local_path": "images/members/fed-zali-steggall.jpg",
+   "source": "Wikimedia Commons via Wikidata Q145103"
+  },
+  "fed-zoe-mckenzie": {
+   "file": "Zoe McKenzie (Australian politician) at coast 2026.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Zoe_McKenzie_%28Australian_politician%29_at_coast_2026.jpg",
+   "creator": "ASalis1979",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/fed-zoe-mckenzie.jpg",
+   "source": "Wikimedia Commons via Wikidata Q112114762"
   }
  }
 }

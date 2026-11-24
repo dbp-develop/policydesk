@@ -2,18 +2,76 @@
 (function () {
   "use strict";
 
-  var CHAMBER = { lower: "Legislative Assembly", upper: "Legislative Council" };
-  var VACANCY_CHAMBER = { Assembly: "lower", Council: "upper", lower: "lower", upper: "upper" };
+  var PARLIAMENTS = {
+    vic: {
+      label: "Victoria",
+      title: "Members of the Parliament of Victoria",
+      lede: "Find your state MP. Search by name, party, chamber, electorate or region.",
+      electionNote: "The Victorian state election is on 28 November 2026. This list shows members before the election and will be updated once results are official.",
+      membersUrl: "data/members.json",
+      sourceDefault: "Parliament of Victoria",
+      sourceHref: "https://www.parliament.vic.gov.au/members/",
+      profileSr: " on the Parliament of Victoria website",
+      chamber: { lower: "Legislative Assembly", upper: "Legislative Council" },
+      vacancyChamber: { Assembly: "lower", Council: "upper", lower: "lower", upper: "upper" },
+      layers: { lower: "districts", upper: "regions" },
+      boundaryFiles: { districts: "data/boundaries/vic_districts.json", regions: "data/boundaries/vic_regions.json" },
+      seatLabel: { lower: " District", upper: " Region" },
+      zoomExtent: "Whole state",
+      zoomMetro: "Melbourne",
+      showMetro: true,
+      mapLower: "Showing the 88 Legislative Assembly districts.",
+      mapUpper: "Showing the 8 Legislative Council regions. Each region elects 5 members.",
+      mapOtherHint: " Choose Legislative Council under Chamber to see regions.",
+      seatFilterLabel: "Electorate or region",
+      seatAllLabel: "All electorates and regions",
+      mapDesc: "Map of Victorian electoral boundaries. Use the text list of seats below to choose a seat with a keyboard or screen reader.",
+      footerFactsHtml: 'Member facts: <a href="https://www.parliament.vic.gov.au/members/">Parliament of Victoria</a>. This site is independent and not affiliated with any parliament or party.',
+      footerBoundariesHtml: 'Electoral boundaries: Victorian Electoral Commission via DataVic, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, simplified by us.'
+    },
+    federal: {
+      label: "Federal",
+      title: "Members of the Australian Parliament",
+      lede: "Find your federal MP or Senator. Search by name, party, chamber, division or state.",
+      electionNote: "House of Representatives and Senate. Official websites link to each member’s Parliamentary Handbook profile.",
+      membersUrl: "data/federal/members.json",
+      sourceDefault: "Parliament of Australia (Parliamentary Handbook)",
+      sourceHref: "https://handbook.aph.gov.au/",
+      profileSr: " on the Parliament of Australia website",
+      chamber: { lower: "House of Representatives", upper: "Senate" },
+      vacancyChamber: { House: "lower", Senate: "upper", lower: "lower", upper: "upper" },
+      layers: { lower: "divisions", upper: "states" },
+      boundaryFiles: { divisions: "data/boundaries/federal_divisions.json", states: "data/boundaries/federal_states.json" },
+      seatLabel: { lower: " Division", upper: "" },
+      zoomExtent: "Whole country",
+      zoomMetro: "South-east",
+      showMetro: true,
+      mapLower: "Showing the 150 House of Representatives divisions.",
+      mapUpper: "Showing the 8 states and territories. Senators are elected for each state or territory.",
+      mapOtherHint: " Choose Senate under Chamber to see states and territories.",
+      seatFilterLabel: "Division or state",
+      seatAllLabel: "All divisions and states",
+      mapDesc: "Map of Australian federal electoral boundaries. Use the text list of seats below to choose a seat with a keyboard or screen reader.",
+      footerFactsHtml: 'Member facts: <a href="https://handbook.aph.gov.au/">Parliament of Australia (Parliamentary Handbook)</a>. This site is independent and not affiliated with any parliament or party.',
+      footerBoundariesHtml: 'Electoral boundaries: Australian Electoral Commission under the <a href="https://www.aec.gov.au/Electorates/gis/licence.htm">AEC data download licence</a>, simplified by us.'
+    }
+  };
 
   var els = {
     form: document.getElementById("filters"),
+    parliament: document.getElementById("parliament"),
     q: document.getElementById("q"),
     chamber: document.getElementById("chamber"),
+    chamberLowerOpt: document.getElementById("chamber-lower-opt"),
+    chamberUpperOpt: document.getElementById("chamber-upper-opt"),
     party: document.getElementById("party"),
     seat: document.getElementById("seat"),
     list: document.getElementById("list"),
     count: document.getElementById("count"),
     dataLine: document.getElementById("data-line"),
+    electionNote: document.getElementById("election-note"),
+    pageTitle: document.getElementById("page-title"),
+    pageLede: document.getElementById("page-lede"),
     results: document.getElementById("results"),
     viewList: document.getElementById("view-list"),
     viewMap: document.getElementById("view-map"),
@@ -24,18 +82,29 @@
     mapDetail: document.getElementById("map-detail"),
     seatButtons: document.getElementById("seat-buttons"),
     seatCount: document.getElementById("seat-count"),
-    mapCredit: document.getElementById("map-credit")
+    mapCredit: document.getElementById("map-credit"),
+    zoomExtent: document.getElementById("zoom-extent"),
+    zoomMetro: document.getElementById("zoom-metro"),
+    footerFacts: document.getElementById("footer-facts"),
+    footerBoundaries: document.getElementById("footer-boundaries"),
+    seatLabel: document.getElementById("seat-label"),
+    seatAllOpt: document.getElementById("seat-all-opt"),
+    mapDesc: document.getElementById("map-desc")
   };
   var SVG_NS = "http://www.w3.org/2000/svg";
   var METRO = /Metropolitan$/;
 
   var collator = new Intl.Collator("en-AU", { sensitivity: "base" });
+  var parliamentKey = "vic";
+  var cfg = PARLIAMENTS.vic;
   var rows = [];
   var newsIndex = null;   // data/news/index.json, loaded in the background
   var lastListKey = null;
   var photos = {};        // data/photos.json: id -> {local_path, creator, licence, licence_url, commons_url}
   var socials = {};       // data/socials.json: owner-approved links only
   var extrasVersion = 0;  // bumps when photos/socials load, so cards re-render
+
+  function chamberLabel(key) { return cfg.chamber[key]; }
 
   function seatOf(m) { return m.chamber === "lower" ? m.electorate : m.region; }
 
@@ -73,6 +142,10 @@
   }
 
   function buildFilters() {
+    while (els.party.options.length > 1) els.party.remove(1);
+    while (els.seat.options.length > 1) els.seat.remove(1);
+    els.seat.querySelectorAll("optgroup").forEach(function (g) { g.remove(); });
+
     var parties = {};
     var seats = { lower: {}, upper: {} };
     rows.forEach(function (r) {
@@ -83,7 +156,7 @@
 
     ["lower", "upper"].forEach(function (c) {
       var group = document.createElement("optgroup");
-      group.label = CHAMBER[c];
+      group.label = chamberLabel(c);
       addOptions(group, Object.keys(seats[c]).sort(collator.compare));
       els.seat.appendChild(group);
     });
@@ -123,13 +196,13 @@
     var body = el("div", "card-body");
     body.appendChild(el("h2", null, r.vacant ? "Vacant seat" : r.name));
     if (!r.vacant) body.appendChild(el("p", null, r.party));
-    body.appendChild(el("p", "meta", r.seat + " · " + CHAMBER[r.chamber]));
+    body.appendChild(el("p", "meta", r.seat + " · " + chamberLabel(r.chamber)));
     if (r.vacant) body.appendChild(el("p", "meta", "Vacancy recorded by The Policy Desk AU; official source not yet linked."));
 
     if (r.url && /^https:\/\//.test(r.url)) {
-      var a = el("a", "profile", "Official profile");
+      var a = el("a", "profile", "Official website");
       a.href = r.url;
-      var sr = el("span", "visually-hidden", " for " + r.name + " on the Parliament of Victoria website");
+      var sr = el("span", "visually-hidden", " for " + r.name + cfg.profileSr);
       a.appendChild(sr);
       body.appendChild(a);
     }
@@ -245,6 +318,25 @@
     els.count.textContent = text + ".";
   }
 
+  function applyParliamentChrome() {
+    document.title = cfg.title.replace(/^Members of /, "") + " · The Policy Desk AU";
+    if (els.pageTitle) els.pageTitle.textContent = cfg.title;
+    if (els.pageLede) els.pageLede.textContent = cfg.lede;
+    if (els.electionNote) els.electionNote.textContent = cfg.electionNote;
+    if (els.chamberLowerOpt) els.chamberLowerOpt.textContent = chamberLabel("lower");
+    if (els.chamberUpperOpt) els.chamberUpperOpt.textContent = chamberLabel("upper");
+    if (els.zoomExtent) els.zoomExtent.textContent = cfg.zoomExtent;
+    if (els.zoomMetro) {
+      els.zoomMetro.textContent = cfg.zoomMetro;
+      els.zoomMetro.hidden = !cfg.showMetro;
+    }
+    if (els.footerFacts) els.footerFacts.innerHTML = cfg.footerFactsHtml;
+    if (els.footerBoundaries) els.footerBoundaries.innerHTML = cfg.footerBoundariesHtml;
+    if (els.seatLabel) els.seatLabel.textContent = cfg.seatFilterLabel;
+    if (els.seatAllOpt) els.seatAllOpt.textContent = cfg.seatAllLabel;
+    if (els.mapDesc) els.mapDesc.textContent = cfg.mapDesc;
+  }
+
   function load(data) {
     var members = (data.members || []).map(function (m) {
       return {
@@ -259,7 +351,7 @@
     }).sort(function (a, b) { return collator.compare(a.name, b.name); });
 
     var vacancies = (data.vacancies || []).map(function (v) {
-      var chamber = VACANCY_CHAMBER[v.chamber];
+      var chamber = cfg.vacancyChamber[v.chamber];
       return {
         name: "Vacant seat",
         party: null,
@@ -271,17 +363,48 @@
     }).sort(function (a, b) { return collator.compare(a.seat, b.seat); });
 
     rows = members.concat(vacancies);
+    lastListKey = null;
 
     els.dataLine.textContent = "";
     els.dataLine.appendChild(document.createTextNode(
       "Data as of " + formatDate(data.last_updated) + ", source: "));
-    var src = el("a", null, data.source || "Parliament of Victoria");
-    src.href = "https://www.parliament.vic.gov.au/members/";
+    var src = el("a", null, data.source || cfg.sourceDefault);
+    src.href = data.source_url || cfg.sourceHref;
     els.dataLine.appendChild(src);
     els.dataLine.appendChild(document.createTextNode("."));
 
     buildFilters();
     if (location.hash === "#map") setView("map", false); else render();
+  }
+
+  function loadParliament(key) {
+    if (!PARLIAMENTS[key]) key = "vic";
+    parliamentKey = key;
+    cfg = PARLIAMENTS[key];
+    if (els.parliament && els.parliament.value !== key) els.parliament.value = key;
+    try { localStorage.setItem("policydesk-parliament", key); } catch (e) { /* ignore */ }
+    applyParliamentChrome();
+    rows = [];
+    boundaries = null;
+    boundaryPromise = null;
+    layerKey = null;
+    selected = null;
+    viewBox = null;
+    lastSeatFilter = "";
+    detailKey = "";
+    els.mapStatus.textContent = "Loading map…";
+    els.mapCredit.replaceChildren();
+    els.dataLine.textContent = "Loading data…";
+    fetch(cfg.membersUrl, { cache: "no-cache" })
+      .then(function (r) {
+        if (!r.ok) throw new Error("HTTP " + r.status);
+        return r.json();
+      })
+      .then(load)
+      .catch(function () {
+        els.dataLine.textContent = "Sorry, the member list could not be loaded. Please try again later.";
+      });
+    if (view === "map") loadBoundaries().then(function () { if (boundaries) render(); });
   }
 
 
@@ -298,22 +421,23 @@
 
   function loadBoundaries() {
     if (!boundaryPromise) {
-      boundaryPromise = Promise.all(["districts", "regions"].map(function (k) {
-        return fetch("data/boundaries/vic_" + k + ".json").then(function (r) {
+      var files = cfg.boundaryFiles;
+      var keys = Object.keys(files);
+      boundaryPromise = Promise.all(keys.map(function (k) {
+        return fetch(files[k]).then(function (r) {
           if (!r.ok) throw new Error("HTTP " + r.status);
           return r.json();
         });
       })).then(function (docs) {
-        boundaries = { districts: docs[0], regions: docs[1] };
+        boundaries = {};
+        keys.forEach(function (k, i) { boundaries[k] = docs[i]; });
         var d = docs[0];
-        var r = docs[1];
         function link(text, href) { var a = el("a", null, text); a.href = href; return a; }
         function txt(t) { return document.createTextNode(t); }
         els.mapCredit.replaceChildren(
-          txt("Electoral boundaries: Victorian Electoral Commission, via DataVic ("),
-          link("districts", d.dataset_url), txt(", "), link("regions", r.dataset_url),
-          txt("), licensed under "), link("CC BY 4.0", d.licence_url),
-          txt(". Simplified by The Policy Desk AU. " + d.boundary_version + "."));
+          txt(d.credit || ("Electoral boundaries: " + (d.source || "") + ". ")),
+          txt(" "), link(d.licence || "Licence", d.licence_url),
+          txt(". " + (d.boundary_version || "")));
         els.mapStatus.textContent = "";
       }).catch(function () {
         boundaryPromise = null;
@@ -324,6 +448,10 @@
     }
     return boundaryPromise;
   }
+
+  function lowerLayer() { return cfg.layers.lower; }
+  function upperLayer() { return cfg.layers.upper; }
+  function extentDoc() { return boundaries[lowerLayer()]; }
 
   function setView(v, focus) {
     view = v;
@@ -341,13 +469,13 @@
 
   function setViewBox(b) {
     var ratio = 0.72;  // keep a sensible aspect
-    var full = boundaries.districts.viewBox;
+    var full = extentDoc().viewBox;
     var w = Math.max(b[2], 40), h = Math.max(b[3], 40);
     if (h / w > ratio) w = h / ratio; else h = w * ratio;
     var maxW = full[2] * 1.02, maxH = full[2] * 1.02 * ratio;
     if (w > maxW) { w = maxW; h = maxH; }
     var cx = b[0] + b[2] / 2, cy = b[1] + b[3] / 2;
-    // keep the map in view: clamp the centre so we never drift off the state
+    // keep the map in view: clamp the centre so we never drift off the extent
     cx = w >= full[2] ? full[2] / 2 : Math.min(Math.max(cx, w / 2), full[2] - w / 2);
     cy = h >= full[3] ? full[3] / 2 : Math.min(Math.max(cy, h / 2), full[3] - h / 2);
     viewBox = [cx - w / 2, cy - h / 2, w, h];
@@ -368,10 +496,14 @@
 
   function zoomTo(kind) {
     if (!boundaries) return;
-    var full = boundaries.districts.viewBox;
+    var full = extentDoc().viewBox;
     if (kind === "state") return setViewBox(full);
     if (kind === "melbourne") {
-      var metro = boundaries.regions.features.filter(function (f) { return METRO.test(f.name); });
+      if (parliamentKey === "federal") {
+        // Rough south-east Australia crop of the national viewBox.
+        return setViewBox([full[0] + full[2] * 0.55, full[1] + full[3] * 0.45, full[2] * 0.4, full[3] * 0.45]);
+      }
+      var metro = boundaries[upperLayer()].features.filter(function (f) { return METRO.test(f.name); });
       var b = [Infinity, Infinity, -Infinity, -Infinity];
       metro.forEach(function (f) {
         b[0] = Math.min(b[0], f.bbox[0]); b[1] = Math.min(b[1], f.bbox[1]);
@@ -393,7 +525,7 @@
   }
 
   function renderDetail(shown) {
-    var chamberKey = layerKey === "regions" ? "upper" : "lower";
+    var chamberKey = layerKey === upperLayer() ? "upper" : "lower";
     var key = layerKey + "|" + selected + "|" + shown.filter(function (r) {
       return r.seat === selected && r.chamber === chamberKey;
     }).map(function (r) { return r.name; }).join(",");
@@ -404,8 +536,8 @@
       els.mapDetail.appendChild(el("p", "meta", "Tap or click an area on the map, or pick a seat from the list below."));
       return;
     }
-    var chamber = layerKey === "regions" ? "upper" : "lower";
-    var label = chamber === "upper" ? " Region" : " District";
+    var chamber = chamberKey;
+    var label = cfg.seatLabel[chamber];
     els.mapDetail.appendChild(el("h2", null, selected + label));
     var inSeat = rows.filter(function (r) { return r.seat === selected && r.chamber === chamber; });
     var matching = shown.filter(function (r) { return r.seat === selected && r.chamber === chamber; });
@@ -422,8 +554,9 @@
     lastShown = shown;
     if (!boundaries) return;
     var seat = els.seat.value;
-    var seatIsRegion = !!seat && boundaries.regions.features.some(function (f) { return f.name === seat; });
-    var newLayer = els.chamber.value === "upper" || seatIsRegion ? "regions" : "districts";
+    var upperFeats = boundaries[upperLayer()].features;
+    var seatIsUpper = !!seat && upperFeats.some(function (f) { return f.name === seat; });
+    var newLayer = els.chamber.value === "upper" || seatIsUpper ? upperLayer() : lowerLayer();
     if (newLayer !== layerKey) {
       layerKey = newLayer;
       selected = null;
@@ -440,7 +573,7 @@
         g.appendChild(p);
       });
       els.map.replaceChildren(els.map.querySelector("title"), g);
-      if (!viewBox) setViewBox(boundaries.districts.viewBox);
+      if (!viewBox) setViewBox(extentDoc().viewBox);
     }
     var seatChanged = seat !== lastSeatFilter;
     lastSeatFilter = seat;
@@ -450,7 +583,7 @@
       if (b) setViewBox([b[0] - b[2] * 0.4, b[1] - b[3] * 0.4, b[2] * 1.8, b[3] * 1.8]);
     }
 
-    var chamber = layerKey === "regions" ? "upper" : "lower";
+    var chamber = layerKey === upperLayer() ? "upper" : "lower";
     var matchSeats = {};
     shown.forEach(function (r) { if (r.chamber === chamber) matchSeats[r.seat] = true; });
 
@@ -464,16 +597,15 @@
     var sel = els.map.querySelector("path.is-selected");
     if (sel) sel.parentNode.appendChild(sel);  // draw selected outline on top
 
-    var councilMatches = shown.filter(function (r) { return r.chamber === "upper"; }).length;
+    var upperMatches = shown.filter(function (r) { return r.chamber === "upper"; }).length;
     els.mapLayer.textContent = chamber === "upper"
-      ? "Showing the 8 Legislative Council regions. Each region elects 5 members." +
-        (filtering ? " Highlighted regions match your filters." : "")
-      : "Showing the 88 Legislative Assembly districts." +
-        (filtering ? " Highlighted districts match your filters." : "") +
-        (els.chamber.value ? "" : (filtering && councilMatches
-          ? " " + councilMatches + " matching Legislative Council member" + (councilMatches > 1 ? "s are" : " is") +
-            " not shown here: choose Legislative Council under Chamber to see regions."
-          : " Choose Legislative Council under Chamber to see regions."));
+      ? cfg.mapUpper + (filtering ? " Highlighted areas match your filters." : "")
+      : cfg.mapLower +
+        (filtering ? " Highlighted areas match your filters." : "") +
+        (els.chamber.value ? "" : (filtering && upperMatches
+          ? " " + upperMatches + " matching " + chamberLabel("upper") + " member" +
+            (upperMatches > 1 ? "s are" : " is") + " not shown here:" + cfg.mapOtherHint
+          : cfg.mapOtherHint));
 
     var names = boundaries[layerKey].features.map(function (f) { return f.name; })
       .filter(function (n) { return matchSeats[n]; });
@@ -598,12 +730,26 @@
   els.viewList.addEventListener("click", function () { setView("list", false); });
   els.viewMap.addEventListener("click", function () { setView("map", false); });
 
-  els.form.addEventListener("input", render);
-  els.form.addEventListener("change", render);
+  els.form.addEventListener("input", function (e) {
+    if (e.target && e.target.id === "parliament") return;
+    render();
+  });
+  els.form.addEventListener("change", function (e) {
+    if (e.target && e.target.id === "parliament") {
+      loadParliament(els.parliament.value);
+      return;
+    }
+    render();
+  });
   els.form.addEventListener("submit", function (e) { e.preventDefault(); });
   els.form.addEventListener("reset", function () {
     selected = null;
-    setTimeout(function () { if (boundaries) setViewBox(boundaries.districts.viewBox); render(); }, 0);
+    setTimeout(function () {
+      // Keep the chosen parliament on clear; only clear search filters.
+      if (els.parliament) els.parliament.value = parliamentKey;
+      if (boundaries) setViewBox(extentDoc().viewBox);
+      render();
+    }, 0);
   });
   window.addEventListener("hashchange", function () {
     if (!rows.length) return;
@@ -621,7 +767,7 @@
         var src = el("a", null, idx.source); src.href = idx.source_url;
         var lic = el("a", null, idx.licence); lic.href = idx.licence_url;
         c.replaceChildren(document.createTextNode("Headlines from "), src, document.createTextNode(" ("), lic,
-          document.createTextNode("), matched by exact full name with a Victorian context and checked daily. " +
+          document.createTextNode("), matched by exact full name with parliament context and checked daily. " +
             "We show the headline, date and link only."));
       }
       if (rows.length) render();
@@ -636,13 +782,14 @@
       .catch(function () { /* optional */ });
   });
 
-  fetch("data/members.json", { cache: "no-cache" })
-    .then(function (r) {
-      if (!r.ok) throw new Error("HTTP " + r.status);
-      return r.json();
-    })
-    .then(load)
-    .catch(function () {
-      els.dataLine.textContent = "Sorry, the member list could not be loaded. Please try again later.";
-    });
+  var start = "vic";
+  try {
+    var saved = localStorage.getItem("policydesk-parliament");
+    if (saved && PARLIAMENTS[saved]) start = saved;
+  } catch (e) { /* ignore */ }
+  var params = new URLSearchParams(location.search);
+  if (params.get("parliament") && PARLIAMENTS[params.get("parliament")]) {
+    start = params.get("parliament");
+  }
+  loadParliament(start);
 })();

@@ -15,9 +15,17 @@ SOCIAL_HOSTS = {"x": "https://x.com/", "facebook": "https://www.facebook.com/", 
 MAX_BYTES = 200_000
 
 
+def load_ids() -> set[str]:
+    ids: set[str] = set()
+    for path in (ROOT / "data/members.json", ROOT / "data/federal/members.json"):
+        if path.exists():
+            ids |= {m["id"] for m in json.loads(path.read_text(encoding="utf-8"))["members"]}
+    return ids
+
+
 def main() -> int:
     errors: list[str] = []
-    ids = {m["id"] for m in json.loads((ROOT / "data/members.json").read_text(encoding="utf-8"))["members"]}
+    ids = load_ids()
 
     photos = json.loads((ROOT / "data/photos.json").read_text(encoding="utf-8"))
     if not photos.get("source"):
