@@ -274,7 +274,7 @@ Crawl-Delay: 10
 | upload.wikimedia.org | image files (redirect target) | Yes (only `/wikipedia/commons/archive/` disallowed) | — |
 | www.parliament.vic.gov.au | member profile pages | **Server returned HTTP 403** to this session on 2026-11-23, even with our User-Agent; not worked around | — |
 
-**Note:** the older `scripts/fetch_vic_members.py` (written before Stage 0) queries `query.wikidata.org/sparql`, which robots.txt disallows. It is not used by the site; flagged for replacement in Stage 6.
+**Note:** the older `scripts/fetch_vic_members.py` (written before Stage 0) queries `query.wikidata.org/sparql`, which robots.txt disallows. It is not used by the site; flagged for replacement in Stage 14 (post-election Vic refresh).
 
 ## Matching (`scripts/build_photos_socials.py`)
 
