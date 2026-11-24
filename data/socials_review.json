@@ -1,7 +1,7 @@
 {
  "source": "Wikidata (CC0): P2002 X, P2013 Facebook, P2003 Instagram",
  "note": "Candidates only. Nothing here is shown on the site until the owner approves it.",
- "generated_at": "2026-11-23T21:19:05+00:00",
+ "generated_at": "2026-11-24T21:25:07+00:00",
  "candidates": {
   "adem-somyurek": {
    "name": "Adem Somyurek",
@@ -451,6 +451,1316 @@
     "x": {
      "handle": "McghieMp",
      "url": "https://x.com/McghieMp"
+    }
+   },
+   "approved": false
+  },
+  "fed-alicia-payne": {
+   "name": "Alicia Payne",
+   "wikidata": "https://www.wikidata.org/wiki/Q64223413",
+   "candidates": {
+    "x": {
+     "handle": "AliciaPayneMP",
+     "url": "https://x.com/AliciaPayneMP"
+    },
+    "facebook": {
+     "handle": "AliciaPayneforCanberra",
+     "url": "https://www.facebook.com/AliciaPayneforCanberra"
+    },
+    "instagram": {
+     "handle": "aliciapayne_cbr",
+     "url": "https://www.instagram.com/aliciapayne_cbr/"
+    }
+   },
+   "approved": false
+  },
+  "fed-allegra-spender": {
+   "name": "Allegra Spender",
+   "wikidata": "https://www.wikidata.org/wiki/Q109652019",
+   "candidates": {
+    "x": {
+     "handle": "spenderallegra",
+     "url": "https://x.com/spenderallegra"
+    },
+    "facebook": {
+     "handle": "allegraforwentworth",
+     "url": "https://www.facebook.com/allegraforwentworth"
+    },
+    "instagram": {
+     "handle": "allegra.spender",
+     "url": "https://www.instagram.com/allegra.spender/"
+    }
+   },
+   "approved": false
+  },
+  "fed-amanda-rishworth": {
+   "name": "Amanda Rishworth",
+   "wikidata": "https://www.wikidata.org/wiki/Q4739745",
+   "candidates": {
+    "x": {
+     "handle": "AmandaRishworth",
+     "url": "https://x.com/AmandaRishworth"
+    }
+   },
+   "approved": false
+  },
+  "fed-andrew-bragg": {
+   "name": "Andrew Bragg",
+   "wikidata": "https://www.wikidata.org/wiki/Q64152252",
+   "candidates": {
+    "x": {
+     "handle": "ajamesbragg",
+     "url": "https://x.com/ajamesbragg"
+    }
+   },
+   "approved": false
+  },
+  "fed-andrew-charlton": {
+   "name": "Andrew Charlton",
+   "wikidata": "https://www.wikidata.org/wiki/Q112567447",
+   "candidates": {
+    "x": {
+     "handle": "Charlton_AB",
+     "url": "https://x.com/Charlton_AB"
+    }
+   },
+   "approved": false
+  },
+  "fed-andrew-gee": {
+   "name": "Andrew Gee",
+   "wikidata": "https://www.wikidata.org/wiki/Q4757071",
+   "candidates": {
+    "x": {
+     "handle": "AndrewGeeMP",
+     "url": "https://x.com/AndrewGeeMP"
+    }
+   },
+   "approved": false
+  },
+  "fed-andrew-giles": {
+   "name": "Andrew Giles",
+   "wikidata": "https://www.wikidata.org/wiki/Q16214422",
+   "candidates": {
+    "x": {
+     "handle": "andrewjgiles",
+     "url": "https://x.com/andrewjgiles"
+    }
+   },
+   "approved": false
+  },
+  "fed-andrew-hastie": {
+   "name": "Andrew Hastie",
+   "wikidata": "https://www.wikidata.org/wiki/Q21066082",
+   "candidates": {
+    "facebook": {
+     "handle": "hastieandrew",
+     "url": "https://www.facebook.com/hastieandrew"
+    },
+    "instagram": {
+     "handle": "andrewhastiemp",
+     "url": "https://www.instagram.com/andrewhastiemp/"
+    }
+   },
+   "approved": false
+  },
+  "fed-andrew-leigh": {
+   "name": "Andrew Leigh",
+   "wikidata": "https://www.wikidata.org/wiki/Q4757734",
+   "candidates": {
+    "x": {
+     "handle": "ALeighMP",
+     "url": "https://x.com/ALeighMP"
+    }
+   },
+   "approved": false
+  },
+  "fed-andrew-wilkie": {
+   "name": "Andrew Wilkie",
+   "wikidata": "https://www.wikidata.org/wiki/Q4758919",
+   "candidates": {
+    "x": {
+     "handle": "WilkieMP",
+     "url": "https://x.com/WilkieMP"
+    },
+    "instagram": {
+     "handle": "andrew.wilkie.mp",
+     "url": "https://www.instagram.com/andrew.wilkie.mp/"
+    }
+   },
+   "approved": false
+  },
+  "fed-angus-taylor": {
+   "name": "Angus Taylor",
+   "wikidata": "https://www.wikidata.org/wiki/Q16196728",
+   "candidates": {
+    "x": {
+     "handle": "AngusTaylorMP",
+     "url": "https://x.com/AngusTaylorMP"
+    }
+   },
+   "approved": false
+  },
+  "fed-anika-wells": {
+   "name": "Anika Wells",
+   "wikidata": "https://www.wikidata.org/wiki/Q64205577",
+   "candidates": {
+    "x": {
+     "handle": "AnikaWells",
+     "url": "https://x.com/AnikaWells"
+    }
+   },
+   "approved": false
+  },
+  "fed-anne-aly": {
+   "name": "Anne Aly",
+   "wikidata": "https://www.wikidata.org/wiki/Q20631311",
+   "candidates": {
+    "facebook": {
+     "handle": "anneazzaaly",
+     "url": "https://www.facebook.com/anneazzaaly"
+    },
+    "instagram": {
+     "handle": "anne.aly",
+     "url": "https://www.instagram.com/anne.aly/"
+    }
+   },
+   "approved": false
+  },
+  "fed-anne-ruston": {
+   "name": "Anne Ruston",
+   "wikidata": "https://www.wikidata.org/wiki/Q4768766",
+   "candidates": {
+    "x": {
+     "handle": "Anne_Ruston",
+     "url": "https://x.com/Anne_Ruston"
+    }
+   },
+   "approved": false
+  },
+  "fed-anne-stanley": {
+   "name": "Anne Stanley",
+   "wikidata": "https://www.wikidata.org/wiki/Q25768264",
+   "candidates": {
+    "x": {
+     "handle": "AnneWerriwa",
+     "url": "https://x.com/AnneWerriwa"
+    }
+   },
+   "approved": false
+  },
+  "fed-anne-urquhart": {
+   "name": "Anne Urquhart",
+   "wikidata": "https://www.wikidata.org/wiki/Q4768857",
+   "candidates": {
+    "x": {
+     "handle": "AUSenator",
+     "url": "https://x.com/AUSenator"
+    }
+   },
+   "approved": false
+  },
+  "fed-anne-webster": {
+   "name": "Anne Webster",
+   "wikidata": "https://www.wikidata.org/wiki/Q64216519",
+   "candidates": {
+    "x": {
+     "handle": "AnneWebster2013",
+     "url": "https://x.com/AnneWebster2013"
+    }
+   },
+   "approved": false
+  },
+  "fed-anthony-albanese": {
+   "name": "Anthony Albanese",
+   "wikidata": "https://www.wikidata.org/wiki/Q335697",
+   "candidates": {
+    "x": {
+     "handle": "AlboMP",
+     "url": "https://x.com/AlboMP"
+    },
+    "facebook": {
+     "handle": "AlboMP",
+     "url": "https://www.facebook.com/AlboMP"
+    },
+    "instagram": {
+     "handle": "albomp",
+     "url": "https://www.instagram.com/albomp/"
+    }
+   },
+   "approved": false
+  },
+  "fed-anthony-chisholm": {
+   "name": "Anthony Chisholm",
+   "wikidata": "https://www.wikidata.org/wiki/Q18719336",
+   "candidates": {
+    "x": {
+     "handle": "AnthonyChisholm",
+     "url": "https://x.com/AnthonyChisholm"
+    }
+   },
+   "approved": false
+  },
+  "fed-barbara-pocock": {
+   "name": "Barbara Pocock",
+   "wikidata": "https://www.wikidata.org/wiki/Q63405944",
+   "candidates": {
+    "x": {
+     "handle": "BarbaraPocock",
+     "url": "https://x.com/BarbaraPocock"
+    },
+    "instagram": {
+     "handle": "barbarapocock",
+     "url": "https://www.instagram.com/barbarapocock/"
+    }
+   },
+   "approved": false
+  },
+  "fed-barnaby-joyce": {
+   "name": "Barnaby Joyce",
+   "wikidata": "https://www.wikidata.org/wiki/Q4861362",
+   "candidates": {
+    "x": {
+     "handle": "Barnaby_Joyce",
+     "url": "https://x.com/Barnaby_Joyce"
+    },
+    "facebook": {
+     "handle": "BarnabyJoyceMP",
+     "url": "https://www.facebook.com/BarnabyJoyceMP"
+    },
+    "instagram": {
+     "handle": "barnaby.joyce",
+     "url": "https://www.instagram.com/barnaby.joyce/"
+    }
+   },
+   "approved": false
+  },
+  "fed-basem-abdo": {
+   "name": "Basem Abdo",
+   "wikidata": "https://www.wikidata.org/wiki/Q134311976",
+   "candidates": {
+    "facebook": {
+     "handle": "BasemAbdoMP",
+     "url": "https://www.facebook.com/BasemAbdoMP"
+    }
+   },
+   "approved": false
+  },
+  "fed-bridget-mckenzie": {
+   "name": "Bridget McKenzie",
+   "wikidata": "https://www.wikidata.org/wiki/Q4966734",
+   "candidates": {
+    "x": {
+     "handle": "senbmckenzie",
+     "url": "https://x.com/senbmckenzie"
+    }
+   },
+   "approved": false
+  },
+  "fed-carol-brown": {
+   "name": "Carol Brown",
+   "wikidata": "https://www.wikidata.org/wiki/Q5044273",
+   "candidates": {
+    "x": {
+     "handle": "SenCarolBrown",
+     "url": "https://x.com/SenCarolBrown"
+    }
+   },
+   "approved": false
+  },
+  "fed-catherine-king": {
+   "name": "Catherine King",
+   "wikidata": "https://www.wikidata.org/wiki/Q5052776",
+   "candidates": {
+    "x": {
+     "handle": "CatherineKingMP",
+     "url": "https://x.com/CatherineKingMP"
+    },
+    "instagram": {
+     "handle": "catherine_kingmp",
+     "url": "https://www.instagram.com/catherine_kingmp/"
+    }
+   },
+   "approved": false
+  },
+  "fed-clare-o-neil": {
+   "name": "Clare O'Neil",
+   "wikidata": "https://www.wikidata.org/wiki/Q5126228",
+   "candidates": {
+    "x": {
+     "handle": "ClareONeilMP",
+     "url": "https://x.com/ClareONeilMP"
+    }
+   },
+   "approved": false
+  },
+  "fed-daniel-mulino": {
+   "name": "Daniel Mulino",
+   "wikidata": "https://www.wikidata.org/wiki/Q19518195",
+   "candidates": {
+    "x": {
+     "handle": "DanielMulinoMP",
+     "url": "https://x.com/DanielMulinoMP"
+    }
+   },
+   "approved": false
+  },
+  "fed-darren-chester": {
+   "name": "Darren Chester",
+   "wikidata": "https://www.wikidata.org/wiki/Q5224839",
+   "candidates": {
+    "x": {
+     "handle": "DarrenChesterMP",
+     "url": "https://x.com/DarrenChesterMP"
+    },
+    "facebook": {
+     "handle": "darrenchestermp",
+     "url": "https://www.facebook.com/darrenchestermp"
+    }
+   },
+   "approved": false
+  },
+  "fed-david-littleproud": {
+   "name": "David Littleproud",
+   "wikidata": "https://www.wikidata.org/wiki/Q25756209",
+   "candidates": {
+    "x": {
+     "handle": "D_LittleproudMP",
+     "url": "https://x.com/D_LittleproudMP"
+    }
+   },
+   "approved": false
+  },
+  "fed-david-moncrieff": {
+   "name": "David Moncrieff",
+   "wikidata": "https://www.wikidata.org/wiki/Q134370438",
+   "candidates": {
+    "facebook": {
+     "handle": "davidmoncrieffmp",
+     "url": "https://www.facebook.com/davidmoncrieffmp"
+    },
+    "instagram": {
+     "handle": "moncrieffhughes",
+     "url": "https://www.instagram.com/moncrieffhughes/"
+    }
+   },
+   "approved": false
+  },
+  "fed-david-pocock": {
+   "name": "David Pocock",
+   "wikidata": "https://www.wikidata.org/wiki/Q2777809",
+   "candidates": {
+    "x": {
+     "handle": "pocockdavid",
+     "url": "https://x.com/pocockdavid"
+    },
+    "instagram": {
+     "handle": "pocockdavid",
+     "url": "https://www.instagram.com/pocockdavid/"
+    }
+   },
+   "approved": false
+  },
+  "fed-david-shoebridge": {
+   "name": "David Shoebridge",
+   "wikidata": "https://www.wikidata.org/wiki/Q5239754",
+   "candidates": {
+    "x": {
+     "handle": "ShoebridgeMLC",
+     "url": "https://x.com/ShoebridgeMLC"
+    },
+    "facebook": {
+     "handle": "DavidShoebridgeMLC",
+     "url": "https://www.facebook.com/DavidShoebridgeMLC"
+    },
+    "instagram": {
+     "handle": "shoebridgemlc",
+     "url": "https://www.instagram.com/shoebridgemlc/"
+    }
+   },
+   "approved": false
+  },
+  "fed-david-smith": {
+   "name": "David Smith",
+   "wikidata": "https://www.wikidata.org/wiki/Q53960880",
+   "candidates": {
+    "x": {
+     "handle": "SenDaveSmith",
+     "url": "https://x.com/SenDaveSmith"
+    }
+   },
+   "approved": false
+  },
+  "fed-dean-smith": {
+   "name": "Dean Smith",
+   "wikidata": "https://www.wikidata.org/wiki/Q5246470",
+   "candidates": {
+    "x": {
+     "handle": "DeanSmithWA",
+     "url": "https://x.com/DeanSmithWA"
+    }
+   },
+   "approved": false
+  },
+  "fed-deborah-o-neill": {
+   "name": "Deborah O'Neill",
+   "wikidata": "https://www.wikidata.org/wiki/Q5248341",
+   "candidates": {
+    "x": {
+     "handle": "Deborah_ONeill",
+     "url": "https://x.com/Deborah_ONeill"
+    }
+   },
+   "approved": false
+  },
+  "fed-dorinda-cox": {
+   "name": "Dorinda Cox",
+   "wikidata": "https://www.wikidata.org/wiki/Q108441696",
+   "candidates": {
+    "x": {
+     "handle": "dorinda_cox",
+     "url": "https://x.com/dorinda_cox"
+    },
+    "facebook": {
+     "handle": "dorindaforsenate",
+     "url": "https://www.facebook.com/dorindaforsenate"
+    },
+    "instagram": {
+     "handle": "dorindaforsenate",
+     "url": "https://www.instagram.com/dorindaforsenate/"
+    }
+   },
+   "approved": false
+  },
+  "fed-emma-mcbride": {
+   "name": "Emma McBride",
+   "wikidata": "https://www.wikidata.org/wiki/Q25844494",
+   "candidates": {
+    "x": {
+     "handle": "Emma4Dobell",
+     "url": "https://x.com/Emma4Dobell"
+    }
+   },
+   "approved": false
+  },
+  "fed-fatima-payman": {
+   "name": "Fatima Payman",
+   "wikidata": "https://www.wikidata.org/wiki/Q112152550",
+   "candidates": {
+    "x": {
+     "handle": "senatorpayman",
+     "url": "https://x.com/senatorpayman"
+    },
+    "facebook": {
+     "handle": "100077402947532",
+     "url": "https://www.facebook.com/100077402947532"
+    },
+    "instagram": {
+     "handle": "senatorfatimapayman",
+     "url": "https://www.instagram.com/senatorfatimapayman/"
+    }
+   },
+   "approved": false
+  },
+  "fed-fiona-phillips": {
+   "name": "Fiona Phillips",
+   "wikidata": "https://www.wikidata.org/wiki/Q64038637",
+   "candidates": {
+    "x": {
+     "handle": "fiboydphillips",
+     "url": "https://x.com/fiboydphillips"
+    }
+   },
+   "approved": false
+  },
+  "fed-glenn-sterle": {
+   "name": "Glenn Sterle",
+   "wikidata": "https://www.wikidata.org/wiki/Q5569124",
+   "candidates": {
+    "x": {
+     "handle": "GlennSterle",
+     "url": "https://x.com/GlennSterle"
+    }
+   },
+   "approved": false
+  },
+  "fed-gordon-reid": {
+   "name": "Gordon Reid",
+   "wikidata": "https://www.wikidata.org/wiki/Q112252168",
+   "candidates": {
+    "facebook": {
+     "handle": "DoctorGordonReid",
+     "url": "https://www.facebook.com/DoctorGordonReid"
+    },
+    "instagram": {
+     "handle": "reid4robertson",
+     "url": "https://www.instagram.com/reid4robertson/"
+    }
+   },
+   "approved": false
+  },
+  "fed-helen-haines": {
+   "name": "Helen Haines",
+   "wikidata": "https://www.wikidata.org/wiki/Q41662205",
+   "candidates": {
+    "x": {
+     "handle": "helenhainesindi",
+     "url": "https://x.com/helenhainesindi"
+    },
+    "facebook": {
+     "handle": "helenhainesindi",
+     "url": "https://www.facebook.com/helenhainesindi"
+    },
+    "instagram": {
+     "handle": "helenhainesindi",
+     "url": "https://www.instagram.com/helenhainesindi/"
+    }
+   },
+   "approved": false
+  },
+  "fed-helen-polley": {
+   "name": "Helen Polley",
+   "wikidata": "https://www.wikidata.org/wiki/Q16189453",
+   "candidates": {
+    "x": {
+     "handle": "polley_helen",
+     "url": "https://x.com/polley_helen"
+    }
+   },
+   "approved": false
+  },
+  "fed-jacinta-nampijinpa-price": {
+   "name": "Jacinta Nampijinpa Price",
+   "wikidata": "https://www.wikidata.org/wiki/Q106869875",
+   "candidates": {
+    "x": {
+     "handle": "Jnampijinpa",
+     "url": "https://x.com/Jnampijinpa"
+    }
+   },
+   "approved": false
+  },
+  "fed-james-mcgrath": {
+   "name": "James McGrath",
+   "wikidata": "https://www.wikidata.org/wiki/Q16732314",
+   "candidates": {
+    "x": {
+     "handle": "JamesMcGrathLNP",
+     "url": "https://x.com/JamesMcGrathLNP"
+    }
+   },
+   "approved": false
+  },
+  "fed-james-paterson": {
+   "name": "James Paterson",
+   "wikidata": "https://www.wikidata.org/wiki/Q23016290",
+   "candidates": {
+    "x": {
+     "handle": "SenPaterson",
+     "url": "https://x.com/SenPaterson"
+    }
+   },
+   "approved": false
+  },
+  "fed-jason-clare": {
+   "name": "Jason Clare",
+   "wikidata": "https://www.wikidata.org/wiki/Q6162219",
+   "candidates": {
+    "x": {
+     "handle": "JasonClareMP",
+     "url": "https://x.com/JasonClareMP"
+    },
+    "facebook": {
+     "handle": "JasonClareMP",
+     "url": "https://www.facebook.com/JasonClareMP"
+    }
+   },
+   "approved": false
+  },
+  "fed-jason-wood": {
+   "name": "Jason Wood",
+   "wikidata": "https://www.wikidata.org/wiki/Q6163809",
+   "candidates": {
+    "x": {
+     "handle": "JasonWood_MP",
+     "url": "https://x.com/JasonWood_MP"
+    }
+   },
+   "approved": false
+  },
+  "fed-jerome-laxale": {
+   "name": "Jerome Laxale",
+   "wikidata": "https://www.wikidata.org/wiki/Q112116312",
+   "candidates": {
+    "instagram": {
+     "handle": "jeromelaxale",
+     "url": "https://www.instagram.com/jeromelaxale/"
+    }
+   },
+   "approved": false
+  },
+  "fed-jess-walsh": {
+   "name": "Jess Walsh",
+   "wikidata": "https://www.wikidata.org/wiki/Q64711059",
+   "candidates": {
+    "x": {
+     "handle": "JessWalshVic",
+     "url": "https://x.com/JessWalshVic"
+    }
+   },
+   "approved": false
+  },
+  "fed-jo-briskey": {
+   "name": "Jo Briskey",
+   "wikidata": "https://www.wikidata.org/wiki/Q134312684",
+   "candidates": {
+    "instagram": {
+     "handle": "jobriskey",
+     "url": "https://www.instagram.com/jobriskey/"
+    }
+   },
+   "approved": false
+  },
+  "fed-joanne-ryan": {
+   "name": "Joanne Ryan",
+   "wikidata": "https://www.wikidata.org/wiki/Q16194303",
+   "candidates": {
+    "x": {
+     "handle": "JoanneRyanLalor",
+     "url": "https://x.com/JoanneRyanLalor"
+    }
+   },
+   "approved": false
+  },
+  "fed-jordon-steele-john": {
+   "name": "Jordon Steele-John",
+   "wikidata": "https://www.wikidata.org/wiki/Q33139188",
+   "candidates": {
+    "x": {
+     "handle": "Jordonsteele",
+     "url": "https://x.com/Jordonsteele"
+    },
+    "facebook": {
+     "handle": "JordonSteeleJohn",
+     "url": "https://www.facebook.com/JordonSteeleJohn"
+    },
+    "instagram": {
+     "handle": "jordonsteelejohn",
+     "url": "https://www.instagram.com/jordonsteelejohn/"
+    }
+   },
+   "approved": false
+  },
+  "fed-julian-hill": {
+   "name": "Julian Hill",
+   "wikidata": "https://www.wikidata.org/wiki/Q27435059",
+   "candidates": {
+    "x": {
+     "handle": "JulianHillMP",
+     "url": "https://x.com/JulianHillMP"
+    }
+   },
+   "approved": false
+  },
+  "fed-julian-leeser": {
+   "name": "Julian Leeser",
+   "wikidata": "https://www.wikidata.org/wiki/Q24191457",
+   "candidates": {
+    "x": {
+     "handle": "JulianLeeser",
+     "url": "https://x.com/JulianLeeser"
+    }
+   },
+   "approved": false
+  },
+  "fed-kate-chaney": {
+   "name": "Kate Chaney",
+   "wikidata": "https://www.wikidata.org/wiki/Q112103422",
+   "candidates": {
+    "x": {
+     "handle": "chaneyforcurtin",
+     "url": "https://x.com/chaneyforcurtin"
+    }
+   },
+   "approved": false
+  },
+  "fed-kevin-hogan": {
+   "name": "Kevin Hogan",
+   "wikidata": "https://www.wikidata.org/wiki/Q16195119",
+   "candidates": {
+    "x": {
+     "handle": "KevinHoganMP",
+     "url": "https://x.com/KevinHoganMP"
+    }
+   },
+   "approved": false
+  },
+  "fed-kristy-mcbain": {
+   "name": "Kristy McBain",
+   "wikidata": "https://www.wikidata.org/wiki/Q96970848",
+   "candidates": {
+    "x": {
+     "handle": "KristyMcBain",
+     "url": "https://x.com/KristyMcBain"
+    },
+    "facebook": {
+     "handle": "kristymcbainMP",
+     "url": "https://www.facebook.com/kristymcbainMP"
+    },
+    "instagram": {
+     "handle": "kristymcbain",
+     "url": "https://www.instagram.com/kristymcbain/"
+    }
+   },
+   "approved": false
+  },
+  "fed-larissa-waters": {
+   "name": "Larissa Waters",
+   "wikidata": "https://www.wikidata.org/wiki/Q6489515",
+   "candidates": {
+    "x": {
+     "handle": "larissawaters",
+     "url": "https://x.com/larissawaters"
+    },
+    "facebook": {
+     "handle": "larissawaters",
+     "url": "https://www.facebook.com/larissawaters"
+    },
+    "instagram": {
+     "handle": "larissawaters",
+     "url": "https://www.instagram.com/larissawaters/"
+    }
+   },
+   "approved": false
+  },
+  "fed-lidia-thorpe": {
+   "name": "Lidia Thorpe",
+   "wikidata": "https://www.wikidata.org/wiki/Q43285578",
+   "candidates": {
+    "x": {
+     "handle": "lidia__thorpe",
+     "url": "https://x.com/lidia__thorpe"
+    }
+   },
+   "approved": false
+  },
+  "fed-lisa-chesters": {
+   "name": "Lisa Chesters",
+   "wikidata": "https://www.wikidata.org/wiki/Q16727986",
+   "candidates": {
+    "x": {
+     "handle": "LMChesters",
+     "url": "https://x.com/LMChesters"
+    }
+   },
+   "approved": false
+  },
+  "fed-louise-miller-frost": {
+   "name": "Louise Miller-Frost",
+   "wikidata": "https://www.wikidata.org/wiki/Q112112804",
+   "candidates": {
+    "instagram": {
+     "handle": "louisemillerfrostboothby",
+     "url": "https://www.instagram.com/louisemillerfrostboothby/"
+    }
+   },
+   "approved": false
+  },
+  "fed-luke-gosling": {
+   "name": "Luke Gosling",
+   "wikidata": "https://www.wikidata.org/wiki/Q25288450",
+   "candidates": {
+    "x": {
+     "handle": "lukejgosling",
+     "url": "https://x.com/lukejgosling"
+    }
+   },
+   "approved": false
+  },
+  "fed-madeleine-king": {
+   "name": "Madeleine King",
+   "wikidata": "https://www.wikidata.org/wiki/Q25756137",
+   "candidates": {
+    "x": {
+     "handle": "MadeleineMHKing",
+     "url": "https://x.com/MadeleineMHKing"
+    }
+   },
+   "approved": false
+  },
+  "fed-malarndirri-mccarthy": {
+   "name": "Malarndirri McCarthy",
+   "wikidata": "https://www.wikidata.org/wiki/Q6741359",
+   "candidates": {
+    "x": {
+     "handle": "Malarndirri19",
+     "url": "https://x.com/Malarndirri19"
+    }
+   },
+   "approved": false
+  },
+  "fed-malcolm-roberts": {
+   "name": "Malcolm Roberts",
+   "wikidata": "https://www.wikidata.org/wiki/Q26848575",
+   "candidates": {
+    "x": {
+     "handle": "SenatorMRoberts",
+     "url": "https://x.com/SenatorMRoberts"
+    },
+    "facebook": {
+     "handle": "malcolmrobertsonenation",
+     "url": "https://www.facebook.com/malcolmrobertsonenation"
+    }
+   },
+   "approved": false
+  },
+  "fed-maria-kovacic": {
+   "name": "Maria Kovacic",
+   "wikidata": "https://www.wikidata.org/wiki/Q118750056",
+   "candidates": {
+    "x": {
+     "handle": "KovacicMaria",
+     "url": "https://x.com/KovacicMaria"
+    }
+   },
+   "approved": false
+  },
+  "fed-marielle-smith": {
+   "name": "Marielle Smith",
+   "wikidata": "https://www.wikidata.org/wiki/Q63531157",
+   "candidates": {
+    "x": {
+     "handle": "MsMarielleSmith",
+     "url": "https://x.com/MsMarielleSmith"
+    },
+    "facebook": {
+     "handle": "mariellesmith4sa",
+     "url": "https://www.facebook.com/mariellesmith4sa"
+    },
+    "instagram": {
+     "handle": "senatormariellesmith",
+     "url": "https://www.instagram.com/senatormariellesmith/"
+    }
+   },
+   "approved": false
+  },
+  "fed-mark-butler": {
+   "name": "Mark Butler",
+   "wikidata": "https://www.wikidata.org/wiki/Q6766947",
+   "candidates": {
+    "x": {
+     "handle": "Mark_Butler_MP",
+     "url": "https://x.com/Mark_Butler_MP"
+    }
+   },
+   "approved": false
+  },
+  "fed-mark-dreyfus": {
+   "name": "Mark Dreyfus",
+   "wikidata": "https://www.wikidata.org/wiki/Q6767411",
+   "candidates": {
+    "x": {
+     "handle": "markdreyfusQCMP",
+     "url": "https://x.com/markdreyfusQCMP"
+    }
+   },
+   "approved": false
+  },
+  "fed-mehreen-faruqi": {
+   "name": "Mehreen Faruqi",
+   "wikidata": "https://www.wikidata.org/wiki/Q16728926",
+   "candidates": {
+    "x": {
+     "handle": "MehreenFaruqi",
+     "url": "https://x.com/MehreenFaruqi"
+    },
+    "facebook": {
+     "handle": "mehreenfaruqi",
+     "url": "https://www.facebook.com/mehreenfaruqi"
+    },
+    "instagram": {
+     "handle": "mehreenfaruqi",
+     "url": "https://www.instagram.com/mehreenfaruqi/"
+    }
+   },
+   "approved": false
+  },
+  "fed-melissa-mcintosh": {
+   "name": "Melissa McIntosh",
+   "wikidata": "https://www.wikidata.org/wiki/Q64038211",
+   "candidates": {
+    "x": {
+     "handle": "MGrahMcIntosh",
+     "url": "https://x.com/MGrahMcIntosh"
+    }
+   },
+   "approved": false
+  },
+  "fed-melissa-price": {
+   "name": "Melissa Price",
+   "wikidata": "https://www.wikidata.org/wiki/Q16195275",
+   "candidates": {
+    "x": {
+     "handle": "Melissa4Durack",
+     "url": "https://x.com/Melissa4Durack"
+    }
+   },
+   "approved": false
+  },
+  "fed-meryl-swanson": {
+   "name": "Meryl Swanson",
+   "wikidata": "https://www.wikidata.org/wiki/Q25350223",
+   "candidates": {
+    "x": {
+     "handle": "MerylSwanson",
+     "url": "https://x.com/MerylSwanson"
+    }
+   },
+   "approved": false
+  },
+  "fed-michael-mccormack": {
+   "name": "Michael McCormack",
+   "wikidata": "https://www.wikidata.org/wiki/Q6832641",
+   "candidates": {
+    "x": {
+     "handle": "M_McCormackMP",
+     "url": "https://x.com/M_McCormackMP"
+    }
+   },
+   "approved": false
+  },
+  "fed-michaelia-cash": {
+   "name": "Michaelia Cash",
+   "wikidata": "https://www.wikidata.org/wiki/Q572783",
+   "candidates": {
+    "x": {
+     "handle": "SenatorCash",
+     "url": "https://x.com/SenatorCash"
+    }
+   },
+   "approved": false
+  },
+  "fed-michelle-ananda-rajah": {
+   "name": "Michelle Ananda-Rajah",
+   "wikidata": "https://www.wikidata.org/wiki/Q90398588",
+   "candidates": {
+    "x": {
+     "handle": "rajah_mich",
+     "url": "https://x.com/rajah_mich"
+    },
+    "instagram": {
+     "handle": "michelleforhiggins",
+     "url": "https://www.instagram.com/michelleforhiggins/"
+    }
+   },
+   "approved": false
+  },
+  "fed-michelle-landry": {
+   "name": "Michelle Landry",
+   "wikidata": "https://www.wikidata.org/wiki/Q16194644",
+   "candidates": {
+    "instagram": {
+     "handle": "themichellelandry",
+     "url": "https://www.instagram.com/themichellelandry/"
+    }
+   },
+   "approved": false
+  },
+  "fed-michelle-rowland": {
+   "name": "Michelle Rowland",
+   "wikidata": "https://www.wikidata.org/wiki/Q6837228",
+   "candidates": {
+    "x": {
+     "handle": "MRowlandMP",
+     "url": "https://x.com/MRowlandMP"
+    }
+   },
+   "approved": false
+  },
+  "fed-murray-watt": {
+   "name": "Murray Watt",
+   "wikidata": "https://www.wikidata.org/wiki/Q6939517",
+   "candidates": {
+    "x": {
+     "handle": "MurrayWatt",
+     "url": "https://x.com/MurrayWatt"
+    }
+   },
+   "approved": false
+  },
+  "fed-nicolette-boele": {
+   "name": "Nicolette Boele",
+   "wikidata": "https://www.wikidata.org/wiki/Q133500279",
+   "candidates": {
+    "x": {
+     "handle": "nicolette_boele",
+     "url": "https://x.com/nicolette_boele"
+    },
+    "facebook": {
+     "handle": "NicBoele",
+     "url": "https://www.facebook.com/NicBoele"
+    },
+    "instagram": {
+     "handle": "nicolette_boele",
+     "url": "https://www.instagram.com/nicolette_boele/"
+    }
+   },
+   "approved": false
+  },
+  "fed-pauline-hanson": {
+   "name": "Pauline Hanson",
+   "wikidata": "https://www.wikidata.org/wiki/Q466220",
+   "candidates": {
+    "x": {
+     "handle": "PaulineHansonOz",
+     "url": "https://x.com/PaulineHansonOz"
+    },
+    "facebook": {
+     "handle": "PaulineHansonAu",
+     "url": "https://www.facebook.com/PaulineHansonAu"
+    },
+    "instagram": {
+     "handle": "senatorpaulinehanson",
+     "url": "https://www.instagram.com/senatorpaulinehanson/"
+    }
+   },
+   "approved": false
+  },
+  "fed-peter-khalil": {
+   "name": "Peter Khalil",
+   "wikidata": "https://www.wikidata.org/wiki/Q25756187",
+   "candidates": {
+    "x": {
+     "handle": "PeterKhalilMP",
+     "url": "https://x.com/PeterKhalilMP"
+    }
+   },
+   "approved": false
+  },
+  "fed-phillip-thompson": {
+   "name": "Phillip Thompson",
+   "wikidata": "https://www.wikidata.org/wiki/Q64009045",
+   "candidates": {
+    "x": {
+     "handle": "P_Thompson88",
+     "url": "https://x.com/P_Thompson88"
+    }
+   },
+   "approved": false
+  },
+  "fed-ralph-babet": {
+   "name": "Ralph Babet",
+   "wikidata": "https://www.wikidata.org/wiki/Q112642694",
+   "candidates": {
+    "instagram": {
+     "handle": "senatorbabet",
+     "url": "https://www.instagram.com/senatorbabet/"
+    }
+   },
+   "approved": false
+  },
+  "fed-rebecca-white": {
+   "name": "Rebecca White",
+   "wikidata": "https://www.wikidata.org/wiki/Q7301966",
+   "candidates": {
+    "x": {
+     "handle": "bec_white",
+     "url": "https://x.com/bec_white"
+    },
+    "facebook": {
+     "handle": "Rebecca.White.MP",
+     "url": "https://www.facebook.com/Rebecca.White.MP"
+    },
+    "instagram": {
+     "handle": "rebecca_white_lyons",
+     "url": "https://www.instagram.com/rebecca_white_lyons/"
+    }
+   },
+   "approved": false
+  },
+  "fed-rebekha-sharkie": {
+   "name": "Rebekha Sharkie",
+   "wikidata": "https://www.wikidata.org/wiki/Q25324881",
+   "candidates": {
+    "x": {
+     "handle": "MakeMayoMatter",
+     "url": "https://x.com/MakeMayoMatter"
+    }
+   },
+   "approved": false
+  },
+  "fed-richard-colbeck": {
+   "name": "Richard Colbeck",
+   "wikidata": "https://www.wikidata.org/wiki/Q7324825",
+   "candidates": {
+    "x": {
+     "handle": "richardmcolbeck",
+     "url": "https://x.com/richardmcolbeck"
+    }
+   },
+   "approved": false
+  },
+  "fed-richard-marles": {
+   "name": "Richard Marles",
+   "wikidata": "https://www.wikidata.org/wiki/Q7327642",
+   "candidates": {
+    "x": {
+     "handle": "RichardMarlesMP",
+     "url": "https://x.com/RichardMarlesMP"
+    }
+   },
+   "approved": false
+  },
+  "fed-sally-sitou": {
+   "name": "Sally Sitou",
+   "wikidata": "https://www.wikidata.org/wiki/Q112108474",
+   "candidates": {
+    "x": {
+     "handle": "SallySitou",
+     "url": "https://x.com/SallySitou"
+    }
+   },
+   "approved": false
+  },
+  "fed-sarah-hanson-young": {
+   "name": "Sarah Hanson-Young",
+   "wikidata": "https://www.wikidata.org/wiki/Q2224379",
+   "candidates": {
+    "x": {
+     "handle": "sarahinthesen8",
+     "url": "https://x.com/sarahinthesen8"
+    },
+    "facebook": {
+     "handle": "Senator.Sarah.Hanson.Young",
+     "url": "https://www.facebook.com/Senator.Sarah.Hanson.Young"
+    },
+    "instagram": {
+     "handle": "sarah_hansonyoung",
+     "url": "https://www.instagram.com/sarah_hansonyoung/"
+    }
+   },
+   "approved": false
+  },
+  "fed-sarah-henderson": {
+   "name": "Sarah Henderson",
+   "wikidata": "https://www.wikidata.org/wiki/Q7422387",
+   "candidates": {
+    "x": {
+     "handle": "SHendersonMP",
+     "url": "https://x.com/SHendersonMP"
+    }
+   },
+   "approved": false
+  },
+  "fed-scott-buchholz": {
+   "name": "Scott Buchholz",
+   "wikidata": "https://www.wikidata.org/wiki/Q7436060",
+   "candidates": {
+    "x": {
+     "handle": "ScottBuchholzMP",
+     "url": "https://x.com/ScottBuchholzMP"
+    }
+   },
+   "approved": false
+  },
+  "fed-sharon-claydon": {
+   "name": "Sharon Claydon",
+   "wikidata": "https://www.wikidata.org/wiki/Q16195468",
+   "candidates": {
+    "x": {
+     "handle": "SharonClaydon",
+     "url": "https://x.com/SharonClaydon"
+    }
+   },
+   "approved": false
+  },
+  "fed-shayne-neumann": {
+   "name": "Shayne Neumann",
+   "wikidata": "https://www.wikidata.org/wiki/Q7491712",
+   "candidates": {
+    "x": {
+     "handle": "ShayneNeumannMP",
+     "url": "https://x.com/ShayneNeumannMP"
+    }
+   },
+   "approved": false
+  },
+  "fed-susan-templeman": {
+   "name": "Susan Templeman",
+   "wikidata": "https://www.wikidata.org/wiki/Q25753992",
+   "candidates": {
+    "x": {
+     "handle": "stemplemanmp",
+     "url": "https://x.com/stemplemanmp"
+    }
+   },
+   "approved": false
+  },
+  "fed-tanya-plibersek": {
+   "name": "Tanya Plibersek",
+   "wikidata": "https://www.wikidata.org/wiki/Q7684036",
+   "candidates": {
+    "x": {
+     "handle": "tanya_plibersek",
+     "url": "https://x.com/tanya_plibersek"
+    }
+   },
+   "approved": false
+  },
+  "fed-tom-venning": {
+   "name": "Tom Venning",
+   "wikidata": "https://www.wikidata.org/wiki/Q134310411",
+   "candidates": {
+    "facebook": {
+     "handle": "TomVenningMP",
+     "url": "https://www.facebook.com/TomVenningMP"
+    },
+    "instagram": {
+     "handle": "tomvenninggrey",
+     "url": "https://www.instagram.com/tomvenninggrey/"
+    }
+   },
+   "approved": false
+  },
+  "fed-tyron-whitten": {
+   "name": "Tyron Whitten",
+   "wikidata": "https://www.wikidata.org/wiki/Q134612355",
+   "candidates": {
+    "instagram": {
+     "handle": "senator_whitten",
+     "url": "https://www.instagram.com/senator_whitten/"
+    }
+   },
+   "approved": false
+  },
+  "fed-vanessa-bleyer": {
+   "name": "Vanessa Bleyer",
+   "wikidata": "https://www.wikidata.org/wiki/Q140467157",
+   "candidates": {
+    "instagram": {
+     "handle": "vanessa4greens",
+     "url": "https://www.instagram.com/vanessa4greens/"
+    }
+   },
+   "approved": false
+  },
+  "fed-varun-ghosh": {
+   "name": "Varun Ghosh",
+   "wikidata": "https://www.wikidata.org/wiki/Q124172491",
+   "candidates": {
+    "instagram": {
+     "handle": "senatorvarunghosh",
+     "url": "https://www.instagram.com/senatorvarunghosh/"
+    }
+   },
+   "approved": false
+  },
+  "fed-zali-steggall": {
+   "name": "Zali Steggall",
+   "wikidata": "https://www.wikidata.org/wiki/Q145103",
+   "candidates": {
+    "x": {
+     "handle": "zalisteggall",
+     "url": "https://x.com/zalisteggall"
     }
    },
    "approved": false

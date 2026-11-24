@@ -28,90 +28,53 @@ in use; keep this filename for continuity. Follow the same stage/gate/"go" rules
     call in one line and continue.
 
 ## Project facts
-- Map view and list view. Each member: party, portrait, official socials, recent-news popup.
-- Vic state election 28 Nov 2026; post-election data refresh is Stage 14 (paused until results).
+- Map view and list view. Parliament picker (Victoria + Federal). Each member: party,
+  portrait, official socials, recent-news popup, official website link.
+- Vic state election 28 Nov 2026; post-election data refresh is Stage 14 (paused).
 - Brand: "The Policy Desk AU" (@PolicyDeskAU). Navy #14213D, saffron #F4A300,
   off-white #FAF8F3. Font Inter. Mobile-first. No party colours. Neutral, plain English.
 - Licences: code AGPL-3.0 (`LICENSE`). Data/text CC BY-SA 4.0 (`LICENSE-DATA.md`).
   Third-party photos/data keep their own licences.
-  Credit line: "Created by The Policy Desk AU (@PolicyDeskAU)".
-- Stack: plain HTML, CSS, vanilla JS. No framework, no build step.
-  Scripts: Python standard library only.
-- Hosting: GitHub = source of truth; Cloudflare Pages project `policydesk` deploys `main`
-  (repo root, no build). policydesk.au + www (www 301 -> apex via Redirect Rule).
-  Zoho email DNS records must never be touched. No Worker unless the owner approves.
+- Stack: plain HTML, CSS, vanilla JS. No framework, no build step. Python stdlib only.
+- Hosting: GitHub = source of truth; Cloudflare Pages project `policydesk` deploys `main`.
+  Zoho email DNS must never be touched. No Worker unless the owner approves.
 
 ## Data rules
-- Parliament of Victoria official list = primary source for facts only
-  (name, chamber, electorate/region, party, profile URL).
-- Wikidata enriches X handles and photo credits, matched by name; every match reviewable
-  (matching not built yet; build_members.py does not read vic_raw.json).
+- Vic: Parliament of Victoria official list = primary facts (name, chamber, seat, party, URL).
+- Federal: Parliamentary Handbook API (`handbookapi.aph.gov.au`) = primary facts; profile
+  URLs on `handbook.aph.gov.au`. See `docs/data-sources.md` (CC BY-NC-ND note).
 - No copied biographies. No hotlinked or copied parliament portraits.
-- Photos: Wikimedia Commons only, if licence permits reuse, with creator, licence,
-  Commons link. Otherwise initials placeholder.
-- Socials: official handles only, from the parliament profile or an owner-approved source.
-- Brunswick is a legitimate recorded vacancy (`data/vacancies.json`).
+- Photos: Wikimedia Commons only if licence permits; else initials.
+- Socials: owner-approval gate (`socials_review.json` → `socials.json`).
+- Brunswick vacancy remains in `data/vacancies.json`.
 
-## News rules (Stage 4)
-- Pre-built static files `data/news/<member-id>.json`; never fetched live in the browser.
-- Sources: RSS (e.g. Google News by exact full name + portfolio keyword) and official
-  pages (ministerial media releases, department pages). Portfolio holders also get
-  department news.
-- Show headline, source name, date, link only. No summaries or copied text. Max 5 items.
-- Same rules for every party. Uncertain name matches dropped or labelled unverified.
-- Checked 2026-11-23: Google News RSS is blocked by robots.txt; most AU publishers forbid
-  commercial reuse. Owner chose The Conversation only (CC BY-ND). See docs/data-sources.md.
-- NEVER fetch theconversation.com from a Cursor / cloud agent session: its robots.txt
-  disallows common AI crawlers (including Claude-Code). `build_news.py` runs only in the
-  fetch-news GitHub Action.
+## News rules
+- Static `data/news/<member-id>.json`; never live in the browser. The Conversation only.
+- NEVER fetch theconversation.com from a Cursor/cloud agent session. Action only.
 
 ## Out of scope until owner says so
 User accounts, comments, ads, newsletter, any paid service.
-Federal and other states/territories: Stages 6–13 after Victoria (see docs/ROADMAP.md).
-Each jurisdiction stage needs list, map, news, photos, official socials, and official websites.
-Compliance and launch is Stage 15 (last). Post-election Vic refresh is Stage 14.
+Other states: Stages 7–13. Compliance/launch: Stage 15.
 
 ## Folder map
 ```
-.github/workflows/fetch-vic-members.yml  Manual data refresh (workflow_dispatch)
-.github/workflows/check-boundaries.yml   Yearly (1 Mar) boundary check; opens an issue if outdated
-.github/workflows/fetch-news.yml         Daily news build -> data/news, validated, committed to main
-scripts/fetch_vic_official.py   Parliament of Victoria API -> data/vic_official.json
-scripts/fetch_vic_members.py    Wikidata SPARQL -> data/vic_raw.json (enrichment)
-scripts/build_members.py        vic_official + vacancies -> data/members.json
-scripts/validate_members.py     Data gate: 88 Assembly seats (incl. vacancies), 40 Council
-scripts/build_boundaries.py     VEC boundaries (Vicmap WFS) -> data/boundaries/*.json (SVG paths)
-scripts/validate_boundaries.py  Boundary gate: 88 districts + 8 regions, names match members.json
-scripts/check_boundaries.py     Is a newer redivision published? (network; used by yearly workflow)
-scripts/build_news.py           The Conversation feeds -> data/news/ (GitHub Action ONLY)
-scripts/validate_news.py        News gate: max 5, allowed keys only, source/licence, ids match
-scripts/build_photos_socials.py Wikipedia lists -> Wikidata -> Commons: photos + social candidates (network)
-scripts/validate_photos_socials.py  Photo licence/creator/local copy; socials only if approved
-data/members.json               Clean member list used by the site
-data/vacancies.json             Recorded vacancies (no source field yet; fix in Stage 14)
-data/vic_official.json          Raw official fetch
-data/vic_raw.json               Raw Wikidata fetch
-data/boundaries/                Simplified VEC boundaries, CC BY 4.0 (2020-21 redivision)
-data/news/                      Headline/source/date/link per member + index.json
-data/photos.json                Accepted Commons photos (creator, licence, link, local copy)
-data/socials_review.json        Wikidata social candidates, unapproved; data/socials.json = approved only
-images/members/                 240px photo copies (own licences)
-docs/review/stage5-review.md    Match/decision report for every member
-docs/data-sources.md            robots.txt + terms record for each source
-docs/ROADMAP.md                 Stages and status
-LICENSE / LICENSE-DATA.md       AGPL-3.0 / CC BY-SA 4.0
+.github/workflows/fetch-vic-members.yml / fetch-federal-members.yml / fetch-news.yml
+scripts/fetch_*_official.py, build_*_members.py, build_*_boundaries.py, validate_*.py
+scripts/build_news.py (Action ONLY), build_photos_socials.py (--parliament)
+data/members.json (Vic), data/federal/members.json, data/federal_official.json
+data/boundaries/vic_*.json, federal_divisions.json, federal_states.json
+data/news/, data/photos.json, data/socials_review.json, data/socials.json
+docs/data-sources.md, docs/ROADMAP.md, docs/review/stage5-review.md, stage6-federal-review.md
 ```
-index.html, css/style.css, js/app.js  List + map views (map: own SVG, no tiles/libraries)
-fonts/                          Self-hosted Inter + OFL licence (no Google Fonts calls)
+index.html, css/style.css, js/app.js — list + map + parliament picker
 
 ## Commands
 ```bash
-python3 scripts/validate_members.py     # data gate; must print OK and exit 0
-python3 scripts/fetch_vic_official.py   # refresh official list (network)
-python3 scripts/build_members.py        # rebuild members.json
-python3 scripts/validate_boundaries.py  # boundary gate; must print OK
-python3 scripts/validate_news.py        # news gate; must print OK
-python3 scripts/validate_photos_socials.py  # photo/socials gate; must print OK
-python3 scripts/build_boundaries.py     # re-fetch + simplify boundaries (network)
+python3 scripts/validate_members.py
+python3 scripts/validate_boundaries.py
+python3 scripts/validate_news.py
+python3 scripts/validate_photos_socials.py
+python3 scripts/fetch_federal_official.py && python3 scripts/build_federal_members.py
+python3 scripts/build_federal_boundaries.py
 ```
-Local preview (from Stage 2): `python3 -m http.server 8000` in the repo root.
+Local preview: `python3 -m http.server 8000` in the repo root.
