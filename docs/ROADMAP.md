@@ -21,7 +21,7 @@ report if a source does not allow reuse.
 
 | # | Parliament | Status | Notes |
 |---|-----------|--------|-------|
-| 6 | Federal (House of Representatives + Senate) | 🔄 | Handbook API members (150+76); AEC 2025 boundaries; parliament picker; news stubs; photos/socials candidates pending owner approval |
+| 6 | Federal (House of Representatives + Senate) | 🔄 | PR ready: 150+76 members, AEC map, parliament picker, news stubs, 121 photos, 102 social candidates awaiting owner approval + merge |
 | 7 | New South Wales | ⏳ | |
 | 8 | Queensland | ⏳ | Unicameral |
 | 9 | Western Australia | ⏳ | |

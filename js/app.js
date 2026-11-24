@@ -23,6 +23,9 @@
       mapLower: "Showing the 88 Legislative Assembly districts.",
       mapUpper: "Showing the 8 Legislative Council regions. Each region elects 5 members.",
       mapOtherHint: " Choose Legislative Council under Chamber to see regions.",
+      seatFilterLabel: "Electorate or region",
+      seatAllLabel: "All electorates and regions",
+      mapDesc: "Map of Victorian electoral boundaries. Use the text list of seats below to choose a seat with a keyboard or screen reader.",
       footerFactsHtml: 'Member facts: <a href="https://www.parliament.vic.gov.au/members/">Parliament of Victoria</a>. This site is independent and not affiliated with any parliament or party.',
       footerBoundariesHtml: 'Electoral boundaries: Victorian Electoral Commission via DataVic, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, simplified by us.'
     },
@@ -46,6 +49,9 @@
       mapLower: "Showing the 150 House of Representatives divisions.",
       mapUpper: "Showing the 8 states and territories. Senators are elected for each state or territory.",
       mapOtherHint: " Choose Senate under Chamber to see states and territories.",
+      seatFilterLabel: "Division or state",
+      seatAllLabel: "All divisions and states",
+      mapDesc: "Map of Australian federal electoral boundaries. Use the text list of seats below to choose a seat with a keyboard or screen reader.",
       footerFactsHtml: 'Member facts: <a href="https://handbook.aph.gov.au/">Parliament of Australia (Parliamentary Handbook)</a>. This site is independent and not affiliated with any parliament or party.',
       footerBoundariesHtml: 'Electoral boundaries: Australian Electoral Commission under the <a href="https://www.aec.gov.au/Electorates/gis/licence.htm">AEC data download licence</a>, simplified by us.'
     }
@@ -80,7 +86,10 @@
     zoomExtent: document.getElementById("zoom-extent"),
     zoomMetro: document.getElementById("zoom-metro"),
     footerFacts: document.getElementById("footer-facts"),
-    footerBoundaries: document.getElementById("footer-boundaries")
+    footerBoundaries: document.getElementById("footer-boundaries"),
+    seatLabel: document.getElementById("seat-label"),
+    seatAllOpt: document.getElementById("seat-all-opt"),
+    mapDesc: document.getElementById("map-desc")
   };
   var SVG_NS = "http://www.w3.org/2000/svg";
   var METRO = /Metropolitan$/;
@@ -323,6 +332,9 @@
     }
     if (els.footerFacts) els.footerFacts.innerHTML = cfg.footerFactsHtml;
     if (els.footerBoundaries) els.footerBoundaries.innerHTML = cfg.footerBoundariesHtml;
+    if (els.seatLabel) els.seatLabel.textContent = cfg.seatFilterLabel;
+    if (els.seatAllOpt) els.seatAllOpt.textContent = cfg.seatAllLabel;
+    if (els.mapDesc) els.mapDesc.textContent = cfg.mapDesc;
   }
 
   function load(data) {
