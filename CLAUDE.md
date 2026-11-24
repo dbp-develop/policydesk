@@ -3,6 +3,9 @@
 Open-source directory of Australian elected members. Victoria first.
 Owner is a non-developer on iPad/phone: short, plain-English replies.
 
+**Lead tooling:** Cursor (this Project / Cursor cloud agents). Claude Code is no longer
+in use; keep this filename for continuity. Follow the same stage/gate/"go" rules below.
+
 ## Working rules
 1. One stage per session. At each gate stop, summarise in ≤8 lines (what changed,
    what was verified, what the owner must do), then wait for "go".
@@ -26,7 +29,7 @@ Owner is a non-developer on iPad/phone: short, plain-English replies.
 
 ## Project facts
 - Map view and list view. Each member: party, portrait, official socials, recent-news popup.
-- Vic state election 28 Nov 2026; data changes after it (Stage 6).
+- Vic state election 28 Nov 2026; post-election data refresh is Stage 14 (paused until results).
 - Brand: "The Policy Desk AU" (@PolicyDeskAU). Navy #14213D, saffron #F4A300,
   off-white #FAF8F3. Font Inter. Mobile-first. No party colours. Neutral, plain English.
 - Licences: code AGPL-3.0 (`LICENSE`). Data/text CC BY-SA 4.0 (`LICENSE-DATA.md`).
@@ -58,12 +61,15 @@ Owner is a non-developer on iPad/phone: short, plain-English replies.
 - Same rules for every party. Uncertain name matches dropped or labelled unverified.
 - Checked 2026-11-23: Google News RSS is blocked by robots.txt; most AU publishers forbid
   commercial reuse. Owner chose The Conversation only (CC BY-ND). See docs/data-sources.md.
-- NEVER fetch theconversation.com from a Claude session: its robots.txt disallows Claude-Code.
-  build_news.py runs only in the fetch-news GitHub Action.
+- NEVER fetch theconversation.com from a Cursor / cloud agent session: its robots.txt
+  disallows common AI crawlers (including Claude-Code). `build_news.py` runs only in the
+  fetch-news GitHub Action.
 
 ## Out of scope until owner says so
 User accounts, comments, ads, newsletter, any paid service.
-Federal and other states: approved for later, as Stages 8-15 after Victoria (see docs/ROADMAP.md).
+Federal and other states/territories: Stages 6–13 after Victoria (see docs/ROADMAP.md).
+Each jurisdiction stage needs list, map, news, photos, official socials, and official websites.
+Compliance and launch is Stage 15 (last). Post-election Vic refresh is Stage 14.
 
 ## Folder map
 ```
@@ -82,7 +88,7 @@ scripts/validate_news.py        News gate: max 5, allowed keys only, source/lice
 scripts/build_photos_socials.py Wikipedia lists -> Wikidata -> Commons: photos + social candidates (network)
 scripts/validate_photos_socials.py  Photo licence/creator/local copy; socials only if approved
 data/members.json               Clean member list used by the site
-data/vacancies.json             Recorded vacancies (no source field yet; fix in Stage 6)
+data/vacancies.json             Recorded vacancies (no source field yet; fix in Stage 14)
 data/vic_official.json          Raw official fetch
 data/vic_raw.json               Raw Wikidata fetch
 data/boundaries/                Simplified VEC boundaries, CC BY 4.0 (2020-21 redivision)
