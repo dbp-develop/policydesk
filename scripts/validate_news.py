@@ -10,7 +10,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 NEWS = ROOT / "data" / "news"
-MEMBERS = ROOT / "data" / "members.json"
+MEMBER_FILES = [
+    ROOT / "data" / "members.json",
+    ROOT / "data" / "federal" / "members.json",
+]
 
 ITEM_KEYS = {"title", "source", "url", "published", "verified", "licence"}
 SOURCES = {"The Conversation": ("https://theconversation.com/", "CC BY-ND 4.0")}
@@ -18,9 +21,22 @@ MAX_ITEMS = 5
 DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
 
+def load_ids() -> dict[str, str]:
+    ids: dict[str, str] = {}
+    for path in MEMBER_FILES:
+        if not path.exists():
+            continue
+        for m in json.loads(path.read_text(encoding="utf-8"))["members"]:
+            ids[m["id"]] = m["name"]
+    return ids
+
+
 def main() -> int:
     errors: list[str] = []
-    ids = {m["id"]: m["name"] for m in json.loads(MEMBERS.read_text(encoding="utf-8"))["members"]}
+    ids = load_ids()
+    if not ids:
+        print("ERROR: no members found", file=sys.stderr)
+        return 1
     idx_path = NEWS / "index.json"
     if not idx_path.exists():
         print("ERROR: missing data/news/index.json", file=sys.stderr)
@@ -31,13 +47,18 @@ def main() -> int:
             errors.append(f"index.json: missing {k}")
     counts = idx.get("counts", {})
     if set(counts) != set(ids):
-        errors.append(f"index.json members differ from members.json: "
-                      f"missing {sorted(set(ids) - set(counts))[:5]}, extra {sorted(set(counts) - set(ids))[:5]}")
+        errors.append(
+            f"index.json members differ from members files: "
+            f"missing {sorted(set(ids) - set(counts))[:5]}, "
+            f"extra {sorted(set(counts) - set(ids))[:5]}"
+        )
 
     files = {p.stem: p for p in NEWS.glob("*.json") if p.name != "index.json"}
     if set(files) != set(ids):
-        errors.append(f"news files differ from members: missing {sorted(set(ids) - set(files))[:5]}, "
-                      f"extra {sorted(set(files) - set(ids))[:5]}")
+        errors.append(
+            f"news files differ from members: missing {sorted(set(ids) - set(files))[:5]}, "
+            f"extra {sorted(set(files) - set(ids))[:5]}"
+        )
 
     total = verified = 0
     for mid, path in sorted(files.items()):
@@ -58,7 +79,7 @@ def main() -> int:
         if dates != sorted(dates, reverse=True):
             errors.append(f"{mid}: items not newest-first")
         for i in items:
-            if set(i) != ITEM_KEYS:  # catches any summary/body text sneaking in
+            if set(i) != ITEM_KEYS:
                 errors.append(f"{mid}: item keys {sorted(set(i))} != {sorted(ITEM_KEYS)}")
                 continue
             prefix, licence = SOURCES.get(i["source"], (None, None))
@@ -76,11 +97,15 @@ def main() -> int:
             verified += i["verified"] is True
 
     print("=== validate_news ===")
-    print(f"member files: {len(files)}/{len(ids)}; members with news: {sum(1 for v in counts.values() if v)}; "
-          f"items: {total} ({verified} verified, {total - verified} unverified)")
+    print(
+        f"member files: {len(files)}/{len(ids)}; members with news: "
+        f"{sum(1 for v in counts.values() if v)}; "
+        f"items: {total} ({verified} verified, {total - verified} unverified)"
+    )
+
     if errors:
         print(f"FAILED ({len(errors)} error(s)):", file=sys.stderr)
-        for e in errors[:40]:
+        for e in errors:
             print(f"  - {e}", file=sys.stderr)
         return 1
     print("OK")

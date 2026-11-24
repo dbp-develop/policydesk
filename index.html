@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Victorian MPs directory · The Policy Desk AU</title>
-  <meta name="description" content="A neutral, open-source directory of members of the Parliament of Victoria. Search by name, party, chamber, electorate or region.">
+  <title>Australian MPs directory · The Policy Desk AU</title>
+  <meta name="description" content="A neutral, open-source directory of Australian elected members. Search by name, party, chamber, electorate or region. Victoria and Federal Parliament.">
   <meta name="theme-color" content="#14213D">
   <link rel="preload" href="fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/style.css">
@@ -15,18 +15,25 @@
   <header class="site-header">
     <div class="wrap">
       <p class="brand">The Policy Desk <span class="brand-au">AU</span></p>
-      <h1>Members of the Parliament of Victoria</h1>
-      <p class="lede">Find your state MP. Search by name, party, chamber, electorate or region.</p>
+      <h1 id="page-title">Members of the Parliament of Victoria</h1>
+      <p class="lede" id="page-lede">Find your state MP. Search by name, party, chamber, electorate or region.</p>
     </div>
   </header>
 
   <main class="wrap">
     <section class="notice" aria-label="About this data">
       <p id="data-line">Loading data…</p>
-      <p>The Victorian state election is on 28 November 2026. This list shows members before the election and will be updated once results are official.</p>
+      <p id="election-note">The Victorian state election is on 28 November 2026. This list shows members before the election and will be updated once results are official.</p>
     </section>
 
     <form id="filters" class="filters" role="search" aria-label="Filter members">
+      <div class="field">
+        <label for="parliament">Parliament</label>
+        <select id="parliament" name="parliament">
+          <option value="vic">Victoria</option>
+          <option value="federal">Federal (House + Senate)</option>
+        </select>
+      </div>
       <div class="field field-search">
         <label for="q">Search name or seat</label>
         <input id="q" name="q" type="search" autocomplete="off" placeholder="e.g. Bendigo or Smith">
@@ -35,8 +42,8 @@
         <label for="chamber">Chamber</label>
         <select id="chamber" name="chamber">
           <option value="">Both chambers</option>
-          <option value="lower">Legislative Assembly</option>
-          <option value="upper">Legislative Council</option>
+          <option value="lower" id="chamber-lower-opt">Legislative Assembly</option>
+          <option value="upper" id="chamber-upper-opt">Legislative Council</option>
         </select>
       </div>
       <div class="field">
@@ -71,8 +78,8 @@
     <section id="map-view" class="map-view" aria-label="Map" tabindex="-1" hidden>
       <p id="map-layer" class="map-layer"></p>
       <div class="map-controls" role="group" aria-label="Map zoom">
-        <button type="button" class="btn btn-small" data-zoom="state">Whole state</button>
-        <button type="button" class="btn btn-small" data-zoom="melbourne">Melbourne</button>
+        <button type="button" class="btn btn-small" data-zoom="state" id="zoom-extent">Whole state</button>
+        <button type="button" class="btn btn-small" data-zoom="melbourne" id="zoom-metro">Melbourne</button>
         <button type="button" class="btn btn-small" data-zoom="in" aria-label="Zoom in">+</button>
         <button type="button" class="btn btn-small" data-zoom="out" aria-label="Zoom out">−</button>
       </div>
@@ -111,15 +118,16 @@
   <footer class="site-footer">
     <div class="wrap">
       <p><strong>Created by The Policy Desk AU (@PolicyDeskAU)</strong></p>
-      <p>Member facts: <a href="https://www.parliament.vic.gov.au/members/">Parliament of Victoria</a>.
-        This site is independent and not affiliated with the Parliament of Victoria or any party.</p>
+      <p id="footer-facts">Member facts: <a href="https://www.parliament.vic.gov.au/members/">Parliament of Victoria</a>.
+        This site is independent and not affiliated with any parliament or party.</p>
       <p>Code: <a href="https://github.com/dbp-develop/policydesk/blob/main/LICENSE">AGPL-3.0</a>.
         Our data and text: <a href="https://github.com/dbp-develop/policydesk/blob/main/LICENSE-DATA.md">CC BY-SA 4.0</a>.
         Third-party material keeps its own licence.
         News headlines: <a href="https://theconversation.com/au">The Conversation</a>, <a href="https://creativecommons.org/licenses/by-nd/4.0/">CC BY-ND 4.0</a>, headline and link only.
-        Electoral boundaries: Victorian Electoral Commission via DataVic, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, simplified by us.</p>
-      <p>Map boundaries are simplified to about 100 metres and are a guide only.
-        For exact boundaries, check the <a href="https://www.vec.vic.gov.au/electoral-boundaries">Victorian Electoral Commission</a>.</p>
+        <span id="footer-boundaries">Electoral boundaries: Victorian Electoral Commission via DataVic, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, simplified by us.</span></p>
+      <p id="footer-boundary-note">Map boundaries are simplified and are a guide only.
+        For exact Victorian boundaries, check the <a href="https://www.vec.vic.gov.au/electoral-boundaries">Victorian Electoral Commission</a>.
+        For federal boundaries, check the <a href="https://www.aec.gov.au/electorates/">Australian Electoral Commission</a>.</p>
       <p>Font: Inter, <a href="fonts/OFL.txt">SIL Open Font License</a>.</p>
       <p><a href="https://github.com/dbp-develop/policydesk">Source code on GitHub</a></p>
     </div>

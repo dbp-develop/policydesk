@@ -21,7 +21,7 @@ report if a source does not allow reuse.
 
 | # | Parliament | Status | Notes |
 |---|-----------|--------|-------|
-| 6 | Federal (House of Representatives + Senate) | ⏳ | AEC boundaries; Senate = states/territories. Plan site changes here (parliament picker, per-parliament data, map switch) |
+| 6 | Federal (House of Representatives + Senate) | 🔄 | Handbook API members (150+76); AEC 2025 boundaries; parliament picker; news stubs; photos/socials candidates pending owner approval |
 | 7 | New South Wales | ⏳ | |
 | 8 | Queensland | ⏳ | Unicameral |
 | 9 | Western Australia | ⏳ | |
@@ -43,5 +43,8 @@ report if a source does not allow reuse.
   that (see `docs/data-sources.md` §2, verdict (c) "unclear"). This conflicts with
   allowing reuse and monetisation under CC BY-SA. Needs a decision or a permission
   request to info@parliament.vic.gov.au.
-- `docs/data-sources.md` covers only the Parliament endpoint. Wikidata, Wikimedia
-  Commons, boundary data and news sources still need entries.
+- Parliament of Australia website material is under **CC BY-NC-ND 4.0** (see
+  `docs/data-sources.md` Federal section). We store facts only with attribution;
+  NC-ND vs CC BY-SA / monetisation needs the same compliance decision.
+- `docs/data-sources.md` covers Vic parliament, boundaries, news, photos/socials,
+  Federal handbook and AEC boundaries. Keep it current when sources change.
