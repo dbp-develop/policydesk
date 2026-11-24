@@ -109,16 +109,33 @@
     seatButtons: document.getElementById("seat-buttons"),
     seatCount: document.getElementById("seat-count"),
     mapCredit: document.getElementById("map-credit"),
+    zoomAustralia: document.getElementById("zoom-australia"),
     zoomExtent: document.getElementById("zoom-extent"),
     zoomMetro: document.getElementById("zoom-metro"),
     footerFacts: document.getElementById("footer-facts"),
     footerBoundaries: document.getElementById("footer-boundaries"),
     seatLabel: document.getElementById("seat-label"),
     seatAllOpt: document.getElementById("seat-all-opt"),
-    mapDesc: document.getElementById("map-desc")
+    seatListLabel: document.getElementById("seat-list-label"),
+    mapDesc: document.getElementById("map-desc"),
+    mapHint: document.getElementById("map-hint")
   };
   var SVG_NS = "http://www.w3.org/2000/svg";
   var METRO = /Metropolitan$/;
+  /* National overview reuses AEC state/territory shapes (federal_states.json). */
+  var OVERVIEW_URL = "data/boundaries/federal_states.json";
+  var OVERVIEW_DESC = "Map of Australia. Choose a jurisdiction from the text list below, or tap a live state, to open its electoral boundaries. Keyboard and screen reader users should use the text list.";
+  var OVERVIEW_HINT = "On the Australia view, tap a live state (Victoria or New South Wales) or choose Federal from the list. Zoom with + and −, by pinching, or by holding Ctrl and scrolling. Once zoomed in, drag to move the map.";
+  var DETAIL_HINT = "Zoom with + and −, by pinching, or by holding Ctrl and scrolling. Once zoomed in, drag to move the map. Use Australia to return to the national map.";
+  var STATE_TO_PARLIAMENT = {
+    "Victoria": "vic",
+    "New South Wales": "nsw"
+  };
+  var OVERVIEW_LIVE = [
+    { key: "federal", label: "Federal (House + Senate)" },
+    { key: "vic", label: "Victoria" },
+    { key: "nsw", label: "New South Wales" }
+  ];
 
   var collator = new Intl.Collator("en-AU", { sensitivity: "base" });
   var parliamentKey = "vic";
@@ -400,7 +417,15 @@
     els.dataLine.appendChild(document.createTextNode("."));
 
     buildFilters();
-    if (location.hash === "#map") setView("map", false); else render();
+    // Enter map only when first landing on #map. Do not call setView("map") again on
+    // parliament switches — that would reset the national overview / detail focus.
+    if (view === "map") {
+      render();
+    } else if (location.hash === "#map") {
+      setView("map", false);
+    } else {
+      render();
+    }
   }
 
   function loadParliament(key) {
@@ -418,8 +443,10 @@
     viewBox = null;
     lastSeatFilter = "";
     detailKey = "";
-    els.mapStatus.textContent = "Loading map…";
-    els.mapCredit.replaceChildren();
+    if (view === "map" && mapMode === "detail") {
+      els.mapStatus.textContent = "Loading map…";
+      els.mapCredit.replaceChildren();
+    }
     els.dataLine.textContent = "Loading data…";
     fetch(cfg.membersUrl, { cache: "no-cache" })
       .then(function (r) {
@@ -430,20 +457,56 @@
       .catch(function () {
         els.dataLine.textContent = "Sorry, the member list could not be loaded. Please try again later.";
       });
-    if (view === "map") loadBoundaries().then(function () { if (boundaries) render(); });
+    if (view === "map" && mapMode === "detail") {
+      loadBoundaries().then(function () { if (boundaries) render(); });
+    } else if (view === "map" && mapMode === "overview") {
+      render();
+    }
   }
 
 
   /* ---------- Map view ---------- */
   var view = "list";
-  var boundaries = null;      // { districts: doc, regions: doc }
+  var mapMode = "overview";   // "overview" (Australia) | "detail" (current parliament)
+  var boundaries = null;      // parliament layers, e.g. { districts: doc, regions: doc }
   var boundaryPromise = null;
-  var layerKey = null;        // "districts" | "regions"
+  var overviewDoc = null;     // national state/territory outlines
+  var overviewPromise = null;
+  var layerKey = null;        // "districts" | "regions" | …
   var selected = null;        // seat name
   var viewBox = null;         // [x, y, w, h]
   var lastShown = [];
   var lastSeatFilter = "";
   var detailKey = "";
+  var overviewDrawn = false;
+
+  function setMapCredit(d) {
+    function link(text, href) { var a = el("a", null, text); a.href = href; return a; }
+    function txt(t) { return document.createTextNode(t); }
+    els.mapCredit.replaceChildren(
+      txt(d.credit || ("Electoral boundaries: " + (d.source || "") + ". ")),
+      txt(" "), link(d.licence || "Licence", d.licence_url),
+      txt(". " + (d.boundary_version || "")));
+  }
+
+  function loadOverview() {
+    if (!overviewPromise) {
+      overviewPromise = fetch(OVERVIEW_URL, { cache: "no-cache" }).then(function (r) {
+        if (!r.ok) throw new Error("HTTP " + r.status);
+        return r.json();
+      }).then(function (doc) {
+        overviewDoc = doc;
+        els.mapStatus.textContent = "";
+        return doc;
+      }).catch(function () {
+        overviewPromise = null;
+        overviewDoc = null;
+        els.mapStatus.textContent = "Sorry, the map could not be loaded. The list view still works.";
+        if (els.mapHint) els.mapHint.hidden = true;
+      });
+    }
+    return overviewPromise;
+  }
 
   function loadBoundaries() {
     if (!boundaryPromise) {
@@ -457,19 +520,12 @@
       })).then(function (docs) {
         boundaries = {};
         keys.forEach(function (k, i) { boundaries[k] = docs[i]; });
-        var d = docs[0];
-        function link(text, href) { var a = el("a", null, text); a.href = href; return a; }
-        function txt(t) { return document.createTextNode(t); }
-        els.mapCredit.replaceChildren(
-          txt(d.credit || ("Electoral boundaries: " + (d.source || "") + ". ")),
-          txt(" "), link(d.licence || "Licence", d.licence_url),
-          txt(". " + (d.boundary_version || "")));
+        setMapCredit(docs[0]);
         els.mapStatus.textContent = "";
       }).catch(function () {
         boundaryPromise = null;
         els.mapStatus.textContent = "Sorry, the map could not be loaded. The list view still works.";
-        var hint = document.getElementById("map-hint");
-        if (hint) hint.hidden = true;
+        if (els.mapHint) els.mapHint.hidden = true;
       });
     }
     return boundaryPromise;
@@ -478,6 +534,58 @@
   function lowerLayer() { return cfg.layers.lower; }
   function upperLayer() { return cfg.layers.upper; }
   function extentDoc() { return boundaries[lowerLayer()]; }
+  function mapReady() { return mapMode === "overview" ? !!overviewDoc : !!boundaries; }
+  function activeFullBox() {
+    if (mapMode === "overview") return overviewDoc && overviewDoc.viewBox;
+    return boundaries && extentDoc() && extentDoc().viewBox;
+  }
+
+  function syncMapChrome() {
+    var onOverview = mapMode === "overview";
+    if (els.zoomAustralia) els.zoomAustralia.setAttribute("aria-current", String(onOverview));
+    if (els.zoomExtent) els.zoomExtent.hidden = onOverview;
+    if (els.zoomMetro) els.zoomMetro.hidden = onOverview || !cfg.showMetro;
+    if (els.mapHint) {
+      els.mapHint.hidden = false;
+      els.mapHint.textContent = onOverview ? OVERVIEW_HINT : DETAIL_HINT;
+    }
+    if (els.mapDesc) els.mapDesc.textContent = onOverview ? OVERVIEW_DESC : cfg.mapDesc;
+  }
+
+  function enterOverview() {
+    mapMode = "overview";
+    selected = null;
+    layerKey = null;
+    overviewDrawn = false;
+    detailKey = "";
+    viewBox = null;
+    syncMapChrome();
+    loadOverview().then(function () {
+      if (view !== "map" || mapMode !== "overview" || !overviewDoc) return;
+      setMapCredit(overviewDoc);
+      setViewBox(overviewDoc.viewBox);
+      render();
+    });
+  }
+
+  function focusParliamentFromMap(key) {
+    if (!PARLIAMENTS[key]) return;
+    mapMode = "detail";
+    overviewDrawn = false;
+    syncMapChrome();
+    if (key === parliamentKey && boundaries) {
+      selected = null;
+      layerKey = null;
+      viewBox = null;
+      lastSeatFilter = "";
+      detailKey = "";
+      setMapCredit(boundaries[lowerLayer()]);
+      setViewBox(extentDoc().viewBox);
+      render();
+      return;
+    }
+    loadParliament(key);
+  }
 
   function setView(v, focus) {
     view = v;
@@ -487,7 +595,7 @@
     els.mapView.hidden = v !== "map";
     try { history.replaceState(null, "", v === "map" ? "#map" : location.pathname + location.search); } catch (e) { /* ignore */ }
     if (v === "map") {
-      loadBoundaries().then(function () { if (boundaries) render(); });
+      enterOverview();
     }
     render();
     if (focus) (v === "map" ? els.mapView : els.results).focus();
@@ -495,7 +603,8 @@
 
   function setViewBox(b) {
     var ratio = 0.72;  // keep a sensible aspect
-    var full = extentDoc().viewBox;
+    var full = activeFullBox();
+    if (!full) return;
     var w = Math.max(b[2], 40), h = Math.max(b[3], 40);
     if (h / w > ratio) w = h / ratio; else h = w * ratio;
     var maxW = full[2] * 1.02, maxH = full[2] * 1.02 * ratio;
@@ -521,10 +630,13 @@
   }
 
   function zoomTo(kind) {
-    if (!boundaries) return;
-    var full = extentDoc().viewBox;
+    if (kind === "australia") return enterOverview();
+    if (!mapReady()) return;
+    var full = activeFullBox();
+    if (!full) return;
     if (kind === "state") return setViewBox(full);
     if (kind === "melbourne") {
+      if (mapMode === "overview") return setViewBox(full);
       if (parliamentKey === "federal") {
         // Rough south-east Australia crop of the national viewBox.
         return setViewBox([full[0] + full[2] * 0.55, full[1] + full[3] * 0.45, full[2] * 0.4, full[3] * 0.45]);
@@ -541,6 +653,7 @@
       });
       return setViewBox([b[0], b[1], b[2] - b[0], b[3] - b[1]]);
     }
+    if (!viewBox) setViewBox(full);
     var f = kind === "in" ? 0.5 : 2;
     setViewBox([viewBox[0] + viewBox[2] * (1 - f) / 2, viewBox[1] + viewBox[3] * (1 - f) / 2, viewBox[2] * f, viewBox[3] * f]);
   }
@@ -554,7 +667,23 @@
     renderMap(lastShown);
   }
 
+  function renderOverviewDetail() {
+    var key = "overview|" + parliamentKey;
+    if (key === detailKey) return;
+    detailKey = key;
+    els.mapDetail.replaceChildren();
+    els.mapDetail.appendChild(el("p", "meta",
+      "Australia overview. Live on The Policy Desk AU today: Federal, Victoria, and New South Wales. " +
+      "Tap a live state, choose Federal from the list, or use the Parliament menu. Other states and territories will appear when their stage is built."));
+    var current = PARLIAMENTS[parliamentKey];
+    if (current) {
+      els.mapDetail.appendChild(el("p", "meta",
+        "Parliament menu is on " + current.label + ". Opening a jurisdiction updates the member list to match."));
+    }
+  }
+
   function renderDetail(shown) {
+    if (mapMode === "overview") return renderOverviewDetail();
     var chamberKey = layerKey === upperLayer() ? "upper" : "lower";
     var key = layerKey + "|" + selected + "|" + shown.filter(function (r) {
       return r.seat === selected && r.chamber === chamberKey;
@@ -563,7 +692,7 @@
     detailKey = key;
     els.mapDetail.replaceChildren();
     if (!selected) {
-      els.mapDetail.appendChild(el("p", "meta", "Tap or click an area on the map, or pick a seat from the list below."));
+      els.mapDetail.appendChild(el("p", "meta", "Tap or click an area on the map, or pick a seat from the list below. Use Australia to return to the national map."));
       return;
     }
     var chamber = chamberKey;
@@ -580,9 +709,80 @@
     els.mapDetail.appendChild(list);
   }
 
+  function renderOverview() {
+    syncMapChrome();
+    if (!overviewDoc) return;
+    if (!overviewDrawn) {
+      overviewDrawn = true;
+      var g = document.createElementNS(SVG_NS, "g");
+      overviewDoc.features.forEach(function (f) {
+        var p = document.createElementNS(SVG_NS, "path");
+        var liveKey = STATE_TO_PARLIAMENT[f.name];
+        p.setAttribute("d", f.d);
+        p.setAttribute("class", "jurisdiction " + (liveKey ? "is-live" : "is-soon"));
+        p.dataset.name = f.name;
+        if (liveKey) p.dataset.parliament = liveKey;
+        var t = document.createElementNS(SVG_NS, "title");
+        t.textContent = liveKey
+          ? f.name + " — open state parliament map"
+          : f.name + " — not listed on this site yet";
+        p.appendChild(t);
+        g.appendChild(p);
+      });
+      els.map.replaceChildren(els.map.querySelector("title"), g);
+      if (!viewBox) setViewBox(overviewDoc.viewBox);
+      setMapCredit(overviewDoc);
+    }
+    els.map.querySelectorAll("path.jurisdiction").forEach(function (p) {
+      var liveKey = p.dataset.parliament;
+      var current = false;
+      if (parliamentKey === "federal") current = false;
+      else if (liveKey) current = liveKey === parliamentKey;
+      p.classList.toggle("is-current", current);
+    });
+    els.mapLayer.textContent =
+      "Showing Australia. Live jurisdictions: Federal, Victoria, and New South Wales. " +
+      "Other states and territories are outlines only until their stage is ready.";
+
+    var items = OVERVIEW_LIVE.slice();
+    overviewDoc.features.forEach(function (f) {
+      if (!STATE_TO_PARLIAMENT[f.name]) items.push({ key: null, label: f.name, soon: true });
+    });
+    els.seatCount.textContent = String(items.length);
+    if (els.seatListLabel) els.seatListLabel.textContent = "Text list of places on this map";
+    var frag = document.createDocumentFragment();
+    items.forEach(function (item) {
+      var li = document.createElement("li");
+      if (item.soon) {
+        var span = el("span", "seat-btn is-soon-label", item.label + " (not listed yet)");
+        span.setAttribute("aria-disabled", "true");
+        li.appendChild(span);
+      } else {
+        var b = el("button", "seat-btn", item.label);
+        b.type = "button";
+        if (item.key === parliamentKey) b.setAttribute("aria-current", "true");
+        b.dataset.parliament = item.key;
+        b.addEventListener("click", function () {
+          focusParliamentFromMap(item.key);
+          var again = els.seatButtons.querySelector('[data-parliament="' + CSS.escape(item.key) + '"]');
+          if (again) again.focus();
+        });
+        li.appendChild(b);
+      }
+      frag.appendChild(li);
+    });
+    els.seatButtons.replaceChildren(frag);
+    renderOverviewDetail();
+  }
+
   function renderMap(shown) {
     lastShown = shown;
+    if (mapMode === "overview") {
+      renderOverview();
+      return;
+    }
     if (!boundaries) return;
+    syncMapChrome();
     var seat = els.seat.value;
     var upperFeats = boundaries[upperLayer()].features;
     var seatIsUpper = !!seat && upperFeats.some(function (f) { return f.name === seat; });
@@ -640,19 +840,20 @@
     var names = boundaries[layerKey].features.map(function (f) { return f.name; })
       .filter(function (n) { return matchSeats[n]; });
     els.seatCount.textContent = String(names.length);
+    if (els.seatListLabel) els.seatListLabel.textContent = "Text list of seats on this map";
     var frag = document.createDocumentFragment();
     names.forEach(function (n) {
       var li = document.createElement("li");
-      var b = el("button", "seat-btn", n);
-      b.type = "button";
-      if (n === selected) b.setAttribute("aria-current", "true");
-      b.dataset.name = n;
-      b.addEventListener("click", function () {
+      var btn = el("button", "seat-btn", n);
+      btn.type = "button";
+      if (n === selected) btn.setAttribute("aria-current", "true");
+      btn.dataset.name = n;
+      btn.addEventListener("click", function () {
         select(n, true);
         var again = els.seatButtons.querySelector('[data-name="' + CSS.escape(n) + '"]');
         if (again) again.focus();
       });
-      li.appendChild(b);
+      li.appendChild(btn);
       frag.appendChild(li);
     });
     els.seatButtons.replaceChildren(frag);
@@ -667,6 +868,11 @@
 
   function selectAt(x, y) {
     var hit = document.elementFromPoint(x, y);
+    if (mapMode === "overview") {
+      var j = hit && hit.closest && hit.closest("path.jurisdiction.is-live");
+      if (j && j.dataset.parliament) focusParliamentFromMap(j.dataset.parliament);
+      return;
+    }
     var p = hit && hit.closest && hit.closest("path.seat");
     if (p) select(p.dataset.name, false);
   }
@@ -700,7 +906,7 @@
   }
 
   els.map.addEventListener("pointerdown", function (e) {
-    if (!boundaries || (e.pointerType === "mouse" && e.button !== 0)) return;
+    if (!mapReady() || !viewBox || (e.pointerType === "mouse" && e.button !== 0)) return;
     pointers[e.pointerId] = { x: e.clientX, y: e.clientY };
     try { els.map.setPointerCapture(e.pointerId); } catch (err) { /* ignore */ }
     if (Object.keys(pointers).length === 1) { gesture = null; suppressClick = false; }
@@ -741,7 +947,7 @@
   els.map.addEventListener("pointerup", endPointer);
   els.map.addEventListener("pointercancel", endPointer);
   els.map.addEventListener("wheel", function (e) {
-    if (!boundaries || !e.ctrlKey) return;  // plain scroll keeps scrolling the page
+    if (!mapReady() || !viewBox || !e.ctrlKey) return;  // plain scroll keeps scrolling the page
     e.preventDefault();
     var dy = e.deltaMode === 1 ? e.deltaY * 33 : e.deltaY;          // lines -> pixels
     var step = Math.max(-0.35, Math.min(0.35, dy * 0.005));       // at most ~1.4x per event
@@ -766,6 +972,9 @@
   });
   els.form.addEventListener("change", function (e) {
     if (e.target && e.target.id === "parliament") {
+      mapMode = "detail";
+      overviewDrawn = false;
+      syncMapChrome();
       loadParliament(els.parliament.value);
       return;
     }
@@ -777,7 +986,8 @@
     setTimeout(function () {
       // Keep the chosen parliament on clear; only clear search filters.
       if (els.parliament) els.parliament.value = parliamentKey;
-      if (boundaries) setViewBox(extentDoc().viewBox);
+      if (mapMode === "detail" && boundaries) setViewBox(extentDoc().viewBox);
+      else if (mapMode === "overview" && overviewDoc) setViewBox(overviewDoc.viewBox);
       render();
     }, 0);
   });
