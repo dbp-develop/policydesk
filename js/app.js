@@ -226,12 +226,19 @@
     });
     addOptions(els.party, Object.keys(parties).sort(collator.compare));
 
-    ["lower", "upper"].forEach(function (c) {
-      var group = document.createElement("optgroup");
-      group.label = chamberLabel(c);
-      addOptions(group, Object.keys(seats[c]).sort(collator.compare));
-      els.seat.appendChild(group);
-    });
+    if (cfg.unicameral) {
+      // One chamber only — flat options, no empty duplicate optgroup.
+      addOptions(els.seat, Object.keys(seats.lower).sort(collator.compare));
+    } else {
+      ["lower", "upper"].forEach(function (c) {
+        var names = Object.keys(seats[c]).sort(collator.compare);
+        if (!names.length) return;
+        var group = document.createElement("optgroup");
+        group.label = chamberLabel(c);
+        addOptions(group, names);
+        els.seat.appendChild(group);
+      });
+    }
   }
 
   function syncSeatGroups() {
@@ -641,19 +648,28 @@
   }
 
   function setViewBox(b) {
-    var ratio = 0.72;  // keep a sensible aspect
     var full = activeFullBox();
     if (!full) return;
+    // Match the active layer's own aspect (portrait QLD ~1.4, landscape Vic ~0.72)
+    // so Whole state is not clipped by a fixed landscape ratio.
+    var ratio = Math.max(full[3] / Math.max(full[2], 1), 0.5);
     var w = Math.max(b[2], 40), h = Math.max(b[3], 40);
     if (h / w > ratio) w = h / ratio; else h = w * ratio;
-    var maxW = full[2] * 1.02, maxH = full[2] * 1.02 * ratio;
-    if (w > maxW) { w = maxW; h = maxH; }
+    var maxW = full[2] * 1.02, maxH = full[3] * 1.02;
+    if (w > maxW || h > maxH) {
+      var scale = Math.min(maxW / w, maxH / h);
+      w *= scale;
+      h *= scale;
+    }
     var cx = b[0] + b[2] / 2, cy = b[1] + b[3] / 2;
     // keep the map in view: clamp the centre so we never drift off the extent
     cx = w >= full[2] ? full[2] / 2 : Math.min(Math.max(cx, w / 2), full[2] - w / 2);
     cy = h >= full[3] ? full[3] / 2 : Math.min(Math.max(cy, h / 2), full[3] - h / 2);
     viewBox = [cx - w / 2, cy - h / 2, w, h];
-    els.map.classList.toggle("is-zoomed", w < full[2] * 0.98);
+    els.map.classList.toggle(
+      "is-zoomed",
+      w < full[2] * 0.98 || h < full[3] * 0.98
+    );
     els.map.setAttribute("viewBox", viewBox.map(function (n) { return Math.round(n); }).join(" "));
   }
 
