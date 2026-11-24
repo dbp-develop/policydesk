@@ -10,12 +10,13 @@ Only robots.txt-allowed pages are used (no /w/api.php, no /sparql):
 Outputs:
   data/photos.json
   data/socials_review.json  (approved: false until owner approves)
-  docs/review/stage5-review.md and/or docs/review/stage6-federal-review.md
+  docs/review/stage5-review.md, stage6-federal-review.md, and/or stage7-nsw-review.md
 
 Usage:
-  python3 scripts/build_photos_socials.py              # both parliaments
+  python3 scripts/build_photos_socials.py              # all parliaments
   python3 scripts/build_photos_socials.py --parliament vic
   python3 scripts/build_photos_socials.py --parliament federal
+  python3 scripts/build_photos_socials.py --parliament nsw
 """
 
 from __future__ import annotations
@@ -67,6 +68,20 @@ PARLIAMENTS = {
         "review_title": "Stage 6 review: photo and social matches (Federal)",
         "check_label": "federal seat",
     },
+    "nsw": {
+        "members": ROOT / "data" / "nsw" / "members.json",
+        "list_pages": {
+            "lower": "https://en.wikipedia.org/wiki/Members_of_the_New_South_Wales_Legislative_Assembly,_2023%E2%80%932027",
+            "upper": "https://en.wikipedia.org/wiki/Members_of_the_New_South_Wales_Legislative_Council,_2023%E2%80%932027",
+        },
+        "positions": {
+            "Q19202748": "Member of the New South Wales Legislative Assembly",
+            "Q18810377": "Member of the New South Wales Legislative Council",
+        },
+        "review": ROOT / "docs" / "review" / "stage7-nsw-review.md",
+        "review_title": "Stage 7 review: photo and social matches (New South Wales)",
+        "check_label": "NSW seat",
+    },
 }
 
 SOCIAL_PROPS = {
@@ -78,7 +93,7 @@ OK_LICENCE = re.compile(
     r"^(CC0( 1\.0)?|Public domain|CC BY(-SA)? \d\.\d( [A-Za-z\-]+)?)$", re.I
 )
 BAD_CREATOR = re.compile(r"^(unknown|anonymous|unknown author|author unknown)\b", re.I)
-PARLIAMENT_SOURCE = re.compile(r"parliament|parl\.|aph\.gov\.au", re.I)
+PARLIAMENT_SOURCE = re.compile(r"parliament|parl\.|aph\.gov\.au|nsw\.gov\.au", re.I)
 BAD_LICENCE = re.compile(r"\b(NC|ND)\b")
 THUMB_WIDTH = 240
 
@@ -353,12 +368,14 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument(
         "--parliament",
-        choices=["vic", "federal", "all"],
+        choices=["vic", "federal", "nsw", "all"],
         default="all",
         help="which parliament(s) to refresh (default: all)",
     )
     args = ap.parse_args()
-    targets = ["vic", "federal"] if args.parliament == "all" else [args.parliament]
+    targets = (
+        ["vic", "federal", "nsw"] if args.parliament == "all" else [args.parliament]
+    )
 
     photos_path = ROOT / "data" / "photos.json"
     socials_path = ROOT / "data" / "socials_review.json"

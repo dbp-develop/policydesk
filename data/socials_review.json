@@ -1,7 +1,7 @@
 {
  "source": "Wikidata (CC0): P2002 X, P2013 Facebook, P2003 Instagram",
  "note": "Candidates only. Nothing here is shown on the site until the owner approves it.",
- "generated_at": "2026-11-24T21:25:07+00:00",
+ "generated_at": "2026-11-24T22:37:05+00:00",
  "candidates": {
   "adem-somyurek": {
    "name": "Adem Somyurek",
@@ -1761,6 +1761,383 @@
     "x": {
      "handle": "zalisteggall",
      "url": "https://x.com/zalisteggall"
+    }
+   },
+   "approved": false
+  },
+  "nsw-abigail-boyd": {
+   "name": "Abigail Boyd",
+   "wikidata": "https://www.wikidata.org/wiki/Q62961056",
+   "candidates": {
+    "instagram": {
+     "handle": "abigailboydmlc",
+     "url": "https://www.instagram.com/abigailboydmlc/"
+    }
+   },
+   "approved": false
+  },
+  "nsw-amanda-cohn": {
+   "name": "Amanda Cohn",
+   "wikidata": "https://www.wikidata.org/wiki/Q117689146",
+   "candidates": {
+    "instagram": {
+     "handle": "amandacohn.greens",
+     "url": "https://www.instagram.com/amandacohn.greens/"
+    }
+   },
+   "approved": false
+  },
+  "nsw-cate-faehrmann": {
+   "name": "Cate Faehrmann",
+   "wikidata": "https://www.wikidata.org/wiki/Q5051778",
+   "candidates": {
+    "x": {
+     "handle": "greencate",
+     "url": "https://x.com/greencate"
+    },
+    "facebook": {
+     "handle": "greencate",
+     "url": "https://www.facebook.com/greencate"
+    },
+    "instagram": {
+     "handle": "greencate",
+     "url": "https://www.instagram.com/greencate/"
+    }
+   },
+   "approved": false
+  },
+  "nsw-eleni-petinos": {
+   "name": "Eleni Petinos",
+   "wikidata": "https://www.wikidata.org/wiki/Q19786996",
+   "candidates": {
+    "facebook": {
+     "handle": "elenipetinos4miranda",
+     "url": "https://www.facebook.com/elenipetinos4miranda"
+    }
+   },
+   "approved": false
+  },
+  "nsw-emma-hurst": {
+   "name": "Emma Hurst",
+   "wikidata": "https://www.wikidata.org/wiki/Q63153112",
+   "candidates": {
+    "x": {
+     "handle": "MlcHurst",
+     "url": "https://x.com/MlcHurst"
+    }
+   },
+   "approved": false
+  },
+  "nsw-greg-piper": {
+   "name": "Greg Piper",
+   "wikidata": "https://www.wikidata.org/wiki/Q5606139",
+   "candidates": {
+    "x": {
+     "handle": "GregPiperMP",
+     "url": "https://x.com/GregPiperMP"
+    }
+   },
+   "approved": false
+  },
+  "nsw-jacqui-munro": {
+   "name": "Jacqui Munro",
+   "wikidata": "https://www.wikidata.org/wiki/Q115058503",
+   "candidates": {
+    "x": {
+     "handle": "jacquifunro",
+     "url": "https://x.com/jacquifunro"
+    },
+    "instagram": {
+     "handle": "jacquimunroforsydney",
+     "url": "https://www.instagram.com/jacquimunroforsydney/"
+    }
+   },
+   "approved": false
+  },
+  "nsw-james-griffin": {
+   "name": "James Griffin",
+   "wikidata": "https://www.wikidata.org/wiki/Q29386045",
+   "candidates": {
+    "x": {
+     "handle": "James_HGriffin",
+     "url": "https://x.com/James_HGriffin"
+    }
+   },
+   "approved": false
+  },
+  "nsw-jason-li": {
+   "name": "Jason Li",
+   "wikidata": "https://www.wikidata.org/wiki/Q110439070",
+   "candidates": {
+    "x": {
+     "handle": "Jason4strath",
+     "url": "https://x.com/Jason4strath"
+    }
+   },
+   "approved": false
+  },
+  "nsw-jeremy-buckingham": {
+   "name": "Jeremy Buckingham",
+   "wikidata": "https://www.wikidata.org/wiki/Q13412180",
+   "candidates": {
+    "x": {
+     "handle": "greensjeremy",
+     "url": "https://x.com/greensjeremy"
+    }
+   },
+   "approved": false
+  },
+  "nsw-jihad-dib": {
+   "name": "Jihad Dib",
+   "wikidata": "https://www.wikidata.org/wiki/Q19872872",
+   "candidates": {
+    "x": {
+     "handle": "jihaddibmp",
+     "url": "https://x.com/jihaddibmp"
+    }
+   },
+   "approved": false
+  },
+  "nsw-jodie-harrison": {
+   "name": "Jodie Harrison",
+   "wikidata": "https://www.wikidata.org/wiki/Q18379290",
+   "candidates": {
+    "x": {
+     "handle": "MayorJodieH",
+     "url": "https://x.com/MayorJodieH"
+    },
+    "facebook": {
+     "handle": "JodieHarrisonMP",
+     "url": "https://www.facebook.com/JodieHarrisonMP"
+    }
+   },
+   "approved": false
+  },
+  "nsw-john-graham": {
+   "name": "John Graham",
+   "wikidata": "https://www.wikidata.org/wiki/Q27450715",
+   "candidates": {
+    "x": {
+     "handle": "JohnGrahamALP",
+     "url": "https://x.com/JohnGrahamALP"
+    }
+   },
+   "approved": false
+  },
+  "nsw-katelin-mcinerney": {
+   "name": "Katelin McInerney",
+   "wikidata": "https://www.wikidata.org/wiki/Q136249311",
+   "candidates": {
+    "facebook": {
+     "handle": "KatelinMcInerneyKiama",
+     "url": "https://www.facebook.com/KatelinMcInerneyKiama"
+    },
+    "instagram": {
+     "handle": "katelin4kiama",
+     "url": "https://www.instagram.com/katelin4kiama/"
+    }
+   },
+   "approved": false
+  },
+  "nsw-kobi-shetty": {
+   "name": "Kobi Shetty",
+   "wikidata": "https://www.wikidata.org/wiki/Q117316523",
+   "candidates": {
+    "x": {
+     "handle": "KobiShettyGreen",
+     "url": "https://x.com/KobiShettyGreen"
+    }
+   },
+   "approved": false
+  },
+  "nsw-kylie-wilkinson": {
+   "name": "Kylie Wilkinson",
+   "wikidata": "https://www.wikidata.org/wiki/Q117294450",
+   "candidates": {
+    "facebook": {
+     "handle": "KylieEastHills",
+     "url": "https://www.facebook.com/KylieEastHills"
+    }
+   },
+   "approved": false
+  },
+  "nsw-liesl-tesch": {
+   "name": "Liesl Tesch",
+   "wikidata": "https://www.wikidata.org/wiki/Q6544335",
+   "candidates": {
+    "x": {
+     "handle": "LieslTesch",
+     "url": "https://x.com/LieslTesch"
+    },
+    "instagram": {
+     "handle": "liesltesch",
+     "url": "https://www.instagram.com/liesltesch/"
+    }
+   },
+   "approved": false
+  },
+  "nsw-mark-latham": {
+   "name": "Mark Latham",
+   "wikidata": "https://www.wikidata.org/wiki/Q982227",
+   "candidates": {
+    "x": {
+     "handle": "RealMarkLatham",
+     "url": "https://x.com/RealMarkLatham"
+    }
+   },
+   "approved": false
+  },
+  "nsw-mark-speakman": {
+   "name": "Mark Speakman",
+   "wikidata": "https://www.wikidata.org/wiki/Q6769797",
+   "candidates": {
+    "x": {
+     "handle": "MarkSpeakman",
+     "url": "https://x.com/MarkSpeakman"
+    }
+   },
+   "approved": false
+  },
+  "nsw-monica-tudehope": {
+   "name": "Monica Tudehope",
+   "wikidata": "https://www.wikidata.org/wiki/Q130378517",
+   "candidates": {
+    "instagram": {
+     "handle": "monicatudehopemp",
+     "url": "https://www.instagram.com/monicatudehopemp/"
+    }
+   },
+   "approved": false
+  },
+  "nsw-natasha-maclaren-jones": {
+   "name": "Natasha Maclaren-Jones",
+   "wikidata": "https://www.wikidata.org/wiki/Q6968474",
+   "candidates": {
+    "x": {
+     "handle": "nmaclarenjones",
+     "url": "https://x.com/nmaclarenjones"
+    }
+   },
+   "approved": false
+  },
+  "nsw-paul-scully": {
+   "name": "Paul Scully",
+   "wikidata": "https://www.wikidata.org/wiki/Q27897941",
+   "candidates": {
+    "x": {
+     "handle": "paulscullymp",
+     "url": "https://x.com/paulscullymp"
+    }
+   },
+   "approved": false
+  },
+  "nsw-paul-toole": {
+   "name": "Paul Toole",
+   "wikidata": "https://www.wikidata.org/wiki/Q7154043",
+   "candidates": {
+    "x": {
+     "handle": "PaulTooleMP",
+     "url": "https://x.com/PaulTooleMP"
+    }
+   },
+   "approved": false
+  },
+  "nsw-sophie-cotsis": {
+   "name": "Sophie Cotsis",
+   "wikidata": "https://www.wikidata.org/wiki/Q7562979",
+   "candidates": {
+    "x": {
+     "handle": "SophieCotsis",
+     "url": "https://x.com/SophieCotsis"
+    }
+   },
+   "approved": false
+  },
+  "nsw-steph-cooke": {
+   "name": "Steph Cooke",
+   "wikidata": "https://www.wikidata.org/wiki/Q41994666",
+   "candidates": {
+    "x": {
+     "handle": "StephCookeNats",
+     "url": "https://x.com/StephCookeNats"
+    },
+    "facebook": {
+     "handle": "stephcookenats",
+     "url": "https://www.facebook.com/stephcookenats"
+    }
+   },
+   "approved": false
+  },
+  "nsw-steve-whan": {
+   "name": "Steve Whan",
+   "wikidata": "https://www.wikidata.org/wiki/Q7614277",
+   "candidates": {
+    "x": {
+     "handle": "SteveWhan",
+     "url": "https://x.com/SteveWhan"
+    }
+   },
+   "approved": false
+  },
+  "nsw-sue-higginson": {
+   "name": "Sue Higginson",
+   "wikidata": "https://www.wikidata.org/wiki/Q111972517",
+   "candidates": {
+    "x": {
+     "handle": "SueHigginson_",
+     "url": "https://x.com/SueHigginson_"
+    },
+    "instagram": {
+     "handle": "suehgreens",
+     "url": "https://www.instagram.com/suehgreens/"
+    }
+   },
+   "approved": false
+  },
+  "nsw-tania-mihailuk": {
+   "name": "Tania Mihailuk",
+   "wikidata": "https://www.wikidata.org/wiki/Q7683250",
+   "candidates": {
+    "x": {
+     "handle": "TaniaMihailukMP",
+     "url": "https://x.com/TaniaMihailukMP"
+    },
+    "instagram": {
+     "handle": "taniamihailukmp",
+     "url": "https://www.instagram.com/taniamihailukmp/"
+    }
+   },
+   "approved": false
+  },
+  "nsw-tara-moriarty": {
+   "name": "Tara Moriarty",
+   "wikidata": "https://www.wikidata.org/wiki/Q62960643",
+   "candidates": {
+    "x": {
+     "handle": "TaraMoriarty",
+     "url": "https://x.com/TaraMoriarty"
+    }
+   },
+   "approved": false
+  },
+  "nsw-tim-crakanthorp": {
+   "name": "Tim Crakanthorp",
+   "wikidata": "https://www.wikidata.org/wiki/Q18394398",
+   "candidates": {
+    "x": {
+     "handle": "crakanthorp",
+     "url": "https://x.com/crakanthorp"
+    }
+   },
+   "approved": false
+  },
+  "nsw-wes-fang": {
+   "name": "Wes Fang",
+   "wikidata": "https://www.wikidata.org/wiki/Q39743779",
+   "candidates": {
+    "x": {
+     "handle": "WesFangNats",
+     "url": "https://x.com/WesFangNats"
     }
    },
    "approved": false
