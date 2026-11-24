@@ -22,7 +22,7 @@ report if a source does not allow reuse.
 | # | Parliament | Status | Notes |
 |---|-----------|--------|-------|
 | 6 | Federal (House of Representatives + Senate) | ✅ | Handbook API; AEC map; parliament picker; photos + social candidates for owner approval |
-| 7 | New South Wales | 🔄 | Assembly + Council; Geoscape districts; LC statewide; photos/socials in progress |
+| 7 | New South Wales | ✅ | 93+42 members; Geoscape districts; LC statewide; 63 photos; 31 social candidates awaiting owner approval |
 | 8 | Queensland | ⏳ | Unicameral |
 | 9 | Western Australia | ⏳ | |
 | 10 | South Australia | ⏳ | |
