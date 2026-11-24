@@ -14,6 +14,7 @@ MEMBER_FILES = [
     ROOT / "data" / "members.json",
     ROOT / "data" / "federal" / "members.json",
     ROOT / "data" / "nsw" / "members.json",
+    ROOT / "data" / "qld" / "members.json",
 ]
 
 ITEM_KEYS = {"title", "source", "url", "published", "verified", "licence"}

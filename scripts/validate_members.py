@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate Vic, Federal and NSW members.json seat counts (stdlib only)."""
+"""Validate Vic, Federal, NSW and QLD members.json seat counts (stdlib only)."""
 
 from __future__ import annotations
 
@@ -33,6 +33,15 @@ PARLIAMENTS = {
         "lower_label": "Assembly",
         "upper_label": "Council",
         "vacancy_lower": {"Assembly", "lower"},
+    },
+    "qld": {
+        "path": ROOT / "data" / "qld" / "members.json",
+        "lower": 93,
+        "upper": 0,
+        "lower_label": "Assembly",
+        "upper_label": "Council",
+        "vacancy_lower": {"Assembly", "lower"},
+        "unicameral": True,
     },
 }
 
@@ -101,8 +110,10 @@ def validate_one(key: str, cfg: dict, errors: list[str]) -> None:
             fail(f"{key}/{label}: upper-house member missing region", errors)
         if chamber not in {"lower", "upper"}:
             fail(f"{key}/{label}: invalid chamber {chamber!r}", errors)
-        if key in {"federal", "nsw"} and m.get("parliament") not in {key, None}:
+        if key in {"federal", "nsw", "qld"} and m.get("parliament") not in {key, None}:
             fail(f"{key}/{label}: parliament field {m.get('parliament')!r}", errors)
+        if cfg.get("unicameral") and chamber == "upper":
+            fail(f"{key}/{label}: unicameral parliament must not have upper chamber", errors)
 
     print(
         f"{key}: members={len(members)} "

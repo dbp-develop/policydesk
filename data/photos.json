@@ -1,6 +1,6 @@
 {
  "source": "Wikimedia Commons (via Wikidata, matched through Wikipedia member lists)",
- "generated_at": "2026-11-24T22:37:05+00:00",
+ "generated_at": "2026-11-24T23:44:43+00:00",
  "photos": {
   "aiv-puglielli": {
    "file": "Aiv Puglielli.png",
@@ -2251,6 +2251,213 @@
    "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
    "local_path": "images/members/nsw-warren-kirby.jpg",
    "source": "Wikimedia Commons via Wikidata Q117294315"
+  },
+  "qld-amanda-stoker": {
+   "file": "Amanda Stoker crop.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Amanda_Stoker_crop.jpg",
+   "creator": "Australian Government",
+   "licence": "CC BY 3.0 au",
+   "licence_url": "https://creativecommons.org/licenses/by/3.0/au/deed.en",
+   "local_path": "images/members/qld-amanda-stoker.jpg",
+   "source": "Wikimedia Commons via Wikidata Q50808634"
+  },
+  "qld-bart-mellish": {
+   "file": "Bart Mellish MP.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Bart_Mellish_MP.jpg",
+   "creator": "Wikiuser276",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/qld-bart-mellish.jpg",
+   "source": "Wikimedia Commons via Wikidata Q44045315"
+  },
+  "qld-bree-james": {
+   "file": "Miss Bree James - Barron River MP.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Miss_Bree_James_-_Barron_River_MP.jpg",
+   "creator": "JG33333",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/qld-bree-james.jpg",
+   "source": "Wikimedia Commons via Wikidata Q130680803"
+  },
+  "qld-brent-mickelberg": {
+   "file": "RockyRingRoadRally7.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:RockyRingRoadRally7.jpg",
+   "creator": "RegionalQueenslander",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/qld-brent-mickelberg.jpg",
+   "source": "Wikimedia Commons via Wikidata Q43723931"
+  },
+  "qld-cameron-dick": {
+   "file": "Cameron Dick.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Cameron_Dick.jpg",
+   "creator": "Toowoomba Region",
+   "licence": "CC BY 3.0",
+   "licence_url": "https://creativecommons.org/licenses/by/3.0",
+   "local_path": "images/members/qld-cameron-dick.jpg",
+   "source": "Wikimedia Commons via Wikidata Q5026232"
+  },
+  "qld-christian-rowan": {
+   "file": "DrChristianRowanMP.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:DrChristianRowanMP.jpg",
+   "creator": "Qldpol2024",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/qld-christian-rowan.jpg",
+   "source": "Wikimedia Commons via Wikidata Q19519496"
+  },
+  "qld-grace-grace": {
+   "file": "Grace Grace.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Grace_Grace.jpg",
+   "creator": "Flickr user 'djackmanson'",
+   "licence": "CC BY-SA 2.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/2.0",
+   "local_path": "images/members/qld-grace-grace.jpg",
+   "source": "Wikimedia Commons via Wikidata Q5591194"
+  },
+  "qld-jarrod-bleijie": {
+   "file": "Jarrod Bleijie.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Jarrod_Bleijie.jpg",
+   "creator": "Michael Bednarek",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/qld-jarrod-bleijie.jpg",
+   "source": "Wikimedia Commons via Wikidata Q6161053"
+  },
+  "qld-jennifer-howard": {
+   "file": "Jennifer Howard 2022.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Jennifer_Howard_2022.jpg",
+   "creator": "The Ipswichian",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/qld-jennifer-howard.jpg",
+   "source": "Wikimedia Commons via Wikidata Q18978093"
+  },
+  "qld-leeanne-enoch": {
+   "file": "Leeanne Enoch Profile Pic.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Leeanne_Enoch_Profile_Pic.jpg",
+   "creator": "Bennydoyle",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/qld-leeanne-enoch.jpg",
+   "source": "Wikimedia Commons via Wikidata Q18977960"
+  },
+  "qld-margie-nightingale": {
+   "file": "Margie Nightingale MP 2024.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Margie_Nightingale_MP_2024.jpg",
+   "creator": "Sampajanna",
+   "licence": "CC0",
+   "licence_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "local_path": "images/members/qld-margie-nightingale.jpg",
+   "source": "Wikimedia Commons via Wikidata Q124924295"
+  },
+  "qld-mark-furner": {
+   "file": "Mark Furner 090720-N-9950J-049.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Mark_Furner_090720-N-9950J-049.jpg",
+   "creator": "U.S. Navy photo by Mass Communication Specialist 2nd Class Greg Johnson",
+   "licence": "Public domain",
+   "licence_url": "https://creativecommons.org/publicdomain/mark/1.0/",
+   "local_path": "images/members/qld-mark-furner.jpg",
+   "source": "Wikimedia Commons via Wikidata Q6767697"
+  },
+  "qld-michael-berkman": {
+   "file": "Michael Berkman MP.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Michael_Berkman_MP.jpg",
+   "creator": "Australian Greens website – Australian Greens",
+   "licence": "CC BY-SA 2.5 au",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/2.5/au/deed.en",
+   "local_path": "images/members/qld-michael-berkman.jpg",
+   "source": "Wikimedia Commons via Wikidata Q44775990"
+  },
+  "qld-nigel-dalton": {
+   "file": "Mackay Nigel Dalton HiRes.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Mackay_Nigel_Dalton_HiRes.jpg",
+   "creator": "Zeke.foxon1998",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/qld-nigel-dalton.jpg",
+   "source": "Wikimedia Commons via Wikidata Q130680807"
+  },
+  "qld-peter-russo": {
+   "file": "Peter Russo.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Peter_Russo.jpg",
+   "creator": "Rodney Topor",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/qld-peter-russo.jpg",
+   "source": "Wikimedia Commons via Wikidata Q19519352"
+  },
+  "qld-robbie-katter": {
+   "file": "Robbie Katter headshot.png",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Robbie_Katter_headshot.png",
+   "creator": "Department of Prime Minister and Cabinet",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0",
+   "local_path": "images/members/qld-robbie-katter.png",
+   "source": "Wikimedia Commons via Wikidata Q7340263"
+  },
+  "qld-ros-bates": {
+   "file": "RosBatesT1.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:RosBatesT1.jpg",
+   "creator": "Athmitchell",
+   "licence": "CC BY-SA 3.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+   "local_path": "images/members/qld-ros-bates.jpg",
+   "source": "Wikimedia Commons via Wikidata Q7366970"
+  },
+  "qld-sandy-bolton": {
+   "file": "Sandy Bolton.png",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Sandy_Bolton.png",
+   "creator": "Zero Emissions Noosa",
+   "licence": "CC BY 3.0",
+   "licence_url": "https://creativecommons.org/licenses/by/3.0",
+   "local_path": "images/members/qld-sandy-bolton.png",
+   "source": "Wikimedia Commons via Wikidata Q43728340"
+  },
+  "qld-shane-king": {
+   "file": "Shane King Cropped.png",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Shane_King_Cropped.png",
+   "creator": "Clone commando sev",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0",
+   "local_path": "images/members/qld-shane-king.png",
+   "source": "Wikimedia Commons via Wikidata Q19519204"
+  },
+  "qld-shane-knuth": {
+   "file": "Shane Knuth Corflute (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Shane_Knuth_Corflute_%28cropped%29.jpg",
+   "creator": "Katter's Australian Party",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/qld-shane-knuth.jpg",
+   "source": "Wikimedia Commons via Wikidata Q7488127"
+  },
+  "qld-shannon-fentiman": {
+   "file": "Shannon Fentiman Coffee (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Shannon_Fentiman_Coffee_%28cropped%29.jpg",
+   "creator": "Waterford4133",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/qld-shannon-fentiman.jpg",
+   "source": "Wikimedia Commons via Wikidata Q18977976"
+  },
+  "qld-steven-miles": {
+   "file": "Dr Steven Miles MP (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Dr_Steven_Miles_MP_%28cropped%29.jpg",
+   "creator": "ChastityArgyle",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/qld-steven-miles.jpg",
+   "source": "Wikimedia Commons via Wikidata Q19561555"
+  },
+  "qld-tim-nicholls": {
+   "file": "Tim Nicholls CEO Sleepout 2011.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Tim_Nicholls_CEO_Sleepout_2011.jpg",
+   "creator": "VinniesQLD",
+   "licence": "CC BY 2.0",
+   "licence_url": "https://creativecommons.org/licenses/by/2.0",
+   "local_path": "images/members/qld-tim-nicholls.jpg",
+   "source": "Wikimedia Commons via Wikidata Q7804046"
   }
  }
 }

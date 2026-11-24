@@ -80,6 +80,33 @@
       mapDesc: "Map of New South Wales electoral boundaries. Use the text list of seats below to choose a seat with a keyboard or screen reader.",
       footerFactsHtml: 'Member facts: <a href="https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/downloadable-lists">Parliament of New South Wales</a>. This site is independent and not affiliated with any parliament or party.',
       footerBoundariesHtml: 'Electoral boundaries: Administrative Boundaries © Geoscape Australia, Commonwealth of Australia, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, simplified by us.'
+    },
+    qld: {
+      label: "Queensland",
+      title: "Members of the Parliament of Queensland",
+      lede: "Find your Queensland MP. Search by name, party or electorate.",
+      electionNote: "Queensland’s Parliament is unicameral — Legislative Assembly only. Official websites link to each member’s Parliament of Queensland profile.",
+      membersUrl: "data/qld/members.json",
+      sourceDefault: "Parliament of Queensland",
+      sourceHref: "https://www.parliament.qld.gov.au/Members/Current-Members/Member-List",
+      profileSr: " on the Parliament of Queensland website",
+      chamber: { lower: "Legislative Assembly", upper: "Legislative Assembly" },
+      vacancyChamber: { Assembly: "lower", lower: "lower" },
+      layers: { lower: "districts" },
+      boundaryFiles: { districts: "data/boundaries/qld_districts.json" },
+      seatLabel: { lower: " District", upper: " District" },
+      zoomExtent: "Whole state",
+      zoomMetro: "Brisbane",
+      showMetro: true,
+      unicameral: true,
+      mapLower: "Showing the 93 Legislative Assembly districts.",
+      mapUpper: "",
+      mapOtherHint: "",
+      seatFilterLabel: "Electorate",
+      seatAllLabel: "All electorates",
+      mapDesc: "Map of Queensland electoral districts. Use the text list of seats below to choose a seat with a keyboard or screen reader.",
+      footerFactsHtml: 'Member facts: <a href="https://www.parliament.qld.gov.au/Members/Current-Members/Member-List">Parliament of Queensland</a>. This site is independent and not affiliated with any parliament or party.',
+      footerBoundariesHtml: 'Electoral boundaries: Administrative Boundaries © Geoscape Australia, Commonwealth of Australia, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, simplified by us.'
     }
   };
 
@@ -125,16 +152,18 @@
   /* National overview reuses AEC state/territory shapes (federal_states.json). */
   var OVERVIEW_URL = "data/boundaries/federal_states.json";
   var OVERVIEW_DESC = "Map of Australia. Choose a jurisdiction from the text list below, or tap a live state, to open its electoral boundaries. Keyboard and screen reader users should use the text list.";
-  var OVERVIEW_HINT = "On the Australia view, tap a live state (Victoria or New South Wales) or choose Federal from the list. Zoom with + and −, by pinching, or by holding Ctrl and scrolling. Once zoomed in, drag to move the map.";
+  var OVERVIEW_HINT = "On the Australia view, tap a live state (Victoria, New South Wales or Queensland) or choose Federal from the list. Zoom with + and −, by pinching, or by holding Ctrl and scrolling. Once zoomed in, drag to move the map.";
   var DETAIL_HINT = "Zoom with + and −, by pinching, or by holding Ctrl and scrolling. Once zoomed in, drag to move the map. Use Australia to return to the national map.";
   var STATE_TO_PARLIAMENT = {
     "Victoria": "vic",
-    "New South Wales": "nsw"
+    "New South Wales": "nsw",
+    "Queensland": "qld"
   };
   var OVERVIEW_LIVE = [
     { key: "federal", label: "Federal (House + Senate)" },
     { key: "vic", label: "Victoria" },
-    { key: "nsw", label: "New South Wales" }
+    { key: "nsw", label: "New South Wales" },
+    { key: "qld", label: "Queensland" }
   ];
 
   var collator = new Intl.Collator("en-AU", { sensitivity: "base" });
@@ -367,7 +396,17 @@
     if (els.pageLede) els.pageLede.textContent = cfg.lede;
     if (els.electionNote) els.electionNote.textContent = cfg.electionNote;
     if (els.chamberLowerOpt) els.chamberLowerOpt.textContent = chamberLabel("lower");
-    if (els.chamberUpperOpt) els.chamberUpperOpt.textContent = chamberLabel("upper");
+    if (els.chamberUpperOpt) {
+      els.chamberUpperOpt.textContent = chamberLabel("upper");
+      els.chamberUpperOpt.hidden = !!cfg.unicameral;
+      if (cfg.unicameral && els.chamber && els.chamber.value === "upper") {
+        els.chamber.value = "";
+      }
+    }
+    if (els.chamber) {
+      var both = els.chamber.querySelector('option[value=""]');
+      if (both) both.textContent = cfg.unicameral ? "All members" : "Both chambers";
+    }
     if (els.zoomExtent) els.zoomExtent.textContent = cfg.zoomExtent;
     if (els.zoomMetro) {
       els.zoomMetro.textContent = cfg.zoomMetro;
@@ -532,7 +571,7 @@
   }
 
   function lowerLayer() { return cfg.layers.lower; }
-  function upperLayer() { return cfg.layers.upper; }
+  function upperLayer() { return cfg.layers.upper || null; }
   function extentDoc() { return boundaries[lowerLayer()]; }
   function mapReady() { return mapMode === "overview" ? !!overviewDoc : !!boundaries; }
   function activeFullBox() {
@@ -645,7 +684,13 @@
         // Rough Sydney / coastal crop of the statewide viewBox.
         return setViewBox([full[0] + full[2] * 0.55, full[1] + full[3] * 0.55, full[2] * 0.4, full[3] * 0.4]);
       }
-      var metro = boundaries[upperLayer()].features.filter(function (f) { return METRO.test(f.name); });
+      if (parliamentKey === "qld") {
+        // Rough south-east Queensland / Brisbane crop.
+        return setViewBox([full[0] + full[2] * 0.55, full[1] + full[3] * 0.55, full[2] * 0.4, full[3] * 0.4]);
+      }
+      var upper = upperLayer();
+      if (!upper || !boundaries[upper]) return setViewBox(full);
+      var metro = boundaries[upper].features.filter(function (f) { return METRO.test(f.name); });
       var b = [Infinity, Infinity, -Infinity, -Infinity];
       metro.forEach(function (f) {
         b[0] = Math.min(b[0], f.bbox[0]); b[1] = Math.min(b[1], f.bbox[1]);
@@ -673,7 +718,7 @@
     detailKey = key;
     els.mapDetail.replaceChildren();
     els.mapDetail.appendChild(el("p", "meta",
-      "Australia overview. Live on The Policy Desk AU today: Federal, Victoria, and New South Wales. " +
+      "Australia overview. Live on The Policy Desk AU today: Federal, Victoria, New South Wales, and Queensland. " +
       "Tap a live state, choose Federal from the list, or use the Parliament menu. Other states and territories will appear when their stage is built."));
     var current = PARLIAMENTS[parliamentKey];
     if (current) {
@@ -741,7 +786,7 @@
       p.classList.toggle("is-current", current);
     });
     els.mapLayer.textContent =
-      "Showing Australia. Live jurisdictions: Federal, Victoria, and New South Wales. " +
+      "Showing Australia. Live jurisdictions: Federal, Victoria, New South Wales, and Queensland. " +
       "Other states and territories are outlines only until their stage is ready.";
 
     var items = OVERVIEW_LIVE.slice();
@@ -784,9 +829,12 @@
     if (!boundaries) return;
     syncMapChrome();
     var seat = els.seat.value;
-    var upperFeats = boundaries[upperLayer()].features;
+    var upperKey = upperLayer();
+    var upperFeats = (upperKey && boundaries[upperKey]) ? boundaries[upperKey].features : [];
     var seatIsUpper = !!seat && upperFeats.some(function (f) { return f.name === seat; });
-    var newLayer = els.chamber.value === "upper" || seatIsUpper ? upperLayer() : lowerLayer();
+    var newLayer = (!cfg.unicameral && (els.chamber.value === "upper" || seatIsUpper) && upperKey)
+      ? upperKey
+      : lowerLayer();
     if (newLayer !== layerKey) {
       layerKey = newLayer;
       selected = null;
