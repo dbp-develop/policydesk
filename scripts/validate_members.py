@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate data/members.json shape and Vic seat counts (stdlib only)."""
+"""Validate Vic and Federal members.json seat counts (stdlib only)."""
 
 from __future__ import annotations
 
@@ -8,50 +8,68 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-PATH = ROOT / "data" / "members.json"
 
-EXPECTED_LOWER = 88
-EXPECTED_UPPER = 40
+PARLIAMENTS = {
+    "vic": {
+        "path": ROOT / "data" / "members.json",
+        "lower": 88,
+        "upper": 40,
+        "lower_label": "Assembly",
+        "upper_label": "Council",
+        "vacancy_lower": {"Assembly", "lower"},
+    },
+    "federal": {
+        "path": ROOT / "data" / "federal" / "members.json",
+        "lower": 150,
+        "upper": 76,
+        "lower_label": "House",
+        "upper_label": "Senate",
+        "vacancy_lower": {"House", "lower"},
+    },
+}
 
 
 def fail(msg: str, errors: list[str]) -> None:
     errors.append(msg)
 
 
-def main() -> int:
-    errors: list[str] = []
-    if not PATH.exists():
-        print(f"ERROR: missing {PATH.relative_to(ROOT)}", file=sys.stderr)
-        return 1
+def validate_one(key: str, cfg: dict, errors: list[str]) -> None:
+    path: Path = cfg["path"]
+    if not path.exists():
+        fail(f"{key}: missing {path.relative_to(ROOT)}", errors)
+        return
 
-    data = json.loads(PATH.read_text(encoding="utf-8"))
+    data = json.loads(path.read_text(encoding="utf-8"))
     if not isinstance(data, dict):
-        print("ERROR: members.json must be an object", file=sys.stderr)
-        return 1
+        fail(f"{key}: members file must be an object", errors)
+        return
 
     members = data.get("members")
     vacancies = data.get("vacancies") or []
     if not isinstance(members, list):
-        print("ERROR: members must be a list", file=sys.stderr)
-        return 1
+        fail(f"{key}: members must be a list", errors)
+        return
     if not isinstance(vacancies, list):
-        print("ERROR: vacancies must be a list", file=sys.stderr)
-        return 1
+        fail(f"{key}: vacancies must be a list", errors)
+        return
 
     lower = [m for m in members if m.get("chamber") == "lower"]
     upper = [m for m in members if m.get("chamber") == "upper"]
     lower_vacancies = [
-        v for v in vacancies if v.get("chamber") in {"Assembly", "lower"}
+        v for v in vacancies if v.get("chamber") in cfg["vacancy_lower"]
     ]
 
-    if len(lower) + len(lower_vacancies) != EXPECTED_LOWER:
+    if len(lower) + len(lower_vacancies) != cfg["lower"]:
         fail(
-            f"Assembly members + vacancies = {len(lower)} + {len(lower_vacancies)} "
-            f"!= {EXPECTED_LOWER}",
+            f"{key}: {cfg['lower_label']} members + vacancies = "
+            f"{len(lower)} + {len(lower_vacancies)} != {cfg['lower']}",
             errors,
         )
-    if len(upper) != EXPECTED_UPPER:
-        fail(f"Council members = {len(upper)} != {EXPECTED_UPPER}", errors)
+    if len(upper) != cfg["upper"]:
+        fail(
+            f"{key}: {cfg['upper_label']} members = {len(upper)} != {cfg['upper']}",
+            errors,
+        )
 
     ids = [m.get("id") for m in members]
     if len(ids) != len(set(ids)):
@@ -61,29 +79,58 @@ def main() -> int:
             if i in seen:
                 dupes.append(i)
             seen.add(i)
-        fail(f"duplicate ids: {sorted(set(dupes))}", errors)
+        fail(f"{key}: duplicate ids: {sorted(set(dupes))}", errors)
 
     for m in members:
         label = m.get("id") or m.get("name") or "?"
-        for key in ("name", "party", "official_url"):
-            if not m.get(key):
-                fail(f"{label}: missing {key}", errors)
+        for field in ("name", "party", "official_url", "source"):
+            if not m.get(field):
+                fail(f"{key}/{label}: missing {field}", errors)
         chamber = m.get("chamber")
         if chamber == "lower" and not m.get("electorate"):
-            fail(f"{label}: Assembly member missing electorate", errors)
+            fail(f"{key}/{label}: lower-house member missing electorate", errors)
         if chamber == "upper" and not m.get("region"):
-            fail(f"{label}: Council member missing region", errors)
+            fail(f"{key}/{label}: upper-house member missing region", errors)
         if chamber not in {"lower", "upper"}:
-            fail(f"{label}: invalid chamber {chamber!r}", errors)
+            fail(f"{key}/{label}: invalid chamber {chamber!r}", errors)
+        if m.get("parliament") not in {key, None} and key == "federal":
+            if m.get("parliament") != "federal":
+                fail(f"{key}/{label}: parliament field {m.get('parliament')!r}", errors)
 
-    print("=== validate_members ===")
-    print(f"members: {len(members)} (lower={len(lower)}, upper={len(upper)})")
-    print(f"vacancies: {len(vacancies)} (Assembly vacancies={len(lower_vacancies)})")
     print(
-        f"Assembly fill: {len(lower)} members + {len(lower_vacancies)} vacancies "
-        f"= {len(lower) + len(lower_vacancies)} / {EXPECTED_LOWER}"
+        f"{key}: members={len(members)} "
+        f"(lower={len(lower)}, upper={len(upper)}); "
+        f"vacancies={len(vacancies)} "
+        f"({cfg['lower_label']} vacancies={len(lower_vacancies)})"
     )
-    print(f"Council fill: {len(upper)} / {EXPECTED_UPPER}")
+    print(
+        f"  {cfg['lower_label']} fill: {len(lower)} + {len(lower_vacancies)} = "
+        f"{len(lower) + len(lower_vacancies)} / {cfg['lower']}"
+    )
+    print(f"  {cfg['upper_label']} fill: {len(upper)} / {cfg['upper']}")
+
+
+def main() -> int:
+    errors: list[str] = []
+    print("=== validate_members ===")
+    for key, cfg in PARLIAMENTS.items():
+        validate_one(key, cfg, errors)
+
+    # Federal ids must not collide with Vic ids (news/photo keys).
+    vic_path = PARLIAMENTS["vic"]["path"]
+    fed_path = PARLIAMENTS["federal"]["path"]
+    if vic_path.exists() and fed_path.exists():
+        vic_ids = {
+            m["id"]
+            for m in json.loads(vic_path.read_text(encoding="utf-8"))["members"]
+        }
+        fed_ids = {
+            m["id"]
+            for m in json.loads(fed_path.read_text(encoding="utf-8"))["members"]
+        }
+        overlap = vic_ids & fed_ids
+        if overlap:
+            fail(f"id collision between vic and federal: {sorted(overlap)[:10]}", errors)
 
     if errors:
         print(f"FAILED ({len(errors)} error(s)):", file=sys.stderr)
