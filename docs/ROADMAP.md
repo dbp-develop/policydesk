@@ -21,8 +21,8 @@ report if a source does not allow reuse.
 
 | # | Parliament | Status | Notes |
 |---|-----------|--------|-------|
-| 6 | Federal (House of Representatives + Senate) | 🔄 | PR ready: 150+76 members, AEC map, parliament picker, news stubs, 121 photos, 102 social candidates awaiting owner approval + merge |
-| 7 | New South Wales | ⏳ | |
+| 6 | Federal (House of Representatives + Senate) | ✅ | Handbook API; AEC map; parliament picker; photos + social candidates for owner approval |
+| 7 | New South Wales | ✅ | 93+42 members; Geoscape districts; LC statewide; 63 photos; 31 social candidates awaiting owner approval |
 | 8 | Queensland | ⏳ | Unicameral |
 | 9 | Western Australia | ⏳ | |
 | 10 | South Australia | ⏳ | |
@@ -46,5 +46,8 @@ report if a source does not allow reuse.
 - Parliament of Australia website material is under **CC BY-NC-ND 4.0** (see
   `docs/data-sources.md` Federal section). We store facts only with attribution;
   NC-ND vs CC BY-SA / monetisation needs the same compliance decision.
-- `docs/data-sources.md` covers Vic parliament, boundaries, news, photos/socials,
-  Federal handbook and AEC boundaries. Keep it current when sources change.
+- Parliament of NSW copyright allows copy/distribute with attribution, but
+  charging for access or modifying needs permission (see `docs/data-sources.md`
+  NSW section). Facts-only store; same Stage 15 compliance decision.
+- `docs/data-sources.md` covers Vic, Federal, NSW, boundaries, news, photos/socials.
+  Keep it current when sources change.

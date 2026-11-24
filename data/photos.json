@@ -1,6 +1,6 @@
 {
  "source": "Wikimedia Commons (via Wikidata, matched through Wikipedia member lists)",
- "generated_at": "2026-11-24T21:25:07+00:00",
+ "generated_at": "2026-11-24T22:37:05+00:00",
  "photos": {
   "aiv-puglielli": {
    "file": "Aiv Puglielli.png",
@@ -1684,6 +1684,573 @@
    "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
    "local_path": "images/members/fed-zoe-mckenzie.jpg",
    "source": "Wikimedia Commons via Wikidata Q112114762"
+  },
+  "nsw-abigail-boyd": {
+   "file": "Abigail Boyd hero 2 (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Abigail_Boyd_hero_2_%28cropped%29.jpg",
+   "creator": "Australian Greens website – Australian Greens",
+   "licence": "CC BY-SA 2.5 au",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/2.5/au/deed.en",
+   "local_path": "images/members/nsw-abigail-boyd.jpg",
+   "source": "Wikimedia Commons via Wikidata Q62961056"
+  },
+  "nsw-alex-greenwich": {
+   "file": "Alex Greenwich outside APH (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Alex_Greenwich_outside_APH_%28cropped%29.jpg",
+   "creator": "EqualityCWiki",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/nsw-alex-greenwich.jpg",
+   "source": "Wikimedia Commons via Wikidata Q16204977"
+  },
+  "nsw-amanda-cohn": {
+   "file": "Amanda Cohn portrait.jpeg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Amanda_Cohn_portrait.jpeg",
+   "creator": "Australian Greens website – Australian Greens",
+   "licence": "CC BY-SA 2.5 au",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/2.5/au/deed.en",
+   "local_path": "images/members/nsw-amanda-cohn.jpg",
+   "source": "Wikimedia Commons via Wikidata Q117689146"
+  },
+  "nsw-anoulack-chanthivong": {
+   "file": "Anoulack Chanthivong (2025).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Anoulack_Chanthivong_%282025%29.jpg",
+   "creator": "Bookish Worm",
+   "licence": "CC0",
+   "licence_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "local_path": "images/members/nsw-anoulack-chanthivong.jpg",
+   "source": "Wikimedia Commons via Wikidata Q19872098"
+  },
+  "nsw-anthony-d-adam": {
+   "file": "Anthony D'Adam.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Anthony_D%27Adam.jpg",
+   "creator": "Grandeur123",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/nsw-anthony-d-adam.jpg",
+   "source": "Wikimedia Commons via Wikidata Q62960718"
+  },
+  "nsw-anthony-roberts": {
+   "file": "Anthony Roberts 2016.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Anthony_Roberts_2016.jpg",
+   "creator": "Department of Foreign Affairs and Trade website – www.dfat.gov.au",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0",
+   "local_path": "images/members/nsw-anthony-roberts.jpg",
+   "source": "Wikimedia Commons via Wikidata Q4773367"
+  },
+  "nsw-ben-franklin": {
+   "file": "President Ben Franklin - Head Shot.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:President_Ben_Franklin_-_Head_Shot.jpg",
+   "creator": "DaveCharlesSmith",
+   "licence": "CC0",
+   "licence_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "local_path": "images/members/nsw-ben-franklin.jpg",
+   "source": "Wikimedia Commons via Wikidata Q19873536"
+  },
+  "nsw-brendan-moylan": {
+   "file": "Brendan Moylan.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Brendan_Moylan.jpg",
+   "creator": "Madibye",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/nsw-brendan-moylan.jpg",
+   "source": "Wikimedia Commons via Wikidata Q126891271"
+  },
+  "nsw-cameron-murphy": {
+   "file": "Cameron Murphy AM 11 April 2014.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Cameron_Murphy_AM_11_April_2014.jpg",
+   "creator": "AlexinaDuel",
+   "licence": "CC BY-SA 3.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+   "local_path": "images/members/nsw-cameron-murphy.jpg",
+   "source": "Wikimedia Commons via Wikidata Q17198381"
+  },
+  "nsw-cate-faehrmann": {
+   "file": "Cate Faehrmann, NSW Greens MP.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Cate_Faehrmann%2C_NSW_Greens_MP.jpg",
+   "creator": "Koalakisser",
+   "licence": "Public domain",
+   "licence_url": null,
+   "local_path": "images/members/nsw-cate-faehrmann.jpg",
+   "source": "Wikimedia Commons via Wikidata Q5051778"
+  },
+  "nsw-charishma-kaliyanda": {
+   "file": "Charishma Kaliyanda MP.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Charishma_Kaliyanda_MP.jpg",
+   "creator": "Limlomlim",
+   "licence": "CC0",
+   "licence_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "local_path": "images/members/nsw-charishma-kaliyanda.jpg",
+   "source": "Wikimedia Commons via Wikidata Q117193480"
+  },
+  "nsw-chris-minns": {
+   "file": "Chris Minns MP.png",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Chris_Minns_MP.png",
+   "creator": "Lachlan Hyde",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/nsw-chris-minns.png",
+   "source": "Wikimedia Commons via Wikidata Q19875673"
+  },
+  "nsw-chris-rath": {
+   "file": "Chris Rath 2022 Portrait.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Chris_Rath_2022_Portrait.jpg",
+   "creator": "P98765",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/nsw-chris-rath.jpg",
+   "source": "Wikimedia Commons via Wikidata Q111482817"
+  },
+  "nsw-david-saliba": {
+   "file": "David Saliba Official Photo.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:David_Saliba_Official_Photo.jpg",
+   "creator": "Donnie19861986",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/nsw-david-saliba.jpg",
+   "source": "Wikimedia Commons via Wikidata Q117461917"
+  },
+  "nsw-edmond-atalla": {
+   "file": "Edmond Atalla MP.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Edmond_Atalla_MP.jpg",
+   "creator": "Phil Desveaux",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/nsw-edmond-atalla.jpg",
+   "source": "Wikimedia Commons via Wikidata Q19870797"
+  },
+  "nsw-emily-suvaal": {
+   "file": "Emily Suvaal at the Study NSW Recognition Ceremony at the Parliament House (2025).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Emily_Suvaal_at_the_Study_NSW_Recognition_Ceremony_at_the_Parliament_House_%282025%29.jpg",
+   "creator": "Bookish Worm",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0",
+   "local_path": "images/members/nsw-emily-suvaal.jpg",
+   "source": "Wikimedia Commons via Wikidata Q117837219"
+  },
+  "nsw-felicity-wilson": {
+   "file": "Felicity Wilson MP Headshot.png",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Felicity_Wilson_MP_Headshot.png",
+   "creator": "Centerley",
+   "licence": "CC0",
+   "licence_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "local_path": "images/members/nsw-felicity-wilson.png",
+   "source": "Wikimedia Commons via Wikidata Q29416938"
+  },
+  "nsw-greg-warren": {
+   "file": "Greg Warren MP Portrait.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Greg_Warren_MP_Portrait.jpg",
+   "creator": "Greg Warren",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/nsw-greg-warren.jpg",
+   "source": "Wikimedia Commons via Wikidata Q21062726"
+  },
+  "nsw-helen-dalton": {
+   "file": "Helen Dalton Headshot.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Helen_Dalton_Headshot.jpg",
+   "creator": "Riverina falcon",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/nsw-helen-dalton.jpg",
+   "source": "Wikimedia Commons via Wikidata Q62560379"
+  },
+  "nsw-jacqui-munro": {
+   "file": "Munro NSW.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Munro_NSW.jpg",
+   "creator": "SlackyC",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/nsw-jacqui-munro.jpg",
+   "source": "Wikimedia Commons via Wikidata Q115058503"
+  },
+  "nsw-james-griffin": {
+   "file": "James Griffin MP.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:James_Griffin_MP.jpg",
+   "creator": "Liberal Party of Australia NSW Division",
+   "licence": "CC0",
+   "licence_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "local_path": "images/members/nsw-james-griffin.jpg",
+   "source": "Wikimedia Commons via Wikidata Q29386045"
+  },
+  "nsw-janelle-saffin": {
+   "file": "Janelle Saffin.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Janelle_Saffin.jpg",
+   "creator": "Australian Civil-Military Centre",
+   "licence": "CC BY-SA 2.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/2.0",
+   "local_path": "images/members/nsw-janelle-saffin.jpg",
+   "source": "Wikimedia Commons via Wikidata Q6153070"
+  },
+  "nsw-jenny-aitchison": {
+   "file": "Jenny Aitchison.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Jenny_Aitchison.jpg",
+   "creator": "Seaplane silly",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/nsw-jenny-aitchison.jpg",
+   "source": "Wikimedia Commons via Wikidata Q19786993"
+  },
+  "nsw-jenny-leong": {
+   "file": "Jenny Leong.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Jenny_Leong.jpg",
+   "creator": "Australian Greens website – Australian Greens",
+   "licence": "CC BY-SA 2.5 au",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/2.5/au/deed.en",
+   "local_path": "images/members/nsw-jenny-leong.jpg",
+   "source": "Wikimedia Commons via Wikidata Q19875164"
+  },
+  "nsw-jeremy-buckingham": {
+   "file": "Jeremy Buckingham MLC.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Jeremy_Buckingham_MLC.jpg",
+   "creator": "Jeremy Buckingham",
+   "licence": "CC BY-SA 3.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+   "local_path": "images/members/nsw-jeremy-buckingham.jpg",
+   "source": "Wikimedia Commons via Wikidata Q13412180"
+  },
+  "nsw-jihad-dib": {
+   "file": "Jihad Dib MP.png",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Jihad_Dib_MP.png",
+   "creator": "Lachlan Hyde",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/nsw-jihad-dib.png",
+   "source": "Wikimedia Commons via Wikidata Q19872872"
+  },
+  "nsw-jo-haylen": {
+   "file": "Jo Haylen MP 2015.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Jo_Haylen_MP_2015.jpg",
+   "creator": "AlexinaDuel",
+   "licence": "CC BY-SA 3.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+   "local_path": "images/members/nsw-jo-haylen.jpg",
+   "source": "Wikimedia Commons via Wikidata Q19874193"
+  },
+  "nsw-jodie-harrison": {
+   "file": "Jodie Harrison MP.png",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Jodie_Harrison_MP.png",
+   "creator": "Lachlan Hyde",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/nsw-jodie-harrison.png",
+   "source": "Wikimedia Commons via Wikidata Q18379290"
+  },
+  "nsw-joe-mcgirr": {
+   "file": "Member for Wagga Wagga, Dr Joe McGirr, at the 2018 Wagga City Aero Club open days.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Member_for_Wagga_Wagga%2C_Dr_Joe_McGirr%2C_at_the_2018_Wagga_City_Aero_Club_open_days.jpg",
+   "creator": "Bidgee",
+   "licence": "CC BY-SA 3.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+   "local_path": "images/members/nsw-joe-mcgirr.jpg",
+   "source": "Wikimedia Commons via Wikidata Q56599957"
+  },
+  "nsw-jordan-lane": {
+   "file": "Jordan Lane 2023.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Jordan_Lane_2023.jpg",
+   "creator": "Oscarmay2018",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/nsw-jordan-lane.jpg",
+   "source": "Wikimedia Commons via Wikidata Q117468562"
+  },
+  "nsw-justin-clancy": {
+   "file": "Justin Clancy-DSC00877 (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Justin_Clancy-DSC00877_%28cropped%29.jpg",
+   "creator": "AlburyEO",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/nsw-justin-clancy.jpg",
+   "source": "Wikimedia Commons via Wikidata Q62599511"
+  },
+  "nsw-karen-mckeown": {
+   "file": "KM - Photo.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:KM_-_Photo.jpg",
+   "creator": "MartyDavies",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/nsw-karen-mckeown.jpg",
+   "source": "Wikimedia Commons via Wikidata Q117006730"
+  },
+  "nsw-kate-washington": {
+   "file": "Kate Washington MP.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Kate_Washington_MP.jpg",
+   "creator": "New South Wales Labor",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/nsw-kate-washington.jpg",
+   "source": "Wikimedia Commons via Wikidata Q21062727"
+  },
+  "nsw-kellie-sloane": {
+   "file": "Kellie Sloane, Mona Vale 2023.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Kellie_Sloane%2C_Mona_Vale_2023.jpg",
+   "creator": "ErgonomicMinder",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0",
+   "local_path": "images/members/nsw-kellie-sloane.jpg",
+   "source": "Wikimedia Commons via Wikidata Q6385794"
+  },
+  "nsw-kobi-shetty": {
+   "file": "Kobi Shetty portrait.png",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Kobi_Shetty_portrait.png",
+   "creator": "Australian Greens website – Australian Greens",
+   "licence": "CC BY-SA 2.5 au",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/2.5/au/deed.en",
+   "local_path": "images/members/nsw-kobi-shetty.png",
+   "source": "Wikimedia Commons via Wikidata Q117316523"
+  },
+  "nsw-liesl-tesch": {
+   "file": "141100 - Wheelchair basketball Liesl Tesch ball - 3b - 2000 Sydney match photo.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:141100_-_Wheelchair_basketball_Liesl_Tesch_ball_-_3b_-_2000_Sydney_match_photo.jpg",
+   "creator": "Australian Paralympic Committee",
+   "licence": "CC BY-SA 3.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+   "local_path": "images/members/nsw-liesl-tesch.jpg",
+   "source": "Wikimedia Commons via Wikidata Q6544335"
+  },
+  "nsw-marjorie-o-neill": {
+   "file": "Marjorie O'Neill.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Marjorie_O%27Neill.jpg",
+   "creator": "Lala295",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/nsw-marjorie-o-neill.jpg",
+   "source": "Wikimedia Commons via Wikidata Q62556393"
+  },
+  "nsw-mark-buttigieg": {
+   "file": "Pictureofmarkbuttigieg.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Pictureofmarkbuttigieg.jpg",
+   "creator": "Thegeetromaestro",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/nsw-mark-buttigieg.jpg",
+   "source": "Wikimedia Commons via Wikidata Q63155181"
+  },
+  "nsw-mark-latham": {
+   "file": "Mark Latham - Church And State Summit 2018 04.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Mark_Latham_-_Church_And_State_Summit_2018_04.jpg",
+   "creator": "Pellowe Talk YouTube channel (Dave Pellowe)",
+   "licence": "CC BY 3.0",
+   "licence_url": "https://creativecommons.org/licenses/by/3.0",
+   "local_path": "images/members/nsw-mark-latham.jpg",
+   "source": "Wikimedia Commons via Wikidata Q982227"
+  },
+  "nsw-mark-speakman": {
+   "file": "150225 MDCC Election Forum Mark Speakman.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:150225_MDCC_Election_Forum_Mark_Speakman.jpg",
+   "creator": "Pauls Productions",
+   "licence": "CC BY 3.0",
+   "licence_url": "https://creativecommons.org/licenses/by/3.0",
+   "local_path": "images/members/nsw-mark-speakman.jpg",
+   "source": "Wikimedia Commons via Wikidata Q6769797"
+  },
+  "nsw-michael-regan": {
+   "file": "Michael Regan 2021.png",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Michael_Regan_2021.png",
+   "creator": "Binguser2022",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0",
+   "local_path": "images/members/nsw-michael-regan.png",
+   "source": "Wikimedia Commons via Wikidata Q21062491"
+  },
+  "nsw-nathan-hagarty": {
+   "file": "Nathan Hagarty MP.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Nathan_Hagarty_MP.jpg",
+   "creator": "Seaplane silly",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0",
+   "local_path": "images/members/nsw-nathan-hagarty.jpg",
+   "source": "Wikimedia Commons via Wikidata Q117299394"
+  },
+  "nsw-nichole-overall": {
+   "file": "Nichole Overall MP image.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Nichole_Overall_MP_image.jpg",
+   "creator": "BH2620",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/nsw-nichole-overall.jpg",
+   "source": "Wikimedia Commons via Wikidata Q111008228"
+  },
+  "nsw-paul-toole": {
+   "file": "John Flint, Paul Toole MP & Richard Neville (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:John_Flint%2C_Paul_Toole_MP_%26_Richard_Neville_%28cropped%29.jpg",
+   "creator": "Jenolan.History",
+   "licence": "CC BY 2.0",
+   "licence_url": "https://creativecommons.org/licenses/by/2.0",
+   "local_path": "images/members/nsw-paul-toole.jpg",
+   "source": "Wikimedia Commons via Wikidata Q7154043"
+  },
+  "nsw-penny-sharpe": {
+   "file": "Penny Sharpe MLC, Nov 2012.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Penny_Sharpe_MLC%2C_Nov_2012.jpg",
+   "creator": "AlexinaDuel",
+   "licence": "CC BY-SA 3.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+   "local_path": "images/members/nsw-penny-sharpe.jpg",
+   "source": "Wikimedia Commons via Wikidata Q7164431"
+  },
+  "nsw-peter-primrose": {
+   "file": "Peter Primrose MLC.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Peter_Primrose_MLC.jpg",
+   "creator": "AlexinaDuel",
+   "licence": "CC BY-SA 3.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+   "local_path": "images/members/nsw-peter-primrose.jpg",
+   "source": "Wikimedia Commons via Wikidata Q16186846"
+  },
+  "nsw-philip-donato": {
+   "file": "Philip Donato 2022.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Philip_Donato_2022.jpg",
+   "creator": "FBEUnsw",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/nsw-philip-donato.jpg",
+   "source": "Wikimedia Commons via Wikidata Q27869777"
+  },
+  "nsw-prue-car": {
+   "file": "Prue car.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Prue_car.jpg",
+   "creator": "NSW Labor",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/nsw-prue-car.jpg",
+   "source": "Wikimedia Commons via Wikidata Q19871946"
+  },
+  "nsw-rachel-merton": {
+   "file": "Official Photograph - Hon. Rachel Merton MLC - dated April 2023 - ( current as at May 2023 ).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Official_Photograph_-_Hon._Rachel_Merton_MLC_-_dated_April_2023_-_%28_current_as_at_May_2023_%29.jpg",
+   "creator": "Kodo8219",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/nsw-rachel-merton.jpg",
+   "source": "Wikimedia Commons via Wikidata Q117837222"
+  },
+  "nsw-rod-roberts": {
+   "file": "The Hon. Rod Roberts MLC.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:The_Hon._Rod_Roberts_MLC.jpg",
+   "creator": "Alexwiki9999",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/nsw-rod-roberts.jpg",
+   "source": "Wikimedia Commons via Wikidata Q63155097"
+  },
+  "nsw-rose-jackson": {
+   "file": "Rose Profile Pic.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Rose_Profile_Pic.jpg",
+   "creator": "Pol2019",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/nsw-rose-jackson.jpg",
+   "source": "Wikimedia Commons via Wikidata Q7367810"
+  },
+  "nsw-roy-butler": {
+   "file": "Roy Butler 2022.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Roy_Butler_2022.jpg",
+   "creator": "FBEUnsw",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/nsw-roy-butler.jpg",
+   "source": "Wikimedia Commons via Wikidata Q62560699"
+  },
+  "nsw-sarah-mitchell": {
+   "file": "Minister Mitchell July 20 headshot DSC6710a.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Minister_Mitchell_July_20_headshot_DSC6710a.jpg",
+   "creator": "M Fairbairn",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/nsw-sarah-mitchell.jpg",
+   "source": "Wikimedia Commons via Wikidata Q7422611"
+  },
+  "nsw-scott-farlow": {
+   "file": "Scott Farlow MLC.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Scott_Farlow_MLC.jpg",
+   "creator": "Premier State Advisory",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/nsw-scott-farlow.jpg",
+   "source": "Wikimedia Commons via Wikidata Q19873302"
+  },
+  "nsw-stephen-bali": {
+   "file": "Blacktown Mayor Stephen Bali (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Blacktown_Mayor_Stephen_Bali_%28cropped%29.jpg",
+   "creator": "Department of Foreign Affairs (Philippines)",
+   "licence": "Public domain",
+   "licence_url": null,
+   "local_path": "images/members/nsw-stephen-bali.jpg",
+   "source": "Wikimedia Commons via Wikidata Q41994089"
+  },
+  "nsw-sue-higginson": {
+   "file": "Sue Higginson.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Sue_Higginson.jpg",
+   "creator": "Australian Greens website – Australian Greens",
+   "licence": "CC BY-SA 2.5 au",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/2.5/au/deed.en",
+   "local_path": "images/members/nsw-sue-higginson.jpg",
+   "source": "Wikimedia Commons via Wikidata Q111972517"
+  },
+  "nsw-susan-carter": {
+   "file": "Delia Lawrie and Susan Carter.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Delia_Lawrie_and_Susan_Carter.jpg",
+   "creator": "Territory Stories website – territorystories.nt.gov.au",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0",
+   "local_path": "images/members/nsw-susan-carter.jpg",
+   "source": "Wikimedia Commons via Wikidata Q117421502"
+  },
+  "nsw-tamara-smith": {
+   "file": "Tamara-Smith small.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Tamara-Smith_small.jpg",
+   "creator": "Tamara Smith",
+   "licence": "CC0",
+   "licence_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "local_path": "images/members/nsw-tamara-smith.jpg",
+   "source": "Wikimedia Commons via Wikidata Q19879144"
+  },
+  "nsw-taylor-martin": {
+   "file": "Taylor Martin MLC.png",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Taylor_Martin_MLC.png",
+   "creator": "Lachlan Hyde",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/nsw-taylor-martin.png",
+   "source": "Wikimedia Commons via Wikidata Q29965792"
+  },
+  "nsw-tim-james": {
+   "file": "Tim James MP Eva Rinaldi (52683650376).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Tim_James_MP_Eva_Rinaldi_%2852683650376%29.jpg",
+   "creator": "Eva Rinaldi from Abbotsford, Australia",
+   "licence": "CC BY-SA 2.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/2.0",
+   "local_path": "images/members/nsw-tim-james.jpg",
+   "source": "Wikimedia Commons via Wikidata Q111011701"
+  },
+  "nsw-tina-ayyad": {
+   "file": "Tina Ayyad MP, Member for Holsworthy.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Tina_Ayyad_MP%2C_Member_for_Holsworthy.jpg",
+   "creator": "Tina Ayyad",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/nsw-tina-ayyad.jpg",
+   "source": "Wikimedia Commons via Wikidata Q117357100"
+  },
+  "nsw-trish-doyle": {
+   "file": "TrishDoyleLaborConf17.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:TrishDoyleLaborConf17.jpg",
+   "creator": "Bluemtns",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/nsw-trish-doyle.jpg",
+   "source": "Wikimedia Commons via Wikidata Q19872994"
+  },
+  "nsw-warren-kirby": {
+   "file": "Warren Kirby MP (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Warren_Kirby_MP_%28cropped%29.jpg",
+   "creator": "Caleb Dredge",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/nsw-warren-kirby.jpg",
+   "source": "Wikimedia Commons via Wikidata Q117294315"
   }
  }
 }

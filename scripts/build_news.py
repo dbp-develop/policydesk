@@ -6,7 +6,7 @@ Stdlib only. Rules (see CLAUDE.md "News rules" and docs/data-sources.md):
 - Store headline, source name, date and link ONLY. No summaries, no article text.
 - Max 5 items per member, newest first. Same rules for every member and party.
 - Match = the member's exact full name (word boundaries, case-sensitive) in the
-  article AND a parliament context word (Vic or Federal) or the member's own
+  article AND a parliament context word (Vic, Federal or NSW) or the member's own
   electorate/region. Anything else is dropped.
   Name in headline or standfirst -> verified. Name only in the article body ->
   kept but labelled unverified.
@@ -30,6 +30,7 @@ ROOT = Path(__file__).resolve().parents[1]
 MEMBER_FILES = [
     ROOT / "data" / "members.json",
     ROOT / "data" / "federal" / "members.json",
+    ROOT / "data" / "nsw" / "members.json",
 ]
 OUT = ROOT / "data" / "news"
 USER_AGENT = "PolicyDeskAU/1.0 (https://policydesk.au)"
@@ -54,6 +55,10 @@ VIC_WORDS = re.compile(r"\b(Victoria|Victorian|Victorians|Melbourne|Spring Stree
 FED_WORDS = re.compile(
     r"\b(Canberra|Federal|Parliament House|House of Representatives|Senate|"
     r"Senator|MP|MPs|Coalition|Labor|Greens)\b"
+)
+NSW_WORDS = re.compile(
+    r"\b(NSW|New South Wales|Sydney|Macquarie Street|Legislative Assembly|"
+    r"Legislative Council|Premier)\b"
 )
 
 
@@ -108,9 +113,13 @@ def load_members() -> list[dict]:
             print(f"WARNING: missing {path.relative_to(ROOT)}", file=sys.stderr)
             continue
         data = json.loads(path.read_text(encoding="utf-8"))
-        parliament = data.get("parliament") or (
-            "federal" if "federal" in str(path) else "vic"
-        )
+        if "federal" in str(path):
+            default_parliament = "federal"
+        elif "/nsw/" in str(path) or str(path).endswith("/nsw/members.json"):
+            default_parliament = "nsw"
+        else:
+            default_parliament = "vic"
+        parliament = data.get("parliament") or default_parliament
         for m in data.get("members") or []:
             m = dict(m)
             m["_parliament"] = m.get("parliament") or parliament
@@ -123,6 +132,8 @@ def context_ok(parliament: str, text: str, seat_rx: re.Pattern | None) -> bool:
         return True
     if parliament == "federal":
         return bool(FED_WORDS.search(text))
+    if parliament == "nsw":
+        return bool(NSW_WORDS.search(text))
     return bool(VIC_WORDS.search(text))
 
 
@@ -200,7 +211,7 @@ def main() -> int:
         "licence": LICENCE,
         "licence_url": "https://creativecommons.org/licenses/by-nd/4.0/",
         "rules": "Headline, source, date and link only. Exact full-name match with "
-                 "Victorian or Federal context; name only in article body = unverified. "
+                 "Victorian, Federal or NSW context; name only in article body = unverified. "
                  "Max 5 per member.",
         "generated_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
         "counts": index,

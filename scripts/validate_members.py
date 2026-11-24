@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate Vic and Federal members.json seat counts (stdlib only)."""
+"""Validate Vic, Federal and NSW members.json seat counts (stdlib only)."""
 
 from __future__ import annotations
 
@@ -25,6 +25,14 @@ PARLIAMENTS = {
         "lower_label": "House",
         "upper_label": "Senate",
         "vacancy_lower": {"House", "lower"},
+    },
+    "nsw": {
+        "path": ROOT / "data" / "nsw" / "members.json",
+        "lower": 93,
+        "upper": 42,
+        "lower_label": "Assembly",
+        "upper_label": "Council",
+        "vacancy_lower": {"Assembly", "lower"},
     },
 }
 
@@ -93,9 +101,8 @@ def validate_one(key: str, cfg: dict, errors: list[str]) -> None:
             fail(f"{key}/{label}: upper-house member missing region", errors)
         if chamber not in {"lower", "upper"}:
             fail(f"{key}/{label}: invalid chamber {chamber!r}", errors)
-        if m.get("parliament") not in {key, None} and key == "federal":
-            if m.get("parliament") != "federal":
-                fail(f"{key}/{label}: parliament field {m.get('parliament')!r}", errors)
+        if key in {"federal", "nsw"} and m.get("parliament") not in {key, None}:
+            fail(f"{key}/{label}: parliament field {m.get('parliament')!r}", errors)
 
     print(
         f"{key}: members={len(members)} "
@@ -116,21 +123,24 @@ def main() -> int:
     for key, cfg in PARLIAMENTS.items():
         validate_one(key, cfg, errors)
 
-    # Federal ids must not collide with Vic ids (news/photo keys).
-    vic_path = PARLIAMENTS["vic"]["path"]
-    fed_path = PARLIAMENTS["federal"]["path"]
-    if vic_path.exists() and fed_path.exists():
-        vic_ids = {
-            m["id"]
-            for m in json.loads(vic_path.read_text(encoding="utf-8"))["members"]
-        }
-        fed_ids = {
-            m["id"]
-            for m in json.loads(fed_path.read_text(encoding="utf-8"))["members"]
-        }
-        overlap = vic_ids & fed_ids
-        if overlap:
-            fail(f"id collision between vic and federal: {sorted(overlap)[:10]}", errors)
+    # Member ids must not collide across parliaments (news/photo keys).
+    id_sets: dict[str, set[str]] = {}
+    for key, cfg in PARLIAMENTS.items():
+        path = cfg["path"]
+        if path.exists():
+            id_sets[key] = {
+                m["id"]
+                for m in json.loads(path.read_text(encoding="utf-8"))["members"]
+            }
+    keys = list(id_sets)
+    for i, a in enumerate(keys):
+        for b in keys[i + 1 :]:
+            overlap = id_sets[a] & id_sets[b]
+            if overlap:
+                fail(
+                    f"id collision between {a} and {b}: {sorted(overlap)[:10]}",
+                    errors,
+                )
 
     if errors:
         print(f"FAILED ({len(errors)} error(s)):", file=sys.stderr)

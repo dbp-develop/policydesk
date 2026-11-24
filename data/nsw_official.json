@@ -1,0 +1,1229 @@
+{
+  "source": "Parliament of New South Wales",
+  "source_url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/downloadable-lists",
+  "fetched_at": "2026-11-24T22:19:46+00:00",
+  "la_file": "la-members-July-2026.xlsx",
+  "lc_file": "lc-members-nov-26.csv",
+  "expected_counts": {
+    "Assembly": 93,
+    "Council": 42
+  },
+  "credit": "© State of New South Wales through the Parliament of New South Wales",
+  "members": [
+    {
+      "member_id": "112",
+      "name": "Adam Crouch",
+      "chamber": "Assembly",
+      "party": "Liberal Party",
+      "electorate": "Terrigal",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=112"
+    },
+    {
+      "member_id": "98",
+      "name": "Alex Greenwich",
+      "chamber": "Assembly",
+      "party": "Independent",
+      "electorate": "Sydney",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=98"
+    },
+    {
+      "member_id": "118",
+      "name": "Alister Henskens",
+      "chamber": "Assembly",
+      "party": "Liberal Party",
+      "electorate": "Wahroonga",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=118"
+    },
+    {
+      "member_id": "72",
+      "name": "Anna Watson",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "electorate": "Shellharbour",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=72"
+    },
+    {
+      "member_id": "117",
+      "name": "Anoulack Chanthivong",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "electorate": "Macquarie Fields",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=117"
+    },
+    {
+      "member_id": "20",
+      "name": "Anthony Roberts",
+      "chamber": "Assembly",
+      "party": "Liberal Party",
+      "electorate": "Lane Cove",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=20"
+    },
+    {
+      "member_id": "2306",
+      "name": "Brendan Moylan",
+      "chamber": "Assembly",
+      "party": "The Nationals",
+      "electorate": "Northern Tablelands",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2306"
+    },
+    {
+      "member_id": "2281",
+      "name": "Charishma Kaliyanda",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "electorate": "Liverpool",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2281"
+    },
+    {
+      "member_id": "108",
+      "name": "Chris Minns",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "electorate": "Kogarah",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=108"
+    },
+    {
+      "member_id": "60",
+      "name": "Clayton Barr",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "electorate": "Cessnock",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=60"
+    },
+    {
+      "member_id": "2261",
+      "name": "Dave Layzell",
+      "chamber": "Assembly",
+      "party": "The Nationals",
+      "electorate": "Upper Hunter",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2261"
+    },
+    {
+      "member_id": "31",
+      "name": "David Harris",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "electorate": "Wyong",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=31"
+    },
+    {
+      "member_id": "113",
+      "name": "David Mehan",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "electorate": "The Entrance",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=113"
+    },
+    {
+      "member_id": "2287",
+      "name": "David Saliba",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "electorate": "Fairfield",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2287"
+    },
+    {
+      "member_id": "2276",
+      "name": "Donna Davis",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "electorate": "Parramatta",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2276"
+    },
+    {
+      "member_id": "2242",
+      "name": "Dugald Saunders",
+      "chamber": "Assembly",
+      "party": "The Nationals",
+      "electorate": "Dubbo",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2242"
+    },
+    {
+      "member_id": "104",
+      "name": "Edmond Atalla",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "electorate": "Mount Druitt",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=104"
+    },
+    {
+      "member_id": "109",
+      "name": "Eleni Petinos",
+      "chamber": "Assembly",
+      "party": "Liberal Party",
+      "electorate": "Miranda",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=109"
+    },
+    {
+      "member_id": "2230",
+      "name": "Felicity Wilson",
+      "chamber": "Assembly",
+      "party": "Liberal Party",
+      "electorate": "North Shore",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2230"
+    },
+    {
+      "member_id": "36",
+      "name": "Geoff Provest",
+      "chamber": "Assembly",
+      "party": "The Nationals",
+      "electorate": "Tweed",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=36"
+    },
+    {
+      "member_id": "41",
+      "name": "Greg Piper",
+      "chamber": "Assembly",
+      "party": "Independent",
+      "electorate": "Lake Macquarie",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=41"
+    },
+    {
+      "member_id": "127",
+      "name": "Greg Warren",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "electorate": "Campbelltown",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=127"
+    },
+    {
+      "member_id": "2244",
+      "name": "Gurmesh Singh",
+      "chamber": "Assembly",
+      "party": "The Nationals",
+      "electorate": "Coffs Harbour",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2244"
+    },
+    {
+      "member_id": "2245",
+      "name": "Helen Dalton",
+      "chamber": "Assembly",
+      "party": "Independent",
+      "electorate": "Murray",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2245"
+    },
+    {
+      "member_id": "129",
+      "name": "Hugh McDermott",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "electorate": "Prospect",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=129"
+    },
+    {
+      "member_id": "2309",
+      "name": "Jacqui Scruby",
+      "chamber": "Assembly",
+      "party": "Independent",
+      "electorate": "Pittwater",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2309"
+    },
+    {
+      "member_id": "2229",
+      "name": "James Griffin",
+      "chamber": "Assembly",
+      "party": "Liberal Party",
+      "electorate": "Manly",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2229"
+    },
+    {
+      "member_id": "2308",
+      "name": "James Wallace",
+      "chamber": "Assembly",
+      "party": "Liberal Party",
+      "electorate": "Hornsby",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2308"
+    },
+    {
+      "member_id": "2085",
+      "name": "Janelle Saffin",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "electorate": "Lismore",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2085"
+    },
+    {
+      "member_id": "2263",
+      "name": "Jason Li",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "electorate": "Strathfield",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2263"
+    },
+    {
+      "member_id": "120",
+      "name": "Jenny Aitchison",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "electorate": "Maitland",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=120"
+    },
+    {
+      "member_id": "107",
+      "name": "Jenny Leong",
+      "chamber": "Assembly",
+      "party": "The Greens",
+      "electorate": "Newtown",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=107"
+    },
+    {
+      "member_id": "110",
+      "name": "Jihad Dib",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "electorate": "Bankstown",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=110"
+    },
+    {
+      "member_id": "111",
+      "name": "Jo Haylen",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "electorate": "Summer Hill",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=111"
+    },
+    {
+      "member_id": "102",
+      "name": "Jodie Harrison",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "electorate": "Charlestown",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=102"
+    },
+    {
+      "member_id": "2237",
+      "name": "Joe McGirr",
+      "chamber": "Assembly",
+      "party": "Independent",
+      "electorate": "Wagga Wagga",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2237"
+    },
+    {
+      "member_id": "2283",
+      "name": "Jordan Lane",
+      "chamber": "Assembly",
+      "party": "Liberal Party",
+      "electorate": "Ryde",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2283"
+    },
+    {
+      "member_id": "2279",
+      "name": "Judy Hannan",
+      "chamber": "Assembly",
+      "party": "Independent",
+      "electorate": "Wollondilly",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2279"
+    },
+    {
+      "member_id": "126",
+      "name": "Julia Finn",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "electorate": "Granville",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=126"
+    },
+    {
+      "member_id": "2238",
+      "name": "Justin Clancy",
+      "chamber": "Assembly",
+      "party": "Liberal Party",
+      "electorate": "Albury",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2238"
+    },
+    {
+      "member_id": "2285",
+      "name": "Karen McKeown",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "electorate": "Penrith",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2285"
+    },
+    {
+      "member_id": "106",
+      "name": "Kate Washington",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "electorate": "Port Stephens",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=106"
+    },
+    {
+      "member_id": "2311",
+      "name": "Katelin McInerney",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "electorate": "Kiama",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2311"
+    },
+    {
+      "member_id": "2288",
+      "name": "Kellie Sloane",
+      "chamber": "Assembly",
+      "party": "Liberal Party",
+      "electorate": "Vaucluse",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2288"
+    },
+    {
+      "member_id": "81",
+      "name": "Kevin Anderson",
+      "chamber": "Assembly",
+      "party": "The Nationals",
+      "electorate": "Tamworth",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=81"
+    },
+    {
+      "member_id": "2270",
+      "name": "Kobi Shetty",
+      "chamber": "Assembly",
+      "party": "The Greens",
+      "electorate": "Balmain",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2270"
+    },
+    {
+      "member_id": "2291",
+      "name": "Kylie Wilkinson",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "electorate": "East Hills",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2291"
+    },
+    {
+      "member_id": "2228",
+      "name": "Liesl Tesch",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "electorate": "Gosford",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2228"
+    },
+    {
+      "member_id": "2274",
+      "name": "Liza Butler",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "electorate": "South Coast",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2274"
+    },
+    {
+      "member_id": "42",
+      "name": "Lynda Voltz",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "electorate": "Auburn",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=42"
+    },
+    {
+      "member_id": "2246",
+      "name": "Marjorie O'Neill",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "electorate": "Coogee",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2246"
+    },
+    {
+      "member_id": "83",
+      "name": "Mark Coure",
+      "chamber": "Assembly",
+      "party": "Liberal Party",
+      "electorate": "Oatley",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=83"
+    },
+    {
+      "member_id": "2280",
+      "name": "Mark Hodges",
+      "chamber": "Assembly",
+      "party": "Liberal Party",
+      "electorate": "Castle Hill",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2280"
+    },
+    {
+      "member_id": "63",
+      "name": "Mark Speakman",
+      "chamber": "Assembly",
+      "party": "Liberal Party",
+      "electorate": "Cronulla",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=63"
+    },
+    {
+      "member_id": "116",
+      "name": "Mark Taylor",
+      "chamber": "Assembly",
+      "party": "Liberal Party",
+      "electorate": "Winston Hills",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=116"
+    },
+    {
+      "member_id": "2289",
+      "name": "Maryanne Stuart",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "electorate": "Heathcote",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2289"
+    },
+    {
+      "member_id": "2275",
+      "name": "Matt Cross",
+      "chamber": "Assembly",
+      "party": "Liberal Party",
+      "electorate": "Davidson",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2275"
+    },
+    {
+      "member_id": "27",
+      "name": "Michael Daley",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "electorate": "Maroubra",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=27"
+    },
+    {
+      "member_id": "2264",
+      "name": "Michael Holland",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "electorate": "Bega",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2264"
+    },
+    {
+      "member_id": "2282",
+      "name": "Michael Kemp",
+      "chamber": "Assembly",
+      "party": "The Nationals",
+      "electorate": "Oxley",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2282"
+    },
+    {
+      "member_id": "2286",
+      "name": "Michael Regan",
+      "chamber": "Assembly",
+      "party": "Independent",
+      "electorate": "Wakehurst",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2286"
+    },
+    {
+      "member_id": "2307",
+      "name": "Monica Tudehope",
+      "chamber": "Assembly",
+      "party": "Liberal Party",
+      "electorate": "Epping",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2307"
+    },
+    {
+      "member_id": "2278",
+      "name": "Nathan Hagarty",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "electorate": "Leppington",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2278"
+    },
+    {
+      "member_id": "2225",
+      "name": "Paul Scully",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "electorate": "Wollongong",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2225"
+    },
+    {
+      "member_id": "62",
+      "name": "Paul Toole",
+      "chamber": "Assembly",
+      "party": "The Nationals",
+      "electorate": "Bathurst",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=62"
+    },
+    {
+      "member_id": "2226",
+      "name": "Philip Donato",
+      "chamber": "Assembly",
+      "party": "Independent",
+      "electorate": "Orange",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2226"
+    },
+    {
+      "member_id": "105",
+      "name": "Prue Car",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "electorate": "Londonderry",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=105"
+    },
+    {
+      "member_id": "39",
+      "name": "Ray Williams",
+      "chamber": "Assembly",
+      "party": "Liberal Party",
+      "electorate": "Kellyville",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=39"
+    },
+    {
+      "member_id": "2292",
+      "name": "Richie Williamson",
+      "chamber": "Assembly",
+      "party": "The Nationals",
+      "electorate": "Clarence",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2292"
+    },
+    {
+      "member_id": "2310",
+      "name": "Robert Dwyer",
+      "chamber": "Assembly",
+      "party": "Liberal Party",
+      "electorate": "Port Macquarie",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2310"
+    },
+    {
+      "member_id": "2249",
+      "name": "Robyn Preston",
+      "chamber": "Assembly",
+      "party": "Liberal Party",
+      "electorate": "Hawkesbury",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2249"
+    },
+    {
+      "member_id": "97",
+      "name": "Ron Hoenig",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "electorate": "Heffron",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=97"
+    },
+    {
+      "member_id": "2239",
+      "name": "Roy Butler",
+      "chamber": "Assembly",
+      "party": "Independent",
+      "electorate": "Barwon",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2239"
+    },
+    {
+      "member_id": "58",
+      "name": "Ryan Park",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "electorate": "Keira",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=58"
+    },
+    {
+      "member_id": "2284",
+      "name": "Sally Quinnell",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "electorate": "Camden",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2284"
+    },
+    {
+      "member_id": "33",
+      "name": "Sonia Hornery",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "electorate": "Wallsend",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=33"
+    },
+    {
+      "member_id": "53",
+      "name": "Sophie Cotsis",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "electorate": "Canterbury",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=53"
+    },
+    {
+      "member_id": "2235",
+      "name": "Steph Cooke",
+      "chamber": "Assembly",
+      "party": "The Nationals",
+      "electorate": "Cootamundra",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2235"
+    },
+    {
+      "member_id": "2277",
+      "name": "Stephanie Di Pasqua",
+      "chamber": "Assembly",
+      "party": "Liberal Party",
+      "electorate": "Drummoyne",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2277"
+    },
+    {
+      "member_id": "2233",
+      "name": "Stephen Bali",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "electorate": "Blacktown",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2233"
+    },
+    {
+      "member_id": "124",
+      "name": "Stephen Kamper",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "electorate": "Rockdale",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=124"
+    },
+    {
+      "member_id": "2176",
+      "name": "Steve Whan",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "electorate": "Monaro",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2176"
+    },
+    {
+      "member_id": "119",
+      "name": "Tamara Smith",
+      "chamber": "Assembly",
+      "party": "The Greens",
+      "electorate": "Ballina",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=119"
+    },
+    {
+      "member_id": "57",
+      "name": "Tanya Davies",
+      "chamber": "Assembly",
+      "party": "Liberal Party",
+      "electorate": "Badgerys Creek",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=57"
+    },
+    {
+      "member_id": "2290",
+      "name": "Tanya Thompson",
+      "chamber": "Assembly",
+      "party": "The Nationals",
+      "electorate": "Myall Lakes",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2290"
+    },
+    {
+      "member_id": "103",
+      "name": "Tim Crakanthorp",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "electorate": "Newcastle",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=103"
+    },
+    {
+      "member_id": "2265",
+      "name": "Tim James",
+      "chamber": "Assembly",
+      "party": "Liberal Party",
+      "electorate": "Willoughby",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2265"
+    },
+    {
+      "member_id": "2273",
+      "name": "Tina Ayyad",
+      "chamber": "Assembly",
+      "party": "Liberal Party",
+      "electorate": "Holsworthy",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2273"
+    },
+    {
+      "member_id": "2271",
+      "name": "Tri Vo",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "electorate": "Cabramatta",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2271"
+    },
+    {
+      "member_id": "123",
+      "name": "Trish Doyle",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "electorate": "Blue Mountains",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=123"
+    },
+    {
+      "member_id": "2293",
+      "name": "Warren Kirby",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "electorate": "Riverstone",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2293"
+    },
+    {
+      "member_id": "2240",
+      "name": "Wendy Tuckerman",
+      "chamber": "Assembly",
+      "party": "Liberal Party",
+      "electorate": "Goulburn",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2240"
+    },
+    {
+      "member_id": "128",
+      "name": "Yasmin Catley",
+      "chamber": "Assembly",
+      "party": "Australian Labor Party",
+      "electorate": "Swansea",
+      "region": null,
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=128"
+    },
+    {
+      "member_id": "2257",
+      "name": "Abigail Boyd",
+      "chamber": "Council",
+      "party": "The Greens",
+      "electorate": null,
+      "region": "New South Wales",
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2257"
+    },
+    {
+      "member_id": "2269",
+      "name": "Aileen MacDonald",
+      "chamber": "Council",
+      "party": "Liberal Party",
+      "electorate": null,
+      "region": "New South Wales",
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2269"
+    },
+    {
+      "member_id": "2300",
+      "name": "Amanda Cohn",
+      "chamber": "Council",
+      "party": "The Greens",
+      "electorate": null,
+      "region": "New South Wales",
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2300"
+    },
+    {
+      "member_id": "2252",
+      "name": "Anthony D'Adam",
+      "chamber": "Council",
+      "party": "Australian Labor Party",
+      "electorate": null,
+      "region": "New South Wales",
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2252"
+    },
+    {
+      "member_id": "133",
+      "name": "Ben Franklin",
+      "chamber": "Council",
+      "party": "The Nationals",
+      "electorate": null,
+      "region": "New South Wales",
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=133"
+    },
+    {
+      "member_id": "2313",
+      "name": "Bernard Govind",
+      "chamber": "Council",
+      "party": "Australian Labor Party",
+      "electorate": null,
+      "region": "New South Wales",
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2313"
+    },
+    {
+      "member_id": "2295",
+      "name": "Bob Nanva",
+      "chamber": "Council",
+      "party": "Australian Labor Party",
+      "electorate": null,
+      "region": "New South Wales",
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2295"
+    },
+    {
+      "member_id": "2299",
+      "name": "Cameron Murphy",
+      "chamber": "Council",
+      "party": "Australian Labor Party",
+      "electorate": null,
+      "region": "New South Wales",
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2299"
+    },
+    {
+      "member_id": "2198",
+      "name": "Cate Faehrmann",
+      "chamber": "Council",
+      "party": "The Greens",
+      "electorate": null,
+      "region": "New South Wales",
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2198"
+    },
+    {
+      "member_id": "2267",
+      "name": "Chris Rath",
+      "chamber": "Council",
+      "party": "Liberal Party",
+      "electorate": null,
+      "region": "New South Wales",
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2267"
+    },
+    {
+      "member_id": "130",
+      "name": "Courtney Houssos",
+      "chamber": "Council",
+      "party": "Australian Labor Party",
+      "electorate": null,
+      "region": "New South Wales",
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=130"
+    },
+    {
+      "member_id": "115",
+      "name": "Damien Tudehope",
+      "chamber": "Council",
+      "party": "Liberal Party",
+      "electorate": null,
+      "region": "New South Wales",
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=115"
+    },
+    {
+      "member_id": "135",
+      "name": "Daniel Mookhey",
+      "chamber": "Council",
+      "party": "Australian Labor Party",
+      "electorate": null,
+      "region": "New South Wales",
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=135"
+    },
+    {
+      "member_id": "2298",
+      "name": "Emily Suvaal",
+      "chamber": "Council",
+      "party": "Australian Labor Party",
+      "electorate": null,
+      "region": "New South Wales",
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2298"
+    },
+    {
+      "member_id": "2254",
+      "name": "Emma Hurst",
+      "chamber": "Council",
+      "party": "Animal Justice Party",
+      "electorate": null,
+      "region": "New South Wales",
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2254"
+    },
+    {
+      "member_id": "2303",
+      "name": "Jacqui Munro",
+      "chamber": "Council",
+      "party": "Liberal Party",
+      "electorate": null,
+      "region": "New South Wales",
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2303"
+    },
+    {
+      "member_id": "92",
+      "name": "Jeremy Buckingham",
+      "chamber": "Council",
+      "party": "Legalise Cannabis Party",
+      "electorate": null,
+      "region": "New South Wales",
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=92"
+    },
+    {
+      "member_id": "2224",
+      "name": "John Graham",
+      "chamber": "Council",
+      "party": "Australian Labor Party",
+      "electorate": null,
+      "region": "New South Wales",
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2224"
+    },
+    {
+      "member_id": "2301",
+      "name": "John Ruddick",
+      "chamber": "Council",
+      "party": "Libertarian Party",
+      "electorate": null,
+      "region": "New South Wales",
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2301"
+    },
+    {
+      "member_id": "2256",
+      "name": "Mark Banasiak",
+      "chamber": "Council",
+      "party": "Shooters, Fishers and Farmers Party",
+      "electorate": null,
+      "region": "New South Wales",
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2256"
+    },
+    {
+      "member_id": "2253",
+      "name": "Mark Buttigieg",
+      "chamber": "Council",
+      "party": "Australian Labor Party",
+      "electorate": null,
+      "region": "New South Wales",
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2253"
+    },
+    {
+      "member_id": "2251",
+      "name": "Mark Latham",
+      "chamber": "Council",
+      "party": "Independent",
+      "electorate": null,
+      "region": "New South Wales",
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2251"
+    },
+    {
+      "member_id": "2236",
+      "name": "Natalie Ward",
+      "chamber": "Council",
+      "party": "Liberal Party",
+      "electorate": null,
+      "region": "New South Wales",
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2236"
+    },
+    {
+      "member_id": "88",
+      "name": "Natasha Maclaren-Jones",
+      "chamber": "Council",
+      "party": "Liberal Party",
+      "electorate": null,
+      "region": "New South Wales",
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=88"
+    },
+    {
+      "member_id": "2266",
+      "name": "Nichole Overall",
+      "chamber": "Council",
+      "party": "The Nationals",
+      "electorate": null,
+      "region": "New South Wales",
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2266"
+    },
+    {
+      "member_id": "28",
+      "name": "Penny Sharpe",
+      "chamber": "Council",
+      "party": "Australian Labor Party",
+      "electorate": null,
+      "region": "New South Wales",
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=28"
+    },
+    {
+      "member_id": "3",
+      "name": "Peter Primrose",
+      "chamber": "Council",
+      "party": "Australian Labor Party",
+      "electorate": null,
+      "region": "New South Wales",
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=3"
+    },
+    {
+      "member_id": "2304",
+      "name": "Rachel Merton",
+      "chamber": "Council",
+      "party": "Liberal Party",
+      "electorate": null,
+      "region": "New South Wales",
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2304"
+    },
+    {
+      "member_id": "54",
+      "name": "Robert Borsak",
+      "chamber": "Council",
+      "party": "Shooters, Fishers and Farmers Party",
+      "electorate": null,
+      "region": "New South Wales",
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=54"
+    },
+    {
+      "member_id": "2255",
+      "name": "Rod Roberts",
+      "chamber": "Council",
+      "party": "Independent",
+      "electorate": null,
+      "region": "New South Wales",
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2255"
+    },
+    {
+      "member_id": "2258",
+      "name": "Rose Jackson",
+      "chamber": "Council",
+      "party": "Australian Labor Party",
+      "electorate": null,
+      "region": "New South Wales",
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2258"
+    },
+    {
+      "member_id": "2296",
+      "name": "Sarah Kaine",
+      "chamber": "Council",
+      "party": "Australian Labor Party",
+      "electorate": null,
+      "region": "New South Wales",
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2296"
+    },
+    {
+      "member_id": "93",
+      "name": "Sarah Mitchell",
+      "chamber": "Council",
+      "party": "The Nationals",
+      "electorate": null,
+      "region": "New South Wales",
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=93"
+    },
+    {
+      "member_id": "2262",
+      "name": "Scott Barrett",
+      "chamber": "Council",
+      "party": "The Nationals",
+      "electorate": null,
+      "region": "New South Wales",
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2262"
+    },
+    {
+      "member_id": "122",
+      "name": "Scott Farlow",
+      "chamber": "Council",
+      "party": "Liberal Party",
+      "electorate": null,
+      "region": "New South Wales",
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=122"
+    },
+    {
+      "member_id": "2297",
+      "name": "Stephen Lawrence",
+      "chamber": "Council",
+      "party": "Australian Labor Party",
+      "electorate": null,
+      "region": "New South Wales",
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2297"
+    },
+    {
+      "member_id": "2268",
+      "name": "Sue Higginson",
+      "chamber": "Council",
+      "party": "The Greens",
+      "electorate": null,
+      "region": "New South Wales",
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2268"
+    },
+    {
+      "member_id": "2302",
+      "name": "Susan Carter",
+      "chamber": "Council",
+      "party": "Liberal Party",
+      "electorate": null,
+      "region": "New South Wales",
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2302"
+    },
+    {
+      "member_id": "67",
+      "name": "Tania Mihailuk",
+      "chamber": "Council",
+      "party": "Independent",
+      "electorate": null,
+      "region": "New South Wales",
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=67"
+    },
+    {
+      "member_id": "2250",
+      "name": "Tara Moriarty",
+      "chamber": "Council",
+      "party": "Australian Labor Party",
+      "electorate": null,
+      "region": "New South Wales",
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2250"
+    },
+    {
+      "member_id": "2231",
+      "name": "Taylor Martin",
+      "chamber": "Council",
+      "party": "Independent",
+      "electorate": null,
+      "region": "New South Wales",
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2231"
+    },
+    {
+      "member_id": "2232",
+      "name": "Wes Fang",
+      "chamber": "Council",
+      "party": "The Nationals",
+      "electorate": null,
+      "region": "New South Wales",
+      "url": "https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId=2232"
+    }
+  ]
+}

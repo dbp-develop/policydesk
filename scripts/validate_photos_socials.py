@@ -17,7 +17,11 @@ MAX_BYTES = 200_000
 
 def load_ids() -> set[str]:
     ids: set[str] = set()
-    for path in (ROOT / "data/members.json", ROOT / "data/federal/members.json"):
+    for path in (
+        ROOT / "data/members.json",
+        ROOT / "data/federal/members.json",
+        ROOT / "data/nsw/members.json",
+    ):
         if path.exists():
             ids |= {m["id"] for m in json.loads(path.read_text(encoding="utf-8"))["members"]}
     return ids

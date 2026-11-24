@@ -1,0 +1,47 @@
+name: Fetch NSW members
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: data-commits
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch NSW members (Parliament downloadable lists)
+        run: python scripts/fetch_nsw_official.py
+
+      - name: Build data/nsw/members.json
+        run: python scripts/build_nsw_members.py
+
+      - name: Validate members
+        run: python scripts/validate_members.py
+
+      - name: Commit and push data if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/nsw_official.json data/nsw/members.json data/nsw/vacancies.json
+          if git diff --staged --quiet; then
+            echo "No changes to NSW member data files"
+          else
+            git commit -m "chore: update NSW member data"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
