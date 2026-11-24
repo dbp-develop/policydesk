@@ -410,3 +410,117 @@ Owner-approved approach: one polygon per state/territory. Built by grouping the 
 
 > This product (The Policy Desk AU map) incorporates data that is: © Commonwealth of Australia (Australian Electoral Commission) 2026. The Data (Commonwealth Electoral Boundaries, March 2025 national file) has been used with the permission of the Australian Electoral Commission under the AEC data download licence. Simplified by The Policy Desk AU.
 
+
+---
+
+# Data sources — NSW Parliament (Stage 7)
+
+**Date checked:** 2026-11-24  
+**Checker User-Agent:** `PolicyDeskAU/1.0 (https://policydesk.au)`  
+**Intended use:** automated fetch of current NSW member facts (name, chamber, electorate or statewide Council, party, official profile URL). No photos. No biographies. No office addresses or emails.
+
+## 1. robots.txt — www.parliament.nsw.gov.au
+
+**URL:** https://www.parliament.nsw.gov.au/robots.txt  
+
+Fetched 2026-11-24 via a real browser after a Cloudflare Turnstile challenge. Plain `curl` with `PolicyDeskAU/1.0` received **HTTP 403** (Cloudflare challenge HTML) for `/robots.txt`, HTML pages, and `/_media/` downloads on this check date.
+
+**Full robots body as fetched (381 bytes):**
+
+```
+User-agent: *
+Disallow: /_design
+Disallow: /_services
+Disallow: /restricted-access
+Disallow: /search
+Disallow: /parliamentary-business/legislative-assembly/votes-proceedings?
+Disallow: /*_nocache
+Disallow: /*_recache
+Disallow: /*_edit
+Disallow: /*_admin
+Disallow: /*_login
+Disallow: /*_performance
+Disallow: /*?sq_content_src=
+Sitemap: https://www.parliament.nsw.gov.au/sitemap.xml
+```
+
+### `urllib.robotparser` (body above)
+
+```
+can_fetch('PolicyDeskAU', '/members-and-electorates/members-and-ministers/downloadable-lists') = True
+can_fetch('PolicyDeskAU', '/_media/documents/members-and-electorates/downloadable-lists/lc-members-nov-26.csv') = True
+can_fetch('PolicyDeskAU', '/members-and-electorates/members-and-ministers/members-details?memberId=108') = True
+```
+
+**Production fetch note:** robots.txt does **not** Disallow member list or `/_media/` download paths for `PolicyDeskAU`. Cloudflare still blocked unattended fetches with that User-Agent on 2026-11-24. Stage 7 member data was built from a browser-cleared download of the official lists. The fetch script tries the `/_media/` URLs and exits with a clear error if Cloudflare blocks; re-run after clearing the challenge or pass `--from-dir` with the saved files. **Never use a Claude-Code/Cursor session User-Agent against parliament.nsw.gov.au.**
+
+## 2. Copyright — Parliament of NSW
+
+**URL:** https://www.parliament.nsw.gov.au/copyright  
+
+> Unless otherwise indicated, you may copy, distribute, display, download and otherwise deal with the material on this website (apart from any third party material), on the condition that such use is not for the purpose of advertising, satire or ridicule, or to misrepresent members of Parliament, and provided you include the copyright notice “© State of New South Wales through the Parliament of New South Wales”. You must, however, obtain permission from the Parliament if you wish to charge others for access to the material (other than at cost), or modify the material.
+
+**Automated access / scraping:** not mentioned on the copyright page beyond robots.txt.  
+**Attribution:** “© State of New South Wales through the Parliament of New South Wales”.
+
+## 3. Official member list used
+
+| What | Result on 2026-11-24 |
+|------|----------------------|
+| Downloadable lists page | `https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/downloadable-lists` |
+| Legislative Assembly | `…/_media/documents/members-and-electorates/downloadable-lists/la-members-July-2026.xlsx` (93 rows; XLSX only on this date) |
+| Legislative Council | `…/_media/documents/members-and-electorates/downloadable-lists/lc-members-nov-26.csv` (42 rows) |
+| All-members list (for profile IDs) | `https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/all-members` (135 cards; each links to `members-details?memberId=<id>`) |
+| Official profile URL pattern | `https://www.parliament.nsw.gov.au/members-and-electorates/members-and-ministers/members-details?memberId={id}` |
+| Data.NSW catalogue | Lists the same downloads under Creative Commons Attribution (`cc-by`); resource URLs point at the parliament downloadables page |
+
+Facts stored per member: name, chamber, electorate (Assembly) **or** region `New South Wales` (Council, statewide), party, official profile URL, source. Unknown fields = null. **Addresses, emails, phones and office fields from the spreadsheets are not stored.**
+
+Data.NSW package notes (licence field `cc-by`):  
+`https://data.nsw.gov.au/data/dataset/list-of-members-of-the-legislative-assembly`  
+`https://data.nsw.gov.au/data/dataset/list-of-members-of-the-legislative-council`
+
+## 4. Verdicts (evidence only — no legal inference)
+
+**(a) robots.txt:** does **not** Disallow our `PolicyDeskAU` agent for member list/download paths.  
+**(b) automated access:** copyright page does **not** mention scraping; Cloudflare blocked unattended fetches for our UA on this date.  
+**(c) reusing member names, parties and seats (facts only):** website material may be copied/distributed with the stated attribution and without advertising/satire/misrepresentation; **charging others for access** or **modifying** the material needs Parliament permission. The quoted text does **not** say whether bare facts (name, party, seat) are “material” under that rule. Same class of Stage 15 uncertainty as Victoria / Federal. We store facts only, attribute Parliament of NSW, and **do not** copy addresses, biographies, or spreadsheet files into the repo.
+
+---
+
+# Data sources — NSW electoral boundaries (Stage 7)
+
+**Date checked:** 2026-11-24  
+**Checker User-Agent:** `PolicyDeskAU/1.0 (https://policydesk.au)`  
+**Intended use:** download NSW Legislative Assembly district boundaries for the map; derive one statewide NSW polygon for the Legislative Council map; simplify; publish as static SVG-path JSON.
+
+## Dataset (Assembly districts)
+
+| | Geoscape Administrative Boundaries — NSW State Electoral Boundaries |
+|---|---|
+| Title | NSW State Electoral Boundaries — Geoscape Administrative Boundaries |
+| Publisher | Geoscape Australia / Commonwealth of Australia (data.gov.au) |
+| Landing page | https://data.gov.au/data/dataset/nsw-state-electoral-boundaries-geoscape-administrative-boundaries |
+| Download used | https://data.gov.au/data/dataset/8047ddd1-7193-4667-aef9-b75bc3076075/resource/7919ea82-c03c-45ae-bbf5-c3c74ccdd406/download/nsw_seb_gda2020.zip (NOV26 GDA2020 ESRI) |
+| Status | 93 districts with `EFF_START=20230325` (2021 redistribution; in force for 2023 and 2027 NSW elections). Names matched to the Parliament Assembly list. |
+
+## Licence
+
+**Creative Commons Attribution 4.0 International (CC BY 4.0)** on the data.gov.au dataset page.
+
+Preferred attribution for Adapted Material (quote from dataset):
+
+> Incorporates or developed using Administrative Boundaries © Geoscape Australia licensed by the Commonwealth of Australia under Creative Commons Attribution 4.0 International licence (CC BY 4.0).
+
+## Legislative Council map
+
+Owner-approved approach: one statewide NSW polygon. Built by grouping all current Assembly district rings into a single feature named `New South Wales`.
+
+## robots.txt — data.gov.au
+
+`User-agent: *` allows dataset download paths used above (no Disallow matching `/data/dataset/` resource downloads in the checked file).  
+`can_fetch('PolicyDeskAU', '/data/dataset/8047ddd1-7193-4667-aef9-b75bc3076075/resource/7919ea82-c03c-45ae-bbf5-c3c74ccdd406/download/nsw_seb_gda2020.zip') = True`.
+
+## Attribution (our wording)
+
+> This product (The Policy Desk AU map) incorporates or was developed using Administrative Boundaries © Geoscape Australia licensed by the Commonwealth of Australia under Creative Commons Attribution 4.0 International licence (CC BY 4.0). Simplified by The Policy Desk AU. NSW Legislative Assembly districts from the NOV26 GDA2020 Geoscape release (2021 redistribution).
