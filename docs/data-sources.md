@@ -410,6 +410,28 @@ Owner-approved approach: one polygon per state/territory. Built by grouping the 
 
 > This product (The Policy Desk AU map) incorporates data that is: © Commonwealth of Australia (Australian Electoral Commission) 2026. The Data (Commonwealth Electoral Boundaries, March 2025 national file) has been used with the permission of the Australian Electoral Commission under the AEC data download licence. Simplified by The Policy Desk AU.
 
+---
+
+# Data sources — National map overview (before Stage 8)
+
+**Date checked:** 2026-11-24  
+**Intended use:** show Australia (states and territories) on the map so the view is not Victoria-only; let people open a live jurisdiction from that overview.
+
+## Geometry source
+
+No new download. The overview reuses `data/boundaries/federal_states.json` — the same AEC-derived state/territory shapes built for the Federal Senate map (see “Federal electoral boundaries” above). Credit and licence on the overview are therefore the AEC data download licence attribution already recorded for that file.
+
+## Interaction (product, not new data)
+
+| Area on overview | What opens |
+|---|---|
+| Victoria | Victorian Assembly districts / Council regions (`vic_*.json`) |
+| New South Wales | NSW Assembly districts / statewide Council (`nsw_*.json`) |
+| Federal (control / text list) | Federal House divisions / Senate states |
+| Other states and territories | Outline only — “not listed yet”. No Queensland or other Stage 8+ member or district data is invented. |
+
+When further jurisdictions are added in later stages, they should be wired the same way: named sourced boundary files + parliament picker entry, then marked live on this overview.
+
 
 ---
 

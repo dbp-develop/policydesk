@@ -78,7 +78,8 @@
 
     <section id="map-view" class="map-view" aria-label="Map" tabindex="-1" hidden>
       <p id="map-layer" class="map-layer"></p>
-      <div class="map-controls" role="group" aria-label="Map zoom">
+      <div class="map-controls" role="group" aria-label="Map zoom and focus">
+        <button type="button" class="btn btn-small" data-zoom="australia" id="zoom-australia" aria-current="true">Australia</button>
         <button type="button" class="btn btn-small" data-zoom="state" id="zoom-extent">Whole state</button>
         <button type="button" class="btn btn-small" data-zoom="melbourne" id="zoom-metro">Melbourne</button>
         <button type="button" class="btn btn-small" data-zoom="in" aria-label="Zoom in">+</button>
@@ -86,16 +87,16 @@
       </div>
       <div class="map-frame">
         <svg id="map" class="map" role="img" aria-labelledby="map-desc" preserveAspectRatio="xMidYMid meet">
-          <title id="map-desc">Map of Victorian electoral boundaries. Use the text list of seats below to choose a seat with a keyboard or screen reader.</title>
+          <title id="map-desc">Map of Australia. Choose a jurisdiction from the text list below, or tap a live state, to open its electoral boundaries. Keyboard and screen reader users should use the text list.</title>
         </svg>
         <p id="map-status" class="map-status">Loading map…</p>
       </div>
-      <p id="map-hint" class="map-hint">Zoom with + and −, by pinching, or by holding Ctrl and scrolling. Once zoomed in, drag to move the map.</p>
+      <p id="map-hint" class="map-hint">On the Australia view, tap a live state (Victoria or New South Wales) or choose Federal from the list. Zoom with + and −, by pinching, or by holding Ctrl and scrolling. Once zoomed in, drag to move the map.</p>
       <div id="map-detail" class="map-detail" aria-live="polite">
-        <p class="meta">Tap or click an area on the map, or pick a seat from the list below.</p>
+        <p class="meta">Tap or click a live state or Federal, or pick from the list below.</p>
       </div>
       <details class="seat-list">
-        <summary>Text list of seats on this map (<span id="seat-count">0</span>)</summary>
+        <summary><span id="seat-list-label">Text list of places on this map</span> (<span id="seat-count">0</span>)</summary>
         <ul id="seat-buttons"></ul>
       </details>
       <p id="map-credit" class="map-credit"></p>
