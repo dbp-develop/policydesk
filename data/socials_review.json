@@ -1,7 +1,7 @@
 {
  "source": "Wikidata (CC0): P2002 X, P2013 Facebook, P2003 Instagram",
  "note": "Candidates only. Nothing here is shown on the site until the owner approves it.",
- "generated_at": "2026-11-25T00:25:11+00:00",
+ "generated_at": "2026-11-25T01:48:04+00:00",
  "candidates": {
   "adem-somyurek": {
    "name": "Adem Somyurek",
@@ -2474,6 +2474,284 @@
     "instagram": {
      "handle": "sophie_mcneill1",
      "url": "https://www.instagram.com/sophie_mcneill1/"
+    }
+   },
+   "approved": false
+  },
+  "sa-aria-bolkus": {
+   "name": "Aria Bolkus",
+   "wikidata": "https://www.wikidata.org/wiki/Q138751248",
+   "candidates": {
+    "instagram": {
+     "handle": "ariabolkuscolton",
+     "url": "https://www.instagram.com/ariabolkuscolton/"
+    }
+   },
+   "approved": false
+  },
+  "sa-blair-boyer": {
+   "name": "Blair Boyer",
+   "wikidata": "https://www.wikidata.org/wiki/Q50728309",
+   "candidates": {
+    "facebook": {
+     "handle": "BlairBoyerMP",
+     "url": "https://www.facebook.com/BlairBoyerMP"
+    },
+    "instagram": {
+     "handle": "blairboyer",
+     "url": "https://www.instagram.com/blairboyer/"
+    }
+   },
+   "approved": false
+  },
+  "sa-cory-bernardi": {
+   "name": "Cory Bernardi",
+   "wikidata": "https://www.wikidata.org/wiki/Q4354299",
+   "candidates": {
+    "x": {
+     "handle": "corybernardi",
+     "url": "https://x.com/corybernardi"
+    }
+   },
+   "approved": false
+  },
+  "sa-cressida-o-hanlon": {
+   "name": "Cressida O'Hanlon",
+   "wikidata": "https://www.wikidata.org/wiki/Q63509439",
+   "candidates": {
+    "facebook": {
+     "handle": "CressidaOHanlon",
+     "url": "https://www.facebook.com/CressidaOHanlon"
+    },
+    "instagram": {
+     "handle": "cressidaohanlon",
+     "url": "https://www.instagram.com/cressidaohanlon/"
+    }
+   },
+   "approved": false
+  },
+  "sa-david-wilkins": {
+   "name": "David Wilkins",
+   "wikidata": "https://www.wikidata.org/wiki/Q58483094",
+   "candidates": {
+    "facebook": {
+     "handle": "davidforsemaphore",
+     "url": "https://www.facebook.com/davidforsemaphore"
+    }
+   },
+   "approved": false
+  },
+  "sa-dennis-hood": {
+   "name": "Dennis Hood",
+   "wikidata": "https://www.wikidata.org/wiki/Q5258529",
+   "candidates": {
+    "x": {
+     "handle": "dennishood",
+     "url": "https://x.com/dennishood"
+    }
+   },
+   "approved": false
+  },
+  "sa-emily-bourke": {
+   "name": "Emily Bourke",
+   "wikidata": "https://www.wikidata.org/wiki/Q50726965",
+   "candidates": {
+    "instagram": {
+     "handle": "emilybourkemlc",
+     "url": "https://www.instagram.com/emilybourkemlc/"
+    }
+   },
+   "approved": false
+  },
+  "sa-geoff-brock": {
+   "name": "Geoff Brock",
+   "wikidata": "https://www.wikidata.org/wiki/Q5534059",
+   "candidates": {
+    "x": {
+     "handle": "GeoffBrock2",
+     "url": "https://x.com/GeoffBrock2"
+    },
+    "facebook": {
+     "handle": "Geoff-Brock-MP-446908352009044",
+     "url": "https://www.facebook.com/Geoff-Brock-MP-446908352009044"
+    }
+   },
+   "approved": false
+  },
+  "sa-jayne-stinson": {
+   "name": "Jayne Stinson",
+   "wikidata": "https://www.wikidata.org/wiki/Q50728716",
+   "candidates": {
+    "x": {
+     "handle": "jaynestinson",
+     "url": "https://x.com/jaynestinson"
+    }
+   },
+   "approved": false
+  },
+  "sa-joe-szakacs": {
+   "name": "Joe Szakacs",
+   "wikidata": "https://www.wikidata.org/wiki/Q60609980",
+   "candidates": {
+    "x": {
+     "handle": "joe_szakacs",
+     "url": "https://x.com/joe_szakacs"
+    }
+   },
+   "approved": false
+  },
+  "sa-justin-hanson": {
+   "name": "Justin Hanson",
+   "wikidata": "https://www.wikidata.org/wiki/Q28839980",
+   "candidates": {
+    "instagram": {
+     "handle": "justinhanson.sa",
+     "url": "https://www.instagram.com/justinhanson.sa/"
+    }
+   },
+   "approved": false
+  },
+  "sa-laura-henderson": {
+   "name": "Laura Henderson",
+   "wikidata": "https://www.wikidata.org/wiki/Q54669952",
+   "candidates": {
+    "facebook": {
+     "handle": "LauraCurranKingston",
+     "url": "https://www.facebook.com/LauraCurranKingston"
+    }
+   },
+   "approved": false
+  },
+  "sa-nat-cook": {
+   "name": "Nat Cook",
+   "wikidata": "https://www.wikidata.org/wiki/Q18685498",
+   "candidates": {
+    "x": {
+     "handle": "NatCookMP",
+     "url": "https://x.com/NatCookMP"
+    },
+    "facebook": {
+     "handle": "NatCookMP",
+     "url": "https://www.facebook.com/NatCookMP"
+    }
+   },
+   "approved": false
+  },
+  "sa-nick-champion": {
+   "name": "Nick Champion",
+   "wikidata": "https://www.wikidata.org/wiki/Q7026894",
+   "candidates": {
+    "x": {
+     "handle": "NickChampionMP",
+     "url": "https://x.com/NickChampionMP"
+    }
+   },
+   "approved": false
+  },
+  "sa-nicola-centofanti": {
+   "name": "Nicola Centofanti",
+   "wikidata": "https://www.wikidata.org/wiki/Q90334712",
+   "candidates": {
+    "x": {
+     "handle": "N_Centofanti",
+     "url": "https://x.com/N_Centofanti"
+    }
+   },
+   "approved": false
+  },
+  "sa-peter-malinauskas": {
+   "name": "Peter Malinauskas",
+   "wikidata": "https://www.wikidata.org/wiki/Q7175622",
+   "candidates": {
+    "x": {
+     "handle": "PMalinauskasMP",
+     "url": "https://x.com/PMalinauskasMP"
+    },
+    "facebook": {
+     "handle": "PMalinauskasMP",
+     "url": "https://www.facebook.com/PMalinauskasMP"
+    },
+    "instagram": {
+     "handle": "pmalinauskasmp",
+     "url": "https://www.instagram.com/pmalinauskasmp/"
+    }
+   },
+   "approved": false
+  },
+  "sa-reggie-martin": {
+   "name": "Reggie Martin",
+   "wikidata": "https://www.wikidata.org/wiki/Q52225394",
+   "candidates": {
+    "x": {
+     "handle": "MartinReggie",
+     "url": "https://x.com/MartinReggie"
+    }
+   },
+   "approved": false
+  },
+  "sa-robert-simms": {
+   "name": "Robert Simms",
+   "wikidata": "https://www.wikidata.org/wiki/Q21066567",
+   "candidates": {
+    "x": {
+     "handle": "SimmsRobert",
+     "url": "https://x.com/SimmsRobert"
+    }
+   },
+   "approved": false
+  },
+  "sa-russell-wortley": {
+   "name": "Russell Wortley",
+   "wikidata": "https://www.wikidata.org/wiki/Q7381884",
+   "candidates": {
+    "facebook": {
+     "handle": "RussellWortleyALP",
+     "url": "https://www.facebook.com/RussellWortleyALP"
+    }
+   },
+   "approved": false
+  },
+  "sa-tim-whetstone": {
+   "name": "Tim Whetstone",
+   "wikidata": "https://www.wikidata.org/wiki/Q7804478",
+   "candidates": {
+    "x": {
+     "handle": "TimWhetstoneMP",
+     "url": "https://x.com/TimWhetstoneMP"
+    }
+   },
+   "approved": false
+  },
+  "sa-tom-koutsantonis": {
+   "name": "Tom Koutsantonis",
+   "wikidata": "https://www.wikidata.org/wiki/Q7816502",
+   "candidates": {
+    "x": {
+     "handle": "TKoutsantonisMP",
+     "url": "https://x.com/TKoutsantonisMP"
+    },
+    "facebook": {
+     "handle": "TKoutsantonisMP",
+     "url": "https://www.facebook.com/TKoutsantonisMP"
+    },
+    "instagram": {
+     "handle": "tomkoutsmp",
+     "url": "https://www.instagram.com/tomkoutsmp/"
+    }
+   },
+   "approved": false
+  },
+  "sa-zoe-bettison": {
+   "name": "Zoe Bettison",
+   "wikidata": "https://www.wikidata.org/wiki/Q8073256",
+   "candidates": {
+    "x": {
+     "handle": "ZoeBettisonMP",
+     "url": "https://x.com/ZoeBettisonMP"
+    },
+    "facebook": {
+     "handle": "SAShadowMinisterTradeTourismInvestment",
+     "url": "https://www.facebook.com/SAShadowMinisterTradeTourismInvestment"
     }
    },
    "approved": false
