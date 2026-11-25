@@ -6,6 +6,8 @@
   <title>Australian MPs directory · The Policy Desk AU</title>
   <meta name="description" content="A neutral, open-source directory of Australian elected members. Search by name, party, chamber, electorate or region. Victoria, Federal Parliament, New South Wales, Queensland, Western Australia, South Australia, Tasmania, Australian Capital Territory and Northern Territory.">
   <meta name="theme-color" content="#14213D">
+  <meta name="theme-color" content="#14213D" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0B1220" media="(prefers-color-scheme: dark)">
   <link rel="preload" href="fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -27,46 +29,48 @@
     </section>
 
     <form id="filters" class="filters" role="search" aria-label="Filter members">
-      <div class="field">
-        <label for="parliament">Parliament</label>
-        <select id="parliament" name="parliament">
-          <option value="vic">Victoria</option>
-          <option value="federal">Federal (House + Senate)</option>
-          <option value="nsw">New South Wales</option>
-          <option value="qld">Queensland</option>
-          <option value="wa">Western Australia</option>
-          <option value="sa">South Australia</option>
-          <option value="tas">Tasmania</option>
-          <option value="act">Australian Capital Territory</option>
-          <option value="nt">Northern Territory</option>
-        </select>
-      </div>
       <div class="field field-search">
         <label for="q">Search name or seat</label>
         <input id="q" name="q" type="search" autocomplete="off" placeholder="e.g. Bendigo or Smith">
       </div>
-      <div class="field">
-        <label for="chamber">Chamber</label>
-        <select id="chamber" name="chamber">
-          <option value="">Both chambers</option>
-          <option value="lower" id="chamber-lower-opt">Legislative Assembly</option>
-          <option value="upper" id="chamber-upper-opt">Legislative Council</option>
-        </select>
-      </div>
-      <div class="field">
-        <label for="party">Party</label>
-        <select id="party" name="party">
-          <option value="">All parties</option>
-        </select>
-      </div>
-      <div class="field">
-        <label for="seat" id="seat-label">Electorate or region</label>
-        <select id="seat" name="seat">
-          <option value="" id="seat-all-opt">All electorates and regions</option>
-        </select>
-      </div>
-      <div class="field field-actions">
-        <button type="reset" class="btn">Clear filters</button>
+      <div class="filter-row">
+        <div class="field">
+          <label for="parliament">Parliament</label>
+          <select id="parliament" name="parliament">
+            <option value="vic">Victoria</option>
+            <option value="federal">Federal (House + Senate)</option>
+            <option value="nsw">New South Wales</option>
+            <option value="qld">Queensland</option>
+            <option value="wa">Western Australia</option>
+            <option value="sa">South Australia</option>
+            <option value="tas">Tasmania</option>
+            <option value="act">Australian Capital Territory</option>
+            <option value="nt">Northern Territory</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="chamber">Chamber</label>
+          <select id="chamber" name="chamber">
+            <option value="">Both chambers</option>
+            <option value="lower" id="chamber-lower-opt">Legislative Assembly</option>
+            <option value="upper" id="chamber-upper-opt">Legislative Council</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="party">Party</label>
+          <select id="party" name="party">
+            <option value="">All parties</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="seat" id="seat-label">Electorate or region</label>
+          <select id="seat" name="seat">
+            <option value="" id="seat-all-opt">All electorates and regions</option>
+          </select>
+        </div>
+        <div class="field field-actions">
+          <button type="reset" class="btn">Clear filters</button>
+        </div>
       </div>
     </form>
 
@@ -85,7 +89,7 @@
     <section id="map-view" class="map-view" aria-label="Map" tabindex="-1" hidden>
       <p id="map-layer" class="map-layer"></p>
       <div class="map-controls" role="group" aria-label="Map zoom and focus">
-        <button type="button" class="btn btn-small" data-zoom="australia" id="zoom-australia" aria-current="true">Australia</button>
+        <button type="button" class="btn btn-small" data-zoom="australia" id="zoom-australia" aria-current="false">Australia</button>
         <button type="button" class="btn btn-small" data-zoom="state" id="zoom-extent">Whole state</button>
         <button type="button" class="btn btn-small" data-zoom="melbourne" id="zoom-metro">Melbourne</button>
         <button type="button" class="btn btn-small" data-zoom="in" aria-label="Zoom in">+</button>
@@ -111,7 +115,7 @@
     <dialog id="news-dialog" class="news-dialog" aria-labelledby="news-title">
       <div class="news-head">
         <h2 id="news-title">Recent news</h2>
-        <button type="button" id="news-close" class="btn btn-small" aria-label="Close news">Close</button>
+        <button type="button" id="news-close" class="btn" aria-label="Close news">Close</button>
       </div>
       <ul id="news-list" class="news-list"></ul>
       <p id="news-credit" class="map-credit"></p>

@@ -264,6 +264,7 @@
     pageTitle: document.getElementById("page-title"),
     pageLede: document.getElementById("page-lede"),
     results: document.getElementById("results"),
+    skip: document.querySelector(".skip-link"),
     viewList: document.getElementById("view-list"),
     viewMap: document.getElementById("view-map"),
     mapView: document.getElementById("map-view"),
@@ -422,7 +423,7 @@
 
     var body = el("div", "card-body");
     body.appendChild(el("h2", null, r.vacant ? "Vacant seat" : r.name));
-    if (!r.vacant) body.appendChild(el("p", null, r.party));
+    if (!r.vacant) body.appendChild(el("p", "party", r.party));
     body.appendChild(el("p", "meta", r.seat + " · " + chamberLabel(r.chamber)));
     if (r.vacant) body.appendChild(el("p", "meta", "Vacancy recorded by The Policy Desk AU; official source not yet linked."));
 
@@ -621,8 +622,8 @@
     els.dataLine.appendChild(document.createTextNode("."));
 
     buildFilters();
-    // Enter map only when first landing on #map. Do not call setView("map") again on
-    // parliament switches — that would reset the national overview / detail focus.
+    // Enter the map only when first landing on #map. Do not call setView("map") again
+    // on a parliament switch — that would reset the current zoom and seat focus.
     if (view === "map") {
       render();
     } else if (location.hash === "#map") {
@@ -809,16 +810,39 @@
     loadParliament(key);
   }
 
+  function syncSkipLink() {
+    if (!els.skip) return;
+    els.skip.href = view === "map" ? "#map-view" : "#results";
+  }
+
+  /* Map opens the parliament already chosen. Australia is only the Australia button. */
+  function enterParliamentMap() {
+    mapMode = "detail";
+    selected = null;
+    layerKey = null;
+    overviewDrawn = false;
+    viewBox = null;
+    lastSeatFilter = "";
+    detailKey = "";
+    syncMapChrome();
+    if (!boundaries) els.mapStatus.textContent = "Loading map…";
+    var generation = loadGeneration;
+    loadBoundaries(generation).then(function () {
+      if (view !== "map" || mapMode !== "detail" || generation !== loadGeneration) return;
+      if (boundaries) render();
+    });
+  }
+
   function setView(v, focus) {
+    var openParliament = v === "map" && (view !== "map" || mapMode !== "detail");
     view = v;
     els.viewList.setAttribute("aria-pressed", String(v === "list"));
     els.viewMap.setAttribute("aria-pressed", String(v === "map"));
     els.results.hidden = v !== "list";
     els.mapView.hidden = v !== "map";
+    syncSkipLink();
     try { history.replaceState(null, "", v === "map" ? "#map" : location.pathname + location.search); } catch (e) { /* ignore */ }
-    if (v === "map") {
-      enterOverview();
-    }
+    if (openParliament) enterParliamentMap();
     render();
     if (focus) (v === "map" ? els.mapView : els.results).focus();
   }
