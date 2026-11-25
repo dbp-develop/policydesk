@@ -1,6 +1,6 @@
 {
  "source": "Wikimedia Commons (via Wikidata, matched through Wikipedia member lists)",
- "generated_at": "2026-11-24T23:44:43+00:00",
+ "generated_at": "2026-11-25T00:25:11+00:00",
  "photos": {
   "aiv-puglielli": {
    "file": "Aiv Puglielli.png",
@@ -2458,6 +2458,285 @@
    "licence_url": "https://creativecommons.org/licenses/by/2.0",
    "local_path": "images/members/qld-tim-nicholls.jpg",
    "source": "Wikimedia Commons via Wikidata Q7804046"
+  },
+  "wa-ayor-makur-chuot": {
+   "file": "Ayor makur chuot.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Ayor_makur_chuot.jpg",
+   "creator": "Uwaman123456",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/wa-ayor-makur-chuot.jpg",
+   "source": "Wikimedia Commons via Wikidata Q106318802"
+  },
+  "wa-basil-zempilas": {
+   "file": "Basil Zempilas.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Basil_Zempilas.jpg",
+   "creator": "I, DynaBlast",
+   "licence": "CC BY-SA 3.0",
+   "licence_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+   "local_path": "images/members/wa-basil-zempilas.jpg",
+   "source": "Wikimedia Commons via Wikidata Q4867286"
+  },
+  "wa-brad-pettitt": {
+   "file": "Brad Pettitt.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Brad_Pettitt.jpg",
+   "creator": "Australian Greens website – Australian Greens",
+   "licence": "CC BY-SA 2.5",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/2.5",
+   "local_path": "images/members/wa-brad-pettitt.jpg",
+   "source": "Wikimedia Commons via Wikidata Q28961882"
+  },
+  "wa-caitlin-collins": {
+   "file": "Caitlin Collins WA Election 2021.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Caitlin_Collins_WA_Election_2021.jpg",
+   "creator": "CoastalOculus",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/wa-caitlin-collins.jpg",
+   "source": "Wikimedia Commons via Wikidata Q105949238"
+  },
+  "wa-dave-kelly": {
+   "file": "Dave Kelly.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Dave_Kelly.jpg",
+   "creator": "Flickr user CPSU/CSA",
+   "licence": "CC BY-SA 2.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/2.0",
+   "local_path": "images/members/wa-dave-kelly.jpg",
+   "source": "Wikimedia Commons via Wikidata Q16194634"
+  },
+  "wa-david-bolt": {
+   "file": "David Bolt.png",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:David_Bolt.png",
+   "creator": "NaughtyNortham",
+   "licence": "CC0",
+   "licence_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "local_path": "images/members/wa-david-bolt.png",
+   "source": "Wikimedia Commons via Wikidata Q133286763"
+  },
+  "wa-david-scaife": {
+   "file": "David Scaife MLA.png",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:David_Scaife_MLA.png",
+   "creator": "Perizyde",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/wa-david-scaife.png",
+   "source": "Wikimedia Commons via Wikidata Q105959451"
+  },
+  "wa-jags-krishnan": {
+   "file": "Jags Krishnan 1.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Jags_Krishnan_1.jpg",
+   "creator": "Lifeless Potato",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/wa-jags-krishnan.jpg",
+   "source": "Wikimedia Commons via Wikidata Q105948168"
+  },
+  "wa-jess-beckerling": {
+   "file": "Jess Beckerling Greens Profile.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Jess_Beckerling_Greens_Profile.jpg",
+   "creator": "Australian Greens website – Australian Greens",
+   "licence": "CC BY-SA 2.5",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/2.5",
+   "local_path": "images/members/wa-jess-beckerling.jpg",
+   "source": "Wikimedia Commons via Wikidata Q134100501"
+  },
+  "wa-john-carey": {
+   "file": "John Carey MLA speaking at Transition Town Vincent September 2017 cropped.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:John_Carey_MLA_speaking_at_Transition_Town_Vincent_September_2017_cropped.jpg",
+   "creator": "Transition Town Vincent",
+   "licence": "CC BY 3.0",
+   "licence_url": "https://creativecommons.org/licenses/by/3.0",
+   "local_path": "images/members/wa-john-carey.jpg",
+   "source": "Wikimedia Commons via Wikidata Q30122047"
+  },
+  "wa-kate-doust": {
+   "file": "Kate Doust.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Kate_Doust.jpg",
+   "creator": "File:Kate Doust, Toni Walkington, and Mark McGowan.jpg : cpsucsa derivative work: IgnorantArmies",
+   "licence": "CC BY-SA 2.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/2.0",
+   "local_path": "images/members/wa-kate-doust.jpg",
+   "source": "Wikimedia Commons via Wikidata Q6375471"
+  },
+  "wa-katrina-stratton": {
+   "file": "Katrina Stratton, MLA Nedlands, with a dog.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Katrina_Stratton%2C_MLA_Nedlands%2C_with_a_dog.jpg",
+   "creator": "OccamsGopher",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/wa-katrina-stratton.jpg",
+   "source": "Wikimedia Commons via Wikidata Q106009162"
+  },
+  "wa-liam-staltari": {
+   "file": "Liam Staltari at Parliament House.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Liam_Staltari_at_Parliament_House.jpg",
+   "creator": "NaughtyNortham",
+   "licence": "CC0",
+   "licence_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "local_path": "images/members/wa-liam-staltari.jpg",
+   "source": "Wikimedia Commons via Wikidata Q133226292"
+  },
+  "wa-libby-mettam": {
+   "file": "Libby Mettam 2021.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Libby_Mettam_2021.jpg",
+   "creator": "U.S. Consulate General Perth",
+   "licence": "Public domain",
+   "licence_url": null,
+   "local_path": "images/members/wa-libby-mettam.jpg",
+   "source": "Wikimedia Commons via Wikidata Q18346346"
+  },
+  "wa-matthew-swinbourn": {
+   "file": "Portrait of Matthew Swinbourn at Serpentine National Park.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Portrait_of_Matthew_Swinbourn_at_Serpentine_National_Park.jpg",
+   "creator": "Matthew Swinbourn",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/wa-matthew-swinbourn.jpg",
+   "source": "Wikimedia Commons via Wikidata Q29021088"
+  },
+  "wa-meredith-hammat": {
+   "file": "210325 Meredith Hammat white BG.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:210325_Meredith_Hammat_white_BG.jpg",
+   "creator": "WA Labor Party",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/wa-meredith-hammat.jpg",
+   "source": "Wikimedia Commons via Wikidata Q105948323"
+  },
+  "wa-nick-goiran": {
+   "file": "Nick Goiran speaking at the Threats to Freedom of Speech 2012 Conference 02.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Nick_Goiran_speaking_at_the_Threats_to_Freedom_of_Speech_2012_Conference_02.jpg",
+   "creator": "Mannkal",
+   "licence": "CC BY 3.0",
+   "licence_url": "https://creativecommons.org/licenses/by/3.0",
+   "local_path": "images/members/wa-nick-goiran.jpg",
+   "source": "Wikimedia Commons via Wikidata Q7027206"
+  },
+  "wa-parwinder-kaur": {
+   "file": "Parwinder Kaur 2025 01 (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Parwinder_Kaur_2025_01_%28cropped%29.jpg",
+   "creator": "Photographs by Gnangarra...commons.wikimedia.org",
+   "licence": "CC BY 2.5 au",
+   "licence_url": "https://creativecommons.org/licenses/by/2.5/au/deed.en",
+   "local_path": "images/members/wa-parwinder-kaur.jpg",
+   "source": "Wikimedia Commons via Wikidata Q58244516"
+  },
+  "wa-rita-saffioti": {
+   "file": "Rita Saffioti 2025 02.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Rita_Saffioti_2025_02.jpg",
+   "creator": "Photographs by Gnangarra...commons.wikimedia.org",
+   "licence": "CC BY 2.5 au",
+   "licence_url": "https://creativecommons.org/licenses/by/2.5/au/deed.en",
+   "local_path": "images/members/wa-rita-saffioti.jpg",
+   "source": "Wikimedia Commons via Wikidata Q16214165"
+  },
+  "wa-roger-cook": {
+   "file": "3 Feb 15 FREO FSH gnangarra-123.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:3_Feb_15_FREO_FSH_gnangarra-123.jpg",
+   "creator": "Photographs by Gnangarra...commons.wikimedia.org",
+   "licence": "CC BY 2.5 au",
+   "licence_url": "https://creativecommons.org/licenses/by/2.5/au/deed.en",
+   "local_path": "images/members/wa-roger-cook.jpg",
+   "source": "Wikimedia Commons via Wikidata Q7358015"
+  },
+  "wa-sabine-winton": {
+   "file": "Sabine Winton MLA at Lake Joondalup.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Sabine_Winton_MLA_at_Lake_Joondalup.jpg",
+   "creator": "JPez1997",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/wa-sabine-winton.jpg",
+   "source": "Wikimedia Commons via Wikidata Q28957255"
+  },
+  "wa-samantha-rowe": {
+   "file": "Samantha Rowe.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Samantha_Rowe.jpg",
+   "creator": "Themann1987",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/wa-samantha-rowe.jpg",
+   "source": "Wikimedia Commons via Wikidata Q16217588"
+  },
+  "wa-sandra-brewer": {
+   "file": "Sandra Brewer.png",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Sandra_Brewer.png",
+   "creator": "NaughtyNortham",
+   "licence": "CC0",
+   "licence_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "local_path": "images/members/wa-sandra-brewer.png",
+   "source": "Wikimedia Commons via Wikidata Q133225889"
+  },
+  "wa-shane-love": {
+   "file": "Toodyay show gnangarra-2000.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Toodyay_show_gnangarra-2000.jpg",
+   "creator": "Photographs by Gnangarra...commons.wikimedia.org",
+   "licence": "CC BY 2.5 au",
+   "licence_url": "https://creativecommons.org/licenses/by/2.5/au/deed.en",
+   "local_path": "images/members/wa-shane-love.jpg",
+   "source": "Wikimedia Commons via Wikidata Q7488136"
+  },
+  "wa-simone-mcgurk": {
+   "file": "Simone McGurk 3 Feb 15 (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Simone_McGurk_3_Feb_15_%28cropped%29.jpg",
+   "creator": "Photographs by Gnangarra...commons.wikimedia.org",
+   "licence": "CC BY 2.5 au",
+   "licence_url": "https://creativecommons.org/licenses/by/2.5/au/deed.en",
+   "local_path": "images/members/wa-simone-mcgurk.jpg",
+   "source": "Wikimedia Commons via Wikidata Q7520364"
+  },
+  "wa-sook-yee-lai": {
+   "file": "Sook Yee Lai 2025 01.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Sook_Yee_Lai_2025_01.jpg",
+   "creator": "Photographs by Gnangarra...commons.wikimedia.org",
+   "licence": "CC BY 2.5 au",
+   "licence_url": "https://creativecommons.org/licenses/by/2.5/au/deed.en",
+   "local_path": "images/members/wa-sook-yee-lai.jpg",
+   "source": "Wikimedia Commons via Wikidata Q133217384"
+  },
+  "wa-sophie-mcneill": {
+   "file": "Sophie McNeill.png",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Sophie_McNeill.png",
+   "creator": "Australian Greens website – Australian Greens",
+   "licence": "CC BY-SA 2.5 au",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/2.5/au/deed.en",
+   "local_path": "images/members/wa-sophie-mcneill.png",
+   "source": "Wikimedia Commons via Wikidata Q80051758"
+  },
+  "wa-stephen-dawson": {
+   "file": "Stephen Dawson.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Stephen_Dawson.jpg",
+   "creator": "Flickr user CPSU/CSA",
+   "licence": "CC BY-SA 2.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/2.0",
+   "local_path": "images/members/wa-stephen-dawson.jpg",
+   "source": "Wikimedia Commons via Wikidata Q7609029"
+  },
+  "wa-tim-clifford": {
+   "file": "Tim Clifford Candidate Photo Cropped.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Tim_Clifford_Candidate_Photo_Cropped.jpg",
+   "creator": "Jacqueline van Grootel / The Greens (WA) Inc.",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/wa-tim-clifford.jpg",
+   "source": "Wikimedia Commons via Wikidata Q30122081"
+  },
+  "wa-tony-buti": {
+   "file": "Tony Buti.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Tony_Buti.jpg",
+   "creator": "CPSU/CSA (Flickr user cpsucsa)",
+   "licence": "CC BY-SA 2.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/2.0",
+   "local_path": "images/members/wa-tony-buti.jpg",
+   "source": "Wikimedia Commons via Wikidata Q7821993"
+  },
+  "wa-yaz-mubarakai": {
+   "file": "Yaz Mubarakai 2019.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Yaz_Mubarakai_2019.jpg",
+   "creator": "U.S. Consulate General Perth",
+   "licence": "Public domain",
+   "licence_url": null,
+   "local_path": "images/members/wa-yaz-mubarakai.jpg",
+   "source": "Wikimedia Commons via Wikidata Q28968019"
   }
  }
 }

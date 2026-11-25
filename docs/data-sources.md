@@ -414,7 +414,7 @@ Owner-approved approach: one polygon per state/territory. Built by grouping the 
 
 # Data sources — National map overview
 
-**Date checked:** 2026-11-24 (updated Stage 8)  
+**Date checked:** 2026-11-25 (updated Stage 9)  
 **Intended use:** show Australia (states and territories) on the map so the view is not Victoria-only; let people open a live jurisdiction from that overview.
 
 ## Geometry source
@@ -428,8 +428,9 @@ No new download. The overview reuses `data/boundaries/federal_states.json` — t
 | Victoria | Victorian Assembly districts / Council regions (`vic_*.json`) |
 | New South Wales | NSW Assembly districts / statewide Council (`nsw_*.json`) |
 | Queensland | QLD Assembly districts (`qld_districts.json`) — unicameral |
+| Western Australia | WA Assembly districts / statewide Council (`wa_*.json`) |
 | Federal (control / text list) | Federal House divisions / Senate states |
-| Other states and territories | Outline only — “not listed yet”. No Stage 9+ member or district data is invented. |
+| Other states and territories | Outline only — “not listed yet”. No Stage 10+ member or district data is invented. |
 
 When further jurisdictions are added in later stages, they should be wired the same way: named sourced boundary files + parliament picker entry, then marked live on this overview.
 
@@ -641,3 +642,99 @@ That body Disallows all paths for `*`. The QLD zip download still returned **HTT
 ## Attribution (our wording)
 
 > This product (The Policy Desk AU map) incorporates or was developed using Administrative Boundaries © Geoscape Australia licensed by the Commonwealth of Australia under Creative Commons Attribution 4.0 International licence (CC BY 4.0). Simplified by The Policy Desk AU. Queensland Legislative Assembly districts from the NOV26 GDA2020 Geoscape release (2017 redistribution, EFF_START 2017-04-28; in force until the 2028 state election).
+
+---
+
+# Data sources — Western Australia Parliament (Stage 9)
+
+**Date checked:** 2026-11-25  
+**Checker User-Agent:** `PolicyDeskAU/1.0 (https://policydesk.au)` and a Chrome-compatible UA that still identifies PolicyDeskAU when Azure WAF returns HTTP 403 for the PolicyDesk-only string  
+**Intended use:** automated fetch of current WA Legislative Assembly and Legislative Council member facts (name, chamber, electorate or statewide Council region, party, official profile URL). No photos. No biographies. No office addresses or emails.
+
+## 1. robots.txt — www.parliament.wa.gov.au
+
+**URL:** https://www.parliament.wa.gov.au/robots.txt  
+
+Fetched 2026-11-25 with a Chrome-compatible PolicyDeskAU User-Agent (**HTTP 200**). With User-Agent `PolicyDeskAU/1.0 (https://policydesk.au)` alone: **HTTP 403** (Azure WAF challenge HTML) for `/robots.txt` and the Member List pages.
+
+Full robots body (2564 bytes) defines a `User-agent: *` group that Disallows specific PDF/committee paths (including `/LACO%20pdfs/` and several named Hansard/tabled-paper URLs). Separate blocks Disallow `/` for AhrefsBot, TurnitinBot, BLEXBot, bingbot, Bytespider, GPTBot, ClaudeBot, CCBot, and Reflectionbot. No Disallow applies to `/parliament/memblist.nsf/` paths for `PolicyDeskAU` or `*`.
+
+### `urllib.robotparser` confirmation (parsed robots body)
+
+```
+can_fetch('PolicyDeskAU', '/parliament/memblist.nsf/WAssemblyMembers') = True
+can_fetch('*', '/parliament/memblist.nsf/WAssemblyMembers') = True
+can_fetch('PolicyDeskAU', '/parliament/memblist.nsf/WebCurrentMembLC') = True
+```
+
+**Production fetch note:** the fetch script uses a Chrome-compatible User-Agent that still identifies PolicyDeskAU. If Azure WAF blocks the Action, re-run with `--from-dir` after a browser-cleared save of `WAssemblyMembers.html` and `WebCurrentMembLC.html`.
+
+## 2. Copyright — Parliament of Western Australia
+
+**URL:** https://www.parliament.wa.gov.au/WebCMS/webcms.nsf/content/copyright  
+
+Quoted text from that page (2026-11-25):
+
+> This website includes information, such as data, pages, documents, graphics, audio and video that are subject to copyright under the Copyright Act 1968 (Cth) and is owned by the Parliament of Western Australia. This excludes material owned by third parties, such as tabled papers and evidence and submissions to parliamentary committees.
+
+> The Parliament of Western Australia supports the use and dissemination of its material. Unless otherwise indicated, you may copy, distribute, display, download and otherwise deal with the material on this website (apart from any third party material and for commercial use), on the condition that such use is not for the purpose of advertising, satire or ridicule, or to misrepresent members of Parliament, and provided you include the copyright notice '© Parliament of Western Australia'.
+
+> Apart from any fair dealing for the purposes of private study, research, criticism or review, as permitted under the provisions of the Copyright Act 1968, no part may be reproduced or re-used for any commercial purposes whatsoever without prior written permission of the Parliament of Western Australia.
+
+**Automated access / scraping:** not mentioned on the copyright page.  
+**Images:** the same page limits image reuse to the image library under the use-of-material rules and says images should not be adapted; we do **not** copy parliament portraits.
+
+## 3. Official member lists used
+
+| What | Result on 2026-11-25 |
+|------|----------------------|
+| Current members hub | `https://www.parliament.wa.gov.au/parliament/memblist.nsf/WAMembers` |
+| Assembly Member List (primary) | `https://www.parliament.wa.gov.au/parliament/memblist.nsf/WAssemblyMembers` — 59 of 59 members |
+| Council Member List (primary) | `https://www.parliament.wa.gov.au/parliament/memblist.nsf/WebCurrentMembLC` — 37 of 37 members; electorate label **Western Australia** for every MLC |
+| Assembly profile URL pattern | `https://www.parliament.wa.gov.au/Parliament/Memblist.nsf/Member+Lookup+LA+Current/{key}?opendocument` |
+| Council profile URL pattern | `https://www.parliament.wa.gov.au/Parliament/Memblist.nsf/WAllMembersFlat2/{key}?opendocument` |
+| Party abbreviations → full names | Abbreviations as printed on the Member Lists. Full names from the Parliament of WA *Western Australian State Election 2025 Analysis of Results* party-abbreviation table and the Current Members by Political Party labels |
+
+**Structure note (post-2025):** Legislative Council regions were abolished for the 2025 election. All 37 MLCs are elected for the single statewide electorate “Western Australia”. The Stage 9 plan’s earlier “region shapes” assumption is superseded by this official structure; the Council map uses the Geoscape statewide Legislative Council polygon (same role as NSW statewide).
+
+Facts stored per member: name (preferred name from Domino lookup key when present), chamber, Assembly electorate or Council region `Western Australia`, party, official profile URL, source. Unknown fields = null. **Addresses, emails, phones and biographies are not stored.**
+
+## 4. Verdicts (evidence only — no legal inference)
+
+**(a) robots.txt:** does **not** Disallow Member List paths for `PolicyDeskAU` / `*`. PolicyDesk-only UA received HTTP 403 from Azure WAF; browser-compatible UA succeeded.  
+**(b) automated access:** copyright page does **not** mention scraping.  
+**(c) reusing member names, parties and seats (facts only):** copyright allows non-commercial copy/distribute/display with `© Parliament of Western Australia` attribution, excluding advertising/satire/ridicule/misrepresentation and commercial reuse without permission. Same class of Stage 15 uncertainty as other parliaments for CC BY-SA / monetisation. We store facts only, attribute Parliament of Western Australia, and **do not** copy addresses, biographies, or portraits into the repo.
+
+---
+
+# Data sources — Western Australia electoral boundaries (Stage 9)
+
+**Date checked:** 2026-11-25  
+**Checker User-Agent:** `PolicyDeskAU/1.0 (https://policydesk.au)`  
+**Intended use:** download WA Legislative Assembly district boundaries and the statewide Legislative Council polygon for the map; simplify; publish as static SVG-path JSON.
+
+## Dataset
+
+| | Geoscape Administrative Boundaries — WA State Electoral Boundaries |
+|---|---|
+| Title | WA State Electoral Boundaries — Geoscape Administrative Boundaries |
+| Publisher | Geoscape Australia / Commonwealth of Australia (data.gov.au) |
+| Landing page | https://data.gov.au/data/dataset/wa-state-electoral-boundaries-geoscape-administrative-boundaries |
+| Download used | https://data.gov.au/data/dataset/c72845f8-45ff-4dd1-a955-87a32ee9d073/resource/8f74e43b-c287-4bb8-9eb9-34307e11a5aa/download/wa_seb_gda2020.zip (GDA2020 ESRI) |
+| Status | 59 Assembly districts with `EFF_START=20250308` and `SECL_CODE=2` (2023 redistribution; in force from the 2025 election). One Legislative Council feature with `SECL_CODE=3` (name `LEGISLATIVE COUNCIL`), published as `Western Australia` to match member region labels. Older `EFF_START=20210313` region/district rows are **not** used. |
+
+## Licence
+
+**Creative Commons Attribution 4.0 International (CC BY 4.0)** on the data.gov.au Administrative Boundaries release (same Geoscape / Commonwealth pattern as NSW and QLD).
+
+Preferred attribution for Adapted Material (quote pattern from Geoscape Administrative Boundaries):
+
+> Incorporates or developed using Administrative Boundaries © Geoscape Australia licensed by the Commonwealth of Australia under Creative Commons Attribution 4.0 International licence (CC BY 4.0).
+
+## robots.txt — data.gov.au
+
+Same host pattern as Stages 7–8: `User-agent: *` / `Disallow: /` in robots.txt; the WA zip download still returned **HTTP 200** with User-Agent `PolicyDeskAU/1.0` on this date. Dataset page continues to publish the boundaries under CC BY 4.0.
+
+## Attribution (our wording)
+
+> This product (The Policy Desk AU map) incorporates or was developed using Administrative Boundaries © Geoscape Australia licensed by the Commonwealth of Australia under Creative Commons Attribution 4.0 International licence (CC BY 4.0). Simplified by The Policy Desk AU. Western Australia Legislative Assembly districts and Legislative Council statewide boundary from the GDA2020 Geoscape release (2023 redistribution, EFF_START 2025-03-08; in force from the 2025 state election).

@@ -18,6 +18,7 @@ Usage:
   python3 scripts/build_photos_socials.py --parliament federal
   python3 scripts/build_photos_socials.py --parliament nsw
   python3 scripts/build_photos_socials.py --parliament qld
+  python3 scripts/build_photos_socials.py --parliament wa
 """
 
 from __future__ import annotations
@@ -95,6 +96,20 @@ PARLIAMENTS = {
         "review_title": "Stage 8 review: photo and social matches (Queensland)",
         "check_label": "QLD seat",
     },
+    "wa": {
+        "members": ROOT / "data" / "wa" / "members.json",
+        "list_pages": {
+            "lower": "https://en.wikipedia.org/wiki/Members_of_the_Western_Australian_Legislative_Assembly,_2025%E2%80%932029",
+            "upper": "https://en.wikipedia.org/wiki/Members_of_the_Western_Australian_Legislative_Council,_2025%E2%80%932029",
+        },
+        "positions": {
+            "Q20165902": "Member of the Western Australian Legislative Assembly",
+            "Q19627913": "Member of the Western Australian Legislative Council",
+        },
+        "review": ROOT / "docs" / "review" / "stage9-wa-review.md",
+        "review_title": "Stage 9 review: photo and social matches (Western Australia)",
+        "check_label": "WA seat",
+    },
 }
 
 SOCIAL_PROPS = {
@@ -107,7 +122,7 @@ OK_LICENCE = re.compile(
 )
 BAD_CREATOR = re.compile(r"^(unknown|anonymous|unknown author|author unknown)\b", re.I)
 PARLIAMENT_SOURCE = re.compile(
-    r"parliament|parl\.|aph\.gov\.au|nsw\.gov\.au|qld\.gov\.au", re.I
+    r"parliament|parl\.|aph\.gov\.au|nsw\.gov\.au|qld\.gov\.au|wa\.gov\.au", re.I
 )
 BAD_LICENCE = re.compile(r"\b(NC|ND)\b")
 THUMB_WIDTH = 240
@@ -383,13 +398,15 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument(
         "--parliament",
-        choices=["vic", "federal", "nsw", "qld", "all"],
+        choices=["vic", "federal", "nsw", "qld", "wa", "all"],
         default="all",
         help="which parliament(s) to refresh (default: all)",
     )
     args = ap.parse_args()
     targets = (
-        ["vic", "federal", "nsw", "qld"] if args.parliament == "all" else [args.parliament]
+        ["vic", "federal", "nsw", "qld", "wa"]
+        if args.parliament == "all"
+        else [args.parliament]
     )
 
     photos_path = ROOT / "data" / "photos.json"

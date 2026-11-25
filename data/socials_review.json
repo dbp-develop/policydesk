@@ -1,7 +1,7 @@
 {
  "source": "Wikidata (CC0): P2002 X, P2013 Facebook, P2003 Instagram",
  "note": "Candidates only. Nothing here is shown on the site until the owner approves it.",
- "generated_at": "2026-11-24T23:44:43+00:00",
+ "generated_at": "2026-11-25T00:25:11+00:00",
  "candidates": {
   "adem-somyurek": {
    "name": "Adem Somyurek",
@@ -2256,6 +2256,224 @@
     "x": {
      "handle": "Molhoek",
      "url": "https://x.com/Molhoek"
+    }
+   },
+   "approved": false
+  },
+  "wa-adam-hort": {
+   "name": "Adam Hort",
+   "wikidata": "https://www.wikidata.org/wiki/Q92923036",
+   "candidates": {
+    "instagram": {
+     "handle": "adam_hort_",
+     "url": "https://www.instagram.com/adam_hort_/"
+    }
+   },
+   "approved": false
+  },
+  "wa-ayor-makur-chuot": {
+   "name": "Ayor Makur Chuot",
+   "wikidata": "https://www.wikidata.org/wiki/Q106318802",
+   "candidates": {
+    "x": {
+     "handle": "ayormakurchuot",
+     "url": "https://x.com/ayormakurchuot"
+    }
+   },
+   "approved": false
+  },
+  "wa-basil-zempilas": {
+   "name": "Basil Zempilas",
+   "wikidata": "https://www.wikidata.org/wiki/Q4867286",
+   "candidates": {
+    "x": {
+     "handle": "BasilZempilas",
+     "url": "https://x.com/BasilZempilas"
+    }
+   },
+   "approved": false
+  },
+  "wa-brad-pettitt": {
+   "name": "Brad Pettitt",
+   "wikidata": "https://www.wikidata.org/wiki/Q28961882",
+   "candidates": {
+    "x": {
+     "handle": "bradpettitt",
+     "url": "https://x.com/bradpettitt"
+    }
+   },
+   "approved": false
+  },
+  "wa-brian-walker": {
+   "name": "Brian Walker",
+   "wikidata": "https://www.wikidata.org/wiki/Q106622497",
+   "candidates": {
+    "x": {
+     "handle": "BrianWalkerMLC",
+     "url": "https://x.com/BrianWalkerMLC"
+    },
+    "facebook": {
+     "handle": "BrianWalkerMLC",
+     "url": "https://www.facebook.com/BrianWalkerMLC"
+    }
+   },
+   "approved": false
+  },
+  "wa-colleen-egan": {
+   "name": "Colleen Egan",
+   "wikidata": "https://www.wikidata.org/wiki/Q5146249",
+   "candidates": {
+    "instagram": {
+     "handle": "colleenegan4thornlie",
+     "url": "https://www.instagram.com/colleenegan4thornlie/"
+    }
+   },
+   "approved": false
+  },
+  "wa-daniel-pastorelli": {
+   "name": "Daniel Pastorelli",
+   "wikidata": "https://www.wikidata.org/wiki/Q133042544",
+   "candidates": {
+    "instagram": {
+     "handle": "danielpastorelli",
+     "url": "https://www.instagram.com/danielpastorelli/"
+    }
+   },
+   "approved": false
+  },
+  "wa-divina-d-anna": {
+   "name": "Divina D'Anna",
+   "wikidata": "https://www.wikidata.org/wiki/Q105949457",
+   "candidates": {
+    "x": {
+     "handle": "divinadanna76",
+     "url": "https://x.com/divinadanna76"
+    }
+   },
+   "approved": false
+  },
+  "wa-hannah-beazley": {
+   "name": "Hannah Beazley",
+   "wikidata": "https://www.wikidata.org/wiki/Q105949236",
+   "candidates": {
+    "facebook": {
+     "handle": "HannahForVicPark",
+     "url": "https://www.facebook.com/HannahForVicPark"
+    },
+    "instagram": {
+     "handle": "hannahforvicpark",
+     "url": "https://www.instagram.com/hannahforvicpark/"
+    }
+   },
+   "approved": false
+  },
+  "wa-john-carey": {
+   "name": "John Carey",
+   "wikidata": "https://www.wikidata.org/wiki/Q30122047",
+   "candidates": {
+    "x": {
+     "handle": "JohnCareyPerth",
+     "url": "https://x.com/JohnCareyPerth"
+    },
+    "facebook": {
+     "handle": "johncareyperth",
+     "url": "https://www.facebook.com/johncareyperth"
+    }
+   },
+   "approved": false
+  },
+  "wa-klara-andric": {
+   "name": "Klara Andric",
+   "wikidata": "https://www.wikidata.org/wiki/Q106459651",
+   "candidates": {
+    "x": {
+     "handle": "KlaraAndric",
+     "url": "https://x.com/KlaraAndric"
+    }
+   },
+   "approved": false
+  },
+  "wa-klasey-hirst": {
+   "name": "Klasey Hirst",
+   "wikidata": "https://www.wikidata.org/wiki/Q134190513",
+   "candidates": {
+    "facebook": {
+     "handle": "HonKlaseyHirstMLC",
+     "url": "https://www.facebook.com/HonKlaseyHirstMLC"
+    },
+    "instagram": {
+     "handle": "klaseyhirstmlc",
+     "url": "https://www.instagram.com/klaseyhirstmlc/"
+    }
+   },
+   "approved": false
+  },
+  "wa-luke-herdegen": {
+   "name": "Luke Herdegen",
+   "wikidata": "https://www.wikidata.org/wiki/Q141220383",
+   "candidates": {
+    "instagram": {
+     "handle": "lukeherdegen.on",
+     "url": "https://www.instagram.com/lukeherdegen.on/"
+    }
+   },
+   "approved": false
+  },
+  "wa-meredith-hammat": {
+   "name": "Meredith Hammat",
+   "wikidata": "https://www.wikidata.org/wiki/Q105948323",
+   "candidates": {
+    "x": {
+     "handle": "meredithhammat",
+     "url": "https://x.com/meredithhammat"
+    }
+   },
+   "approved": false
+  },
+  "wa-parwinder-kaur": {
+   "name": "Parwinder Kaur",
+   "wikidata": "https://www.wikidata.org/wiki/Q58244516",
+   "candidates": {
+    "x": {
+     "handle": "Dr_Parwinder",
+     "url": "https://x.com/Dr_Parwinder"
+    }
+   },
+   "approved": false
+  },
+  "wa-roger-cook": {
+   "name": "Roger Cook",
+   "wikidata": "https://www.wikidata.org/wiki/Q7358015",
+   "candidates": {
+    "x": {
+     "handle": "RogerCookMLA",
+     "url": "https://x.com/RogerCookMLA"
+    },
+    "facebook": {
+     "handle": "RogerCookMLA",
+     "url": "https://www.facebook.com/RogerCookMLA"
+    }
+   },
+   "approved": false
+  },
+  "wa-sook-yee-lai": {
+   "name": "Sook Yee Lai",
+   "wikidata": "https://www.wikidata.org/wiki/Q133217384",
+   "candidates": {
+    "instagram": {
+     "handle": "sookyeelaimla",
+     "url": "https://www.instagram.com/sookyeelaimla/"
+    }
+   },
+   "approved": false
+  },
+  "wa-sophie-mcneill": {
+   "name": "Sophie McNeill",
+   "wikidata": "https://www.wikidata.org/wiki/Q80051758",
+   "candidates": {
+    "instagram": {
+     "handle": "sophie_mcneill1",
+     "url": "https://www.instagram.com/sophie_mcneill1/"
     }
    },
    "approved": false
