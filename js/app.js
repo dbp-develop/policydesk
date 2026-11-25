@@ -264,6 +264,7 @@
     pageTitle: document.getElementById("page-title"),
     pageLede: document.getElementById("page-lede"),
     results: document.getElementById("results"),
+    skip: document.querySelector(".skip-link"),
     viewList: document.getElementById("view-list"),
     viewMap: document.getElementById("view-map"),
     mapView: document.getElementById("map-view"),
@@ -422,7 +423,7 @@
 
     var body = el("div", "card-body");
     body.appendChild(el("h2", null, r.vacant ? "Vacant seat" : r.name));
-    if (!r.vacant) body.appendChild(el("p", null, r.party));
+    if (!r.vacant) body.appendChild(el("p", "party", r.party));
     body.appendChild(el("p", "meta", r.seat + " · " + chamberLabel(r.chamber)));
     if (r.vacant) body.appendChild(el("p", "meta", "Vacancy recorded by The Policy Desk AU; official source not yet linked."));
 
@@ -621,8 +622,8 @@
     els.dataLine.appendChild(document.createTextNode("."));
 
     buildFilters();
-    // Enter map only when first landing on #map. Do not call setView("map") again on
-    // parliament switches — that would reset the national overview / detail focus.
+    // Enter the map only when first landing on #map. Do not call setView("map") again
+    // on a parliament switch — that would reset the current zoom and seat focus.
     if (view === "map") {
       render();
     } else if (location.hash === "#map") {
@@ -809,16 +810,70 @@
     loadParliament(key);
   }
 
+  function syncSkipLink() {
+    if (!els.skip) return;
+    els.skip.href = view === "map" ? "#map-view" : "#results";
+  }
+
+  function setMapDetailMessage(text) {
+    detailKey = "message";
+    els.mapDetail.replaceChildren();
+    els.mapDetail.appendChild(el("p", "meta", text));
+  }
+
+  function clearMapDrawing() {
+    var title = els.map.querySelector("title");
+    els.map.replaceChildren(title);
+    els.map.classList.remove("is-zoomed");
+  }
+
+  /* Map opens the parliament already chosen. Australia is only the Australia button. */
+  function enterParliamentMap() {
+    mapMode = "detail";
+    selected = null;
+    layerKey = null;
+    overviewDrawn = false;
+    viewBox = null;
+    lastSeatFilter = "";
+    detailKey = "";
+    syncMapChrome();
+    if (boundaries) {
+      setMapCredit(boundaries[lowerLayer()]);
+    } else {
+      els.mapStatus.textContent = "Loading map…";
+      els.mapLayer.textContent = "";
+      els.seatButtons.replaceChildren();
+      els.seatCount.textContent = "0";
+      if (els.seatListLabel) els.seatListLabel.textContent = "Text list of seats on this map";
+      els.mapCredit.replaceChildren();
+      clearMapDrawing();
+      setMapDetailMessage("Loading map…");
+    }
+    var generation = loadGeneration;
+    loadBoundaries(generation).then(function () {
+      if (view !== "map" || mapMode !== "detail" || generation !== loadGeneration) return;
+      if (boundaries) {
+        setMapCredit(boundaries[lowerLayer()]);
+        render();
+        return;
+      }
+      els.mapStatus.textContent = "Sorry, the map could not be loaded. The list view still works.";
+      clearMapDrawing();
+      setMapDetailMessage("Sorry, the map could not be loaded. The list view still works.");
+      if (els.mapHint) els.mapHint.hidden = true;
+    });
+  }
+
   function setView(v, focus) {
+    var openParliament = v === "map" && (view !== "map" || mapMode !== "detail");
     view = v;
     els.viewList.setAttribute("aria-pressed", String(v === "list"));
     els.viewMap.setAttribute("aria-pressed", String(v === "map"));
     els.results.hidden = v !== "list";
     els.mapView.hidden = v !== "map";
+    syncSkipLink();
     try { history.replaceState(null, "", v === "map" ? "#map" : location.pathname + location.search); } catch (e) { /* ignore */ }
-    if (v === "map") {
-      enterOverview();
-    }
+    if (openParliament) enterParliamentMap();
     render();
     if (focus) (v === "map" ? els.mapView : els.results).focus();
   }
@@ -1255,6 +1310,15 @@
   });
   els.viewList.addEventListener("click", function () { setView("list", false); });
   els.viewMap.addEventListener("click", function () { setView("map", false); });
+  if (els.skip) {
+    els.skip.addEventListener("click", function (e) {
+      var target = view === "map" ? els.mapView : els.results;
+      if (!target) return;
+      // Leave the #map hash alone. Following #map-view would be read as leaving the map.
+      e.preventDefault();
+      target.focus();
+    });
+  }
 
   els.form.addEventListener("input", function (e) {
     if (e.target && e.target.id === "parliament") return;
@@ -1283,6 +1347,13 @@
   });
   window.addEventListener("hashchange", function () {
     if (!rows.length) return;
+    // The skip link’s map target. It is not a request to show the list.
+    if (location.hash === "#map-view") {
+      if (view !== "map") setView("map", true);
+      else if (els.mapView) els.mapView.focus();
+      try { history.replaceState(null, "", "#map"); } catch (e) { /* ignore */ }
+      return;
+    }
     var want = location.hash === "#map" ? "map" : "list";
     if (want !== view) setView(want, false);
   });
