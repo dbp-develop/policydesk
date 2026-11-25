@@ -251,7 +251,17 @@ a:hover { text-decoration-thickness: 2px; }
   border-radius: var(--radius);
   overflow: hidden;
 }
-.map { display: block; width: 100%; height: auto; aspect-ratio: 1 / 0.72; max-height: 70vh; }
+/* Width/height auto + max-* so portrait viewBoxes (QLD) can shrink width to keep
+   aspect when max-height: 70vh binds. JS sets aspect-ratio from the active viewBox. */
+.map {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 70vh;
+  margin-inline: auto;
+  aspect-ratio: 1 / 0.72;
+}
 /* Whole-state view: swipes scroll the page. Zoomed in: one finger moves the map. */
 .map { touch-action: pan-y; user-select: none; -webkit-user-select: none; }
 .map.is-zoomed { touch-action: none; cursor: grab; }

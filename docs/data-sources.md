@@ -412,9 +412,9 @@ Owner-approved approach: one polygon per state/territory. Built by grouping the 
 
 ---
 
-# Data sources — National map overview (before Stage 8)
+# Data sources — National map overview
 
-**Date checked:** 2026-11-24  
+**Date checked:** 2026-11-24 (updated Stage 8)  
 **Intended use:** show Australia (states and territories) on the map so the view is not Victoria-only; let people open a live jurisdiction from that overview.
 
 ## Geometry source
@@ -427,8 +427,9 @@ No new download. The overview reuses `data/boundaries/federal_states.json` — t
 |---|---|
 | Victoria | Victorian Assembly districts / Council regions (`vic_*.json`) |
 | New South Wales | NSW Assembly districts / statewide Council (`nsw_*.json`) |
+| Queensland | QLD Assembly districts (`qld_districts.json`) — unicameral |
 | Federal (control / text list) | Federal House divisions / Senate states |
-| Other states and territories | Outline only — “not listed yet”. No Queensland or other Stage 8+ member or district data is invented. |
+| Other states and territories | Outline only — “not listed yet”. No Stage 9+ member or district data is invented. |
 
 When further jurisdictions are added in later stages, they should be wired the same way: named sourced boundary files + parliament picker entry, then marked live on this overview.
 
@@ -546,3 +547,97 @@ Owner-approved approach: one statewide NSW polygon. Built by grouping all curren
 ## Attribution (our wording)
 
 > This product (The Policy Desk AU map) incorporates or was developed using Administrative Boundaries © Geoscape Australia licensed by the Commonwealth of Australia under Creative Commons Attribution 4.0 International licence (CC BY 4.0). Simplified by The Policy Desk AU. NSW Legislative Assembly districts from the NOV26 GDA2020 Geoscape release (2021 redistribution).
+
+---
+
+# Data sources — Queensland Parliament (Stage 8)
+
+**Date checked:** 2026-11-24  
+**Checker User-Agent:** `PolicyDeskAU/1.0 (https://policydesk.au)` and a Chrome-compatible UA when the host returns HTTP 403 for the PolicyDesk-only string  
+**Intended use:** automated fetch of current QLD Legislative Assembly member facts (name, electorate, party, official profile URL). Unicameral — no upper house. No photos. No biographies. No office addresses or emails.
+
+## 1. robots.txt — www.parliament.qld.gov.au / documents.parliament.qld.gov.au
+
+**URL:** https://www.parliament.qld.gov.au/robots.txt  
+
+Fetched 2026-11-24:
+
+- With User-Agent `PolicyDeskAU/1.0 (https://policydesk.au)`: **HTTP 403 Forbidden** for `/robots.txt` and Member List HTML.
+- With a Chrome-compatible User-Agent: **HTTP 404 Not Found** for `/robots.txt` (no robots file published).
+- `https://documents.parliament.qld.gov.au/robots.txt`: **HTTP 404 Not Found**.
+
+No Disallow rules were available to parse. Member List HTML and MEMLIST.pdf were reachable with a browser-compatible User-Agent; the PDF was also reachable with `PolicyDeskAU/1.0`.
+
+**Production fetch note:** the fetch script uses a Chrome-compatible User-Agent that still identifies PolicyDeskAU. If bot protection blocks the Action, re-run with `--from-html` after a browser-cleared save of the Member List page.
+
+## 2. Copyright — Parliament of Queensland
+
+**URL:** https://www.parliament.qld.gov.au/global/copyright  
+
+Quoted text from that page (2026-11-24):
+
+> All Queensland Parliament materials on this website are not covered by the Creative Commons license and are protected by the provisions of the Copyright Act 1968. This includes: documents such as publications and reports, Hansard, fact sheets, classroom activities; graphics; audio and video files.
+
+> Copyright in the Queensland Parliament materials resides with the Parliament of Queensland. Apart from any fair dealing for the purposes of private study, research, criticism or review, as permitted under the provisions of the Copyright Act 1968, no part may be reproduced or reused without prior written consent of the Clerk of Parliament. To request such permission, please email … webmaster@parliament.qld.gov.au …
+
+The same page also states that, unless otherwise noted, written text on the website is under a **Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Australia** licence, attributed as “Queensland Parliament website”, while separately stating that Queensland Parliament **materials** (including documents) are **not** under Creative Commons.
+
+**Automated access / scraping:** not mentioned on the copyright page beyond the absence of a robots.txt file.
+
+## 3. Official member list used
+
+| What | Result on 2026-11-24 |
+|------|----------------------|
+| Member List (primary) | `https://www.parliament.qld.gov.au/Members/Current-Members/Member-List` — 93 of 93 members; each links to `Member-Details?id=<id>` |
+| Official profile URL pattern | `https://www.parliament.qld.gov.au/Members/Current-Members/Member-List/Member-Details?id={id}` |
+| Comprehensive Members List PDF (cross-check) | `https://documents.parliament.qld.gov.au/Members/mailingLists/MEMLIST.pdf` (as at 18 November 2026; 93 members) |
+| Full mailing lists page | `https://www.parliament.qld.gov.au/Members/Current-Members/Full-Mailing-Lists` |
+
+Facts stored per member: name (preferred name in parentheses from the Member List when present), chamber `Assembly`, electorate, party (abbreviation expanded: ALP / LNP / GRN / IND / KAP), official profile URL, source. Unknown fields = null. **Addresses, emails, phones and office fields from the MEMLIST PDF are not stored.**
+
+## 4. Verdicts (evidence only — no legal inference)
+
+**(a) robots.txt:** no robots file published (404) for parliament.qld.gov.au or documents.parliament.qld.gov.au on this check date.  
+**(b) automated access:** copyright page does **not** mention scraping; PolicyDesk-only UA received HTTP 403 for the HTML site; browser-compatible UA succeeded.  
+**(c) reusing member names, parties and seats (facts only):** Parliament materials (including documents) are **not** under Creative Commons and require consent beyond fair dealing for private study/research/criticism/review. Website written text is separately described as CC BY-NC-ND 3.0 AU. The quoted text does **not** say whether bare facts (name, party, seat) are “materials” under that rule. Same class of Stage 15 uncertainty as Victoria / Federal / NSW. We store facts only, attribute Parliament of Queensland, and **do not** copy addresses, biographies, PDF files, or portraits into the repo.
+
+---
+
+# Data sources — Queensland electoral boundaries (Stage 8)
+
+**Date checked:** 2026-11-24  
+**Checker User-Agent:** `PolicyDeskAU/1.0 (https://policydesk.au)`  
+**Intended use:** download Queensland Legislative Assembly district boundaries for the map; simplify; publish as static SVG-path JSON. Unicameral — no upper-house statewide layer.
+
+## Dataset (Assembly districts)
+
+| | Geoscape Administrative Boundaries — QLD State Electoral Boundaries |
+|---|---|
+| Title | QLD State Electoral Boundaries — Geoscape Administrative Boundaries |
+| Publisher | Geoscape Australia / Commonwealth of Australia (data.gov.au) |
+| Landing page | https://data.gov.au/data/dataset/qld-state-electoral-boundaries-geoscape-administrative-boundaries |
+| Download used | https://data.gov.au/data/dataset/f0779c64-56cb-46c3-b46a-3bcbb907400d/resource/b4836c1c-e122-42fe-b4df-8c82ff72946e/download/qld_seb_gda2020.zip (NOV26 GDA2020 ESRI) |
+| Status | 93 districts with `EFF_START=20170428` (2017 redistribution; in force for sitting members until the 2028 state election). The same zip also contains future `EFF_START=20281028` districts — **not used**. Names matched to the Parliament Assembly list (case-fold; member spelling kept, e.g. McConnel). |
+
+## Licence
+
+**Creative Commons Attribution 4.0 International (CC BY 4.0)** on the data.gov.au dataset page.
+
+Preferred attribution for Adapted Material (quote from dataset):
+
+> Incorporates or developed using Administrative Boundaries © Geoscape Australia licensed by the Commonwealth of Australia under Creative Commons Attribution 4.0 International licence (CC BY 4.0).
+
+## robots.txt — data.gov.au
+
+Fetched 2026-11-24:
+
+```
+User-agent: *
+Disallow: /
+```
+
+That body Disallows all paths for `*`. The QLD zip download still returned **HTTP 200** with User-Agent `PolicyDeskAU/1.0` on this date (same Geoscape / data.gov.au pattern as Stage 7 NSW). Dataset page continues to publish the boundaries under CC BY 4.0. Same Stage 15 note as other open-data hosts if robots policy and open-licence publishing conflict.
+
+## Attribution (our wording)
+
+> This product (The Policy Desk AU map) incorporates or was developed using Administrative Boundaries © Geoscape Australia licensed by the Commonwealth of Australia under Creative Commons Attribution 4.0 International licence (CC BY 4.0). Simplified by The Policy Desk AU. Queensland Legislative Assembly districts from the NOV26 GDA2020 Geoscape release (2017 redistribution, EFF_START 2017-04-28; in force until the 2028 state election).

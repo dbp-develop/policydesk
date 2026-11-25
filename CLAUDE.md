@@ -28,8 +28,9 @@ in use; keep this filename for continuity. Follow the same stage/gate/"go" rules
     call in one line and continue.
 
 ## Project facts
-- Map view and list view. Parliament picker (Victoria + Federal + NSW). Each member:
-  party, portrait, official socials, recent-news popup, official website link.
+- Map view and list view. Parliament picker (Victoria + Federal + NSW + Queensland).
+  Each member: party, portrait, official socials, recent-news popup, official website.
+- National Australia map overview; live states: Vic, NSW, QLD (+ Federal via picker).
 - Vic state election 28 Nov 2026; post-election data refresh is Stage 14 (paused).
 - Brand: "The Policy Desk AU" (@PolicyDeskAU). Navy #14213D, saffron #F4A300,
   off-white #FAF8F3. Font Inter. Mobile-first. No party colours. Neutral, plain English.
@@ -45,6 +46,9 @@ in use; keep this filename for continuity. Follow the same stage/gate/"go" rules
 - NSW: Parliament of NSW downloadable lists = primary facts; profiles
   `members-details?memberId=`. Cloudflare may block unattended fetch — see
   `docs/data-sources.md`. Use `--from-dir` when needed.
+- QLD: Parliament of Queensland Member List = primary facts (unicameral Assembly);
+  profiles `Member-Details?id=`. Bot protection may block PolicyDesk-only UA — see
+  `docs/data-sources.md`. Use `--from-html` when needed.
 - No copied biographies. No hotlinked or copied parliament portraits.
 - Photos: Wikimedia Commons only if licence permits; else initials.
 - Socials: owner-approval gate (`socials_review.json` → `socials.json`).
@@ -56,18 +60,18 @@ in use; keep this filename for continuity. Follow the same stage/gate/"go" rules
 
 ## Out of scope until owner says so
 User accounts, comments, ads, newsletter, any paid service.
-Other states: Stages 8–13. Compliance/launch: Stage 15.
+Other states: Stages 9–13. Compliance/launch: Stage 15.
 
 ## Folder map
 ```
 .github/workflows/fetch-vic-members.yml / fetch-federal-members.yml /
-  fetch-nsw-members.yml / fetch-news.yml
+  fetch-nsw-members.yml / fetch-qld-members.yml / fetch-news.yml
 scripts/fetch_*_official.py, build_*_members.py, build_*_boundaries.py, validate_*.py
 scripts/build_news.py (Action ONLY), build_photos_socials.py (--parliament)
-data/members.json (Vic), data/federal/, data/nsw/, data/*_official.json
-data/boundaries/vic_*.json, federal_*.json, nsw_districts.json, nsw_state.json
+data/members.json (Vic), data/federal/, data/nsw/, data/qld/, data/*_official.json
+data/boundaries/vic_*.json, federal_*.json, nsw_*.json, qld_districts.json
 data/news/, data/photos.json, data/socials_review.json, data/socials.json
-docs/data-sources.md, docs/ROADMAP.md, docs/review/stage{5,6,7}-*.md
+docs/data-sources.md, docs/ROADMAP.md, docs/review/stage{5,6,7,8}-*.md
 ```
 index.html, css/style.css, js/app.js — list + map + parliament picker
 
@@ -77,7 +81,7 @@ python3 scripts/validate_members.py
 python3 scripts/validate_boundaries.py
 python3 scripts/validate_news.py
 python3 scripts/validate_photos_socials.py
-python3 scripts/fetch_nsw_official.py --from-dir /path && python3 scripts/build_nsw_members.py
-python3 scripts/build_nsw_boundaries.py
+python3 scripts/fetch_qld_official.py && python3 scripts/build_qld_members.py
+python3 scripts/build_qld_boundaries.py
 ```
 Local preview: `python3 -m http.server 8000` in the repo root.

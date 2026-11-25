@@ -21,6 +21,7 @@ def load_ids() -> set[str]:
         ROOT / "data/members.json",
         ROOT / "data/federal/members.json",
         ROOT / "data/nsw/members.json",
+        ROOT / "data/qld/members.json",
     ):
         if path.exists():
             ids |= {m["id"] for m in json.loads(path.read_text(encoding="utf-8"))["members"]}

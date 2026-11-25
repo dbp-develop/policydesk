@@ -1,7 +1,7 @@
 {
  "source": "Wikidata (CC0): P2002 X, P2013 Facebook, P2003 Instagram",
  "note": "Candidates only. Nothing here is shown on the site until the owner approves it.",
- "generated_at": "2026-11-24T22:37:05+00:00",
+ "generated_at": "2026-11-24T23:44:43+00:00",
  "candidates": {
   "adem-somyurek": {
    "name": "Adem Somyurek",
@@ -2138,6 +2138,124 @@
     "x": {
      "handle": "WesFangNats",
      "url": "https://x.com/WesFangNats"
+    }
+   },
+   "approved": false
+  },
+  "qld-amanda-camm": {
+   "name": "Amanda Camm",
+   "wikidata": "https://www.wikidata.org/wiki/Q101068208",
+   "candidates": {
+    "x": {
+     "handle": "AmandaCammMP",
+     "url": "https://x.com/AmandaCammMP"
+    }
+   },
+   "approved": false
+  },
+  "qld-amanda-stoker": {
+   "name": "Amanda Stoker",
+   "wikidata": "https://www.wikidata.org/wiki/Q50808634",
+   "candidates": {
+    "x": {
+     "handle": "stoker_aj",
+     "url": "https://x.com/stoker_aj"
+    }
+   },
+   "approved": false
+  },
+  "qld-david-crisafulli": {
+   "name": "David Crisafulli",
+   "wikidata": "https://www.wikidata.org/wiki/Q5232664",
+   "candidates": {
+    "x": {
+     "handle": "DavidCrisafulli",
+     "url": "https://x.com/DavidCrisafulli"
+    },
+    "facebook": {
+     "handle": "DavidCrisafulliMP",
+     "url": "https://www.facebook.com/DavidCrisafulliMP"
+    },
+    "instagram": {
+     "handle": "david_crisafulli",
+     "url": "https://www.instagram.com/david_crisafulli/"
+    }
+   },
+   "approved": false
+  },
+  "qld-fiona-simpson": {
+   "name": "Fiona Simpson",
+   "wikidata": "https://www.wikidata.org/wiki/Q5451108",
+   "candidates": {
+    "x": {
+     "handle": "FionaSimpsonMP",
+     "url": "https://x.com/FionaSimpsonMP"
+    }
+   },
+   "approved": false
+  },
+  "qld-james-martin": {
+   "name": "James Martin",
+   "wikidata": "https://www.wikidata.org/wiki/Q107639233",
+   "candidates": {
+    "facebook": {
+     "handle": "JamesMartin4Stretton",
+     "url": "https://www.facebook.com/JamesMartin4Stretton"
+    }
+   },
+   "approved": false
+  },
+  "qld-jarrod-bleijie": {
+   "name": "Jarrod Bleijie",
+   "wikidata": "https://www.wikidata.org/wiki/Q6161053",
+   "candidates": {
+    "x": {
+     "handle": "JarrodBleijieMP",
+     "url": "https://x.com/JarrodBleijieMP"
+    }
+   },
+   "approved": false
+  },
+  "qld-leeanne-enoch": {
+   "name": "Leeanne Enoch",
+   "wikidata": "https://www.wikidata.org/wiki/Q18977960",
+   "candidates": {
+    "x": {
+     "handle": "LeeanneEnoch",
+     "url": "https://x.com/LeeanneEnoch"
+    }
+   },
+   "approved": false
+  },
+  "qld-meaghan-scanlon": {
+   "name": "Meaghan Scanlon",
+   "wikidata": "https://www.wikidata.org/wiki/Q44219403",
+   "candidates": {
+    "x": {
+     "handle": "meaghan_scanlon",
+     "url": "https://x.com/meaghan_scanlon"
+    }
+   },
+   "approved": false
+  },
+  "qld-michael-berkman": {
+   "name": "Michael Berkman",
+   "wikidata": "https://www.wikidata.org/wiki/Q44775990",
+   "candidates": {
+    "instagram": {
+     "handle": "michaelberkmanmp",
+     "url": "https://www.instagram.com/michaelberkmanmp/"
+    }
+   },
+   "approved": false
+  },
+  "qld-rob-molhoek": {
+   "name": "Rob Molhoek",
+   "wikidata": "https://www.wikidata.org/wiki/Q7340386",
+   "candidates": {
+    "x": {
+     "handle": "Molhoek",
+     "url": "https://x.com/Molhoek"
     }
    },
    "approved": false

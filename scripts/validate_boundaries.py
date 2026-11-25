@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate boundary JSON against members for Vic, Federal and NSW (stdlib only)."""
+"""Validate boundary JSON against members for Vic, Federal, NSW and QLD (stdlib only)."""
 
 from __future__ import annotations
 
@@ -83,6 +83,19 @@ CHECKS = [
                 "seat_from": "region",
                 "chamber": "upper",
                 "vacancy_chambers": {"Council", "upper"},
+            },
+        },
+    },
+    {
+        "label": "qld",
+        "members": ROOT / "data" / "qld" / "members.json",
+        "layers": {
+            "districts": {
+                "file": "qld_districts.json",
+                "expected": 93,
+                "seat_from": "electorate",
+                "chamber": "lower",
+                "vacancy_chambers": {"Assembly", "lower"},
             },
         },
     },
