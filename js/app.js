@@ -185,6 +185,33 @@
       mapDesc: "Map of Tasmanian electoral boundaries. Use the text list of seats below to choose a seat with a keyboard or screen reader.",
       footerFactsHtml: 'Member facts: <a href="https://www.parliament.tas.gov.au/house-of-assembly/currentmembers">Parliament of Tasmania</a>. This site is independent and not affiliated with any parliament or party.',
       footerBoundariesHtml: 'Electoral boundaries: Administrative Boundaries © Geoscape Australia, Commonwealth of Australia, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, simplified by us.'
+    },
+    act: {
+      label: "Australian Capital Territory",
+      title: "Members of the ACT Legislative Assembly",
+      lede: "Find your ACT MLA. Search by name, party or electorate.",
+      electionNote: "The ACT Legislative Assembly is unicameral. Each electorate elects 5 members. Official websites link to each member’s ACT Legislative Assembly profile.",
+      membersUrl: "data/act/members.json",
+      sourceDefault: "ACT Legislative Assembly",
+      sourceHref: "https://www.parliament.act.gov.au/members/current",
+      profileSr: " on the ACT Legislative Assembly website",
+      chamber: { lower: "Legislative Assembly", upper: "Legislative Assembly" },
+      vacancyChamber: { Assembly: "lower", lower: "lower" },
+      layers: { lower: "districts" },
+      boundaryFiles: { districts: "data/boundaries/act_districts.json" },
+      seatLabel: { lower: " Electorate", upper: " Electorate" },
+      zoomExtent: "Whole territory",
+      zoomMetro: "Canberra",
+      showMetro: true,
+      unicameral: true,
+      mapLower: "Showing the 5 Legislative Assembly electorates. Each electorate elects 5 members.",
+      mapUpper: "",
+      mapOtherHint: "",
+      seatFilterLabel: "Electorate",
+      seatAllLabel: "All electorates",
+      mapDesc: "Map of ACT Legislative Assembly electorates. Use the text list of seats below to choose a seat with a keyboard or screen reader.",
+      footerFactsHtml: 'Member facts: <a href="https://www.parliament.act.gov.au/members/current">ACT Legislative Assembly</a>. This site is independent and not affiliated with any parliament or party.',
+      footerBoundariesHtml: 'Electoral boundaries: Administrative Boundaries © Geoscape Australia, Commonwealth of Australia, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, simplified by us.'
     }
   };
 
@@ -230,7 +257,7 @@
   /* National overview reuses AEC state/territory shapes (federal_states.json). */
   var OVERVIEW_URL = "data/boundaries/federal_states.json";
   var OVERVIEW_DESC = "Map of Australia. Choose a jurisdiction from the text list below, or tap a live state, to open its electoral boundaries. Keyboard and screen reader users should use the text list.";
-  var OVERVIEW_HINT = "On the Australia view, tap a live state (Victoria, New South Wales, Queensland, Western Australia, South Australia or Tasmania) or choose Federal from the list. Zoom with + and −, by pinching, or by holding Ctrl and scrolling. Once zoomed in, drag to move the map.";
+  var OVERVIEW_HINT = "On the Australia view, tap a live state or territory (Victoria, New South Wales, Queensland, Western Australia, South Australia, Tasmania or Australian Capital Territory) or choose Federal from the list. Zoom with + and −, by pinching, or by holding Ctrl and scrolling. Once zoomed in, drag to move the map.";
   var DETAIL_HINT = "Zoom with + and −, by pinching, or by holding Ctrl and scrolling. Once zoomed in, drag to move the map. Use Australia to return to the national map.";
   var STATE_TO_PARLIAMENT = {
     "Victoria": "vic",
@@ -238,7 +265,8 @@
     "Queensland": "qld",
     "Western Australia": "wa",
     "South Australia": "sa",
-    "Tasmania": "tas"
+    "Tasmania": "tas",
+    "Australian Capital Territory": "act"
   };
   var OVERVIEW_LIVE = [
     { key: "federal", label: "Federal (House + Senate)" },
@@ -247,7 +275,8 @@
     { key: "qld", label: "Queensland" },
     { key: "wa", label: "Western Australia" },
     { key: "sa", label: "South Australia" },
-    { key: "tas", label: "Tasmania" }
+    { key: "tas", label: "Tasmania" },
+    { key: "act", label: "Australian Capital Territory" }
   ];
 
   var collator = new Intl.Collator("en-AU", { sensitivity: "base" });
@@ -820,6 +849,15 @@
           full[3] * 0.40
         ]);
       }
+      if (parliamentKey === "act") {
+        // Canberra urban area — central crop of the territory viewBox.
+        return setViewBox([
+          full[0] + full[2] * 0.25,
+          full[1] + full[3] * 0.20,
+          full[2] * 0.55,
+          full[3] * 0.55
+        ]);
+      }
       var upper = upperLayer();
       if (!upper || !boundaries[upper]) return setViewBox(full);
       var metro = boundaries[upper].features.filter(function (f) { return METRO.test(f.name); });
@@ -850,8 +888,8 @@
     detailKey = key;
     els.mapDetail.replaceChildren();
     els.mapDetail.appendChild(el("p", "meta",
-      "Australia overview. Live on The Policy Desk AU today: Federal, Victoria, New South Wales, Queensland, Western Australia, South Australia, and Tasmania. " +
-      "Tap a live state, choose Federal from the list, or use the Parliament menu. Other states and territories will appear when their stage is built."));
+      "Australia overview. Live on The Policy Desk AU today: Federal, Victoria, New South Wales, Queensland, Western Australia, South Australia, Tasmania, and Australian Capital Territory. " +
+      "Tap a live state or territory, choose Federal from the list, or use the Parliament menu. Other territories will appear when their stage is built."));
     var current = PARLIAMENTS[parliamentKey];
     if (current) {
       els.mapDetail.appendChild(el("p", "meta",
@@ -918,7 +956,7 @@
       p.classList.toggle("is-current", current);
     });
     els.mapLayer.textContent =
-      "Showing Australia. Live jurisdictions: Federal, Victoria, New South Wales, Queensland, Western Australia, South Australia, and Tasmania. " +
+      "Showing Australia. Live jurisdictions: Federal, Victoria, New South Wales, Queensland, Western Australia, South Australia, Tasmania, and Australian Capital Territory. " +
       "Other states and territories are outlines only until their stage is ready.";
 
     var items = OVERVIEW_LIVE.slice();
