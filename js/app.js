@@ -739,7 +739,7 @@
         // Rough south-west / Perth crop of the statewide viewBox.
         // Perth metro sits near x≈1800, y≈12500 of the 10000×14754 WA extent
         // (not the south-east 0.55/0.4 crop used for NSW/QLD).
-        return setViewBox([full[0] + full[2] * 0.12, full[1] + full[3] * 0.80, full[2] * 0.16, full[3] * 0.14]);
+        return setViewBox([full[0] + full[2] * 0.145, full[1] + full[3] * 0.818, full[2] * 0.09, full[3] * 0.08]);
       }
       var upper = upperLayer();
       if (!upper || !boundaries[upper]) return setViewBox(full);
