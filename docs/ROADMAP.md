@@ -23,8 +23,8 @@ report if a source does not allow reuse.
 |---|-----------|--------|-------|
 | 6 | Federal (House of Representatives + Senate) | ✅ | Handbook API; AEC map; parliament picker; photos + social candidates for owner approval |
 | 7 | New South Wales | ✅ | 93+42 members; Geoscape districts; LC statewide; 63 photos; 31 social candidates awaiting owner approval |
-| 8 | Queensland | 🔄 | Unicameral Assembly (93); Geoscape districts; national map live; social candidates awaiting owner approval |
-| 9 | Western Australia | ⏳ | |
+| 8 | Queensland | ✅ | Unicameral Assembly (93); Geoscape districts; national map live; social candidates awaiting owner approval |
+| 9 | Western Australia | 🔄 | Assembly 59 + Council 37 (statewide); Geoscape districts + LC polygon; national map live; social candidates awaiting owner approval |
 | 10 | South Australia | ⏳ | |
 | 11 | Tasmania | ⏳ | Multi-member divisions |
 | 12 | Australian Capital Territory | ⏳ | Unicameral, multi-member |
