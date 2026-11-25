@@ -140,6 +140,18 @@ PARLIAMENTS = {
         "review_title": "Stage 11 review: photo and social matches (Tasmania)",
         "check_label": "TAS seat",
     },
+    "act": {
+        "members": ROOT / "data" / "act" / "members.json",
+        "list_pages": {
+            "lower": "https://en.wikipedia.org/wiki/Members_of_the_Australian_Capital_Territory_Legislative_Assembly,_2024%E2%80%932028",
+        },
+        "positions": {
+            "Q6814365": "member of the Australian Capital Territory Legislative Assembly",
+        },
+        "review": ROOT / "docs" / "review" / "stage12-act-review.md",
+        "review_title": "Stage 12 review: photo and social matches (Australian Capital Territory)",
+        "check_label": "ACT seat",
+    },
 }
 
 SOCIAL_PROPS = {
@@ -152,7 +164,7 @@ OK_LICENCE = re.compile(
 )
 BAD_CREATOR = re.compile(r"^(unknown|anonymous|unknown author|author unknown)\b", re.I)
 PARLIAMENT_SOURCE = re.compile(
-    r"parliament|parl\.|aph\.gov\.au|nsw\.gov\.au|qld\.gov\.au|wa\.gov\.au|sa\.gov\.au|tas\.gov\.au",
+    r"parliament|parl\.|aph\.gov\.au|nsw\.gov\.au|qld\.gov\.au|wa\.gov\.au|sa\.gov\.au|tas\.gov\.au|act\.gov\.au",
     re.I,
 )
 BAD_LICENCE = re.compile(r"\b(NC|ND)\b")
@@ -429,13 +441,13 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument(
         "--parliament",
-        choices=["vic", "federal", "nsw", "qld", "wa", "sa", "tas", "all"],
+        choices=["vic", "federal", "nsw", "qld", "wa", "sa", "tas", "act", "all"],
         default="all",
         help="which parliament(s) to refresh (default: all)",
     )
     args = ap.parse_args()
     targets = (
-        ["vic", "federal", "nsw", "qld", "wa", "sa", "tas"]
+        ["vic", "federal", "nsw", "qld", "wa", "sa", "tas", "act"]
         if args.parliament == "all"
         else [args.parliament]
     )

@@ -1,6 +1,6 @@
 {
  "source": "Wikimedia Commons (via Wikidata, matched through Wikipedia member lists)",
- "generated_at": "2026-11-25T02:29:46+00:00",
+ "generated_at": "2026-11-25T02:51:19+00:00",
  "photos": {
   "aiv-puglielli": {
    "file": "Aiv Puglielli.png",
@@ -3151,6 +3151,168 @@
    "licence_url": "https://creativecommons.org/licenses/by-sa/2.5/au/deed.en",
    "local_path": "images/members/tas-vica-bayley.jpg",
    "source": "Wikimedia Commons via Wikidata Q121076766"
+  },
+  "act-andrew-barr": {
+   "file": "AndrewBarrportrait (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:AndrewBarrportrait_%28cropped%29.jpg",
+   "creator": "Teamab 2020",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/act-andrew-barr.jpg",
+   "source": "Wikimedia Commons via Wikidata Q4756289"
+  },
+  "act-andrew-braddock": {
+   "file": "Andrew Braddock 2020 (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Andrew_Braddock_2020_%28cropped%29.jpg",
+   "creator": "Australian Greens website – Australian Greens",
+   "licence": "CC BY-SA 2.5 au",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/2.5/au/deed.en",
+   "local_path": "images/members/act-andrew-braddock.jpg",
+   "source": "Wikimedia Commons via Wikidata Q100606032"
+  },
+  "act-chiaka-barry": {
+   "file": "Chiaka Barry MLA.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Chiaka_Barry_MLA.jpg",
+   "creator": "BelcoGinninderra",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0",
+   "local_path": "images/members/act-chiaka-barry.jpg",
+   "source": "Wikimedia Commons via Wikidata Q131068247"
+  },
+  "act-chris-steel": {
+   "file": "AAN25182 copy.png",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:AAN25182_copy.png",
+   "creator": "Chris Steel",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/act-chris-steel.png",
+   "source": "Wikimedia Commons via Wikidata Q27617364"
+  },
+  "act-ed-cocks": {
+   "file": "Ed Cocks - FB Profile Picture Photo.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Ed_Cocks_-_FB_Profile_Picture_Photo.jpg",
+   "creator": "David Lee1998",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/act-ed-cocks.jpg",
+   "source": "Wikimedia Commons via Wikidata Q112650315"
+  },
+  "act-elizabeth-lee": {
+   "file": "Elizabeth Lee MLA (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Elizabeth_Lee_MLA_%28cropped%29.jpg",
+   "creator": "Joshuadgani",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/act-elizabeth-lee.jpg",
+   "source": "Wikimedia Commons via Wikidata Q27617468"
+  },
+  "act-james-milligan": {
+   "file": "James Milligan 2025.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:James_Milligan_2025.jpg",
+   "creator": "Lord Beesus",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/act-james-milligan.jpg",
+   "source": "Wikimedia Commons via Wikidata Q27734316"
+  },
+  "act-jeremy-hanson": {
+   "file": "Jeremy Hanson 2016.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Jeremy_Hanson_2016.jpg",
+   "creator": "Jpc0272",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/act-jeremy-hanson.jpg",
+   "source": "Wikimedia Commons via Wikidata Q6181435"
+  },
+  "act-jo-clay": {
+   "file": "Jo Clay 2020 (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Jo_Clay_2020_%28cropped%29.jpg",
+   "creator": "Australian Greens website – Australian Greens",
+   "licence": "CC BY-SA 2.5 au",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/2.5/au/deed.en",
+   "local_path": "images/members/act-jo-clay.jpg",
+   "source": "Wikimedia Commons via Wikidata Q100587873"
+  },
+  "act-laura-nuttall": {
+   "file": "Laura Nuttall profile (cropped).png",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Laura_Nuttall_profile_%28cropped%29.png",
+   "creator": "Australian Greens website – Australian Greens",
+   "licence": "CC BY-SA 2.5 au",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/2.5/au/deed.en",
+   "local_path": "images/members/act-laura-nuttall.png",
+   "source": "Wikimedia Commons via Wikidata Q123560312"
+  },
+  "act-michael-pettersson": {
+   "file": "Michael Pettersson MLA.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Michael_Pettersson_MLA.jpg",
+   "creator": "Ross Caldwell",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/act-michael-pettersson.jpg",
+   "source": "Wikimedia Commons via Wikidata Q27617310"
+  },
+  "act-rachel-stephen-smith": {
+   "file": "Photo of Rachel Stephen-Smith MLA.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Photo_of_Rachel_Stephen-Smith_MLA.jpg",
+   "creator": "Wombat1991",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/act-rachel-stephen-smith.jpg",
+   "source": "Wikimedia Commons via Wikidata Q27617429"
+  },
+  "act-rebecca-vassarotti": {
+   "file": "Rebecca Vassarotti 2020 (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Rebecca_Vassarotti_2020_%28cropped%29.jpg",
+   "creator": "Australian Greens website – Australian Greens",
+   "licence": "CC BY-SA 2.5 au",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/2.5/au/deed.en",
+   "local_path": "images/members/act-rebecca-vassarotti.jpg",
+   "source": "Wikimedia Commons via Wikidata Q100598147"
+  },
+  "act-suzanne-orr": {
+   "file": "Suzanne Orr.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Suzanne_Orr.jpg",
+   "creator": "Suzanne.orr",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/act-suzanne-orr.jpg",
+   "source": "Wikimedia Commons via Wikidata Q27617251"
+  },
+  "act-taimus-werner-gibbings": {
+   "file": "TWG 2025.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:TWG_2025.jpg",
+   "creator": "MelMac22",
+   "licence": "CC0",
+   "licence_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "local_path": "images/members/act-taimus-werner-gibbings.jpg",
+   "source": "Wikimedia Commons via Wikidata Q130619114"
+  },
+  "act-tara-cheyne": {
+   "file": "Tara-Cheyne-2015-12-12.jpeg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Tara-Cheyne-2015-12-12.jpeg",
+   "creator": "Gregory Lloyd, Tara Cheyne for Ginninderra Campaign",
+   "licence": "CC BY 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0",
+   "local_path": "images/members/act-tara-cheyne.jpg",
+   "source": "Wikimedia Commons via Wikidata Q23001033"
+  },
+  "act-thomas-emerson": {
+   "file": "ThomasEmerson2021.png",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:ThomasEmerson2021.png",
+   "creator": "Kit Laughlin (Stretch Therapy)",
+   "licence": "CC BY 3.0",
+   "licence_url": "https://creativecommons.org/licenses/by/3.0",
+   "local_path": "images/members/act-thomas-emerson.png",
+   "source": "Wikimedia Commons via Wikidata Q130570474"
+  },
+  "act-yvette-berry": {
+   "file": "Yvette Berry.png",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Yvette_Berry.png",
+   "creator": "Chanlord",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/act-yvette-berry.png",
+   "source": "Wikimedia Commons via Wikidata Q8062355"
   }
  }
 }
