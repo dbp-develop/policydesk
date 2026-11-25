@@ -15,7 +15,11 @@ own licences and credits:
 - **Photos from Wikimedia Commons**: each file's own licence and author credit.
 - **Parliament and government content**: the relevant parliament's copyright terms.
 - **Electoral boundaries** (`data/boundaries/`): Victorian Electoral Commission, via DataVic
-  (Vicmap Admin), CC BY 4.0, simplified by The Policy Desk AU. See `docs/data-sources.md`.
+  (Vicmap Admin), CC BY 4.0, simplified by The Policy Desk AU; plus AEC and Geoscape sources
+  documented in `docs/data-sources.md`.
+- **Find my seat lookup** (`data/seat_lookup/`): Political Gadgets electorate finder CSV,
+  CC BY 4.0, derived from AEC federal boundaries and Geoscape state electoral boundaries.
+  See `docs/data-sources.md` (Stage 16). Approximate only.
 - **News headlines and links**: remain the property of their publishers.
 
 Source code is licensed separately under AGPL-3.0 (see `LICENSE`).

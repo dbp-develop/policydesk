@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <a class="skip-link" href="#find-seat">Skip to find my seat</a>
   <a class="skip-link" href="#results">Skip to results</a>
 
   <header class="site-header">
@@ -23,6 +24,34 @@
   </header>
 
   <main class="wrap">
+    <section id="find-seat" class="find-seat" aria-labelledby="find-seat-title">
+      <h2 id="find-seat-title">Find my seat</h2>
+      <p class="find-seat-lede">Enter an Australian postcode to see the current federal MP and state or territory MP for that area. If the postcode covers more than one seat, choose a suburb.</p>
+      <form id="find-seat-form" class="find-seat-form" role="search" aria-label="Find my seat by postcode">
+        <div class="field field-postcode">
+          <label for="find-postcode">Postcode</label>
+          <input id="find-postcode" name="postcode" type="text" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" autocomplete="postal-code" placeholder="e.g. 3000" required>
+        </div>
+        <div class="field field-suburb" id="find-suburb-field" hidden>
+          <label for="find-suburb">Suburb or locality</label>
+          <select id="find-suburb" name="suburb">
+            <option value="">Choose a suburb</option>
+          </select>
+        </div>
+        <div class="field field-actions">
+          <button type="submit" class="btn" id="find-seat-submit">Find seats</button>
+        </div>
+      </form>
+      <div id="find-seat-status" class="find-seat-status" role="status" aria-live="polite"></div>
+      <div id="find-seat-results" class="find-seat-results" hidden></div>
+      <p class="find-seat-note">Seat matches are approximate. A postcode or suburb can span more than one electorate. This is not an official enrolment check.
+        Confirm with the <a href="https://electorate.aec.gov.au/">Australian Electoral Commission</a>
+        or your state or territory electoral commission before voting.
+        Lookup data: <a href="https://politicalgadgets.com/electorate_finder/">Political Gadgets</a>
+        (<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>),
+        from AEC federal boundaries and Geoscape state electoral boundaries.</p>
+    </section>
+
     <section class="notice" aria-label="About this data">
       <p id="data-line" class="is-loading">Loading data…</p>
       <p id="election-note">The Victorian state election is on 28 November 2026. This list shows members before the election and will be updated once results are official.</p>
@@ -155,5 +184,6 @@
   </footer>
 
   <script src="js/app.js" defer></script>
+  <script src="js/find-seat.js" defer></script>
 </body>
 </html>

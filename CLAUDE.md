@@ -89,14 +89,15 @@ Compliance/launch: Stage 15.
   fetch-nt-members.yml / fetch-news.yml
 scripts/fetch_*_official.py, build_*_members.py, build_*_boundaries.py, validate_*.py
 scripts/build_news.py (Action ONLY), build_photos_socials.py (--parliament)
+scripts/build_seat_lookup.py, validate_seat_lookup.py
 data/members.json (Vic), data/federal/, data/nsw/, data/qld/, data/wa/, data/sa/,
   data/tas/, data/act/, data/nt/, data/*_official.json
 data/boundaries/vic_*.json, federal_*.json, nsw_*.json, qld_districts.json,
   wa_*.json, sa_*.json, tas_*.json, act_districts.json, nt_districts.json
-data/news/, data/photos.json, data/socials_review.json, data/socials.json
+data/seat_lookup/, data/news/, data/photos.json, data/socials_review.json, data/socials.json
 docs/data-sources.md, docs/ROADMAP.md, docs/review/stage{5,6,7,8,9,10,11,12,13}-*.md
 ```
-index.html, css/style.css, js/app.js — list + map + parliament picker
+index.html, css/style.css, js/app.js, js/find-seat.js — list + map + Find my seat
 
 ## Commands
 ```bash
@@ -104,7 +105,7 @@ python3 scripts/validate_members.py
 python3 scripts/validate_boundaries.py
 python3 scripts/validate_news.py
 python3 scripts/validate_photos_socials.py
-python3 scripts/fetch_nt_official.py && python3 scripts/build_nt_members.py
-python3 scripts/build_nt_boundaries.py
+python3 scripts/validate_seat_lookup.py
+python3 scripts/build_seat_lookup.py
 ```
 Local preview: `python3 -m http.server 8000` in the repo root.
