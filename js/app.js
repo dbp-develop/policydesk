@@ -490,7 +490,7 @@
   function openNews(r) {
     var list = document.getElementById("news-list");
     document.getElementById("news-title").textContent = "Recent news: " + r.name;
-    list.replaceChildren(el("li", "meta", "Loading…"));
+    list.replaceChildren(el("li", "news-status", "Loading…"));
     if (newsDialog.showModal) newsDialog.showModal(); else newsDialog.setAttribute("open", "");
     fetch("data/news/" + encodeURIComponent(r.id) + ".json", { cache: "no-cache" })
       .then(function (res) { if (!res.ok) throw new Error("HTTP " + res.status); return res.json(); })
@@ -499,26 +499,39 @@
         (doc.items || []).forEach(function (i) {
           if (!httpsUrl(i.url)) return;
           var li = el("li", "news-item");
-          var a = el("a", null, i.title);
+          var a = el("a", "news-headline", i.title);
           a.href = i.url;
           li.appendChild(a);
-          li.appendChild(el("p", "meta", i.source + " · " + formatDate(i.published)));
+          var meta = el("p", "news-meta");
+          meta.appendChild(el("span", "news-source", i.source || ""));
+          var when = formatDate(i.published);
+          if (when) {
+            meta.appendChild(document.createTextNode(" · "));
+            var time = el("time", "news-date", when);
+            if (i.published) time.setAttribute("datetime", i.published);
+            meta.appendChild(time);
+          }
+          li.appendChild(meta);
           if (!i.verified) {
             li.appendChild(el("p", "news-flag", "Unverified match: the name is in the article text together with the member's electorate or region, not in the headline or summary."));
           }
           list.appendChild(li);
         });
-        if (!list.children.length) list.appendChild(el("li", "meta", "No recent news found."));
+        if (!list.children.length) list.appendChild(el("li", "news-status", "No recent news found."));
       })
       .catch(function () {
-        list.replaceChildren(el("li", "meta", "Sorry, news could not be loaded."));
+        list.replaceChildren(el("li", "news-status", "Sorry, news could not be loaded."));
       });
   }
   document.getElementById("news-close").addEventListener("click", function () {
     if (newsDialog.close) newsDialog.close(); else newsDialog.removeAttribute("open");
   });
   newsDialog.addEventListener("click", function (e) {
-    if (e.target === newsDialog && newsDialog.close) newsDialog.close();  // click on backdrop
+    if (e.target !== newsDialog || !newsDialog.close) return;
+    var rect = newsDialog.getBoundingClientRect();
+    var inside = e.clientX >= rect.left && e.clientX <= rect.right &&
+      e.clientY >= rect.top && e.clientY <= rect.bottom;
+    if (!inside) newsDialog.close();
   });
 
   function render() {
