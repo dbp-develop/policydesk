@@ -1,5 +1,22 @@
 {
  "member_id": "fed-jason-clare",
  "member_name": "Jason Clare",
- "items": []
+ "items": [
+  {
+   "title": "There are new caps for uni places in 2027. What does this mean for domestic students?",
+   "source": "The Conversation",
+   "url": "https://theconversation.com/there-are-new-caps-for-uni-places-in-2027-what-does-this-mean-for-domestic-students-296592",
+   "published": "2026-11-13",
+   "verified": false,
+   "licence": "CC BY-ND 4.0"
+  },
+  {
+   "title": "Civics education in Australian schools isn’t up to scratch. 3 things could improve it",
+   "source": "The Conversation",
+   "url": "https://theconversation.com/civics-education-in-australian-schools-isnt-up-to-scratch-3-things-could-improve-it-295983",
+   "published": "2026-11-10",
+   "verified": false,
+   "licence": "CC BY-ND 4.0"
+  }
+ ]
 }

@@ -1,5 +1,22 @@
 {
  "member_id": "tas-jeremy-rockliff",
  "member_name": "Jeremy Rockliff",
- "items": []
+ "items": [
+  {
+   "title": "Coalition takes primary vote lead in a federal Morgan poll",
+   "source": "The Conversation",
+   "url": "https://theconversation.com/coalition-takes-primary-vote-lead-in-a-federal-morgan-poll-296805",
+   "published": "2026-11-19",
+   "verified": false,
+   "licence": "CC BY-ND 4.0"
+  },
+  {
+   "title": "One of the Beaconsfield miners has died. His story hooked the nation for 20 years",
+   "source": "The Conversation",
+   "url": "https://theconversation.com/one-of-the-beaconsfield-miners-has-died-his-story-hooked-the-nation-for-20-years-296259",
+   "published": "2026-11-11",
+   "verified": false,
+   "licence": "CC BY-ND 4.0"
+  }
+ ]
 }
