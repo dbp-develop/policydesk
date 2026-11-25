@@ -1,7 +1,7 @@
 {
  "source": "Wikidata (CC0): P2002 X, P2013 Facebook, P2003 Instagram",
  "note": "Candidates only. Nothing here is shown on the site until the owner approves it.",
- "generated_at": "2026-11-25T02:29:46+00:00",
+ "generated_at": "2026-11-25T02:51:19+00:00",
  "candidates": {
   "adem-somyurek": {
    "name": "Adem Somyurek",
@@ -3086,6 +3086,65 @@
     "instagram": {
      "handle": "tabatha_politas",
      "url": "https://www.instagram.com/tabatha_politas/"
+    }
+   },
+   "approved": false
+  },
+  "act-andrew-barr": {
+   "name": "Andrew Barr",
+   "wikidata": "https://www.wikidata.org/wiki/Q4756289",
+   "candidates": {
+    "x": {
+     "handle": "ABarrMLA",
+     "url": "https://x.com/ABarrMLA"
+    }
+   },
+   "approved": false
+  },
+  "act-elizabeth-lee": {
+   "name": "Elizabeth Lee",
+   "wikidata": "https://www.wikidata.org/wiki/Q27617468",
+   "candidates": {
+    "x": {
+     "handle": "ElizabethLeeCBR",
+     "url": "https://x.com/ElizabethLeeCBR"
+    }
+   },
+   "approved": false
+  },
+  "act-suzanne-orr": {
+   "name": "Suzanne Orr",
+   "wikidata": "https://www.wikidata.org/wiki/Q27617251",
+   "candidates": {
+    "instagram": {
+     "handle": "suzanneorrmla",
+     "url": "https://www.instagram.com/suzanneorrmla/"
+    }
+   },
+   "approved": false
+  },
+  "act-tara-cheyne": {
+   "name": "Tara Cheyne",
+   "wikidata": "https://www.wikidata.org/wiki/Q23001033",
+   "candidates": {
+    "instagram": {
+     "handle": "in_the_taratory",
+     "url": "https://www.instagram.com/in_the_taratory/"
+    }
+   },
+   "approved": false
+  },
+  "act-yvette-berry": {
+   "name": "Yvette Berry",
+   "wikidata": "https://www.wikidata.org/wiki/Q8062355",
+   "candidates": {
+    "x": {
+     "handle": "YvetteSBerry",
+     "url": "https://x.com/YvetteSBerry"
+    },
+    "facebook": {
+     "handle": "YvetteSBerry",
+     "url": "https://www.facebook.com/YvetteSBerry"
     }
    },
    "approved": false

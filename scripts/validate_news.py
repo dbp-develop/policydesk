@@ -18,6 +18,7 @@ MEMBER_FILES = [
     ROOT / "data" / "wa" / "members.json",
     ROOT / "data" / "sa" / "members.json",
     ROOT / "data" / "tas" / "members.json",
+    ROOT / "data" / "act" / "members.json",
 ]
 
 ITEM_KEYS = {"title", "source", "url", "published", "verified", "licence"}

@@ -6,7 +6,7 @@ Stdlib only. Rules (see CLAUDE.md "News rules" and docs/data-sources.md):
 - Store headline, source name, date and link ONLY. No summaries, no article text.
 - Max 5 items per member, newest first. Same rules for every member and party.
 - Match = the member's exact full name (word boundaries, case-sensitive) in the
-  article AND a parliament context word (Vic, Federal, NSW, QLD, WA, SA or TAS) or the member's own
+  article AND a parliament context word (Vic, Federal, NSW, QLD, WA, SA, TAS or ACT) or the member's own
   electorate/region. Anything else is dropped.
   Name in headline or standfirst -> verified. Name only in the article body ->
   kept but labelled unverified.
@@ -35,6 +35,7 @@ MEMBER_FILES = [
     ROOT / "data" / "wa" / "members.json",
     ROOT / "data" / "sa" / "members.json",
     ROOT / "data" / "tas" / "members.json",
+    ROOT / "data" / "act" / "members.json",
 ]
 OUT = ROOT / "data" / "news"
 USER_AGENT = "PolicyDeskAU/1.0 (https://policydesk.au)"
@@ -79,6 +80,10 @@ SA_WORDS = re.compile(
 TAS_WORDS = re.compile(
     r"\b(Tasmania|Tasmanian|Hobart|Parliament House|House of Assembly|"
     r"Legislative Council|Premier|Rockliff)\b"
+)
+ACT_WORDS = re.compile(
+    r"\b(ACT|Australian Capital Territory|Canberra|Legislative Assembly|"
+    r"Chief Minister|Barr)\b"
 )
 
 
@@ -145,6 +150,8 @@ def load_members() -> list[dict]:
             default_parliament = "sa"
         elif "/tas/" in str(path) or str(path).endswith("/tas/members.json"):
             default_parliament = "tas"
+        elif "/act/" in str(path) or str(path).endswith("/act/members.json"):
+            default_parliament = "act"
         else:
             default_parliament = "vic"
         parliament = data.get("parliament") or default_parliament
@@ -170,6 +177,8 @@ def context_ok(parliament: str, text: str, seat_rx: re.Pattern | None) -> bool:
         return bool(SA_WORDS.search(text))
     if parliament == "tas":
         return bool(TAS_WORDS.search(text))
+    if parliament == "act":
+        return bool(ACT_WORDS.search(text))
     return bool(VIC_WORDS.search(text))
 
 
@@ -248,7 +257,7 @@ def main() -> int:
         "licence_url": "https://creativecommons.org/licenses/by-nd/4.0/",
         "rules": "Headline, source, date and link only. Exact full-name match with "
                  "Victorian, Federal, NSW, Queensland, Western Australia, "
-                 "South Australia or Tasmania context; "
+                 "South Australia, Tasmania or ACT context; "
                  "name only in article body = unverified. Max 5 per member.",
         "generated_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
         "counts": index,
