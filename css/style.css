@@ -166,6 +166,8 @@ a:hover { text-decoration-thickness: 2px; }
 }
 .notice p { margin: 0 0 8px; }
 .notice p:last-child { margin-bottom: 0; }
+#data-line.is-loading { color: var(--muted); }
+#data-line.is-error { font-weight: 600; }
 
 /* Filters. Search is its own row. The other controls wrap together. */
 .filters {
@@ -240,7 +242,8 @@ a:hover { text-decoration-thickness: 2px; }
   color: var(--paper);
 }
 
-/* Count and List/Map stay put after the header scrolls away. */
+/* Count and List/Map stay put after the header scrolls away.
+   The bar reaches the column edges so cards do not show in the side gaps. */
 .view-bar {
   position: sticky;
   top: 0;
@@ -250,19 +253,20 @@ a:hover { text-decoration-thickness: 2px; }
   align-items: center;
   justify-content: space-between;
   gap: 8px 16px;
-  margin: 0 0 16px;
-  padding: 8px 0;
+  margin: 0 -16px 16px;
+  padding: 8px 16px;
   background: var(--page);
   box-shadow: var(--shadow);
 }
 .count {
+  flex: 1 1 12rem;
   margin: 0;
   color: var(--muted);
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.25rem;
 }
-.view-toggle { display: inline-flex; border-radius: var(--radius); }
+.view-toggle { display: inline-flex; flex: none; border-radius: var(--radius); }
 .toggle {
   font: inherit;
   font-size: 1rem;
@@ -293,7 +297,8 @@ a:hover { text-decoration-thickness: 2px; }
   color: var(--paper);
 }
 
-/* Cards. Flat: the shadow is only the sticky bar and the news popup. */
+/* Cards. Flat: the shadow is only the sticky bar and the news popup.
+   Name, then party, then seat. Credit sits full width under the links. */
 .cards {
   list-style: none;
   margin: 0 0 32px;
@@ -304,12 +309,19 @@ a:hover { text-decoration-thickness: 2px; }
 }
 .card {
   display: flex;
-  gap: 16px;
-  align-items: flex-start;
+  flex-direction: column;
+  gap: 8px;
+  align-items: stretch;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 16px;
+}
+.card-main {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  min-width: 0;
 }
 .avatar {
   flex: none;
@@ -324,12 +336,13 @@ a:hover { text-decoration-thickness: 2px; }
   font-size: 1rem;
   line-height: 1.5rem;
 }
-.card-body { min-width: 0; }
+.card-body { min-width: 0; flex: 1; }
 .card h2 {
   margin: 0 0 8px;
   font-size: 1.125rem;
   font-weight: 600;
   line-height: 1.5rem;
+  overflow-wrap: anywhere;
 }
 .card p { margin: 0; }
 .card .party {
@@ -337,6 +350,7 @@ a:hover { text-decoration-thickness: 2px; }
   font-weight: 600;
   line-height: 1.5rem;
   color: var(--ink);
+  overflow-wrap: anywhere;
 }
 .card .meta {
   color: var(--muted);
@@ -344,8 +358,14 @@ a:hover { text-decoration-thickness: 2px; }
   font-weight: 400;
   line-height: 1.25rem;
 }
-.card .profile,
-.socials a {
+.card .meta + .meta { margin-top: 8px; }
+.card-links {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 16px;
+  margin-top: 8px;
+}
+.card-links a {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
@@ -354,14 +374,7 @@ a:hover { text-decoration-thickness: 2px; }
   font-weight: 400;
   line-height: 1.5rem;
 }
-.card .profile { margin-top: 8px; }
-.socials {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0 16px;
-  margin-top: 0;
-}
-.card-vacant { border-style: dashed; background: transparent; }
+.card-vacant { border-style: dashed; }
 .card-vacant .avatar {
   background: transparent;
   color: var(--ink);
@@ -370,9 +383,11 @@ a:hover { text-decoration-thickness: 2px; }
 
 .empty {
   grid-column: 1 / -1;
+  margin: 0;
   padding: 16px;
   background: var(--surface);
-  border: 1px solid var(--line);
+  border: 0;
+  border-left: 4px solid var(--saffron);
   border-radius: var(--radius);
   font-size: 1rem;
   line-height: 1.5rem;
@@ -561,7 +576,7 @@ a:hover { text-decoration-thickness: 2px; }
 }
 
 /* News */
-.news-btn { margin-top: 8px; }
+.news-btn { align-self: flex-start; }
 .news-dialog {
   width: min(560px, calc(100vw - 32px));
   max-height: calc(100vh - 32px);
@@ -604,7 +619,7 @@ a:hover { text-decoration-thickness: 2px; }
 .photo-credit {
   display: block;
   width: 100%;
-  margin-top: 8px;
+  margin: 0;
   color: var(--muted);
   font-size: 0.75rem;
   font-weight: 400;
@@ -639,12 +654,15 @@ a:hover { text-decoration-thickness: 2px; }
 @media (min-width: 768px) {
   .wrap { padding: 0 24px; }
   .site-header h1 { font-size: 2rem; line-height: 2.5rem; }
+  .view-bar { margin: 0 -24px 16px; padding: 8px 24px; }
   .filter-row {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: 16px;
-    align-items: end;
+    align-items: flex-end;
   }
+  .filter-row .field { flex: 1 1 11rem; }
   .cards {
     grid-template-columns: 1fr 1fr;
     gap: 16px;

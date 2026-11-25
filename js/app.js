@@ -406,6 +406,7 @@
 
   function card(r) {
     var li = el("li", r.vacant ? "card card-vacant" : "card");
+    var main = el("div", "card-main");
     var photo = !r.vacant && photos[r.id];
     if (photo && /^images\/members\/[\w.-]+$/.test(photo.local_path)) {
       var img = document.createElement("img");
@@ -414,11 +415,11 @@
       img.alt = "";  // the name is the heading right next to it
       img.width = 48; img.height = 48;
       img.loading = "lazy";
-      li.appendChild(img);
+      main.appendChild(img);
     } else {
       var avatar = el("span", "avatar", r.vacant ? "–" : initials(r.name));
       avatar.setAttribute("aria-hidden", "true");
-      li.appendChild(avatar);
+      main.appendChild(avatar);
     }
 
     var body = el("div", "card-body");
@@ -427,27 +428,29 @@
     body.appendChild(el("p", "meta", r.seat + " · " + chamberLabel(r.chamber)));
     if (r.vacant) body.appendChild(el("p", "meta", "Vacancy recorded by The Policy Desk AU; official source not yet linked."));
 
+    var links = el("div", "card-links");
     if (httpsUrl(r.url)) {
       var a = el("a", "profile", "Official website");
       a.href = r.url;
-      var sr = el("span", "visually-hidden", " for " + r.name + cfg.profileSr);
-      a.appendChild(sr);
-      body.appendChild(a);
+      a.appendChild(el("span", "visually-hidden", " for " + r.name + cfg.profileSr));
+      links.appendChild(a);
     }
     var soc = !r.vacant && socials[r.id];
     if (soc && soc.links) {
-      var sp = el("p", "socials");
       [["x", "X"], ["facebook", "Facebook"], ["instagram", "Instagram"]].forEach(function (k) {
         var u = soc.links[k[0]];
         if (httpsUrl(u)) {
           var sa = el("a", null, k[1]);
           sa.href = u;
           sa.appendChild(el("span", "visually-hidden", " (" + r.name + ")"));
-          sp.appendChild(sa);
+          links.appendChild(sa);
         }
       });
-      if (sp.children.length) body.appendChild(sp);
     }
+    if (links.childElementCount) body.appendChild(links);
+    main.appendChild(body);
+    li.appendChild(main);
+
     if (photo) {
       var cr = el("p", "photo-credit");
       cr.appendChild(document.createTextNode("Photo (resized): " + photo.creator + ", "));
@@ -467,7 +470,7 @@
       } else {
         cr.appendChild(document.createTextNode("Wikimedia Commons"));
       }
-      body.appendChild(cr);
+      li.appendChild(cr);
     }
     var n = !r.vacant && newsIndex && newsIndex.counts ? newsIndex.counts[r.id] : 0;
     if (n > 0) {
@@ -476,9 +479,8 @@
       nb.setAttribute("aria-haspopup", "dialog");
       nb.appendChild(el("span", "visually-hidden", " about " + r.name));
       nb.addEventListener("click", function () { openNews(r); });
-      body.appendChild(nb);
+      li.appendChild(nb);
     }
-    li.appendChild(body);
     return li;
   }
 
@@ -612,6 +614,7 @@
     rows = members.concat(vacancies);
     lastListKey = null;
 
+    els.dataLine.classList.remove("is-loading", "is-error");
     els.dataLine.textContent = "";
     els.dataLine.appendChild(document.createTextNode(
       "Data as of " + formatDate(data.last_updated) + ", source: "));
@@ -652,6 +655,8 @@
       els.mapStatus.textContent = "Loading map…";
       els.mapCredit.replaceChildren();
     }
+    els.dataLine.classList.remove("is-error");
+    els.dataLine.classList.add("is-loading");
     els.dataLine.textContent = "Loading data…";
     var generation = ++loadGeneration;
     fetch(cfg.membersUrl, { cache: "no-cache" })
@@ -666,6 +671,8 @@
       })
       .catch(function () {
         if (generation !== loadGeneration) return;
+        els.dataLine.classList.remove("is-loading");
+        els.dataLine.classList.add("is-error");
         els.dataLine.textContent = "Sorry, the member list could not be loaded. Please try again later.";
       });
     if (view === "map" && mapMode === "detail") {
