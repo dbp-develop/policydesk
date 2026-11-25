@@ -34,8 +34,28 @@ report if a source does not allow reuse.
 
 | # | Stage | Status | Notes |
 |---|-------|--------|-------|
-| 14 | Post-election refresh (after 28 Nov 2026 results) | ⏳ | Paused until results. Update Vic data + vacancies.json; validators green. Do not start now |
+| 14 | Post-election refresh + results mode (after 28 Nov 2026 results) | ⏳ | Paused until results. Update Vic data + vacancies.json; validators green; then election-night / results view. Do not start now |
 | 15 | Compliance and launch | ⛔ | Last phase. About page, sitemap, robots.txt, privacy, final review. See blockers |
+
+## Product value backlog (owner 26 Nov 2026)
+
+Build order after national coverage is stable. **No party colour fills** on maps — use
+symbols or short party labels and a neutral legend. Full plan (constraints, open
+questions, brainstorm-later items): Project store
+`docs/product-value-backlog.md`.
+
+| # | Stage | Status | Notes |
+|---|-------|--------|-------|
+| 16 | Find my seat | ⏳ | Postcode/suburb → electorate → member. Cited official lookup source required |
+| 17 | Compare seats | ⏳ | Side-by-side seats/members from existing facts. Neutral |
+| 18 | About + elections primer | ⏳ | Short About + plain-English how-elections-work with official links (AEC/VEC/parliament). Not Wikipedia copy. Thin About may precede full Stage 15 |
+| 19 | Historic seat map (one parliament) | ⏳ | Pilot one parliament. Patterns/labels/symbols — not party colours. Owner picks parliament |
+
+**Brainstorm later (do not schedule):** budget/inflation/GDP digest (ABS etc.); major
+events timeline. **Far future / high care:** promise-kept tracker.
+
+**Map styling note:** prefer party symbols or text abbreviations over colour coding;
+party logos are often trademarked — text labels are the safer default.
 
 ## Stage 15 blockers
 - Parliament of Victoria copyright page allows only "personal, non-commercial use,
