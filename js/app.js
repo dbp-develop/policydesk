@@ -406,6 +406,7 @@
 
   function card(r) {
     var li = el("li", r.vacant ? "card card-vacant" : "card");
+    var main = el("div", "card-main");
     var photo = !r.vacant && photos[r.id];
     if (photo && /^images\/members\/[\w.-]+$/.test(photo.local_path)) {
       var img = document.createElement("img");
@@ -414,11 +415,11 @@
       img.alt = "";  // the name is the heading right next to it
       img.width = 48; img.height = 48;
       img.loading = "lazy";
-      li.appendChild(img);
+      main.appendChild(img);
     } else {
       var avatar = el("span", "avatar", r.vacant ? "–" : initials(r.name));
       avatar.setAttribute("aria-hidden", "true");
-      li.appendChild(avatar);
+      main.appendChild(avatar);
     }
 
     var body = el("div", "card-body");
@@ -427,27 +428,29 @@
     body.appendChild(el("p", "meta", r.seat + " · " + chamberLabel(r.chamber)));
     if (r.vacant) body.appendChild(el("p", "meta", "Vacancy recorded by The Policy Desk AU; official source not yet linked."));
 
+    var links = el("div", "card-links");
     if (httpsUrl(r.url)) {
       var a = el("a", "profile", "Official website");
       a.href = r.url;
-      var sr = el("span", "visually-hidden", " for " + r.name + cfg.profileSr);
-      a.appendChild(sr);
-      body.appendChild(a);
+      a.appendChild(el("span", "visually-hidden", " for " + r.name + cfg.profileSr));
+      links.appendChild(a);
     }
     var soc = !r.vacant && socials[r.id];
     if (soc && soc.links) {
-      var sp = el("p", "socials");
       [["x", "X"], ["facebook", "Facebook"], ["instagram", "Instagram"]].forEach(function (k) {
         var u = soc.links[k[0]];
         if (httpsUrl(u)) {
           var sa = el("a", null, k[1]);
           sa.href = u;
           sa.appendChild(el("span", "visually-hidden", " (" + r.name + ")"));
-          sp.appendChild(sa);
+          links.appendChild(sa);
         }
       });
-      if (sp.children.length) body.appendChild(sp);
     }
+    if (links.childElementCount) body.appendChild(links);
+    main.appendChild(body);
+    li.appendChild(main);
+
     if (photo) {
       var cr = el("p", "photo-credit");
       cr.appendChild(document.createTextNode("Photo (resized): " + photo.creator + ", "));
@@ -467,7 +470,7 @@
       } else {
         cr.appendChild(document.createTextNode("Wikimedia Commons"));
       }
-      body.appendChild(cr);
+      li.appendChild(cr);
     }
     var n = !r.vacant && newsIndex && newsIndex.counts ? newsIndex.counts[r.id] : 0;
     if (n > 0) {
@@ -476,9 +479,8 @@
       nb.setAttribute("aria-haspopup", "dialog");
       nb.appendChild(el("span", "visually-hidden", " about " + r.name));
       nb.addEventListener("click", function () { openNews(r); });
-      body.appendChild(nb);
+      li.appendChild(nb);
     }
-    li.appendChild(body);
     return li;
   }
 
@@ -488,7 +490,7 @@
   function openNews(r) {
     var list = document.getElementById("news-list");
     document.getElementById("news-title").textContent = "Recent news: " + r.name;
-    list.replaceChildren(el("li", "meta", "Loading…"));
+    list.replaceChildren(el("li", "news-status", "Loading…"));
     if (newsDialog.showModal) newsDialog.showModal(); else newsDialog.setAttribute("open", "");
     fetch("data/news/" + encodeURIComponent(r.id) + ".json", { cache: "no-cache" })
       .then(function (res) { if (!res.ok) throw new Error("HTTP " + res.status); return res.json(); })
@@ -497,26 +499,39 @@
         (doc.items || []).forEach(function (i) {
           if (!httpsUrl(i.url)) return;
           var li = el("li", "news-item");
-          var a = el("a", null, i.title);
+          var a = el("a", "news-headline", i.title);
           a.href = i.url;
           li.appendChild(a);
-          li.appendChild(el("p", "meta", i.source + " · " + formatDate(i.published)));
+          var meta = el("p", "news-meta");
+          meta.appendChild(el("span", "news-source", i.source || ""));
+          var when = formatDate(i.published);
+          if (when) {
+            meta.appendChild(document.createTextNode(" · "));
+            var time = el("time", "news-date", when);
+            if (i.published) time.setAttribute("datetime", i.published);
+            meta.appendChild(time);
+          }
+          li.appendChild(meta);
           if (!i.verified) {
             li.appendChild(el("p", "news-flag", "Unverified match: the name is in the article text together with the member's electorate or region, not in the headline or summary."));
           }
           list.appendChild(li);
         });
-        if (!list.children.length) list.appendChild(el("li", "meta", "No recent news found."));
+        if (!list.children.length) list.appendChild(el("li", "news-status", "No recent news found."));
       })
       .catch(function () {
-        list.replaceChildren(el("li", "meta", "Sorry, news could not be loaded."));
+        list.replaceChildren(el("li", "news-status", "Sorry, news could not be loaded."));
       });
   }
   document.getElementById("news-close").addEventListener("click", function () {
     if (newsDialog.close) newsDialog.close(); else newsDialog.removeAttribute("open");
   });
   newsDialog.addEventListener("click", function (e) {
-    if (e.target === newsDialog && newsDialog.close) newsDialog.close();  // click on backdrop
+    if (e.target !== newsDialog || !newsDialog.close) return;
+    var rect = newsDialog.getBoundingClientRect();
+    var inside = e.clientX >= rect.left && e.clientX <= rect.right &&
+      e.clientY >= rect.top && e.clientY <= rect.bottom;
+    if (!inside) newsDialog.close();
   });
 
   function render() {
@@ -612,6 +627,7 @@
     rows = members.concat(vacancies);
     lastListKey = null;
 
+    els.dataLine.classList.remove("is-loading", "is-error");
     els.dataLine.textContent = "";
     els.dataLine.appendChild(document.createTextNode(
       "Data as of " + formatDate(data.last_updated) + ", source: "));
@@ -652,6 +668,8 @@
       els.mapStatus.textContent = "Loading map…";
       els.mapCredit.replaceChildren();
     }
+    els.dataLine.classList.remove("is-error");
+    els.dataLine.classList.add("is-loading");
     els.dataLine.textContent = "Loading data…";
     var generation = ++loadGeneration;
     fetch(cfg.membersUrl, { cache: "no-cache" })
@@ -666,6 +684,8 @@
       })
       .catch(function () {
         if (generation !== loadGeneration) return;
+        els.dataLine.classList.remove("is-loading");
+        els.dataLine.classList.add("is-error");
         els.dataLine.textContent = "Sorry, the member list could not be loaded. Please try again later.";
       });
     if (view === "map" && mapMode === "detail") {
@@ -693,6 +713,12 @@
   var lastSeatFilter = "";
   var detailKey = "";
   var overviewDrawn = false;
+
+  function setLayerCopy(main, note) {
+    if (!els.mapLayer) return;
+    els.mapLayer.replaceChildren(document.createTextNode(main || ""));
+    if (note) els.mapLayer.appendChild(el("span", "map-note", note));
+  }
 
   function setMapCredit(d) {
     function link(text, href) {
@@ -1015,14 +1041,10 @@
     if (key === detailKey) return;
     detailKey = key;
     els.mapDetail.replaceChildren();
-    els.mapDetail.appendChild(el("p", "meta",
-      "Australia overview. Live on The Policy Desk AU today: Federal, Victoria, New South Wales, Queensland, Western Australia, South Australia, Tasmania, Australian Capital Territory, and Northern Territory. " +
-      "Tap a live state or territory, choose Federal from the list, or use the Parliament menu."));
     var current = PARLIAMENTS[parliamentKey];
-    if (current) {
-      els.mapDetail.appendChild(el("p", "meta",
-        "Parliament menu is on " + current.label + ". Opening a jurisdiction updates the member list to match."));
-    }
+    var where = current ? current.label : "the menu";
+    els.mapDetail.appendChild(el("p", "meta",
+      "The Parliament menu is on " + where + ". Tap a live state or territory, or choose a place from the list. The member list updates to match."));
   }
 
   function renderDetail(shown) {
@@ -1173,14 +1195,16 @@
     if (sel) sel.parentNode.appendChild(sel);  // draw selected outline on top
 
     var upperMatches = shown.filter(function (r) { return r.chamber === "upper"; }).length;
-    els.mapLayer.textContent = chamber === "upper"
-      ? cfg.mapUpper + (filtering ? " Highlighted areas match your filters." : "")
-      : cfg.mapLower +
-        (filtering ? " Highlighted areas match your filters." : "") +
-        (els.chamber.value ? "" : (filtering && upperMatches
-          ? " " + upperMatches + " matching " + chamberLabel("upper") + " member" +
-            (upperMatches > 1 ? "s are" : " is") + " not shown here:" + cfg.mapOtherHint
-          : cfg.mapOtherHint));
+    var layerMain = (chamber === "upper" ? cfg.mapUpper : cfg.mapLower) +
+      (filtering ? " Highlighted areas match your filters." : "");
+    var layerNote = "";
+    if (chamber !== "upper" && !els.chamber.value) {
+      layerNote = (filtering && upperMatches)
+        ? upperMatches + " matching " + chamberLabel("upper") + " member" +
+          (upperMatches > 1 ? "s are" : " is") + " not shown here:" + cfg.mapOtherHint
+        : (cfg.mapOtherHint || "").replace(/^\s+/, "");
+    }
+    setLayerCopy(layerMain, layerNote);
 
     var names = boundaries[layerKey].features.map(function (f) { return f.name; })
       .filter(function (n) { return matchSeats[n]; });

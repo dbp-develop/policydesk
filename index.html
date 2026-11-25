@@ -24,7 +24,7 @@
 
   <main class="wrap">
     <section class="notice" aria-label="About this data">
-      <p id="data-line">Loading data…</p>
+      <p id="data-line" class="is-loading">Loading data…</p>
       <p id="election-note">The Victorian state election is on 28 November 2026. This list shows members before the election and will be updated once results are official.</p>
     </section>
 
@@ -117,8 +117,10 @@
         <h2 id="news-title">Recent news</h2>
         <button type="button" id="news-close" class="btn" aria-label="Close news">Close</button>
       </div>
-      <ul id="news-list" class="news-list"></ul>
-      <p id="news-credit" class="map-credit"></p>
+      <div class="news-body">
+        <ul id="news-list" class="news-list"></ul>
+        <p id="news-credit" class="map-credit"></p>
+      </div>
     </dialog>
 
     <noscript>
