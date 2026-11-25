@@ -5,11 +5,12 @@ Stdlib only. Rules (see CLAUDE.md "News rules" and docs/data-sources.md):
 - Source: The Conversation, CC BY-ND 4.0. robots.txt allows these feed paths.
 - Store headline, source name, date and link ONLY. No summaries, no article text.
 - Max 5 items per member, newest first. Same rules for every member and party.
-- Match = the member's exact full name (word boundaries, case-sensitive) in the
-  article AND a parliament context word (Vic, Federal, NSW, QLD, WA, SA, TAS, ACT or NT) or the member's own
-  electorate/region. Anything else is dropped.
-  Name in headline or standfirst -> verified. Name only in the article body ->
-  kept but labelled unverified.
+- Match only when the exact full name (word boundaries, case-sensitive) is in
+  the headline or standfirst, or when the name is in the body and the member's
+  own electorate or region is in the text. Generic context words are not a match.
+  Name in headline or standfirst -> verified (match_reason headline).
+  Name in the body with the electorate or region -> unverified (match_reason electorate).
+- Stored items that fail this rule are dropped, including items still inside 90 days.
 - Runs add to existing items (feeds only hold ~1 week), so coverage builds up.
 - Runs ONLY in the GitHub Action (.github/workflows/fetch-news.yml). The Conversation's
   robots.txt disallows AI agents such as Claude-Code, so never run it from an AI session.
@@ -25,6 +26,8 @@ import urllib.request
 import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+
+import guards
 
 ROOT = Path(__file__).resolve().parents[1]
 MEMBER_FILES = [
@@ -57,39 +60,6 @@ DELAY_SEC = 5
 MAX_ITEMS = 5
 MAX_AGE_DAYS = 90
 NS = {"a": "http://www.w3.org/2005/Atom"}
-VIC_WORDS = re.compile(r"\b(Victoria|Victorian|Victorians|Melbourne|Spring Street)\b")
-FED_WORDS = re.compile(
-    r"\b(Canberra|Federal|Parliament House|House of Representatives|Senate|"
-    r"Senator|MP|MPs|Coalition|Labor|Greens)\b"
-)
-NSW_WORDS = re.compile(
-    r"\b(NSW|New South Wales|Sydney|Macquarie Street|Legislative Assembly|"
-    r"Legislative Council|Premier)\b"
-)
-QLD_WORDS = re.compile(
-    r"\b(Queensland|Qld|QLD|Brisbane|George Street|Legislative Assembly|"
-    r"Premier|Crisafulli)\b"
-)
-WA_WORDS = re.compile(
-    r"\b(Western Australia|WA|Perth|Harvest Terrace|Legislative Assembly|"
-    r"Legislative Council|Premier|Cook)\b"
-)
-SA_WORDS = re.compile(
-    r"\b(South Australia|SA|Adelaide|North Terrace|House of Assembly|"
-    r"Legislative Council|Premier|Malinauskas)\b"
-)
-TAS_WORDS = re.compile(
-    r"\b(Tasmania|Tasmanian|Hobart|Parliament House|House of Assembly|"
-    r"Legislative Council|Premier|Rockliff)\b"
-)
-ACT_WORDS = re.compile(
-    r"\b(ACT|Australian Capital Territory|Canberra|Legislative Assembly|"
-    r"Chief Minister|Barr)\b"
-)
-NT_WORDS = re.compile(
-    r"\b(NT|Northern Territory|Darwin|Alice Springs|Legislative Assembly|"
-    r"Chief Minister|Finocchiaro)\b"
-)
 
 
 def fetch(url: str) -> bytes:
@@ -97,7 +67,7 @@ def fetch(url: str) -> bytes:
     for attempt in range(1, 4):
         try:
             with urllib.request.urlopen(req, timeout=60) as resp:
-                return resp.read()
+                return guards.read_checked(resp, url)
         except Exception as exc:  # noqa: BLE001
             print(f"fetch {url} attempt {attempt}: {exc}", file=sys.stderr)
             time.sleep(5 * attempt)
@@ -169,26 +139,56 @@ def load_members() -> list[dict]:
     return members
 
 
-def context_ok(parliament: str, text: str, seat_rx: re.Pattern | None) -> bool:
-    if seat_rx and seat_rx.search(text):
-        return True
-    if parliament == "federal":
-        return bool(FED_WORDS.search(text))
-    if parliament == "nsw":
-        return bool(NSW_WORDS.search(text))
-    if parliament == "qld":
-        return bool(QLD_WORDS.search(text))
-    if parliament == "wa":
-        return bool(WA_WORDS.search(text))
-    if parliament == "sa":
-        return bool(SA_WORDS.search(text))
-    if parliament == "tas":
-        return bool(TAS_WORDS.search(text))
-    if parliament == "act":
-        return bool(ACT_WORDS.search(text))
-    if parliament == "nt":
-        return bool(NT_WORDS.search(text))
-    return bool(VIC_WORDS.search(text))
+def article_match(entry: dict, rx: re.Pattern, seat_rx: re.Pattern | None) -> dict | None:
+    """Headline/standfirst name, or body name plus this member's electorate or region."""
+    in_head = bool(rx.search(fold(entry["title"])) or rx.search(fold(entry["_lead"])))
+    in_body = bool(rx.search(fold(entry["_body"])))
+    text = " ".join((entry["title"], entry["_lead"], entry["_body"]))
+    if in_head:
+        reason = "headline"
+        verified = True
+    elif in_body and seat_rx and seat_rx.search(text):
+        reason = "electorate"
+        verified = False
+    else:
+        return None
+    return {
+        "title": entry["title"],
+        "source": SOURCE,
+        "url": entry["url"],
+        "published": entry["published"],
+        "verified": verified,
+        "match_reason": reason,
+        "licence": LICENCE,
+    }
+
+
+def stored_keeps(item: dict, rx: re.Pattern, seat_rx: re.Pattern | None) -> dict | None:
+    """Keep a stored item only if it still passes the match rule.
+
+    The article body is not stored. A legacy row with no match_reason is kept
+    only when the member's name is in the title. An electorate match must have
+    been recorded as match_reason electorate.
+    """
+    title = item.get("title") or ""
+    name_in_title = bool(rx.search(fold(title)))
+    reason = item.get("match_reason")
+    if reason == "headline" or (item.get("verified") is True and name_in_title):
+        kept = dict(item)
+        kept["verified"] = True
+        kept["match_reason"] = "headline"
+        return kept
+    if reason == "electorate" and seat_rx is not None:
+        kept = dict(item)
+        kept["verified"] = False
+        kept["match_reason"] = "electorate"
+        return kept
+    if name_in_title:
+        kept = dict(item)
+        kept["verified"] = True
+        kept["match_reason"] = "headline"
+        return kept
+    return None
 
 
 def main() -> int:
@@ -225,31 +225,23 @@ def main() -> int:
         seat_rx = re.compile(r"\b" + re.escape(seat) + r"\b") if seat else None
         found = []
         for e in entries.values():
-            in_head = bool(rx.search(fold(e["title"])) or rx.search(fold(e["_lead"])))
-            in_body = bool(rx.search(fold(e["_body"])))
-            if not (in_head or in_body):
-                continue
-            text = " ".join((e["title"], e["_lead"], e["_body"]))
-            if not context_ok(m["_parliament"], text, seat_rx):
-                continue
-            found.append({
-                "title": e["title"],
-                "source": SOURCE,
-                "url": e["url"],
-                "published": e["published"],
-                "verified": in_head,
-                "licence": LICENCE,
-            })
+            hit = article_match(e, rx, seat_rx)
+            if hit:
+                found.append(hit)
 
         path = OUT / f"{m['id']}.json"
         old = json.loads(path.read_text(encoding="utf-8"))["items"] if path.exists() else []
-        merged = {i["url"]: i for i in old}
-        for i in found:
-            if i["url"] not in merged:
+        merged: dict[str, dict] = {}
+        for old_item in old:
+            kept = stored_keeps(old_item, rx, seat_rx)
+            if kept and kept.get("published", "") >= cutoff:
+                merged[kept["url"]] = kept
+        for hit in found:
+            if hit["url"] not in merged:
                 new_total += 1
-            merged[i["url"]] = i
+            merged[hit["url"]] = hit
         items = sorted(
-            (i for i in merged.values() if i["published"] >= cutoff),
+            merged.values(),
             key=lambda i: (i["published"], i["url"]),
             reverse=True,
         )[:MAX_ITEMS]
@@ -264,10 +256,10 @@ def main() -> int:
         "source_url": "https://theconversation.com/au",
         "licence": LICENCE,
         "licence_url": "https://creativecommons.org/licenses/by-nd/4.0/",
-        "rules": "Headline, source, date and link only. Exact full-name match with "
-                 "Victorian, Federal, NSW, Queensland, Western Australia, "
-                 "South Australia, Tasmania, ACT or Northern Territory context; "
-                 "name only in article body = unverified. Max 5 per member.",
+        "rules": "Headline, source, date and link only. Exact full name in the "
+                 "headline or standfirst, or in the body together with that "
+                 "member's electorate or region. Body-only matches are unverified. "
+                 "Max 5 per member.",
         "generated_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
         "counts": index,
     }

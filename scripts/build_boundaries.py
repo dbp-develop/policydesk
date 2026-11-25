@@ -25,6 +25,8 @@ import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 
+import guards
+
 ROOT = Path(__file__).resolve().parents[1]
 OUT_DIR = ROOT / "data" / "boundaries"
 USER_AGENT = "PolicyDeskAU/1.0 (https://policydesk.au)"
@@ -68,7 +70,7 @@ def fetch(layer: str) -> dict:
     for attempt in range(1, 4):
         try:
             with urllib.request.urlopen(req, timeout=300) as resp:
-                return json.load(resp)
+                return json.loads(guards.read_checked(resp, url, limit=guards.MAX_BOUNDARY))
         except Exception as exc:  # noqa: BLE001 - report and retry
             print(f"fetch {layer} attempt {attempt} failed: {exc}", file=sys.stderr)
             time.sleep(5 * attempt)

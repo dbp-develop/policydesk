@@ -38,6 +38,8 @@ from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 
+import guards
+
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "data" / "wa_official.json"
 
@@ -87,7 +89,7 @@ def http_get(url: str) -> bytes:
     for attempt in range(1, 4):
         try:
             with urllib.request.urlopen(req, timeout=120) as resp:
-                body = resp.read()
+                body = guards.read_checked(resp, url)
                 head = body[:900].lower()
                 if b"azure waf" in head or b"just a moment" in head:
                     raise RuntimeError(
@@ -332,6 +334,11 @@ def main() -> int:
         ),
         "members": members,
     }
+    try:
+        guards.assert_profile_urls(members, guards.HOSTS["wa"])
+    except RuntimeError as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
+        return 1
     OUT.write_text(
         json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
     )

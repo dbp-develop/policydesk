@@ -31,6 +31,8 @@ from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 
+import guards
+
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "data" / "qld_official.json"
 
@@ -75,7 +77,7 @@ def http_get(url: str) -> bytes:
     for attempt in range(1, 4):
         try:
             with urllib.request.urlopen(req, timeout=120) as resp:
-                body = resp.read()
+                body = guards.read_checked(resp, url)
                 if b"Just a moment" in body[:800]:
                     raise RuntimeError(
                         f"Cloudflare challenge HTML for {url}. "
@@ -174,11 +176,13 @@ def parse_memlist_pdf_text(text: str) -> dict[str, dict]:
     return out
 
 
-def cross_check(members: list[dict], pdf_map: dict[str, dict]) -> list[str]:
+def cross_check(members: list[dict], pdf_map: dict[str, dict]) -> tuple[list[str], list[str]]:
+    """Return (warnings, errors). A party mismatch is an error and fails the fetch."""
     warnings: list[str] = []
+    errors: list[str] = []
     if not pdf_map:
-        warnings.append("MEMLIST PDF parse found 0 electorate rows; skipped cross-check")
-        return warnings
+        errors.append("MEMLIST PDF parse found 0 electorate rows; cross-check did not run")
+        return warnings, errors
     for m in members:
         key = fold(m["electorate"])
         row = pdf_map.get(key)
@@ -188,7 +192,7 @@ def cross_check(members: list[dict], pdf_map: dict[str, dict]) -> list[str]:
             )
             continue
         if row["party_short"] != m["party_short"]:
-            warnings.append(
+            errors.append(
                 f"{m['electorate']}: HTML party {m['party_short']} != "
                 f"PDF {row['party_short']}"
             )
@@ -198,7 +202,7 @@ def cross_check(members: list[dict], pdf_map: dict[str, dict]) -> list[str]:
         warnings.append(
             f"MEMLIST PDF seats not on Member List: {[pdf_map[k]['electorate'] for k in pdf_only[:10]]}"
         )
-    return warnings
+    return warnings, errors
 
 
 def report(members: list[dict]) -> bool:
@@ -267,12 +271,12 @@ def main() -> int:
         return 1
 
     warnings: list[str] = []
+    pdf_errors: list[str] = []
     if not args.skip_pdf_check:
         try:
             print(f"Fetching MEMLIST PDF for cross-check…")
             time.sleep(REQUEST_DELAY_SEC)
             pdf = http_get(MEMLIST_PDF)
-            # Prefer pdftotext when available; else skip with warning.
             import shutil
             import subprocess
             import tempfile
@@ -288,14 +292,20 @@ def main() -> int:
                     )
                 pdf_map = parse_memlist_pdf_text(text)
                 print(f"MEMLIST PDF electorate rows parsed: {len(pdf_map)}")
-                warnings.extend(cross_check(members, pdf_map))
+                w, e = cross_check(members, pdf_map)
+                warnings.extend(w)
+                pdf_errors.extend(e)
             else:
-                warnings.append("pdftotext not installed; skipped MEMLIST PDF check")
+                pdf_errors.append("pdftotext not installed; MEMLIST PDF check did not run")
         except Exception as exc:  # noqa: BLE001
-            warnings.append(f"MEMLIST PDF cross-check failed: {exc}")
+            pdf_errors.append(f"MEMLIST PDF cross-check failed: {exc}")
 
     for w in warnings:
         print(f"WARNING: {w}", file=sys.stderr)
+    for err in pdf_errors:
+        print(f"ERROR: {err}", file=sys.stderr)
+    if pdf_errors:
+        return 1
 
     ok = report(members)
     OUT.parent.mkdir(parents=True, exist_ok=True)
@@ -315,6 +325,11 @@ def main() -> int:
         ),
         "members": members,
     }
+    try:
+        guards.assert_profile_urls(members, guards.HOSTS["qld"])
+    except RuntimeError as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
+        return 1
     OUT.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(f"Wrote {OUT.relative_to(ROOT)}")
 

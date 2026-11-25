@@ -19,6 +19,8 @@ from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 
+import guards
+
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "data" / "vic_official.json"
 
@@ -49,7 +51,7 @@ def http_get_json(url: str) -> dict:
     for attempt in range(1, 4):
         try:
             with urllib.request.urlopen(req, timeout=60) as resp:
-                return json.loads(resp.read().decode("utf-8"))
+                return json.loads(guards.read_checked(resp, url).decode("utf-8"))
         except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as err:
             last_err = err
             print(f"  attempt {attempt}/3 failed: {err}", file=sys.stderr)
@@ -78,11 +80,12 @@ def normalize_party(party: str | None) -> str | None:
     text = party.strip()
     if not text:
         return None
-    if text.lower() in {"independent", "independent liberal", "ind"}:
-        # Keep parliament's own Independent label; map loose variants carefully.
-        if text.lower() == "independent liberal":
-            return text  # retain parliament wording if ever present
-        return "Independent" if text.lower() in {"independent", "ind"} else text
+    lowered = text.lower()
+    if lowered == "independent liberal":
+        # Keep parliament's own wording when that label is present.
+        return text
+    if lowered in {"independent", "ind"}:
+        return "Independent"
     return text
 
 
@@ -213,6 +216,11 @@ def main() -> int:
         "expected_counts": EXPECTED,
         "members": members,
     }
+    try:
+        guards.assert_profile_urls(members, guards.HOSTS["vic"])
+    except RuntimeError as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
+        return 1
     OUT.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(f"Wrote {OUT.relative_to(ROOT)}")
 

@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: data-commits
@@ -13,35 +13,104 @@ concurrency:
 jobs:
   fetch:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: write
+    outputs:
+      vacancy_seat: ${{ steps.build.outputs.seat }}
+      base_sha: ${{ github.sha }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
           python-version: "3.12"
 
       - name: Fetch Federal members (Parliamentary Handbook API)
         run: python scripts/fetch_federal_official.py
 
-      - name: Build data/federal/members.json
-        run: python scripts/build_federal_members.py
+      - name: Build members
+        id: build
+        run: |
+          set +e
+          python scripts/build_federal_members.py > "$RUNNER_TEMP/build.log" 2>&1
+          code=$?
+          set -e
+          cat "$RUNNER_TEMP/build.log"
+          seat=$(grep -E '^VACANCY FILLED: ' "$RUNNER_TEMP/build.log" | head -n 1 | sed 's/^VACANCY FILLED: //' || true)
+          echo "seat=$seat" >> "$GITHUB_OUTPUT"
+          exit "$code"
 
       - name: Validate members
         run: python scripts/validate_members.py
 
-      - name: Commit and push data if changed
+      - name: Upload data files
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: member-data
+          if-no-files-found: error
+          path: |
+            data/federal_official.json
+            data/federal/members.json
+
+  open-pr:
+    needs: fetch
+    if: success()
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          fetch-depth: 0
+
+      - name: Download data files
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        with:
+          name: member-data
+          path: incoming
+
+      - name: Open pull request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BASE_SHA: ${{ needs.fetch.outputs.base_sha }}
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/federal_official.json data/federal/members.json data/federal/vacancies.json
-          if git diff --staged --quiet; then
-            echo "No changes to Federal member data files"
-          else
-            git commit -m "chore: update Federal member data"
-            git pull --rebase origin main
-            git push origin HEAD:main
+          bash scripts/open_data_pr.sh \
+            bot/federal-members \
+            "chore: update Federal member data" \
+            incoming \
+            data/federal_official.json \
+            data/federal/members.json
+
+  vacancy-issue:
+    needs: fetch
+    if: failure() && needs.fetch.outputs.vacancy_seat != ''
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - name: Open an issue naming the filled seat
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SEAT: ${{ needs.fetch.outputs.vacancy_seat }}
+        run: |
+          title="Vacancy file still lists $SEAT"
+          existing=$(gh issue list --state open --search "in:title \"$title\"" --json number --jq 'length')
+          if [ "$existing" != "0" ]; then
+            echo "An open issue titled '$title' already exists; not opening another."
+            exit 0
           fi
+          {
+            echo "A member fetch found someone in a seat that the vacancy file still lists."
+            echo
+            echo "Seat: $SEAT"
+            echo
+            echo "Edit the vacancy file in the same change as the new member, then run this workflow again. main was not changed."
+          } > body.md
+          gh issue create --title "$title" --body-file body.md

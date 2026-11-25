@@ -36,6 +36,8 @@ from datetime import datetime, timezone
 from io import BytesIO
 from pathlib import Path
 
+import guards
+
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "data" / "nsw_official.json"
 
@@ -70,7 +72,7 @@ def http_get(url: str) -> bytes:
     for attempt in range(1, 4):
         try:
             with urllib.request.urlopen(req, timeout=120) as resp:
-                body = resp.read()
+                body = guards.read_checked(resp, url)
                 ctype = (resp.headers.get("content-type") or "").lower()
                 if b"Just a moment" in body[:800] or "text/html" in ctype and b"cf-" in body[:2000].lower():
                     raise RuntimeError(
@@ -90,7 +92,7 @@ def read_xlsx_sheet(data: bytes) -> list[list[str]]:
     with zipfile.ZipFile(BytesIO(data)) as zf:
         shared: list[str] = []
         if "xl/sharedStrings.xml" in zf.namelist():
-            root = ET.fromstring(zf.read("xl/sharedStrings.xml"))
+            root = ET.fromstring(guards.read_zip_member(zf, "xl/sharedStrings.xml"))
             for si in root.findall(f"{NS_MAIN}si"):
                 texts = [t.text or "" for t in si.iter(f"{NS_MAIN}t")]
                 shared.append("".join(texts))
@@ -98,12 +100,12 @@ def read_xlsx_sheet(data: bytes) -> list[list[str]]:
         sheet_path = "xl/worksheets/sheet1.xml"
         if sheet_path not in zf.namelist():
             # resolve first worksheet via workbook
-            wb = ET.fromstring(zf.read("xl/workbook.xml"))
+            wb = ET.fromstring(guards.read_zip_member(zf, "xl/workbook.xml"))
             sheets = wb.find(f"{NS_MAIN}sheets")
             if sheets is None or not list(sheets):
                 raise ValueError("XLSX has no sheets")
             rid = list(sheets)[0].attrib.get(f"{NS_ODR}id")
-            rels = ET.fromstring(zf.read("xl/_rels/workbook.xml.rels"))
+            rels = ET.fromstring(guards.read_zip_member(zf, "xl/_rels/workbook.xml.rels"))
             target = None
             for rel in rels:
                 if rel.attrib.get("Id") == rid:
@@ -113,7 +115,7 @@ def read_xlsx_sheet(data: bytes) -> list[list[str]]:
                 raise ValueError("could not resolve worksheet path")
             sheet_path = "xl/" + target.lstrip("/")
 
-        root = ET.fromstring(zf.read(sheet_path))
+        root = ET.fromstring(guards.read_zip_member(zf, sheet_path))
         rows_out: list[list[str]] = []
         for row in root.iter(f"{NS_MAIN}row"):
             cells: dict[int, str] = {}
@@ -386,6 +388,11 @@ def main() -> int:
         "credit": "© State of New South Wales through the Parliament of New South Wales",
         "members": members,
     }
+    try:
+        guards.assert_profile_urls(members, guards.HOSTS["nsw"])
+    except RuntimeError as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
+        return 1
     OUT.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(f"Wrote {OUT.relative_to(ROOT)}")
 

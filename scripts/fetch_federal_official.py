@@ -21,6 +21,8 @@ from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 
+import guards
+
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "data" / "federal_official.json"
 
@@ -65,7 +67,7 @@ def http_get_json(url: str) -> dict:
     for attempt in range(1, 4):
         try:
             with urllib.request.urlopen(req, timeout=120) as resp:
-                return json.loads(resp.read().decode("utf-8"))
+                return json.loads(guards.read_checked(resp, url).decode("utf-8"))
         except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as err:
             last_err = err
             print(f"  attempt {attempt}/3 failed: {err}", file=sys.stderr)
@@ -242,6 +244,11 @@ def main() -> int:
         "expected_counts": EXPECTED,
         "members": members,
     }
+    try:
+        guards.assert_profile_urls(members, guards.HOSTS["federal"])
+    except RuntimeError as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
+        return 1
     OUT.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(f"Wrote {OUT.relative_to(ROOT)}")
 

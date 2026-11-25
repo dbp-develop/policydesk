@@ -25,6 +25,8 @@ from datetime import datetime, timezone
 from io import BytesIO
 from pathlib import Path
 
+import guards
+
 ROOT = Path(__file__).resolve().parents[1]
 OUT_DIR = ROOT / "data" / "boundaries"
 MEMBERS = ROOT / "data" / "federal" / "members.json"
@@ -56,7 +58,7 @@ def fetch_zip() -> bytes:
     for attempt in range(1, 4):
         try:
             with urllib.request.urlopen(req, timeout=300) as resp:
-                return resp.read()
+                return guards.read_checked(resp, ZIP_URL, limit=guards.MAX_BOUNDARY)
         except Exception as exc:  # noqa: BLE001
             print(f"fetch zip attempt {attempt} failed: {exc}", file=sys.stderr)
             time.sleep(5 * attempt)
@@ -255,8 +257,8 @@ def main() -> int:
         names = zf.namelist()
         shp_name = next(n for n in names if n.lower().endswith(".shp"))
         dbf_name = next(n for n in names if n.lower().endswith(".dbf"))
-        shp = zf.read(shp_name)
-        dbf = zf.read(dbf_name)
+        shp = guards.read_zip_member(zf, shp_name)
+        dbf = guards.read_zip_member(zf, dbf_name)
 
     attrs = read_dbf(dbf)
     geoms = read_shp_polygons(shp)
