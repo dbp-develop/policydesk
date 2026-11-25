@@ -87,7 +87,7 @@ ACT_WORDS = re.compile(
     r"Chief Minister|Barr)\b"
 )
 NT_WORDS = re.compile(
-    r"\b(Northern Territory|Darwin|Alice Springs|Legislative Assembly|"
+    r"\b(NT|Northern Territory|Darwin|Alice Springs|Legislative Assembly|"
     r"Chief Minister|Finocchiaro)\b"
 )
 
