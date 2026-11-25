@@ -722,7 +722,8 @@ a:hover { text-decoration-thickness: 2px; }
     gap: 16px;
     align-items: flex-end;
   }
-  .filter-row .field { flex: 1 1 11rem; }
+  .filter-row .field { flex: 1 1 18rem; }
+  .filter-row .field-actions { flex-basis: 100%; }
   .cards {
     grid-template-columns: 1fr 1fr;
     gap: 16px;
