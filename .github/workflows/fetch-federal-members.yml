@@ -18,6 +18,7 @@ jobs:
       actions: write
     outputs:
       vacancy_seat: ${{ steps.build.outputs.seat }}
+      base_sha: ${{ github.sha }}
     steps:
       - name: Checkout
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
@@ -53,7 +54,6 @@ jobs:
           path: |
             data/federal_official.json
             data/federal/members.json
-            data/federal/vacancies.json
 
   open-pr:
     needs: fetch
@@ -78,14 +78,14 @@ jobs:
       - name: Open pull request
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BASE_SHA: ${{ needs.fetch.outputs.base_sha }}
         run: |
           bash scripts/open_data_pr.sh \
             bot/federal-members \
             "chore: update Federal member data" \
             incoming \
             data/federal_official.json \
-            data/federal/members.json \
-            data/federal/vacancies.json
+            data/federal/members.json
 
   vacancy-issue:
     needs: fetch

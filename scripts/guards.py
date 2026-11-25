@@ -145,45 +145,58 @@ def member_build_error(
     return None
 
 
+def _seat_counts(members: list[dict], chamber: str, field: str) -> dict[str, int]:
+    counts: dict[str, int] = {}
+    for member in members:
+        if member.get("chamber") != chamber:
+            continue
+        seat = member.get(field)
+        if seat:
+            counts[seat] = counts.get(seat, 0) + 1
+    return counts
+
+
+def _seat_is_full(counts: dict[str, int], seat: str | None) -> bool:
+    """True when this seat already has its full member count.
+
+    A single-member seat is full when one member holds it. A multi-member
+    seat (Tasmanian Assembly divisions, ACT electorates, Victorian Council
+    regions) is full only when the sitting count equals the most members
+    any seat in that chamber currently has. That maximum is the full
+    complement while at least one seat is full, so one resignation in a
+    seven-member division does not look filled.
+    """
+    if not seat or not counts:
+        return False
+    sitting = counts.get(seat, 0)
+    size = max(counts.values())
+    return sitting > 0 and sitting == size
+
+
 def filled_vacancy_seat(members: list[dict], vacancies: list[dict]) -> str | None:
-    """Seat name when vacancies.json still lists a seat a member now holds.
+    """Seat name when vacancies.json still lists a seat that is already full.
 
     A human edits the vacancy file in the same change as the new member.
     Until that edit exists, the build fails with this seat name and does not
     write members.json. The Action opens an issue and leaves main unchanged.
 
-    A lower-house electorate is one seat. An upper-house region that is a
-    state or territory name (Senate, statewide councils) is shared, so other
-    members of that region do not fill the vacancy. A Tasmanian Legislative
-    Council division is one seat.
+    A statewide upper-house region (a Senate state, or the NSW, WA, or SA
+    Council) is shared. Other members of that region do not fill one vacancy.
     """
-    upper_counts: dict[str, int] = {}
-    for member in members:
-        if member.get("chamber") == "upper" and member.get("region"):
-            region = member["region"]
-            upper_counts[region] = upper_counts.get(region, 0) + 1
-    multi_upper = any(n > 1 for n in upper_counts.values())
+    lower_counts = _seat_counts(members, "lower", "electorate")
+    upper_counts = _seat_counts(members, "upper", "region")
 
     for vacancy in vacancies:
         house = _house(vacancy.get("chamber"))
         if house == "lower":
             seat = vacancy.get("electorate")
-            if seat and any(
-                m.get("chamber") == "lower" and m.get("electorate") == seat
-                for m in members
-            ):
+            if _seat_is_full(lower_counts, seat):
                 return seat
         elif house == "upper":
             seat = vacancy.get("region") or vacancy.get("electorate")
             if not seat or str(seat).casefold() in JURISDICTION_REGIONS:
                 continue
-            if multi_upper:
-                continue
-            if any(
-                m.get("chamber") == "upper"
-                and (m.get("region") == seat or m.get("electorate") == seat)
-                for m in members
-            ):
+            if _seat_is_full(upper_counts, seat):
                 return seat
     return None
 

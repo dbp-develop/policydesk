@@ -20,6 +20,8 @@ jobs:
     permissions:
       contents: read
       actions: write
+    outputs:
+      base_sha: ${{ github.sha }}
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
 
@@ -61,6 +63,7 @@ jobs:
       - name: Open pull request
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BASE_SHA: ${{ needs.fetch.outputs.base_sha }}
         run: |
           bash scripts/open_data_pr.sh \
             bot/news \
