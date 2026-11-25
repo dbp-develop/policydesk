@@ -815,6 +815,12 @@
     els.skip.href = view === "map" ? "#map-view" : "#results";
   }
 
+  function setMapDetailMessage(text) {
+    detailKey = "message";
+    els.mapDetail.replaceChildren();
+    els.mapDetail.appendChild(el("p", "meta", text));
+  }
+
   /* Map opens the parliament already chosen. Australia is only the Australia button. */
   function enterParliamentMap() {
     mapMode = "detail";
@@ -825,11 +831,28 @@
     lastSeatFilter = "";
     detailKey = "";
     syncMapChrome();
-    if (!boundaries) els.mapStatus.textContent = "Loading map…";
+    if (boundaries) {
+      setMapCredit(boundaries[lowerLayer()]);
+    } else {
+      els.mapStatus.textContent = "Loading map…";
+      els.mapLayer.textContent = "";
+      els.seatButtons.replaceChildren();
+      els.seatCount.textContent = "0";
+      if (els.seatListLabel) els.seatListLabel.textContent = "Text list of seats on this map";
+      els.mapCredit.replaceChildren();
+      setMapDetailMessage("Loading map…");
+    }
     var generation = loadGeneration;
     loadBoundaries(generation).then(function () {
       if (view !== "map" || mapMode !== "detail" || generation !== loadGeneration) return;
-      if (boundaries) render();
+      if (boundaries) {
+        setMapCredit(boundaries[lowerLayer()]);
+        render();
+        return;
+      }
+      els.mapStatus.textContent = "Sorry, the map could not be loaded. The list view still works.";
+      setMapDetailMessage("Sorry, the map could not be loaded. The list view still works.");
+      if (els.mapHint) els.mapHint.hidden = true;
     });
   }
 
@@ -1279,6 +1302,15 @@
   });
   els.viewList.addEventListener("click", function () { setView("list", false); });
   els.viewMap.addEventListener("click", function () { setView("map", false); });
+  if (els.skip) {
+    els.skip.addEventListener("click", function (e) {
+      var target = view === "map" ? els.mapView : els.results;
+      if (!target) return;
+      // Leave the #map hash alone. Following #map-view would be read as leaving the map.
+      e.preventDefault();
+      target.focus();
+    });
+  }
 
   els.form.addEventListener("input", function (e) {
     if (e.target && e.target.id === "parliament") return;
@@ -1307,6 +1339,13 @@
   });
   window.addEventListener("hashchange", function () {
     if (!rows.length) return;
+    // The skip link’s map target. It is not a request to show the list.
+    if (location.hash === "#map-view") {
+      if (view !== "map") setView("map", true);
+      else if (els.mapView) els.mapView.focus();
+      try { history.replaceState(null, "", "#map"); } catch (e) { /* ignore */ }
+      return;
+    }
     var want = location.hash === "#map" ? "map" : "list";
     if (want !== view) setView(want, false);
   });
