@@ -1,7 +1,7 @@
 {
  "source": "Wikidata (CC0): P2002 X, P2013 Facebook, P2003 Instagram",
  "note": "Candidates only. Nothing here is shown on the site until the owner approves it.",
- "generated_at": "2026-11-25T01:48:04+00:00",
+ "generated_at": "2026-11-25T02:29:46+00:00",
  "candidates": {
   "adem-somyurek": {
    "name": "Adem Somyurek",
@@ -2752,6 +2752,340 @@
     "facebook": {
      "handle": "SAShadowMinisterTradeTourismInvestment",
      "url": "https://www.facebook.com/SAShadowMinisterTradeTourismInvestment"
+    }
+   },
+   "approved": false
+  },
+  "tas-anita-dow": {
+   "name": "Anita Dow",
+   "wikidata": "https://www.wikidata.org/wiki/Q50325645",
+   "candidates": {
+    "facebook": {
+     "handle": "anitadowbraddon",
+     "url": "https://www.facebook.com/anitadowbraddon"
+    }
+   },
+   "approved": false
+  },
+  "tas-brian-mitchell": {
+   "name": "Brian Mitchell",
+   "wikidata": "https://www.wikidata.org/wiki/Q26695681",
+   "candidates": {
+    "x": {
+     "handle": "BrianMitchellMP",
+     "url": "https://x.com/BrianMitchellMP"
+    }
+   },
+   "approved": false
+  },
+  "tas-bridget-archer": {
+   "name": "Bridget Archer",
+   "wikidata": "https://www.wikidata.org/wiki/Q64225996",
+   "candidates": {
+    "x": {
+     "handle": "bridgetarcher",
+     "url": "https://x.com/bridgetarcher"
+    }
+   },
+   "approved": false
+  },
+  "tas-cassy-o-connor": {
+   "name": "Cassy O'Connor",
+   "wikidata": "https://www.wikidata.org/wiki/Q5049524",
+   "candidates": {
+    "x": {
+     "handle": "CassyOConnorMP",
+     "url": "https://x.com/CassyOConnorMP"
+    },
+    "facebook": {
+     "handle": "CassyOConnorMP",
+     "url": "https://www.facebook.com/CassyOConnorMP"
+    }
+   },
+   "approved": false
+  },
+  "tas-cecily-rosol": {
+   "name": "Cecily Rosol",
+   "wikidata": "https://www.wikidata.org/wiki/Q125144752",
+   "candidates": {
+    "facebook": {
+     "handle": "CecilyRosolforBass",
+     "url": "https://www.facebook.com/CecilyRosolforBass"
+    },
+    "instagram": {
+     "handle": "cecilyrosol4greens",
+     "url": "https://www.instagram.com/cecilyrosol4greens/"
+    }
+   },
+   "approved": false
+  },
+  "tas-craig-farrell": {
+   "name": "Craig Farrell",
+   "wikidata": "https://www.wikidata.org/wiki/Q5180952",
+   "candidates": {
+    "x": {
+     "handle": "craig_farrell",
+     "url": "https://x.com/craig_farrell"
+    }
+   },
+   "approved": false
+  },
+  "tas-david-o-byrne": {
+   "name": "David O’Byrne",
+   "wikidata": "https://www.wikidata.org/wiki/Q15441913",
+   "candidates": {
+    "x": {
+     "handle": "DavidOByrneMP",
+     "url": "https://x.com/DavidOByrneMP"
+    },
+    "facebook": {
+     "handle": "DavidOByrneLabor",
+     "url": "https://www.facebook.com/DavidOByrneLabor"
+    }
+   },
+   "approved": false
+  },
+  "tas-dean-winter": {
+   "name": "Dean Winter",
+   "wikidata": "https://www.wikidata.org/wiki/Q106815704",
+   "candidates": {
+    "instagram": {
+     "handle": "deanwintermp",
+     "url": "https://www.instagram.com/deanwintermp/"
+    }
+   },
+   "approved": false
+  },
+  "tas-ella-haddad": {
+   "name": "Ella Haddad",
+   "wikidata": "https://www.wikidata.org/wiki/Q50545496",
+   "candidates": {
+    "x": {
+     "handle": "EllaHaddadMP",
+     "url": "https://x.com/EllaHaddadMP"
+    },
+    "facebook": {
+     "handle": "EllaHaddadMP",
+     "url": "https://www.facebook.com/EllaHaddadMP"
+    }
+   },
+   "approved": false
+  },
+  "tas-eric-abetz": {
+   "name": "Eric Abetz",
+   "wikidata": "https://www.wikidata.org/wiki/Q964840",
+   "candidates": {
+    "x": {
+     "handle": "SenatorAbetz",
+     "url": "https://x.com/SenatorAbetz"
+    }
+   },
+   "approved": false
+  },
+  "tas-felix-ellis": {
+   "name": "Felix Ellis",
+   "wikidata": "https://www.wikidata.org/wiki/Q98433663",
+   "candidates": {
+    "x": {
+     "handle": "felix_ellis",
+     "url": "https://x.com/felix_ellis"
+    }
+   },
+   "approved": false
+  },
+  "tas-george-razay": {
+   "name": "George Razay",
+   "wikidata": "https://www.wikidata.org/wiki/Q135575894",
+   "candidates": {
+    "instagram": {
+     "handle": "razaygeorge",
+     "url": "https://www.instagram.com/razaygeorge/"
+    }
+   },
+   "approved": false
+  },
+  "tas-guy-barnett": {
+   "name": "Guy Barnett",
+   "wikidata": "https://www.wikidata.org/wiki/Q5622071",
+   "candidates": {
+    "x": {
+     "handle": "GuyBarnett",
+     "url": "https://x.com/GuyBarnett"
+    },
+    "facebook": {
+     "handle": "GuyBarnettMP",
+     "url": "https://www.facebook.com/GuyBarnettMP"
+    }
+   },
+   "approved": false
+  },
+  "tas-jacquie-petrusma": {
+   "name": "Jacquie Petrusma",
+   "wikidata": "https://www.wikidata.org/wiki/Q6121076",
+   "candidates": {
+    "facebook": {
+     "handle": "jacquie.petrusma",
+     "url": "https://www.facebook.com/jacquie.petrusma"
+    }
+   },
+   "approved": false
+  },
+  "tas-jen-butler": {
+   "name": "Jen Butler",
+   "wikidata": "https://www.wikidata.org/wiki/Q50552970",
+   "candidates": {
+    "x": {
+     "handle": "JenButlerLyons",
+     "url": "https://x.com/JenButlerLyons"
+    },
+    "facebook": {
+     "handle": "jenbutlerlyons",
+     "url": "https://www.facebook.com/jenbutlerlyons"
+    }
+   },
+   "approved": false
+  },
+  "tas-jeremy-rockliff": {
+   "name": "Jeremy Rockliff",
+   "wikidata": "https://www.wikidata.org/wiki/Q6181827",
+   "candidates": {
+    "x": {
+     "handle": "jeremyrockliff",
+     "url": "https://x.com/jeremyrockliff"
+    },
+    "facebook": {
+     "handle": "jeremyrockliff",
+     "url": "https://www.facebook.com/jeremyrockliff"
+    }
+   },
+   "approved": false
+  },
+  "tas-jo-palmer": {
+   "name": "Jo Palmer",
+   "wikidata": "https://www.wikidata.org/wiki/Q6204378",
+   "candidates": {
+    "instagram": {
+     "handle": "jopalmer_",
+     "url": "https://www.instagram.com/jopalmer_/"
+    }
+   },
+   "approved": false
+  },
+  "tas-kristie-johnston": {
+   "name": "Kristie Johnston",
+   "wikidata": "https://www.wikidata.org/wiki/Q106809625",
+   "candidates": {
+    "x": {
+     "handle": "KrisJJohnston",
+     "url": "https://x.com/KrisJJohnston"
+    },
+    "instagram": {
+     "handle": "johnstonkristie",
+     "url": "https://www.instagram.com/johnstonkristie/"
+    }
+   },
+   "approved": false
+  },
+  "tas-madeleine-ogilvie": {
+   "name": "Madeleine Ogilvie",
+   "wikidata": "https://www.wikidata.org/wiki/Q16197978",
+   "candidates": {
+    "x": {
+     "handle": "mads_ogilvie",
+     "url": "https://x.com/mads_ogilvie"
+    },
+    "facebook": {
+     "handle": "madeleineogilvie.com.au",
+     "url": "https://www.facebook.com/madeleineogilvie.com.au"
+    }
+   },
+   "approved": false
+  },
+  "tas-mark-shelton": {
+   "name": "Mark Shelton",
+   "wikidata": "https://www.wikidata.org/wiki/Q6769690",
+   "candidates": {
+    "facebook": {
+     "handle": "MarksheltonMP",
+     "url": "https://www.facebook.com/MarksheltonMP"
+    }
+   },
+   "approved": false
+  },
+  "tas-meg-brown": {
+   "name": "Meg Brown",
+   "wikidata": "https://www.wikidata.org/wiki/Q125341975",
+   "candidates": {
+    "instagram": {
+     "handle": "megbrownforfranklin",
+     "url": "https://www.instagram.com/megbrownforfranklin/"
+    }
+   },
+   "approved": false
+  },
+  "tas-michael-ferguson": {
+   "name": "Michael Ferguson",
+   "wikidata": "https://www.wikidata.org/wiki/Q6830267",
+   "candidates": {
+    "x": {
+     "handle": "fergusonmichael",
+     "url": "https://x.com/fergusonmichael"
+    }
+   },
+   "approved": false
+  },
+  "tas-roger-jaensch": {
+   "name": "Roger Jaensch",
+   "wikidata": "https://www.wikidata.org/wiki/Q16197831",
+   "candidates": {
+    "facebook": {
+     "handle": "jaenschMP",
+     "url": "https://www.facebook.com/jaenschMP"
+    }
+   },
+   "approved": false
+  },
+  "tas-rosalie-woodruff": {
+   "name": "Rosalie Woodruff",
+   "wikidata": "https://www.wikidata.org/wiki/Q21062247",
+   "candidates": {
+    "x": {
+     "handle": "rosaliewoodruff",
+     "url": "https://x.com/rosaliewoodruff"
+    },
+    "facebook": {
+     "handle": "RosalieWoodruffMLA",
+     "url": "https://www.facebook.com/RosalieWoodruffMLA"
+    }
+   },
+   "approved": false
+  },
+  "tas-shane-broad": {
+   "name": "Shane Broad",
+   "wikidata": "https://www.wikidata.org/wiki/Q29139905",
+   "candidates": {
+    "x": {
+     "handle": "Shane_Broad",
+     "url": "https://x.com/Shane_Broad"
+    },
+    "facebook": {
+     "handle": "ShaneBroadMP",
+     "url": "https://www.facebook.com/ShaneBroadMP"
+    }
+   },
+   "approved": false
+  },
+  "tas-tabatha-badger": {
+   "name": "Tabatha Badger",
+   "wikidata": "https://www.wikidata.org/wiki/Q125144767",
+   "candidates": {
+    "facebook": {
+     "handle": "TabathaBadgerGreens",
+     "url": "https://www.facebook.com/TabathaBadgerGreens"
+    },
+    "instagram": {
+     "handle": "tabatha_politas",
+     "url": "https://www.instagram.com/tabatha_politas/"
     }
    },
    "approved": false
