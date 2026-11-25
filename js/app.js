@@ -821,6 +821,12 @@
     els.mapDetail.appendChild(el("p", "meta", text));
   }
 
+  function clearMapDrawing() {
+    var title = els.map.querySelector("title");
+    els.map.replaceChildren(title);
+    els.map.classList.remove("is-zoomed");
+  }
+
   /* Map opens the parliament already chosen. Australia is only the Australia button. */
   function enterParliamentMap() {
     mapMode = "detail";
@@ -840,6 +846,7 @@
       els.seatCount.textContent = "0";
       if (els.seatListLabel) els.seatListLabel.textContent = "Text list of seats on this map";
       els.mapCredit.replaceChildren();
+      clearMapDrawing();
       setMapDetailMessage("Loading map…");
     }
     var generation = loadGeneration;
@@ -851,6 +858,7 @@
         return;
       }
       els.mapStatus.textContent = "Sorry, the map could not be loaded. The list view still works.";
+      clearMapDrawing();
       setMapDetailMessage("Sorry, the map could not be loaded. The list view still works.");
       if (els.mapHint) els.mapHint.hidden = true;
     });
