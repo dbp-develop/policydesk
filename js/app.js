@@ -736,8 +736,14 @@
         return setViewBox([full[0] + full[2] * 0.55, full[1] + full[3] * 0.55, full[2] * 0.4, full[3] * 0.4]);
       }
       if (parliamentKey === "wa") {
-        // Rough south-west / Perth crop of the statewide viewBox.
-        return setViewBox([full[0] + full[2] * 0.55, full[1] + full[3] * 0.55, full[2] * 0.4, full[3] * 0.4]);
+        // Perth metro is south-west of the statewide viewBox (not SE like NSW/QLD).
+        // District union ~[1572,12204]–[2173,12886] of viewBox [0,0,10000,14754].
+        return setViewBox([
+          full[0] + full[2] * 0.12,
+          full[1] + full[3] * 0.80,
+          full[2] * 0.15,
+          full[3] * 0.12
+        ]);
       }
       var upper = upperLayer();
       if (!upper || !boundaries[upper]) return setViewBox(full);
