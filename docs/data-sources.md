@@ -924,3 +924,124 @@ Same host pattern as Stages 7–10: `User-agent: *` / `Disallow: /` in robots.tx
 ## Attribution (our wording)
 
 > This product (The Policy Desk AU map) incorporates or was developed using Administrative Boundaries © Geoscape Australia licensed by the Commonwealth of Australia under Creative Commons Attribution 4.0 International licence (CC BY 4.0). Simplified by The Policy Desk AU. Tasmania House of Assembly multi-member divisions and Legislative Council divisions from the FEB26 GDA2020 Geoscape release (TEC boundaries; Assembly aligned to Commonwealth divisions from 2018; Council from the 2016–17 redistribution).
+
+---
+
+# Data sources — ACT Legislative Assembly (Stage 12)
+
+**Date checked:** 2026-11-25  
+**Checker User-Agent:** `PolicyDeskAU/1.0 (https://policydesk.au)` and browser-compatible `Mozilla/5.0 (compatible; PolicyDeskAU/1.0; +https://policydesk.au) …`  
+**Intended use:** automated fetch of current ACT Legislative Assembly member facts (name, multi-member electorate, party, official profile URL). No photos. No biographies. No office addresses or emails.
+
+## 1. robots.txt — www.parliament.act.gov.au
+
+**URL:** https://www.parliament.act.gov.au/robots.txt  
+
+Fetched 2026-11-25 via a real browser after Cloudflare blocked plain `curl` (HTTP 403 challenge HTML).
+
+**Full robots body as fetched:**
+
+```
+# www.robotstxt.org/
+
+# http://code.google.com/web/controlcrawlindex/
+
+
+
+User-agent: *
+Crawl-delay: 20
+Disallow: /search
+Disallow: /designs
+Disallow: /*?sq_content_src=
+Disallow: /*_recache
+Disallow: /*_edit
+Disallow: /*_admin
+Disallow: /*_login
+Disallow: /*_performance
+Disallow: /_performance
+Disallow: /_designs/
+Disallow: /*_design
+Disallow: /*_web_services
+Disallow: /__lib
+Disallow: /__fudge
+
+User-Agent: Funnelback
+Crawl-delay: 0
+
+# Prevent crawling of Funnelback search queries or facets.
+Disallow: *?*query=
+Disallow: *?*f.*%7C*=
+```
+
+### `urllib.robotparser` (body above)
+
+```
+can_fetch('PolicyDeskAU', '/members/current') = True
+can_fetch('PolicyDeskAU', '/members/current/barr') = True
+crawl_delay('PolicyDeskAU') = 20
+```
+
+**Production fetch note:** robots.txt does **not** Disallow member list or profile paths for `PolicyDeskAU` (20 s crawl-delay). Cloudflare still blocked unattended fetches with that User-Agent on this check date. Stage 12 member data was built from a browser-cleared save of `/members/current` (`--from-html`). The fetch script tries live URLs and exits with a clear error if Cloudflare blocks.
+
+## 2. Copyright / terms — ACT Legislative Assembly
+
+**Page checked:** https://www.parliament.act.gov.au/functions/footer/reuse-policy (“Reusing our content”) — HTTP 200 (browser).
+
+Quoted from that page:
+
+> Except where otherwise noted, all content on the websites: parliament.act.gov.au … is provided under the Creative Commons Attribution-Non-Commercial-NoDerivatives 4.0 International License (CC BY-NC-ND 4.0). This lets you copy and share unaltered content for non-commercial purposes so long as you attribute it to the ACT Legislative Assembly.
+
+> Members’ official portraits: These remain copyright of the ACT Legislative Assembly. They cannot be used for political or commercial purposes. Requests for use must be sent to ola@parliament.act.gov.au.
+
+## 3. Official member list used
+
+| What | Result on 2026-11-25 |
+|------|----------------------|
+| Current members table | `https://www.parliament.act.gov.au/members/current` — 25 of 25 |
+| Official profile URL pattern | `https://www.parliament.act.gov.au/members/current/{slug}` |
+| Party + seat | Affiliation and Electorate columns on the current-members table |
+| Expected counts | 25 MLAs; 5 multi-member electorates × 5 members |
+
+Party labels from the Affiliation column are stored as full names: Labor → Australian Labor Party; Liberal / Liberals → Liberal Party; Green → ACT Greens; Independent. Emerson’s affiliation cell HTML splits the word Independent (`⬤ I</span>ndependent`); the fetch script normalises that glitch before mapping.
+
+Facts stored per member: display name (list link text without role lines or post-nominals such as CSC), chamber Assembly, electorate, party, official profile URL, source. Unknown fields = null. **Addresses, emails, phones and biographies are not stored. Parliament portraits are not copied.**
+
+## 4. Verdicts (evidence only — no legal inference)
+
+**(a) robots.txt:** does **not** Disallow our `PolicyDeskAU` agent for member list/profile paths; crawl-delay 20.  
+**(b) automated access:** Cloudflare blocked unattended fetches for our UA on this date.  
+**(c) reusing member names, parties and seats (facts only):** website content is CC BY-NC-ND 4.0; portraits are excluded. Same class of Stage 15 NC/ND vs CC BY-SA / monetisation uncertainty as Federal and QLD website text. We store facts only, attribute ACT Legislative Assembly, and **do not** copy addresses, biographies, or portraits into the repo.
+
+---
+
+# Data sources — ACT electoral boundaries (Stage 12)
+
+**Date checked:** 2026-11-25  
+**Checker User-Agent:** `PolicyDeskAU/1.0 (https://policydesk.au)`  
+**Intended use:** download ACT Legislative Assembly multi-member electorate boundaries for the map; simplify; publish as static SVG-path JSON.
+
+## Dataset
+
+| | Geoscape Administrative Boundaries — ACT State Electoral Boundaries |
+|---|---|
+| Title | ACT State Electoral Boundaries — Geoscape Administrative Boundaries |
+| Publisher | Geoscape Australia / Commonwealth of Australia (data.gov.au) |
+| Landing page | https://data.gov.au/data/dataset/act-state-electoral-boundaries-geoscape-administrative-boundaries |
+| Download used | https://data.gov.au/data/dataset/2ca66004-3669-46f8-8ffc-14e1a05ea170/resource/39eaad81-c5f6-45c5-880f-400e3af0a4d6/download/act_seb_gda2020.zip (NOV26 GDA2020 ESRI) |
+| Status | 5 Legislative Assembly electorates with `SECL_CODE=2` and `EFF_START=20241019` (2023 redistribution; in force from the 2024 ACT election). Older `EFF_END=20241018` rows are **not** used. Names matched to the Parliament current-members table. |
+
+## Licence
+
+**Creative Commons Attribution 4.0 International (CC BY 4.0)** on the data.gov.au dataset page.
+
+Preferred attribution for Adapted Material (quote pattern from Geoscape Administrative Boundaries):
+
+> Incorporates or developed using Administrative Boundaries © Geoscape Australia licensed by the Commonwealth of Australia under Creative Commons Attribution 4.0 International licence (CC BY 4.0).
+
+## robots.txt — data.gov.au
+
+Same host pattern as Stages 7–11: `User-agent: *` / `Disallow: /` in robots.txt; the ACT zip download still returned **HTTP 200** with User-Agent `PolicyDeskAU/1.0` on this date. Dataset page continues to publish the boundaries under CC BY 4.0.
+
+## Attribution (our wording)
+
+> This product (The Policy Desk AU map) incorporates or was developed using Administrative Boundaries © Geoscape Australia licensed by the Commonwealth of Australia under Creative Commons Attribution 4.0 International licence (CC BY 4.0). Simplified by The Policy Desk AU. Australian Capital Territory Legislative Assembly multi-member electorates from the NOV26 GDA2020 Geoscape release (Elections ACT 2023 redistribution; EFF_START 2024-10-19).
