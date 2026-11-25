@@ -1,5 +1,22 @@
 {
  "member_id": "fed-helen-haines",
  "member_name": "Helen Haines",
- "items": []
+ "items": [
+  {
+   "title": "Victoria’s 12-year Labor government is about to end. Could the new premier kick-start a wider Liberal Party redemption?",
+   "source": "The Conversation",
+   "url": "https://theconversation.com/victorias-12-year-labor-government-is-about-to-end-could-the-new-premier-kick-start-a-wider-liberal-party-redemption-296051",
+   "published": "2026-11-22",
+   "verified": false,
+   "licence": "CC BY-ND 4.0"
+  },
+  {
+   "title": "Friday essay: forget Big Brother, propaganda is now a form of hybrid warfare",
+   "source": "The Conversation",
+   "url": "https://theconversation.com/friday-essay-forget-big-brother-propaganda-is-now-a-form-of-hybrid-warfare-294454",
+   "published": "2026-10-29",
+   "verified": false,
+   "licence": "CC BY-ND 4.0"
+  }
+ ]
 }
