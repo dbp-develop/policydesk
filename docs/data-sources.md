@@ -429,8 +429,9 @@ No new download. The overview reuses `data/boundaries/federal_states.json` — t
 | New South Wales | NSW Assembly districts / statewide Council (`nsw_*.json`) |
 | Queensland | QLD Assembly districts (`qld_districts.json`) — unicameral |
 | Western Australia | WA Assembly districts / statewide Council (`wa_*.json`) |
+| South Australia | SA House of Assembly districts / statewide Council (`sa_*.json`) |
 | Federal (control / text list) | Federal House divisions / Senate states |
-| Other states and territories | Outline only — “not listed yet”. No Stage 10+ member or district data is invented. |
+| Other states and territories | Outline only — “not listed yet”. No Stage 11+ member or district data is invented. |
 
 When further jurisdictions are added in later stages, they should be wired the same way: named sourced boundary files + parliament picker entry, then marked live on this overview.
 
@@ -738,3 +739,82 @@ Same host pattern as Stages 7–8: `User-agent: *` / `Disallow: /` in robots.txt
 ## Attribution (our wording)
 
 > This product (The Policy Desk AU map) incorporates or was developed using Administrative Boundaries © Geoscape Australia licensed by the Commonwealth of Australia under Creative Commons Attribution 4.0 International licence (CC BY 4.0). Simplified by The Policy Desk AU. Western Australia Legislative Assembly districts and Legislative Council statewide boundary from the GDA2020 Geoscape release (2023 redistribution, EFF_START 2025-03-08; in force from the 2025 state election).
+
+---
+
+# Data sources — South Australia Parliament (Stage 10)
+
+**Date checked:** 2026-11-25  
+**Checker User-Agent:** `PolicyDeskAU/1.0 (https://policydesk.au)` and browser-compatible `Mozilla/5.0 (compatible; PolicyDeskAU/1.0; +https://policydesk.au) …`  
+**Intended use:** automated fetch of current SA House of Assembly and Legislative Council member facts (name, chamber, electorate or statewide Council region, party, official profile URL). No photos. No biographies. No office addresses or emails.
+
+## 1. robots.txt — www.parliament.sa.gov.au
+
+**URL:** https://www.parliament.sa.gov.au/robots.txt  
+
+**Result on this date:** **HTTP 404** (IIS “resource you are looking for has been removed…”). No Disallow rules were available to parse. `contact-details.parliament.sa.gov.au/robots.txt` and `contact-details-api.parliament.sa.gov.au/robots.txt` also returned SPA HTML rather than a robots file (no usable Disallow rules).
+
+## 2. Copyright / terms — Parliament of South Australia
+
+**Pages checked (common paths):** `/Copyright`, `/copyright`, `/en/Copyright`, `/en/About-Parliament/Copyright-and-Disclaimer`, `/en/About-Parliament/Disclaimer`, `/en/Privacy`, `/en/About-Parliament/Privacy` — all **HTTP 404** on this date.  
+**About Parliament home** and **Members Home** were fetched; no copyright, Creative Commons, or terms-of-use wording was present in the page text on this check.  
+Site search for “copyright” returned historic tabled papers (Copyright Act / Regulations from the 1870s–1880s), not a website reuse policy.
+
+**Members Home** (https://www.parliament.sa.gov.au/en/Members/Members-Home) states the chamber structure (facts, not a licence):
+
+> Each Member of the House of Assembly represents one electorate within the State of South Australia, and is elected for a term of four years. There are 47 electorates in South Australia. Every Member of the Legislative Council represents the whole State, and is elected for a term of eight years. There are 22 Members of the Legislative Council, with half (11) being elected at each election.
+
+## 3. Primary member-list source
+
+| | |
+|---|---|
+| Members Home | https://www.parliament.sa.gov.au/en/Members/Members-Home |
+| Contact lists UI | https://contact-details.parliament.sa.gov.au/ (HA) and `/contact-details-lc` (LC) |
+| Contact-details API (primary fetch) | `https://contact-details-api.parliament.sa.gov.au/api/HAMembersDetails` and `…/LCMembersDetails` |
+| Client config (profile URL prefix) | `https://contact-details.parliament.sa.gov.au/assets/client-config.json` → `memberDetailUrl` = `https://www.parliament.sa.gov.au/Search/Member?type=member&id=` |
+| Cross-check (optional) | `POST https://membersapp.parliament.sa.gov.au/api/members` (current members; includes DOB — **not stored**) |
+| Expected counts | House of Assembly 47; Legislative Council 22 (Parliament number 56 on this fetch) |
+
+Party abbreviations on the HA contact list (`ALP`, `Liberal`, …) are expanded using `HAPartyRepresentation` full names and LC list labels (`Australian Labor Party`, `Liberal Party`, `Pauline Hanson's One Nation`, `Greens SA`, `Family First Party`, `Independent`).
+
+Facts stored per member: preferred or given name + surname, chamber, Assembly electorate or Council region `South Australia`, party, official profile URL, source. Unknown fields = null. **Addresses, emails, phones, dates of birth, qualifications and biographies are not stored.**
+
+## 4. Verdicts (evidence only — no legal inference)
+
+**(a) robots.txt:** no usable robots file (HTTP 404 / SPA HTML). Live API fetch of HA/LC contact-details JSON returned **HTTP 200** with the PolicyDesk-identifying UA on this date.  
+**(b) automated access:** no website copyright/terms page was found that mentions scraping.  
+**(c) reusing member names, parties and seats (facts only):** no quoted reuse licence was found on parliament.sa.gov.au on this date. Same class of Stage 15 uncertainty as other parliaments. We store facts only, attribute Parliament of South Australia, and **do not** copy addresses, biographies, or portraits into the repo.
+
+---
+
+# Data sources — South Australia electoral boundaries (Stage 10)
+
+**Date checked:** 2026-11-25  
+**Checker User-Agent:** `PolicyDeskAU/1.0 (https://policydesk.au)`  
+**Intended use:** download SA House of Assembly district boundaries and the statewide Legislative Council polygon for the map; simplify; publish as static SVG-path JSON.
+
+## Dataset
+
+| | Geoscape Administrative Boundaries — SA State Electoral Boundaries |
+|---|---|
+| Title | SA State Electoral Boundaries — Geoscape Administrative Boundaries |
+| Publisher | Geoscape Australia / Commonwealth of Australia (data.gov.au) |
+| Landing page | https://data.gov.au/data/dataset/sa-state-electoral-boundaries |
+| Download used | https://data.gov.au/data/dataset/e9fb5d4f-8117-4aa9-8481-6e06ee9f1fae/resource/53877cb5-22a4-421c-8d7d-247cef749f7f/download/sa_seb_gda2020.zip (GDA2020 ESRI) |
+| Status | 47 Assembly districts with `EFF_START=20260321` and `SECL_CODE=2` (2026 redistribution; in force from the 21 March 2026 election). One Legislative Council feature with `SECL_CODE=3`, published as `South Australia` to match member region labels. Older `EFF_START=20220319` rows are **not** used. |
+
+## Licence
+
+**Creative Commons Attribution 4.0 International (CC BY 4.0)** on the data.gov.au Administrative Boundaries release (same Geoscape / Commonwealth pattern as NSW, QLD and WA).
+
+Preferred attribution for Adapted Material (quote pattern from Geoscape Administrative Boundaries):
+
+> Incorporates or developed using Administrative Boundaries © Geoscape Australia licensed by the Commonwealth of Australia under Creative Commons Attribution 4.0 International licence (CC BY 4.0).
+
+## robots.txt — data.gov.au
+
+Same host pattern as Stages 7–9: `User-agent: *` / `Disallow: /` in robots.txt; the SA zip download still returned **HTTP 200** with User-Agent `PolicyDeskAU/1.0` on this date. Dataset page continues to publish the boundaries under CC BY 4.0.
+
+## Attribution (our wording)
+
+> This product (The Policy Desk AU map) incorporates or was developed using Administrative Boundaries © Geoscape Australia licensed by the Commonwealth of Australia under Creative Commons Attribution 4.0 International licence (CC BY 4.0). Simplified by The Policy Desk AU. South Australia House of Assembly districts and Legislative Council statewide boundary from the Geoscape GDA2020 release (EFF_START 2026-03-21; in force from the 2026 state election).

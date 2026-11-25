@@ -133,6 +133,32 @@
       mapDesc: "Map of Western Australian electoral boundaries. Use the text list of seats below to choose a seat with a keyboard or screen reader.",
       footerFactsHtml: 'Member facts: <a href="https://www.parliament.wa.gov.au/parliament/memblist.nsf/WAMembers">Parliament of Western Australia</a>. This site is independent and not affiliated with any parliament or party.',
       footerBoundariesHtml: 'Electoral boundaries: Administrative Boundaries © Geoscape Australia, Commonwealth of Australia, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, simplified by us.'
+    },
+    sa: {
+      label: "South Australia",
+      title: "Members of the Parliament of South Australia",
+      lede: "Find your SA MP or MLC. Search by name, party, chamber or electorate.",
+      electionNote: "House of Assembly and Legislative Council. Official websites link to each member’s Parliament of South Australia profile. Council members are elected statewide.",
+      membersUrl: "data/sa/members.json",
+      sourceDefault: "Parliament of South Australia",
+      sourceHref: "https://www.parliament.sa.gov.au/en/Members/Members-Home",
+      profileSr: " on the Parliament of South Australia website",
+      chamber: { lower: "House of Assembly", upper: "Legislative Council" },
+      vacancyChamber: { Assembly: "lower", Council: "upper", lower: "lower", upper: "upper" },
+      layers: { lower: "districts", upper: "state" },
+      boundaryFiles: { districts: "data/boundaries/sa_districts.json", state: "data/boundaries/sa_state.json" },
+      seatLabel: { lower: " District", upper: "" },
+      zoomExtent: "Whole state",
+      zoomMetro: "Adelaide",
+      showMetro: true,
+      mapLower: "Showing the 47 House of Assembly districts.",
+      mapUpper: "Showing South Australia as one area. Legislative Council members are elected statewide.",
+      mapOtherHint: " Choose Legislative Council under Chamber to see the statewide map.",
+      seatFilterLabel: "Electorate or state",
+      seatAllLabel: "All electorates",
+      mapDesc: "Map of South Australian electoral boundaries. Use the text list of seats below to choose a seat with a keyboard or screen reader.",
+      footerFactsHtml: 'Member facts: <a href="https://www.parliament.sa.gov.au/en/Members/Members-Home">Parliament of South Australia</a>. This site is independent and not affiliated with any parliament or party.',
+      footerBoundariesHtml: 'Electoral boundaries: Administrative Boundaries © Geoscape Australia, Commonwealth of Australia, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, simplified by us.'
     }
   };
 
@@ -178,20 +204,22 @@
   /* National overview reuses AEC state/territory shapes (federal_states.json). */
   var OVERVIEW_URL = "data/boundaries/federal_states.json";
   var OVERVIEW_DESC = "Map of Australia. Choose a jurisdiction from the text list below, or tap a live state, to open its electoral boundaries. Keyboard and screen reader users should use the text list.";
-  var OVERVIEW_HINT = "On the Australia view, tap a live state (Victoria, New South Wales, Queensland or Western Australia) or choose Federal from the list. Zoom with + and −, by pinching, or by holding Ctrl and scrolling. Once zoomed in, drag to move the map.";
+  var OVERVIEW_HINT = "On the Australia view, tap a live state (Victoria, New South Wales, Queensland, Western Australia or South Australia) or choose Federal from the list. Zoom with + and −, by pinching, or by holding Ctrl and scrolling. Once zoomed in, drag to move the map.";
   var DETAIL_HINT = "Zoom with + and −, by pinching, or by holding Ctrl and scrolling. Once zoomed in, drag to move the map. Use Australia to return to the national map.";
   var STATE_TO_PARLIAMENT = {
     "Victoria": "vic",
     "New South Wales": "nsw",
     "Queensland": "qld",
-    "Western Australia": "wa"
+    "Western Australia": "wa",
+    "South Australia": "sa"
   };
   var OVERVIEW_LIVE = [
     { key: "federal", label: "Federal (House + Senate)" },
     { key: "vic", label: "Victoria" },
     { key: "nsw", label: "New South Wales" },
     { key: "qld", label: "Queensland" },
-    { key: "wa", label: "Western Australia" }
+    { key: "wa", label: "Western Australia" },
+    { key: "sa", label: "South Australia" }
   ];
 
   var collator = new Intl.Collator("en-AU", { sensitivity: "base" });
@@ -745,6 +773,16 @@
           full[3] * 0.12
         ]);
       }
+      if (parliamentKey === "sa") {
+        // Adelaide metro is east / south-east of the statewide viewBox (not SE like NSW/QLD).
+        // Metro district union ~[7885,8252]–[8152,8876] of viewBox [0,0,10000,11609].
+        return setViewBox([
+          full[0] + full[2] * 0.72,
+          full[1] + full[3] * 0.65,
+          full[2] * 0.18,
+          full[3] * 0.20
+        ]);
+      }
       var upper = upperLayer();
       if (!upper || !boundaries[upper]) return setViewBox(full);
       var metro = boundaries[upper].features.filter(function (f) { return METRO.test(f.name); });
@@ -775,7 +813,7 @@
     detailKey = key;
     els.mapDetail.replaceChildren();
     els.mapDetail.appendChild(el("p", "meta",
-      "Australia overview. Live on The Policy Desk AU today: Federal, Victoria, New South Wales, Queensland, and Western Australia. " +
+      "Australia overview. Live on The Policy Desk AU today: Federal, Victoria, New South Wales, Queensland, Western Australia, and South Australia. " +
       "Tap a live state, choose Federal from the list, or use the Parliament menu. Other states and territories will appear when their stage is built."));
     var current = PARLIAMENTS[parliamentKey];
     if (current) {
@@ -843,7 +881,7 @@
       p.classList.toggle("is-current", current);
     });
     els.mapLayer.textContent =
-      "Showing Australia. Live jurisdictions: Federal, Victoria, New South Wales, Queensland, and Western Australia. " +
+      "Showing Australia. Live jurisdictions: Federal, Victoria, New South Wales, Queensland, Western Australia, and South Australia. " +
       "Other states and territories are outlines only until their stage is ready.";
 
     var items = OVERVIEW_LIVE.slice();

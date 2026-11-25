@@ -19,6 +19,7 @@ Usage:
   python3 scripts/build_photos_socials.py --parliament nsw
   python3 scripts/build_photos_socials.py --parliament qld
   python3 scripts/build_photos_socials.py --parliament wa
+  python3 scripts/build_photos_socials.py --parliament sa
 """
 
 from __future__ import annotations
@@ -110,6 +111,20 @@ PARLIAMENTS = {
         "review_title": "Stage 9 review: photo and social matches (Western Australia)",
         "check_label": "WA seat",
     },
+    "sa": {
+        "members": ROOT / "data" / "sa" / "members.json",
+        "list_pages": {
+            "lower": "https://en.wikipedia.org/wiki/Members_of_the_South_Australian_House_of_Assembly,_2026%E2%80%932030",
+            "upper": "https://en.wikipedia.org/wiki/Members_of_the_South_Australian_Legislative_Council,_2026%E2%80%932030",
+        },
+        "positions": {
+            "Q18220900": "Member of the South Australian House of Assembly",
+            "Q18662245": "Member of the South Australian Legislative Council",
+        },
+        "review": ROOT / "docs" / "review" / "stage10-sa-review.md",
+        "review_title": "Stage 10 review: photo and social matches (South Australia)",
+        "check_label": "SA seat",
+    },
 }
 
 SOCIAL_PROPS = {
@@ -122,7 +137,7 @@ OK_LICENCE = re.compile(
 )
 BAD_CREATOR = re.compile(r"^(unknown|anonymous|unknown author|author unknown)\b", re.I)
 PARLIAMENT_SOURCE = re.compile(
-    r"parliament|parl\.|aph\.gov\.au|nsw\.gov\.au|qld\.gov\.au|wa\.gov\.au", re.I
+    r"parliament|parl\.|aph\.gov\.au|nsw\.gov\.au|qld\.gov\.au|wa\.gov\.au|sa\.gov\.au", re.I
 )
 BAD_LICENCE = re.compile(r"\b(NC|ND)\b")
 THUMB_WIDTH = 240
@@ -398,7 +413,7 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument(
         "--parliament",
-        choices=["vic", "federal", "nsw", "qld", "wa", "all"],
+        choices=["vic", "federal", "nsw", "qld", "wa", "sa", "all"],
         default="all",
         help="which parliament(s) to refresh (default: all)",
     )

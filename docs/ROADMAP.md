@@ -24,8 +24,8 @@ report if a source does not allow reuse.
 | 6 | Federal (House of Representatives + Senate) | ✅ | Handbook API; AEC map; parliament picker; photos + social candidates for owner approval |
 | 7 | New South Wales | ✅ | 93+42 members; Geoscape districts; LC statewide; 63 photos; 31 social candidates awaiting owner approval |
 | 8 | Queensland | ✅ | Unicameral Assembly (93); Geoscape districts; national map live; social candidates awaiting owner approval |
-| 9 | Western Australia | 🔄 | Assembly 59 + Council 37 (statewide); Geoscape districts + LC polygon; national map live; social candidates awaiting owner approval |
-| 10 | South Australia | ⏳ | |
+| 9 | Western Australia | ✅ | Assembly 59 + Council 37 (statewide); Geoscape districts + LC polygon; national map live; social candidates awaiting owner approval |
+| 10 | South Australia | 🔄 | Assembly 47 + Council 22 (statewide); Geoscape districts + LC polygon; national map live; social candidates awaiting owner approval |
 | 11 | Tasmania | ⏳ | Multi-member divisions |
 | 12 | Australian Capital Territory | ⏳ | Unicameral, multi-member |
 | 13 | Northern Territory | ⏳ | Unicameral |
@@ -52,5 +52,8 @@ report if a source does not allow reuse.
 - Parliament of Queensland: materials not under Creative Commons (Copyright Act;
   fair dealing / permission path); website text separately CC BY-NC-ND 3.0 AU
   (see `docs/data-sources.md` QLD section). Facts-only store; same Stage 15 decision.
-- `docs/data-sources.md` covers Vic, Federal, NSW, QLD, boundaries, news, photos/socials.
+- `docs/data-sources.md` covers Vic, Federal, NSW, QLD, WA, SA, boundaries, news, photos/socials.
   Keep it current when sources change.
+- Parliament of South Australia: no dedicated website copyright/terms page found on
+  2026-11-25 (see `docs/data-sources.md` SA section). Facts-only store; same Stage 15
+  compliance decision.
