@@ -2,6 +2,12 @@
 (function () {
   "use strict";
 
+  function httpsUrl(url) {
+    return typeof url === "string" && /^https:\/\//.test(url);
+  }
+
+  var loadGeneration = 0;
+
   var PARLIAMENTS = {
     vic: {
       label: "Victoria",
@@ -420,7 +426,7 @@
     body.appendChild(el("p", "meta", r.seat + " · " + chamberLabel(r.chamber)));
     if (r.vacant) body.appendChild(el("p", "meta", "Vacancy recorded by The Policy Desk AU; official source not yet linked."));
 
-    if (r.url && /^https:\/\//.test(r.url)) {
+    if (httpsUrl(r.url)) {
       var a = el("a", "profile", "Official website");
       a.href = r.url;
       var sr = el("span", "visually-hidden", " for " + r.name + cfg.profileSr);
@@ -432,7 +438,7 @@
       var sp = el("p", "socials");
       [["x", "X"], ["facebook", "Facebook"], ["instagram", "Instagram"]].forEach(function (k) {
         var u = soc.links[k[0]];
-        if (u && /^https:\/\//.test(u)) {
+        if (httpsUrl(u)) {
           var sa = el("a", null, k[1]);
           sa.href = u;
           sa.appendChild(el("span", "visually-hidden", " (" + r.name + ")"));
@@ -444,14 +450,22 @@
     if (photo) {
       var cr = el("p", "photo-credit");
       cr.appendChild(document.createTextNode("Photo (resized): " + photo.creator + ", "));
-      var la = el("a", null, photo.licence);
-      if (photo.licence_url && /^https?:\/\//.test(photo.licence_url)) la.href = photo.licence_url;
-      cr.appendChild(la);
+      if (httpsUrl(photo.licence_url)) {
+        var la = el("a", null, photo.licence);
+        la.href = photo.licence_url;
+        cr.appendChild(la);
+      } else {
+        cr.appendChild(document.createTextNode(photo.licence));
+      }
       cr.appendChild(document.createTextNode(", "));
-      var ca = el("a", null, "Wikimedia Commons");
-      ca.href = photo.commons_url;
-      ca.appendChild(el("span", "visually-hidden", " (photo of " + r.name + ")"));
-      cr.appendChild(ca);
+      if (httpsUrl(photo.commons_url)) {
+        var ca = el("a", null, "Wikimedia Commons");
+        ca.href = photo.commons_url;
+        ca.appendChild(el("span", "visually-hidden", " (photo of " + r.name + ")"));
+        cr.appendChild(ca);
+      } else {
+        cr.appendChild(document.createTextNode("Wikimedia Commons"));
+      }
       body.appendChild(cr);
     }
     var n = !r.vacant && newsIndex && newsIndex.counts ? newsIndex.counts[r.id] : 0;
@@ -480,14 +494,14 @@
       .then(function (doc) {
         list.replaceChildren();
         (doc.items || []).forEach(function (i) {
-          if (!/^https:\/\//.test(i.url)) return;
+          if (!httpsUrl(i.url)) return;
           var li = el("li", "news-item");
           var a = el("a", null, i.title);
           a.href = i.url;
           li.appendChild(a);
           li.appendChild(el("p", "meta", i.source + " · " + formatDate(i.published)));
           if (!i.verified) {
-            li.appendChild(el("p", "news-flag", "Unverified match: the name is in the article text, not the headline or summary."));
+            li.appendChild(el("p", "news-flag", "Unverified match: the name is in the article text together with the member's electorate or region, not in the headline or summary."));
           }
           list.appendChild(li);
         });
@@ -569,6 +583,7 @@
   }
 
   function load(data) {
+    if (!data || data.parliament !== parliamentKey) return;
     var members = (data.members || []).map(function (m) {
       return {
         id: m.id,
@@ -600,7 +615,8 @@
     els.dataLine.appendChild(document.createTextNode(
       "Data as of " + formatDate(data.last_updated) + ", source: "));
     var src = el("a", null, data.source || cfg.sourceDefault);
-    src.href = data.source_url || cfg.sourceHref;
+    var sourceHref = httpsUrl(data.source_url) ? data.source_url : cfg.sourceHref;
+    if (httpsUrl(sourceHref)) src.href = sourceHref;
     els.dataLine.appendChild(src);
     els.dataLine.appendChild(document.createTextNode("."));
 
@@ -636,17 +652,26 @@
       els.mapCredit.replaceChildren();
     }
     els.dataLine.textContent = "Loading data…";
+    var generation = ++loadGeneration;
     fetch(cfg.membersUrl, { cache: "no-cache" })
       .then(function (r) {
+        if (generation !== loadGeneration) return null;
         if (!r.ok) throw new Error("HTTP " + r.status);
         return r.json();
       })
-      .then(load)
+      .then(function (data) {
+        if (generation !== loadGeneration || data == null) return;
+        load(data);
+      })
       .catch(function () {
+        if (generation !== loadGeneration) return;
         els.dataLine.textContent = "Sorry, the member list could not be loaded. Please try again later.";
       });
     if (view === "map" && mapMode === "detail") {
-      loadBoundaries().then(function () { if (boundaries) render(); });
+      loadBoundaries(generation).then(function () {
+        if (generation !== loadGeneration) return;
+        if (boundaries) render();
+      });
     } else if (view === "map" && mapMode === "overview") {
       render();
     }
@@ -669,7 +694,12 @@
   var overviewDrawn = false;
 
   function setMapCredit(d) {
-    function link(text, href) { var a = el("a", null, text); a.href = href; return a; }
+    function link(text, href) {
+      if (!httpsUrl(href)) return document.createTextNode(text);
+      var a = el("a", null, text);
+      a.href = href;
+      return a;
+    }
     function txt(t) { return document.createTextNode(t); }
     els.mapCredit.replaceChildren(
       txt(d.credit || ("Electoral boundaries: " + (d.source || "") + ". ")),
@@ -696,21 +726,25 @@
     return overviewPromise;
   }
 
-  function loadBoundaries() {
+  function loadBoundaries(generation) {
     if (!boundaryPromise) {
       var files = cfg.boundaryFiles;
       var keys = Object.keys(files);
       boundaryPromise = Promise.all(keys.map(function (k) {
-        return fetch(files[k]).then(function (r) {
+        return fetch(files[k], { cache: "no-cache" }).then(function (r) {
+          if (generation !== loadGeneration) return null;
           if (!r.ok) throw new Error("HTTP " + r.status);
           return r.json();
         });
       })).then(function (docs) {
+        if (generation !== loadGeneration) return;
+        if (!docs || docs.some(function (d) { return !d; })) return;
         boundaries = {};
         keys.forEach(function (k, i) { boundaries[k] = docs[i]; });
         setMapCredit(docs[0]);
         els.mapStatus.textContent = "";
       }).catch(function () {
+        if (generation !== loadGeneration) return;
         boundaryPromise = null;
         els.mapStatus.textContent = "Sorry, the map could not be loaded. The list view still works.";
         if (els.mapHint) els.mapHint.hidden = true;
@@ -1259,11 +1293,11 @@
       if (!idx) return;
       newsIndex = idx;
       var c = document.getElementById("news-credit");
-      if (c && /^https:\/\//.test(idx.source_url) && /^https:\/\//.test(idx.licence_url)) {
+      if (c && httpsUrl(idx.source_url) && httpsUrl(idx.licence_url)) {
         var src = el("a", null, idx.source); src.href = idx.source_url;
         var lic = el("a", null, idx.licence); lic.href = idx.licence_url;
         c.replaceChildren(document.createTextNode("Headlines from "), src, document.createTextNode(" ("), lic,
-          document.createTextNode("), matched by exact full name with parliament context and checked daily. " +
+          document.createTextNode("), matched by exact full name in the headline or with the member's electorate, and checked daily. " +
             "We show the headline, date and link only."));
       }
       if (rows.length) render();

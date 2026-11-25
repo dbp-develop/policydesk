@@ -7,8 +7,9 @@ import json
 import re
 import sys
 import unicodedata
-from datetime import date, datetime, timezone
 from pathlib import Path
+
+import guards
 
 ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "data" / "vic_official.json"
@@ -50,12 +51,7 @@ def unique_id(name: str, used: set[str]) -> str:
 
 
 def iso_date(value: str | None) -> str:
-    if value:
-        try:
-            return datetime.fromisoformat(value.replace("Z", "+00:00")).date().isoformat()
-        except ValueError:
-            pass
-    return date.today().isoformat()
+    return guards.iso_date(value)
 
 
 def party_short(party: str) -> str:
@@ -120,15 +116,30 @@ def main() -> int:
 
     official = json.loads(SRC.read_text(encoding="utf-8"))
     vacancies = load_vacancies()
-    last_updated = iso_date(official.get("fetched_at"))
+    try:
+        last_updated = iso_date(official.get("fetched_at"))
+    except ValueError as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
+        return 1
     used_ids: set[str] = set()
     members = [
         transform(m, used_ids, last_updated) for m in official.get("members") or []
     ]
     members.sort(key=lambda m: ((m.get("name") or "").lower(), m.get("chamber") or ""))
 
+    problem = guards.member_build_error("vic", members, vacancies)
+    if problem:
+        print(problem)
+        if problem.startswith("VACANCY FILLED:"):
+            print(
+                "A human must edit the vacancy file in the same change as the new member. "
+                "members.json was not written."
+            )
+        return 1
+
     payload = {
         "source": "Parliament of Victoria",
+        "source_url": "https://www.parliament.vic.gov.au/members/",
         "parliament": "vic",
         "last_updated": last_updated,
         "vacancies": vacancies,

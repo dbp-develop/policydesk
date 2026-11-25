@@ -25,6 +25,8 @@ import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 
+import guards
+
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "data" / "vic_raw.json"
 
@@ -50,7 +52,7 @@ def http_get_json(url: str, params: dict, accept: str = "application/json") -> d
     for attempt in range(1, 4):
         try:
             with urllib.request.urlopen(req, timeout=90) as resp:
-                return json.loads(resp.read().decode("utf-8"))
+                return json.loads(guards.read_checked(resp, full).decode("utf-8"))
         except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as err:
             last_err = err
             print(f"  attempt {attempt}/3 failed: {err}", file=sys.stderr)

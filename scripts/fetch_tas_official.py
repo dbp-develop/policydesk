@@ -36,6 +36,8 @@ import zipfile
 from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
+
+import guards
 from xml.etree import ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -92,7 +94,7 @@ def http_get(url: str) -> bytes:
     for attempt in range(1, 4):
         try:
             with urllib.request.urlopen(req, timeout=120) as resp:
-                body = resp.read()
+                body = guards.read_checked(resp, url)
                 head = body[:900].lower()
                 if b"just a moment" in head or b"cf-mitigated" in head or b"challenge-platform" in head:
                     raise RuntimeError(
@@ -187,7 +189,7 @@ def read_xlsx_rows(data: bytes) -> list[dict[str, str]]:
     from io import BytesIO
 
     with zipfile.ZipFile(BytesIO(data)) as zf:
-        root = ET.fromstring(zf.read("xl/sharedStrings.xml"))
+        root = ET.fromstring(guards.read_zip_member(zf, "xl/sharedStrings.xml"))
         ns = {"m": "http://schemas.openxmlformats.org/spreadsheetml/2006/main"}
         strings: list[str] = []
         for si in root.findall("m:si", ns):
@@ -198,7 +200,7 @@ def read_xlsx_rows(data: bytes) -> list[dict[str, str]]:
                 )
             ]
             strings.append("".join(texts))
-        sheet = ET.fromstring(zf.read("xl/worksheets/sheet1.xml"))
+        sheet = ET.fromstring(guards.read_zip_member(zf, "xl/worksheets/sheet1.xml"))
         rows: list[dict[str, str]] = []
         for row in sheet.findall("m:sheetData/m:row", ns):
             cells: dict[str, str] = {}
@@ -268,10 +270,12 @@ def load_profile(args: argparse.Namespace, chamber: str, url: str) -> str:
     if args.from_dir:
         path = Path(args.from_dir) / profile_filename(chamber, url)
         if not path.exists():
-            # Some list slugs differ from filename (e.g. jenna-butler vs Jen Butler).
+            # A mismatched slug is an error. Do not open a different HTML file:
+            # that would attach another member's profile. The count is only for the message.
             alt = list(Path(args.from_dir).glob(f"member-{'ha' if chamber == 'Assembly' else 'lc'}-*.html"))
             raise FileNotFoundError(
-                f"missing {path} (have {len(alt)} profile HTML files in --from-dir)"
+                f"missing {path} (have {len(alt)} profile HTML files in --from-dir; "
+                "save this profile under the expected filename)"
             )
         return path.read_text(encoding="utf-8", errors="replace")
     time.sleep(REQUEST_DELAY_SEC)
@@ -405,6 +409,11 @@ def main() -> int:
         ),
         "members": members,
     }
+    try:
+        guards.assert_profile_urls(members, guards.HOSTS["tas"])
+    except RuntimeError as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
+        return 1
     OUT.write_text(
         json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
     )

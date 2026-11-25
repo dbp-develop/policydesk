@@ -8,6 +8,8 @@ import re
 import sys
 from pathlib import Path
 
+import guards
+
 ROOT = Path(__file__).resolve().parents[1]
 OK_LICENCE = re.compile(r"^(CC0( 1\.0)?|Public domain|CC BY(-SA)? \d\.\d( [A-Za-z\-]+)?)$", re.I)
 PHOTO_KEYS = {"file", "commons_url", "creator", "licence", "licence_url", "local_path", "source"}
@@ -50,8 +52,11 @@ def main() -> int:
             errors.append(f"{mid}: licence not allowed: {p['licence']}")
         if not p["creator"] or re.match(r"^(unknown|anonymous)", p["creator"], re.I):
             errors.append(f"{mid}: missing or unknown creator")
-        if p["licence"].startswith("CC BY") and not (p["licence_url"] or "").startswith(("http://", "https://")):
-            errors.append(f"{mid}: CC BY licence needs a licence link")
+        if p["licence"].startswith("CC BY") and not (p["licence_url"] or "").startswith("https://"):
+            errors.append(f"{mid}: CC BY licence needs an https licence link")
+        needle = guards.deed_needle(p["licence"])
+        if needle and needle not in (p.get("licence_url") or "").lower():
+            errors.append(f"{mid}: licence URL does not match {p['licence']}")
         if not p["commons_url"].startswith("https://commons.wikimedia.org/wiki/File:"):
             errors.append(f"{mid}: bad Commons link")
         f = ROOT / p["local_path"]

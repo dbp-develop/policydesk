@@ -1,6 +1,7 @@
 name: Yearly boundary check
 
-# Checks once a year whether the VEC has published new electoral boundaries.
+# Checks once a year whether Victoria, federal, NSW, Queensland, WA, SA,
+# Tasmania, ACT or NT electoral boundaries have a newer published file.
 # If something changed, or the check itself fails, it opens one GitHub issue
 # (never a duplicate) so the owner gets an email.
 # Note: GitHub pauses scheduled workflows after 60 days with no repo activity.
@@ -18,9 +19,9 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
           python-version: "3.12"
 

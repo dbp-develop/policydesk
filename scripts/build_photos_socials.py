@@ -39,6 +39,8 @@ import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 
+import guards
+
 ROOT = Path(__file__).resolve().parents[1]
 UA = "PolicyDeskAU/1.0 (https://policydesk.au)"
 DELAY = 1.0
@@ -187,7 +189,7 @@ THUMB_WIDTH = 240
 _last = [0.0]
 
 
-def get(url: str, binary: bool = False):
+def get(url: str, binary: bool = False, extra_hosts: tuple[str, ...] = ()):
     wait = DELAY - (time.time() - _last[0])
     if wait > 0:
         time.sleep(wait)
@@ -196,7 +198,7 @@ def get(url: str, binary: bool = False):
         try:
             with urllib.request.urlopen(req, timeout=60) as r:
                 _last[0] = time.time()
-                body = r.read()
+                body = guards.read_checked(r, url, extra_hosts=extra_hosts)
                 return (
                     (body, r.headers.get("content-type", ""), r.url)
                     if binary
@@ -384,15 +386,13 @@ def process_parliament(key: str, photos: dict, socials: dict) -> tuple[list[dict
                 f"({lic['source_text'][:80]})"
             )
             continue
-        gi = good_i[0]
-        lic_name = lic["licences"][gi]
-        lic_url = lic["licence_urls"][gi] if gi < len(lic["licence_urls"]) else None
-        if not lic_url and lic_name.lower().startswith(("cc0", "public domain")):
-            lic_url = (
-                "https://creativecommons.org/publicdomain/zero/1.0/"
-                if lic_name.lower().startswith("cc0")
-                else None
-            )
+        lic_name = lic["licences"][good_i[0]]
+        lic_url = guards.url_for_licence(lic_name, lic["licence_urls"])
+        if lic_name.lower().startswith("cc by") and not (
+            lic_url and lic_url.startswith("https://")
+        ):
+            row["photo"] = f"rejected: no matching deed URL for {lic_name}"
+            continue
         body = ctype = None
         for width in (THUMB_WIDTH, 160):
             try:
@@ -401,6 +401,7 @@ def process_parliament(key: str, photos: dict, socials: dict) -> tuple[list[dict
                     + urllib.parse.quote(imgs[0].replace(" ", "_"))
                     + f"?width={width}",
                     binary=True,
+                    extra_hosts=("upload.wikimedia.org",),
                 )
             except Exception as e:  # noqa: BLE001
                 body = None
@@ -443,7 +444,13 @@ def process_parliament(key: str, photos: dict, socials: dict) -> tuple[list[dict
     for r in report:
         q = f"[{r['qid']}](https://www.wikidata.org/wiki/{r['qid']})" if r["qid"] else "—"
         lines.append(
-            f"| {r['name']} | {q} | {r['check']} | {r['photo']} | {r['socials'] or '—'} |"
+            "| {name} | {q} | {check} | {photo} | {socials} |".format(
+                name=guards.md_cell(r["name"]),
+                q=q,
+                check=guards.md_cell(r["check"]),
+                photo=guards.md_cell(r["photo"]),
+                socials=guards.md_cell(r["socials"]) if r["socials"] else "—",
+            )
         )
     cfg["review"].parent.mkdir(parents=True, exist_ok=True)
     cfg["review"].write_text("\n".join(lines) + "\n", encoding="utf-8")

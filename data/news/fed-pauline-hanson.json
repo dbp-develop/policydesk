@@ -3,44 +3,13 @@
  "member_name": "Pauline Hanson",
  "items": [
   {
-   "title": "Politics with Michelle Grattan: Barnaby Joyce on being part of changing the political agenda",
-   "source": "The Conversation",
-   "url": "https://theconversation.com/politics-with-michelle-grattan-barnaby-joyce-on-being-part-of-changing-the-political-agenda-297393",
-   "published": "2026-11-25",
-   "verified": false,
-   "licence": "CC BY-ND 4.0"
-  },
-  {
-   "title": "Energy and climate have been overlooked at Victoria’s election – but there’s a lot at stake",
-   "source": "The Conversation",
-   "url": "https://theconversation.com/energy-and-climate-have-been-overlooked-at-victorias-election-but-theres-a-lot-at-stake-295871",
-   "published": "2026-11-24",
-   "verified": false,
-   "licence": "CC BY-ND 4.0"
-  },
-  {
-   "title": "Victoria’s 12-year Labor government is about to end. Could the new premier kick-start a wider Liberal Party redemption?",
-   "source": "The Conversation",
-   "url": "https://theconversation.com/victorias-12-year-labor-government-is-about-to-end-could-the-new-premier-kick-start-a-wider-liberal-party-redemption-296051",
-   "published": "2026-11-22",
-   "verified": false,
-   "licence": "CC BY-ND 4.0"
-  },
-  {
-   "title": "Albanese’s ratings plunge to new low in Newspoll; Victorian Coalition set to win election",
-   "source": "The Conversation",
-   "url": "https://theconversation.com/albaneses-ratings-plunge-to-new-low-in-newspoll-victorian-coalition-set-to-win-election-297157",
-   "published": "2026-11-22",
-   "verified": false,
-   "licence": "CC BY-ND 4.0"
-  },
-  {
    "title": "Friday essay: nostalgia or neoliberal collapse? – John Birmingham investigates Pauline Hanson’s appeal",
    "source": "The Conversation",
    "url": "https://theconversation.com/friday-essay-nostalgia-or-neoliberal-collapse-john-birmingham-investigates-pauline-hansons-appeal-295662",
    "published": "2026-11-19",
    "verified": true,
-   "licence": "CC BY-ND 4.0"
+   "licence": "CC BY-ND 4.0",
+   "match_reason": "headline"
   }
  ]
 }

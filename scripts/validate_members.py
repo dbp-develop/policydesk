@@ -17,6 +17,7 @@ PARLIAMENTS = {
         "lower_label": "Assembly",
         "upper_label": "Council",
         "vacancy_lower": {"Assembly", "lower"},
+        "vacancy_upper": {"Council", "upper"},
     },
     "federal": {
         "path": ROOT / "data" / "federal" / "members.json",
@@ -25,6 +26,7 @@ PARLIAMENTS = {
         "lower_label": "House",
         "upper_label": "Senate",
         "vacancy_lower": {"House", "lower"},
+        "vacancy_upper": {"Senate", "upper"},
     },
     "nsw": {
         "path": ROOT / "data" / "nsw" / "members.json",
@@ -33,6 +35,7 @@ PARLIAMENTS = {
         "lower_label": "Assembly",
         "upper_label": "Council",
         "vacancy_lower": {"Assembly", "lower"},
+        "vacancy_upper": {"Council", "upper"},
     },
     "qld": {
         "path": ROOT / "data" / "qld" / "members.json",
@@ -41,6 +44,7 @@ PARLIAMENTS = {
         "lower_label": "Assembly",
         "upper_label": "Council",
         "vacancy_lower": {"Assembly", "lower"},
+        "vacancy_upper": {"Council", "upper"},
         "unicameral": True,
     },
     "wa": {
@@ -50,6 +54,7 @@ PARLIAMENTS = {
         "lower_label": "Assembly",
         "upper_label": "Council",
         "vacancy_lower": {"Assembly", "lower"},
+        "vacancy_upper": {"Council", "upper"},
     },
     "sa": {
         "path": ROOT / "data" / "sa" / "members.json",
@@ -58,6 +63,7 @@ PARLIAMENTS = {
         "lower_label": "Assembly",
         "upper_label": "Council",
         "vacancy_lower": {"Assembly", "lower"},
+        "vacancy_upper": {"Council", "upper"},
     },
     "tas": {
         "path": ROOT / "data" / "tas" / "members.json",
@@ -66,6 +72,7 @@ PARLIAMENTS = {
         "lower_label": "Assembly",
         "upper_label": "Council",
         "vacancy_lower": {"Assembly", "lower"},
+        "vacancy_upper": {"Council", "upper"},
     },
     "act": {
         "path": ROOT / "data" / "act" / "members.json",
@@ -74,6 +81,7 @@ PARLIAMENTS = {
         "lower_label": "Assembly",
         "upper_label": "Council",
         "vacancy_lower": {"Assembly", "lower"},
+        "vacancy_upper": {"Council", "upper"},
         "unicameral": True,
     },
     "nt": {
@@ -83,6 +91,7 @@ PARLIAMENTS = {
         "lower_label": "Assembly",
         "upper_label": "Council",
         "vacancy_lower": {"Assembly", "lower"},
+        "vacancy_upper": {"Council", "upper"},
         "unicameral": True,
     },
 }
@@ -117,6 +126,9 @@ def validate_one(key: str, cfg: dict, errors: list[str]) -> None:
     lower_vacancies = [
         v for v in vacancies if v.get("chamber") in cfg["vacancy_lower"]
     ]
+    upper_vacancies = [
+        v for v in vacancies if v.get("chamber") in cfg["vacancy_upper"]
+    ]
 
     if len(lower) + len(lower_vacancies) != cfg["lower"]:
         fail(
@@ -124,9 +136,10 @@ def validate_one(key: str, cfg: dict, errors: list[str]) -> None:
             f"{len(lower)} + {len(lower_vacancies)} != {cfg['lower']}",
             errors,
         )
-    if len(upper) != cfg["upper"]:
+    if len(upper) + len(upper_vacancies) != cfg["upper"]:
         fail(
-            f"{key}: {cfg['upper_label']} members = {len(upper)} != {cfg['upper']}",
+            f"{key}: {cfg['upper_label']} members + vacancies = "
+            f"{len(upper)} + {len(upper_vacancies)} != {cfg['upper']}",
             errors,
         )
 
@@ -161,13 +174,17 @@ def validate_one(key: str, cfg: dict, errors: list[str]) -> None:
         f"{key}: members={len(members)} "
         f"(lower={len(lower)}, upper={len(upper)}); "
         f"vacancies={len(vacancies)} "
-        f"({cfg['lower_label']} vacancies={len(lower_vacancies)})"
+        f"({cfg['lower_label']} vacancies={len(lower_vacancies)}, "
+        f"{cfg['upper_label']} vacancies={len(upper_vacancies)})"
     )
     print(
         f"  {cfg['lower_label']} fill: {len(lower)} + {len(lower_vacancies)} = "
         f"{len(lower) + len(lower_vacancies)} / {cfg['lower']}"
     )
-    print(f"  {cfg['upper_label']} fill: {len(upper)} / {cfg['upper']}")
+    print(
+        f"  {cfg['upper_label']} fill: {len(upper)} + {len(upper_vacancies)} = "
+        f"{len(upper) + len(upper_vacancies)} / {cfg['upper']}"
+    )
 
 
 def main() -> int:

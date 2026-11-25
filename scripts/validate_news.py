@@ -22,25 +22,29 @@ MEMBER_FILES = [
     ROOT / "data" / "nt" / "members.json",
 ]
 
-ITEM_KEYS = {"title", "source", "url", "published", "verified", "licence"}
+ITEM_KEYS = {"title", "source", "url", "published", "verified", "match_reason", "licence"}
 SOURCES = {"The Conversation": ("https://theconversation.com/", "CC BY-ND 4.0")}
 MAX_ITEMS = 5
 DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
 
-def load_ids() -> dict[str, str]:
-    ids: dict[str, str] = {}
+def load_members() -> dict[str, dict]:
+    members: dict[str, dict] = {}
     for path in MEMBER_FILES:
         if not path.exists():
             continue
         for m in json.loads(path.read_text(encoding="utf-8"))["members"]:
-            ids[m["id"]] = m["name"]
-    return ids
+            members[m["id"]] = {
+                "name": m["name"],
+                "seat": m.get("electorate") or m.get("region") or "",
+            }
+    return members
 
 
 def main() -> int:
     errors: list[str] = []
-    ids = load_ids()
+    members = load_members()
+    ids = {mid: m["name"] for mid, m in members.items()}
     if not ids:
         print("ERROR: no members found", file=sys.stderr)
         return 1
@@ -100,6 +104,19 @@ def main() -> int:
                 errors.append(f"{mid}: suspicious title {i['title'][:60]!r}")
             if not isinstance(i["verified"], bool):
                 errors.append(f"{mid}: verified must be true/false")
+            # An unverified title is stored only when the electorate or region
+            # was the reason for the match (recorded as match_reason).
+            if i["verified"] is False:
+                if i.get("match_reason") != "electorate":
+                    errors.append(
+                        f"{mid}: unverified item stored without an electorate match"
+                    )
+                elif not members.get(mid, {}).get("seat"):
+                    errors.append(
+                        f"{mid}: unverified item but member has no electorate or region"
+                    )
+            elif i.get("match_reason") != "headline":
+                errors.append(f"{mid}: verified item missing headline match_reason")
             total += 1
             verified += i["verified"] is True
 
