@@ -1,6 +1,6 @@
 {
  "source": "Wikimedia Commons (via Wikidata, matched through Wikipedia member lists)",
- "generated_at": "2026-11-25T02:51:19+00:00",
+ "generated_at": "2026-11-25T03:30:27+00:00",
  "photos": {
   "aiv-puglielli": {
    "file": "Aiv Puglielli.png",
@@ -3313,6 +3313,42 @@
    "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
    "local_path": "images/members/act-yvette-berry.png",
    "source": "Wikimedia Commons via Wikidata Q8062355"
+  },
+  "nt-lia-finocchiaro": {
+   "file": "Lia Finocchiaro Profile.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Lia_Finocchiaro_Profile.jpg",
+   "creator": "Adam Hasa",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/nt-lia-finocchiaro.jpg",
+   "source": "Wikimedia Commons via Wikidata Q6539377"
+  },
+  "nt-robyn-cahill": {
+   "file": "Robyn Cahill at the Australia–ASEAN Business Forum 2025 - 06.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Robyn_Cahill_at_the_Australia%E2%80%93ASEAN_Business_Forum_2025_-_06.jpg",
+   "creator": "Yu Chu Chin",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/nt-robyn-cahill.jpg",
+   "source": "Wikimedia Commons via Wikidata Q129680747"
+  },
+  "nt-selena-uibo": {
+   "file": "SelenaUibo2025.png",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:SelenaUibo2025.png",
+   "creator": "Sahaz1505",
+   "licence": "CC0",
+   "licence_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "local_path": "images/members/nt-selena-uibo.png",
+   "source": "Wikimedia Commons via Wikidata Q26721593"
+  },
+  "nt-tanzil-rahman": {
+   "file": "Tanzilrahman (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Tanzilrahman_%28cropped%29.jpg",
+   "creator": "Rafanrcs",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/nt-tanzil-rahman.jpg",
+   "source": "Wikimedia Commons via Wikidata Q129691943"
   }
  }
 }

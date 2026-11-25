@@ -1045,3 +1045,130 @@ Same host pattern as Stages 7–11: `User-agent: *` / `Disallow: /` in robots.tx
 ## Attribution (our wording)
 
 > This product (The Policy Desk AU map) incorporates or was developed using Administrative Boundaries © Geoscape Australia licensed by the Commonwealth of Australia under Creative Commons Attribution 4.0 International licence (CC BY 4.0). Simplified by The Policy Desk AU. Australian Capital Territory Legislative Assembly multi-member electorates from the NOV26 GDA2020 Geoscape release (Elections ACT 2023 redistribution; EFF_START 2024-10-19).
+
+---
+
+# Data sources — Northern Territory Legislative Assembly (Stage 13)
+
+**Date checked:** 2026-11-25  
+**Checker User-Agent:** `PolicyDeskAU/1.0 (https://policydesk.au)` and a real Chrome browser after Cloudflare.  
+**Intended use:** automated fetch of current NT Legislative Assembly member facts (name, single-member division, party, official profile URL). No photos. No biographies. No office addresses or emails.
+
+## 1. robots.txt — parliament.nt.gov.au
+
+**URL:** https://parliament.nt.gov.au/robots.txt  
+
+Plain `curl` with `PolicyDeskAU/1.0` received **HTTP 403** (Cloudflare “Just a moment…” challenge HTML) for `/robots.txt` and member pages on this check date. The rules below were read in Chrome after the challenge cleared. The saved body is 176 bytes.
+
+**Full robots body as fetched:**
+
+```
+User-agent: *
+Disallow: /?sq_content_src=
+Disallow: /_recache
+Disallow: /_edit
+Disallow: /_admin
+Disallow: /_login
+Disallow: /_performance
+Disallow: /_designs
+Disallow: /search
+```
+
+### `urllib.robotparser` (body above)
+
+```
+can_fetch('PolicyDeskAU', '/members') = True
+can_fetch('PolicyDeskAU', '/members/by-name') = True
+can_fetch('PolicyDeskAU', '/members/by-name/lia-finocchiaro') = True
+can_fetch('PolicyDeskAU', '/disclaimer') = True
+can_fetch('PolicyDeskAU', '/search') = False
+crawl_delay('PolicyDeskAU') = None
+```
+
+**Production fetch note:** robots.txt does **not** Disallow the member list or profile paths for `PolicyDeskAU`. Cloudflare still blocked unattended fetches with that User-Agent on this check date. Stage 13 member data was built from a browser-cleared save (`--from-dir`: `by-name.html` plus `profiles/{slug}.html`). The fetch script tries live URLs and exits with a clear error if Cloudflare blocks.
+
+## 2. Copyright / terms — Legislative Assembly of the Northern Territory
+
+Pages probed and not found (the site’s own “Page Not Found”): `/copyright`, `/privacy`, `/terms`, `/legal`.
+
+The footer link “Copyright, Disclaimer and Privacy” goes to https://parliament.nt.gov.au/disclaimer (last updated 18 May 2017). That is the only copyright/terms page found. The sitemap lists no other legal page.
+
+Quoted from https://parliament.nt.gov.au/disclaimer :
+
+> Copyright in the material which appears on this website is subject to the Copyright Act 1968 (Cth) ("the Act").
+
+> No part of this website may be reproduced or reused for any purpose whatsoever, apart from:
+
+> fair dealing for the purposes of private study, research, criticism or review, as permitted under the Act
+
+> or where expressly provided otherwise.
+
+> Where specific licence terms are applied to any materials on this website, those terms prevail to the extent of any inconsistency with this statement, and end users wishing to rely upon such licence must comply with those terms in all respects.
+
+**Creative Commons:** not mentioned on this page.  
+**Commercial use:** not mentioned beyond the reuse sentence above.  
+**Automated access / scraping / bots:** not mentioned on this page. The only automated-access rules found are the robots.txt Disallow lines above.
+
+## 3. Official member list used
+
+| What | Result on 2026-11-25 |
+|------|----------------------|
+| Intro page | `https://parliament.nt.gov.au/members` — “There are 25 Members of the Legislative Assembly, each representing a single electoral division.” Last updated 10 Sep 2024. The member-card container in the served HTML is empty, so names are not taken from this page. |
+| Current member list | `https://parliament.nt.gov.au/members/by-name` — 25 profile links. “Members of the 15th Assembly were elected at the General Election on 24 August 2024.” Last updated 21 Jul 2026. |
+| Official profile URL | `https://parliament.nt.gov.au/members/by-name/{slug}` (slugs kept as published, including `Ed-Smelt` and `Dheran-Young`) |
+| Party + division | Electorate and Party cells on each profile. Not taken from the by-name page, which lists names only. |
+| Expected counts | 25 members; 25 divisions; one member each. No vacancy on the current list. |
+
+Party cells are stored as printed: Country Liberal Party (17), Territory Labor (6), Independent (2). The page does not print a party abbreviation. Display names drop a leading “Hon” and a trailing “OAM”. The by-name link for Karama uses a curly apostrophe in O’Gallagher; the stored name uses a straight apostrophe, the same form as other O'Brien records.
+
+Facts stored per member: display name, chamber Assembly, division, party, official profile URL, source. Unknown fields = null. **Addresses, emails, phones, ministries and biographies are not stored. Parliament portraits are not copied.**
+
+## 4. Verdicts (evidence only — no legal inference)
+
+**(a) robots.txt:** does **not** Disallow our `PolicyDeskAU` agent for `/members`, `/members/by-name`, or profile paths. `/search` is Disallow.  
+**(b) automated access:** Cloudflare blocked unattended fetches for our UA on this date. The disclaimer page does not mention bots.  
+**(c) reusing member names, parties and divisions (facts only):** the disclaimer says no part of the website may be reproduced or reused apart from fair dealing under the Copyright Act, or where expressly provided otherwise. It does **not** say whether a name, party and division on their own are “material” under that sentence. Same class of Stage 15 uncertainty as Victoria. We store facts only, attribute the Legislative Assembly of the Northern Territory, and **do not** copy addresses, biographies, or portraits into the repo.
+
+---
+
+# Data sources — Northern Territory electoral boundaries (Stage 13)
+
+**Date checked:** 2026-11-25  
+**Checker User-Agent:** `PolicyDeskAU/1.0 (https://policydesk.au)`  
+**Intended use:** download Northern Territory Legislative Assembly division boundaries for the map; simplify; publish as static SVG-path JSON. Keep only divisions named on the current official member list.
+
+## Dataset
+
+| | Geoscape Administrative Boundaries — NT State Electoral Boundaries |
+|---|---|
+| Title | NT State Electoral Boundaries — Geoscape Administrative Boundaries |
+| Publisher | Geoscape Australia / Commonwealth of Australia (data.gov.au) |
+| Landing page | https://data.gov.au/data/dataset/nt-state-electoral-boundaries-geoscape-administrative-boundaries |
+| Download used | https://data.gov.au/data/dataset/19c0bd08-d8c7-42c8-953e-d9d1969f116b/resource/bedb117b-ea60-4842-b428-71d9fc827a29/download/nt_seb_gda2020.zip (NOV26 GDA2020 ESRI) |
+| Catalogue licence | CKAN `license_id` `cc-by-4.0`, `license_title` Creative Commons Attribution 4.0 International |
+| Status | 25 current divisions with `SECL_CODE=2` and `EFF_START=20240824` (empty `EFF_END`). The earlier 25 rows with `EFF_END=20240823` (including Nhulunbuy and Stuart, replaced by Mulka and Gwoja) are **not** used. Names matched to the Assembly profile Electorate cells. |
+
+## Licence
+
+**Creative Commons Attribution 4.0 International (CC BY 4.0)** on the data.gov.au dataset record.
+
+Preferred attribution for Adapted Material (quote pattern from Geoscape Administrative Boundaries):
+
+> Incorporates or developed using Administrative Boundaries © Geoscape Australia licensed by the Commonwealth of Australia under Creative Commons Attribution 4.0 International licence (CC BY 4.0).
+
+## robots.txt — data.gov.au
+
+Fetched 2026-11-25 with User-Agent `PolicyDeskAU/1.0` (HTTP 200). Relevant lines:
+
+```
+User-agent: *
+Disallow: /
+Allow: /data/api/
+```
+
+The NT zip path is under `/data/dataset/…/download/`, which the `Disallow: /` line covers, and it is not under `/data/api/`. The same request still returned **HTTP 200** `application/zip` (656311 bytes). The dataset record publishes the boundaries under CC BY 4.0. Same reuse pattern as Stages 7–12.
+
+## Attribution (our wording)
+
+> This product (The Policy Desk AU map) incorporates or was developed using Administrative Boundaries © Geoscape Australia licensed by the Commonwealth of Australia under Creative Commons Attribution 4.0 International licence (CC BY 4.0). Simplified by The Policy Desk AU. Northern Territory Legislative Assembly divisions from the NOV26 GDA2020 Geoscape release (EFF_START 2024-08-24, in force for the 2024 election).
+

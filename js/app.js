@@ -212,6 +212,33 @@
       mapDesc: "Map of ACT Legislative Assembly electorates. Use the text list of seats below to choose a seat with a keyboard or screen reader.",
       footerFactsHtml: 'Member facts: <a href="https://www.parliament.act.gov.au/members/current">ACT Legislative Assembly</a>. This site is independent and not affiliated with any parliament or party.',
       footerBoundariesHtml: 'Electoral boundaries: Administrative Boundaries © Geoscape Australia, Commonwealth of Australia, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, simplified by us.'
+    },
+    nt: {
+      label: "Northern Territory",
+      title: "Members of the Northern Territory Legislative Assembly",
+      lede: "Find your NT MLA. Search by name, party or division.",
+      electionNote: "The Northern Territory Legislative Assembly is unicameral. Each division elects one member. Official websites link to each member’s parliament.nt.gov.au profile.",
+      membersUrl: "data/nt/members.json",
+      sourceDefault: "Legislative Assembly of the Northern Territory",
+      sourceHref: "https://parliament.nt.gov.au/members/by-name",
+      profileSr: " on the Northern Territory Legislative Assembly website",
+      chamber: { lower: "Legislative Assembly", upper: "Legislative Assembly" },
+      vacancyChamber: { Assembly: "lower", lower: "lower" },
+      layers: { lower: "districts" },
+      boundaryFiles: { districts: "data/boundaries/nt_districts.json" },
+      seatLabel: { lower: " Division", upper: " Division" },
+      zoomExtent: "Whole territory",
+      zoomMetro: "Darwin",
+      showMetro: true,
+      unicameral: true,
+      mapLower: "Showing the 25 Legislative Assembly divisions. Each division elects one member.",
+      mapUpper: "",
+      mapOtherHint: "",
+      seatFilterLabel: "Division",
+      seatAllLabel: "All divisions",
+      mapDesc: "Map of Northern Territory Legislative Assembly divisions. Use the text list of seats below to choose a seat with a keyboard or screen reader.",
+      footerFactsHtml: 'Member facts: <a href="https://parliament.nt.gov.au/members/by-name">Northern Territory Legislative Assembly</a>. This site is independent and not affiliated with any parliament or party.',
+      footerBoundariesHtml: 'Electoral boundaries: Administrative Boundaries © Geoscape Australia, Commonwealth of Australia, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, simplified by us.'
     }
   };
 
@@ -257,7 +284,7 @@
   /* National overview reuses AEC state/territory shapes (federal_states.json). */
   var OVERVIEW_URL = "data/boundaries/federal_states.json";
   var OVERVIEW_DESC = "Map of Australia. Choose a jurisdiction from the text list below, or tap a live state, to open its electoral boundaries. Keyboard and screen reader users should use the text list.";
-  var OVERVIEW_HINT = "On the Australia view, tap a live state or territory (Victoria, New South Wales, Queensland, Western Australia, South Australia, Tasmania or Australian Capital Territory) or choose Federal from the list. Zoom with + and −, by pinching, or by holding Ctrl and scrolling. Once zoomed in, drag to move the map.";
+  var OVERVIEW_HINT = "On the Australia view, tap a live state or territory (Victoria, New South Wales, Queensland, Western Australia, South Australia, Tasmania, Australian Capital Territory or Northern Territory) or choose Federal from the list. Zoom with + and −, by pinching, or by holding Ctrl and scrolling. Once zoomed in, drag to move the map.";
   var DETAIL_HINT = "Zoom with + and −, by pinching, or by holding Ctrl and scrolling. Once zoomed in, drag to move the map. Use Australia to return to the national map.";
   var STATE_TO_PARLIAMENT = {
     "Victoria": "vic",
@@ -266,7 +293,8 @@
     "Western Australia": "wa",
     "South Australia": "sa",
     "Tasmania": "tas",
-    "Australian Capital Territory": "act"
+    "Australian Capital Territory": "act",
+    "Northern Territory": "nt"
   };
   var OVERVIEW_LIVE = [
     { key: "federal", label: "Federal (House + Senate)" },
@@ -276,7 +304,8 @@
     { key: "wa", label: "Western Australia" },
     { key: "sa", label: "South Australia" },
     { key: "tas", label: "Tasmania" },
-    { key: "act", label: "Australian Capital Territory" }
+    { key: "act", label: "Australian Capital Territory" },
+    { key: "nt", label: "Northern Territory" }
   ];
 
   var collator = new Intl.Collator("en-AU", { sensitivity: "base" });
@@ -858,6 +887,16 @@
           full[3] * 0.55
         ]);
       }
+      if (parliamentKey === "nt") {
+        // Darwin / Palmerston urban divisions sit in the north of a tall territory.
+        // Union of those divisions ~[2014,1732]–[2238,1995] of viewBox [0,0,10000,17853].
+        return setViewBox([
+          full[0] + full[2] * 0.19,
+          full[1] + full[3] * 0.09,
+          full[2] * 0.04,
+          full[3] * 0.03
+        ]);
+      }
       var upper = upperLayer();
       if (!upper || !boundaries[upper]) return setViewBox(full);
       var metro = boundaries[upper].features.filter(function (f) { return METRO.test(f.name); });
@@ -888,8 +927,8 @@
     detailKey = key;
     els.mapDetail.replaceChildren();
     els.mapDetail.appendChild(el("p", "meta",
-      "Australia overview. Live on The Policy Desk AU today: Federal, Victoria, New South Wales, Queensland, Western Australia, South Australia, Tasmania, and Australian Capital Territory. " +
-      "Tap a live state or territory, choose Federal from the list, or use the Parliament menu. Other territories will appear when their stage is built."));
+      "Australia overview. Live on The Policy Desk AU today: Federal, Victoria, New South Wales, Queensland, Western Australia, South Australia, Tasmania, Australian Capital Territory, and Northern Territory. " +
+      "Tap a live state or territory, choose Federal from the list, or use the Parliament menu."));
     var current = PARLIAMENTS[parliamentKey];
     if (current) {
       els.mapDetail.appendChild(el("p", "meta",
@@ -956,8 +995,7 @@
       p.classList.toggle("is-current", current);
     });
     els.mapLayer.textContent =
-      "Showing Australia. Live jurisdictions: Federal, Victoria, New South Wales, Queensland, Western Australia, South Australia, Tasmania, and Australian Capital Territory. " +
-      "Other states and territories are outlines only until their stage is ready.";
+      "Showing Australia. Live jurisdictions: Federal, Victoria, New South Wales, Queensland, Western Australia, South Australia, Tasmania, Australian Capital Territory, and Northern Territory.";
 
     var items = OVERVIEW_LIVE.slice();
     overviewDoc.features.forEach(function (f) {

@@ -27,8 +27,8 @@ report if a source does not allow reuse.
 | 9 | Western Australia | ✅ | Assembly 59 + Council 37 (statewide); Geoscape districts + LC polygon; national map live; social candidates awaiting owner approval |
 | 10 | South Australia | ✅ | Assembly 47 + Council 22 (statewide); Geoscape districts + LC polygon; national map live; social candidates awaiting owner approval |
 | 11 | Tasmania | ✅ | Assembly 35 (5×7 multi-member) + Council 15; Geoscape divisions; national map live; social candidates awaiting owner approval |
-| 12 | Australian Capital Territory | 🔄 | Unicameral Assembly 25 (5×5); Geoscape; national map live; social candidates awaiting owner approval |
-| 13 | Northern Territory | ⏳ | Unicameral |
+| 12 | Australian Capital Territory | ✅ | Unicameral Assembly 25 (5×5); Geoscape; national map live; social candidates awaiting owner approval |
+| 13 | Northern Territory | 🔄 | Unicameral Assembly 25 (one division each); Geoscape; national map live; social candidates awaiting owner approval |
 
 ## Later Vic and launch
 
@@ -52,7 +52,7 @@ report if a source does not allow reuse.
 - Parliament of Queensland: materials not under Creative Commons (Copyright Act;
   fair dealing / permission path); website text separately CC BY-NC-ND 3.0 AU
   (see `docs/data-sources.md` QLD section). Facts-only store; same Stage 15 decision.
-- `docs/data-sources.md` covers Vic, Federal, NSW, QLD, WA, SA, TAS, ACT, boundaries,
+- `docs/data-sources.md` covers Vic, Federal, NSW, QLD, WA, SA, TAS, ACT, NT, boundaries,
   news, photos/socials. Keep it current when sources change.
 - Parliament of South Australia: no dedicated website copyright/terms page found on
   2026-11-25 (see `docs/data-sources.md` SA section). Facts-only store; same Stage 15
@@ -61,4 +61,8 @@ report if a source does not allow reuse.
   (see `docs/data-sources.md` TAS section). Facts-only store; same Stage 15 decision.
 - ACT Legislative Assembly website content is **CC BY-NC-ND 4.0**; portraits excluded
   (see `docs/data-sources.md` ACT section). Facts-only store; same Stage 15 NC/ND
+  compliance decision.
+- Legislative Assembly of the Northern Territory disclaimer: no reproduction or reuse
+  apart from fair dealing under the Copyright Act, or where expressly provided
+  otherwise (see `docs/data-sources.md` NT section). Facts-only store; same Stage 15
   compliance decision.

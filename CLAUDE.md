@@ -29,9 +29,9 @@ in use; keep this filename for continuity. Follow the same stage/gate/"go" rules
 
 ## Project facts
 - Map view and list view. Parliament picker (Victoria + Federal + NSW + Queensland +
-  WA + SA + TAS + ACT). Each member: party, portrait, official socials, recent-news
+  WA + SA + TAS + ACT + NT). Each member: party, portrait, official socials, recent-news
   popup, official website.
-- National Australia map overview; live: Vic, NSW, QLD, WA, SA, TAS, ACT (+ Federal
+- National Australia map overview; live: Vic, NSW, QLD, WA, SA, TAS, ACT, NT (+ Federal
   via picker).
 - Vic state election 28 Nov 2026; post-election data refresh is Stage 14 (paused).
 - Brand: "The Policy Desk AU" (@PolicyDeskAU). Navy #14213D, saffron #F4A300,
@@ -64,6 +64,10 @@ in use; keep this filename for continuity. Follow the same stage/gate/"go" rules
 - ACT: ACT Legislative Assembly current members = primary facts (unicameral,
   5 multi-member electorates × 5); profiles `/members/current/{slug}`. Cloudflare
   may block unattended fetch — see `docs/data-sources.md`. Use `--from-html` when needed.
+- NT: Northern Territory Legislative Assembly by-name list = primary facts
+  (unicameral, 25 single-member divisions); profiles `/members/by-name/{slug}`.
+  Cloudflare may block unattended fetch — see `docs/data-sources.md`. Use
+  `--from-dir` when needed.
 - No copied biographies. No hotlinked or copied parliament portraits.
 - Photos: Wikimedia Commons only if licence permits; else initials.
 - Socials: owner-approval gate (`socials_review.json` → `socials.json`).
@@ -75,22 +79,22 @@ in use; keep this filename for continuity. Follow the same stage/gate/"go" rules
 
 ## Out of scope until owner says so
 User accounts, comments, ads, newsletter, any paid service.
-Other territories: Stage 13 NT. Compliance/launch: Stage 15.
+Compliance/launch: Stage 15.
 
 ## Folder map
 ```
 .github/workflows/fetch-vic-members.yml / fetch-federal-members.yml /
   fetch-nsw-members.yml / fetch-qld-members.yml / fetch-wa-members.yml /
   fetch-sa-members.yml / fetch-tas-members.yml / fetch-act-members.yml /
-  fetch-news.yml
+  fetch-nt-members.yml / fetch-news.yml
 scripts/fetch_*_official.py, build_*_members.py, build_*_boundaries.py, validate_*.py
 scripts/build_news.py (Action ONLY), build_photos_socials.py (--parliament)
 data/members.json (Vic), data/federal/, data/nsw/, data/qld/, data/wa/, data/sa/,
-  data/tas/, data/act/, data/*_official.json
+  data/tas/, data/act/, data/nt/, data/*_official.json
 data/boundaries/vic_*.json, federal_*.json, nsw_*.json, qld_districts.json,
-  wa_*.json, sa_*.json, tas_*.json, act_districts.json
+  wa_*.json, sa_*.json, tas_*.json, act_districts.json, nt_districts.json
 data/news/, data/photos.json, data/socials_review.json, data/socials.json
-docs/data-sources.md, docs/ROADMAP.md, docs/review/stage{5,6,7,8,9,10,11,12}-*.md
+docs/data-sources.md, docs/ROADMAP.md, docs/review/stage{5,6,7,8,9,10,11,12,13}-*.md
 ```
 index.html, css/style.css, js/app.js — list + map + parliament picker
 
@@ -100,7 +104,7 @@ python3 scripts/validate_members.py
 python3 scripts/validate_boundaries.py
 python3 scripts/validate_news.py
 python3 scripts/validate_photos_socials.py
-python3 scripts/fetch_act_official.py && python3 scripts/build_act_members.py
-python3 scripts/build_act_boundaries.py
+python3 scripts/fetch_nt_official.py && python3 scripts/build_nt_members.py
+python3 scripts/build_nt_boundaries.py
 ```
 Local preview: `python3 -m http.server 8000` in the repo root.
