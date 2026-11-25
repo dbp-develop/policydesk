@@ -1,6 +1,6 @@
 {
  "source": "Wikimedia Commons (via Wikidata, matched through Wikipedia member lists)",
- "generated_at": "2026-11-25T01:48:04+00:00",
+ "generated_at": "2026-11-25T02:29:46+00:00",
  "photos": {
   "aiv-puglielli": {
    "file": "Aiv Puglielli.png",
@@ -3016,6 +3016,141 @@
    "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
    "local_path": "images/members/sa-zoe-bettison.jpg",
    "source": "Wikimedia Commons via Wikidata Q8073256"
+  },
+  "tas-anita-dow": {
+   "file": "Memorial-unveilings-Burnie-20150331-004-crop1.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Memorial-unveilings-Burnie-20150331-004-crop1.jpg",
+   "creator": "Gary Houston",
+   "licence": "CC0",
+   "licence_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "local_path": "images/members/tas-anita-dow.jpg",
+   "source": "Wikimedia Commons via Wikidata Q50325645"
+  },
+  "tas-bridget-archer": {
+   "file": "Bridget Archer 2022.png",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Bridget_Archer_2022.png",
+   "creator": "Cathy Vogan for Consortium News",
+   "licence": "CC BY 3.0",
+   "licence_url": "https://creativecommons.org/licenses/by/3.0",
+   "local_path": "images/members/tas-bridget-archer.png",
+   "source": "Wikimedia Commons via Wikidata Q64225996"
+  },
+  "tas-cassy-o-connor": {
+   "file": "Cassy O'Connor.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Cassy_O%27Connor.jpg",
+   "creator": "Australian Greens website – Australian Greens",
+   "licence": "CC BY-SA 2.5 au",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/2.5/au/deed.en",
+   "local_path": "images/members/tas-cassy-o-connor.jpg",
+   "source": "Wikimedia Commons via Wikidata Q5049524"
+  },
+  "tas-cecily-rosol": {
+   "file": "Cecily Rosol portrait 2 (cropped).jpeg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Cecily_Rosol_portrait_2_%28cropped%29.jpeg",
+   "creator": "Australian Greens website – Australian Greens",
+   "licence": "CC BY-SA 2.5 au",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/2.5/au/deed.en",
+   "local_path": "images/members/tas-cecily-rosol.jpg",
+   "source": "Wikimedia Commons via Wikidata Q125144752"
+  },
+  "tas-david-o-byrne": {
+   "file": "DAVID O'BYRNE.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:DAVID_O%27BYRNE.jpg",
+   "creator": "Image taken by taken by f8 photography, f8photgraphy.com.au. Unlimited usage rights granted to David O'Byrne.",
+   "licence": "CC BY-SA 3.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+   "local_path": "images/members/tas-david-o-byrne.jpg",
+   "source": "Wikimedia Commons via Wikidata Q15441913"
+  },
+  "tas-dean-winter": {
+   "file": "Dean Winter Jobs plan for stadium (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Dean_Winter_Jobs_plan_for_stadium_%28cropped%29.jpg",
+   "creator": "Grandeur123",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/tas-dean-winter.jpg",
+   "source": "Wikimedia Commons via Wikidata Q106815704"
+  },
+  "tas-eric-abetz": {
+   "file": "Senator Eric Abetz crop.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Senator_Eric_Abetz_crop.jpg",
+   "creator": "Hawkesyj",
+   "licence": "CC BY-SA 3.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/3.0",
+   "local_path": "images/members/tas-eric-abetz.jpg",
+   "source": "Wikimedia Commons via Wikidata Q964840"
+  },
+  "tas-gavin-pearce": {
+   "file": "Gavin Pearce 2019.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Gavin_Pearce_2019.jpg",
+   "creator": "PowensG",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/tas-gavin-pearce.jpg",
+   "source": "Wikimedia Commons via Wikidata Q64222282"
+  },
+  "tas-guy-barnett": {
+   "file": "Guy-Barnett-crop-20150331-015.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Guy-Barnett-crop-20150331-015.jpg",
+   "creator": "Gary Houston",
+   "licence": "CC0",
+   "licence_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "local_path": "images/members/tas-guy-barnett.jpg",
+   "source": "Wikimedia Commons via Wikidata Q5622071"
+  },
+  "tas-helen-burnet": {
+   "file": "Helen Burnet 1 (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Helen_Burnet_1_%28cropped%29.jpg",
+   "creator": "Australian Greens website – Australian Greens",
+   "licence": "CC BY-SA 2.5 au",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/2.5/au/deed.en",
+   "local_path": "images/members/tas-helen-burnet.jpg",
+   "source": "Wikimedia Commons via Wikidata Q125288794"
+  },
+  "tas-josh-willie": {
+   "file": "Josh willie spirits photo headshot.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Josh_willie_spirits_photo_headshot.jpg",
+   "creator": "Grandeur123",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/tas-josh-willie.jpg",
+   "source": "Wikimedia Commons via Wikidata Q24038521"
+  },
+  "tas-meg-brown": {
+   "file": "Meg Brown portrait.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Meg_Brown_portrait.jpg",
+   "creator": "Coffeelover19",
+   "licence": "CC BY-SA 4.0",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/4.0",
+   "local_path": "images/members/tas-meg-brown.jpg",
+   "source": "Wikimedia Commons via Wikidata Q125341975"
+  },
+  "tas-rosalie-woodruff": {
+   "file": "Rosalie Woodruff.jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Rosalie_Woodruff.jpg",
+   "creator": "Australian Greens website – Australian Greens",
+   "licence": "CC BY-SA 2.5 au",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/2.5/au/deed.en",
+   "local_path": "images/members/tas-rosalie-woodruff.jpg",
+   "source": "Wikimedia Commons via Wikidata Q21062247"
+  },
+  "tas-tabatha-badger": {
+   "file": "Tabatha Badger portrait 1 (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Tabatha_Badger_portrait_1_%28cropped%29.jpg",
+   "creator": "Australian Greens website – Australian Greens",
+   "licence": "CC BY-SA 2.5 au",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/2.5/au/deed.en",
+   "local_path": "images/members/tas-tabatha-badger.jpg",
+   "source": "Wikimedia Commons via Wikidata Q125144767"
+  },
+  "tas-vica-bayley": {
+   "file": "Vica Bayley headshot 1 (cropped).jpg",
+   "commons_url": "https://commons.wikimedia.org/wiki/File:Vica_Bayley_headshot_1_%28cropped%29.jpg",
+   "creator": "Australian Greens website – Australian Greens",
+   "licence": "CC BY-SA 2.5 au",
+   "licence_url": "https://creativecommons.org/licenses/by-sa/2.5/au/deed.en",
+   "local_path": "images/members/tas-vica-bayley.jpg",
+   "source": "Wikimedia Commons via Wikidata Q121076766"
   }
  }
 }

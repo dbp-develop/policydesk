@@ -20,6 +20,7 @@ Usage:
   python3 scripts/build_photos_socials.py --parliament qld
   python3 scripts/build_photos_socials.py --parliament wa
   python3 scripts/build_photos_socials.py --parliament sa
+  python3 scripts/build_photos_socials.py --parliament tas
 """
 
 from __future__ import annotations
@@ -125,6 +126,20 @@ PARLIAMENTS = {
         "review_title": "Stage 10 review: photo and social matches (South Australia)",
         "check_label": "SA seat",
     },
+    "tas": {
+        "members": ROOT / "data" / "tas" / "members.json",
+        "list_pages": {
+            "lower": "https://en.wikipedia.org/wiki/Members_of_the_Tasmanian_House_of_Assembly,_2025%E2%80%932029",
+            "upper": "https://en.wikipedia.org/wiki/Members_of_the_Tasmanian_Legislative_Council,_2023%E2%80%932029",
+        },
+        "positions": {
+            "Q19007285": "Member of the Tasmanian House of Assembly",
+            "Q19299542": "Member of the Tasmanian Legislative Council",
+        },
+        "review": ROOT / "docs" / "review" / "stage11-tas-review.md",
+        "review_title": "Stage 11 review: photo and social matches (Tasmania)",
+        "check_label": "TAS seat",
+    },
 }
 
 SOCIAL_PROPS = {
@@ -137,7 +152,8 @@ OK_LICENCE = re.compile(
 )
 BAD_CREATOR = re.compile(r"^(unknown|anonymous|unknown author|author unknown)\b", re.I)
 PARLIAMENT_SOURCE = re.compile(
-    r"parliament|parl\.|aph\.gov\.au|nsw\.gov\.au|qld\.gov\.au|wa\.gov\.au|sa\.gov\.au", re.I
+    r"parliament|parl\.|aph\.gov\.au|nsw\.gov\.au|qld\.gov\.au|wa\.gov\.au|sa\.gov\.au|tas\.gov\.au",
+    re.I,
 )
 BAD_LICENCE = re.compile(r"\b(NC|ND)\b")
 THUMB_WIDTH = 240
@@ -413,13 +429,13 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument(
         "--parliament",
-        choices=["vic", "federal", "nsw", "qld", "wa", "sa", "all"],
+        choices=["vic", "federal", "nsw", "qld", "wa", "sa", "tas", "all"],
         default="all",
         help="which parliament(s) to refresh (default: all)",
     )
     args = ap.parse_args()
     targets = (
-        ["vic", "federal", "nsw", "qld", "wa"]
+        ["vic", "federal", "nsw", "qld", "wa", "sa", "tas"]
         if args.parliament == "all"
         else [args.parliament]
     )
