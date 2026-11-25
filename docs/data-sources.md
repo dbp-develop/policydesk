@@ -818,3 +818,109 @@ Same host pattern as Stages 7–9: `User-agent: *` / `Disallow: /` in robots.txt
 ## Attribution (our wording)
 
 > This product (The Policy Desk AU map) incorporates or was developed using Administrative Boundaries © Geoscape Australia licensed by the Commonwealth of Australia under Creative Commons Attribution 4.0 International licence (CC BY 4.0). Simplified by The Policy Desk AU. South Australia House of Assembly districts and Legislative Council statewide boundary from the Geoscape GDA2020 release (EFF_START 2026-03-21; in force from the 2026 state election).
+
+---
+
+# Data sources — Tasmania Parliament (Stage 11)
+
+**Date checked:** 2026-11-25  
+**Checker User-Agent:** `PolicyDeskAU/1.0 (https://policydesk.au)` and browser-compatible `Mozilla/5.0 (compatible; PolicyDeskAU/1.0; +https://policydesk.au) …`  
+**Intended use:** automated fetch of current TAS House of Assembly and Legislative Council member facts (name, chamber, Assembly multi-member division or Council division, party, official profile URL). No photos. No biographies. No office addresses or emails.
+
+## 1. robots.txt — www.parliament.tas.gov.au
+
+**URL:** https://www.parliament.tas.gov.au/robots.txt  
+
+Fetched 2026-11-25 via a real browser after Cloudflare blocked plain `curl` (HTTP 403 challenge HTML).
+
+**Full robots body as fetched:**
+
+```
+# Disallow some matrix defaults
+User-agent: *
+Disallow: /_designs/
+Disallow: /*?sq_content_src=
+Disallow: /*_recache
+Disallow: /*_edit
+Disallow: /*_admin
+Disallow: /*_login
+Disallow: /*_performance
+Disallow: /*_design
+Disallow: /*_web_services
+Disallow: /__lib
+Disallow: /__fudge
+
+# Prevent crawling of Funnelback search queries or facets.
+Disallow: *?*query=
+Disallow: *?*f.*%7C*=
+```
+
+### `urllib.robotparser` (body above)
+
+```
+can_fetch('PolicyDeskAU', '/house-of-assembly/currentmembers') = True
+can_fetch('PolicyDeskAU', '/legislative-council/members') = True
+can_fetch('PolicyDeskAU', '/house-of-assembly/currentmembers/eric-abetz') = True
+```
+
+**Production fetch note:** robots.txt does **not** Disallow member list or profile paths for `PolicyDeskAU`. Cloudflare still blocked unattended fetches with that User-Agent on this check date. Stage 11 member data was built from browser-cleared saves of the official lists and profiles (`--from-dir`). The fetch script tries live URLs and exits with a clear error if Cloudflare blocks.
+
+## 2. Copyright / terms — Parliament of Tasmania
+
+**Pages checked:** `/copyright`, `/disclaimer`, `/copyright-and-disclaimer`, `/terms-of-use`, `/legal`, `/privacy` — all **HTTP 404** on this date (one transient Cloudflare challenge on `/privacy`).  
+Footer on live pages shows only: `Copyright © 2026 Parliament of Tasmania`. No Creative Commons, reuse licence, or terms-of-use wording was found on the site on this check.
+
+## 3. Official member lists used
+
+| What | Result on 2026-11-25 |
+|------|----------------------|
+| House of Assembly current members | `https://www.parliament.tas.gov.au/house-of-assembly/currentmembers` — 35 of 35 |
+| Legislative Council members | `https://www.parliament.tas.gov.au/legislative-council/members` — 15 of 15 |
+| Official profile URL patterns | HA: `…/house-of-assembly/currentmembers/{slug}`; LC: `…/legislative-council/members/{slug}` |
+| Party + seat on each profile | “{party} member for {division}” (e.g. “Liberal member for Franklin”) |
+| Optional mail-merge workbooks | HA and LC “Mail Merge” XLSX linked from the list pages (addresses/emails **not** stored) |
+| Expected counts | House of Assembly 35 (7 × 5 multi-member divisions); Legislative Council 15 |
+
+Party labels from profile text are stored as full names: Liberal → Liberal Party; Labor → Australian Labor Party; Green → Tasmanian Greens; Independent; Shooters, Fishers and Farmers Party. Casey Hiscutt’s profile omits a party; the official LC mail-merge workbook lists `IND` → Independent (documented fallback).
+
+Facts stored per member: display name (list heading without Honourable/MP/MLC titles), chamber, Assembly division or Council division, party, official profile URL, source. Unknown fields = null. **Addresses, emails, phones and biographies are not stored.**
+
+## 4. Verdicts (evidence only — no legal inference)
+
+**(a) robots.txt:** does **not** Disallow our `PolicyDeskAU` agent for member list/profile paths.  
+**(b) automated access:** Cloudflare blocked unattended fetches for our UA on this date; no copyright page mentioning scraping was found.  
+**(c) reusing member names, parties and seats (facts only):** no quoted reuse licence beyond the footer copyright line was found. Same class of Stage 15 uncertainty as other parliaments. We store facts only, attribute Parliament of Tasmania, and **do not** copy addresses, biographies, or portraits into the repo.
+
+---
+
+# Data sources — Tasmania electoral boundaries (Stage 11)
+
+**Date checked:** 2026-11-25  
+**Checker User-Agent:** `PolicyDeskAU/1.0 (https://policydesk.au)`  
+**Intended use:** download TAS House of Assembly multi-member division boundaries and Legislative Council division boundaries for the map; simplify; publish as static SVG-path JSON.
+
+## Dataset
+
+| | Geoscape Administrative Boundaries — TAS State Electoral Boundaries |
+|---|---|
+| Title | TAS State Electoral Boundaries — Geoscape Administrative Boundaries |
+| Publisher | Geoscape Australia / Commonwealth of Australia (data.gov.au) |
+| Landing page | https://data.gov.au/data/dataset/tas-state-electoral-boundaries-geoscape-administrative-boundaries |
+| Download used | https://data.gov.au/data/dataset/975bf7cc-35c9-4fb1-a76f-62348e3676cb/resource/961e2501-1d87-4542-b477-21d2685e922c/download/tas_seb_gda2020.zip (FEB26 GDA2020 ESRI) |
+| Status | 5 House of Assembly divisions with `SECL_CODE=1` (EFF_START 20180928; Bass, Braddon, Clark, Franklin, Lyons — multi-member). 15 Legislative Council divisions with `SECL_CODE=3` (2016–17 redistribution). Names matched to Parliament member seats. |
+
+## Licence
+
+**Creative Commons Attribution 4.0 International (CC BY 4.0)** on the data.gov.au dataset page.
+
+Preferred attribution for Adapted Material (quote pattern from Geoscape Administrative Boundaries):
+
+> Incorporates or developed using Administrative Boundaries © Geoscape Australia licensed by the Commonwealth of Australia under Creative Commons Attribution 4.0 International licence (CC BY 4.0).
+
+## robots.txt — data.gov.au
+
+Same host pattern as Stages 7–10: `User-agent: *` / `Disallow: /` in robots.txt; the TAS zip download still returned **HTTP 200** with User-Agent `PolicyDeskAU/1.0` on this date. Dataset page continues to publish the boundaries under CC BY 4.0.
+
+## Attribution (our wording)
+
+> This product (The Policy Desk AU map) incorporates or was developed using Administrative Boundaries © Geoscape Australia licensed by the Commonwealth of Australia under Creative Commons Attribution 4.0 International licence (CC BY 4.0). Simplified by The Policy Desk AU. Tasmania House of Assembly multi-member divisions and Legislative Council divisions from the FEB26 GDA2020 Geoscape release (TEC boundaries; Assembly aligned to Commonwealth divisions from 2018; Council from the 2016–17 redistribution).
