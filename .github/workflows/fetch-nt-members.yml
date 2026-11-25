@@ -1,0 +1,47 @@
+name: Fetch NT members
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: data-commits
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch NT members (Legislative Assembly by-name list)
+        run: python scripts/fetch_nt_official.py
+
+      - name: Build data/nt/members.json
+        run: python scripts/build_nt_members.py
+
+      - name: Validate members
+        run: python scripts/validate_members.py
+
+      - name: Commit and push data if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/nt_official.json data/nt/members.json data/nt/vacancies.json
+          if git diff --staged --quiet; then
+            echo "No changes to NT member data files"
+          else
+            git commit -m "chore: update NT member data"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi

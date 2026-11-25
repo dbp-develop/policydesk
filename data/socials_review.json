@@ -1,7 +1,7 @@
 {
  "source": "Wikidata (CC0): P2002 X, P2013 Facebook, P2003 Instagram",
  "note": "Candidates only. Nothing here is shown on the site until the owner approves it.",
- "generated_at": "2026-11-25T02:51:19+00:00",
+ "generated_at": "2026-11-25T03:30:27+00:00",
  "candidates": {
   "adem-somyurek": {
    "name": "Adem Somyurek",
@@ -3145,6 +3145,54 @@
     "facebook": {
      "handle": "YvetteSBerry",
      "url": "https://www.facebook.com/YvetteSBerry"
+    }
+   },
+   "approved": false
+  },
+  "nt-bill-yan": {
+   "name": "Bill Yan",
+   "wikidata": "https://www.wikidata.org/wiki/Q98973290",
+   "candidates": {
+    "instagram": {
+     "handle": "billyanmla",
+     "url": "https://www.instagram.com/billyanmla/"
+    }
+   },
+   "approved": false
+  },
+  "nt-khoda-patel": {
+   "name": "Khoda Patel",
+   "wikidata": "https://www.wikidata.org/wiki/Q129740039",
+   "candidates": {
+    "facebook": {
+     "handle": "khodapatelmla",
+     "url": "https://www.facebook.com/khodapatelmla"
+    },
+    "instagram": {
+     "handle": "khodapatel.mla",
+     "url": "https://www.instagram.com/khodapatel.mla/"
+    }
+   },
+   "approved": false
+  },
+  "nt-laurie-zio": {
+   "name": "Laurie Zio",
+   "wikidata": "https://www.wikidata.org/wiki/Q130209025",
+   "candidates": {
+    "instagram": {
+     "handle": "laurieziomla",
+     "url": "https://www.instagram.com/laurieziomla/"
+    }
+   },
+   "approved": false
+  },
+  "nt-lia-finocchiaro": {
+   "name": "Lia Finocchiaro",
+   "wikidata": "https://www.wikidata.org/wiki/Q6539377",
+   "candidates": {
+    "x": {
+     "handle": "LiaFinocchiaro",
+     "url": "https://x.com/LiaFinocchiaro"
     }
    },
    "approved": false

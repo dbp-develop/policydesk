@@ -21,6 +21,8 @@ Usage:
   python3 scripts/build_photos_socials.py --parliament wa
   python3 scripts/build_photos_socials.py --parliament sa
   python3 scripts/build_photos_socials.py --parliament tas
+  python3 scripts/build_photos_socials.py --parliament act
+  python3 scripts/build_photos_socials.py --parliament nt
 """
 
 from __future__ import annotations
@@ -152,6 +154,18 @@ PARLIAMENTS = {
         "review_title": "Stage 12 review: photo and social matches (Australian Capital Territory)",
         "check_label": "ACT seat",
     },
+    "nt": {
+        "members": ROOT / "data" / "nt" / "members.json",
+        "list_pages": {
+            "lower": "https://en.wikipedia.org/wiki/Members_of_the_Northern_Territory_Legislative_Assembly,_2024%E2%80%932028",
+        },
+        "positions": {
+            "Q26998278": "member of the Northern Territory Legislative Assembly",
+        },
+        "review": ROOT / "docs" / "review" / "stage13-nt-review.md",
+        "review_title": "Stage 13 review: photo and social matches (Northern Territory)",
+        "check_label": "NT seat",
+    },
 }
 
 SOCIAL_PROPS = {
@@ -164,7 +178,7 @@ OK_LICENCE = re.compile(
 )
 BAD_CREATOR = re.compile(r"^(unknown|anonymous|unknown author|author unknown)\b", re.I)
 PARLIAMENT_SOURCE = re.compile(
-    r"parliament|parl\.|aph\.gov\.au|nsw\.gov\.au|qld\.gov\.au|wa\.gov\.au|sa\.gov\.au|tas\.gov\.au|act\.gov\.au",
+    r"parliament|parl\.|aph\.gov\.au|nsw\.gov\.au|qld\.gov\.au|wa\.gov\.au|sa\.gov\.au|tas\.gov\.au|act\.gov\.au|nt\.gov\.au",
     re.I,
 )
 BAD_LICENCE = re.compile(r"\b(NC|ND)\b")
@@ -441,13 +455,13 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument(
         "--parliament",
-        choices=["vic", "federal", "nsw", "qld", "wa", "sa", "tas", "act", "all"],
+        choices=["vic", "federal", "nsw", "qld", "wa", "sa", "tas", "act", "nt", "all"],
         default="all",
         help="which parliament(s) to refresh (default: all)",
     )
     args = ap.parse_args()
     targets = (
-        ["vic", "federal", "nsw", "qld", "wa", "sa", "tas", "act"]
+        ["vic", "federal", "nsw", "qld", "wa", "sa", "tas", "act", "nt"]
         if args.parliament == "all"
         else [args.parliament]
     )

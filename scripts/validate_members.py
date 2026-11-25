@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate Vic, Federal, NSW, QLD, WA, SA, TAS and ACT members.json seat counts (stdlib only)."""
+"""Validate Vic, Federal, NSW, QLD, WA, SA, TAS, ACT and NT members.json seat counts (stdlib only)."""
 
 from __future__ import annotations
 
@@ -76,6 +76,15 @@ PARLIAMENTS = {
         "vacancy_lower": {"Assembly", "lower"},
         "unicameral": True,
     },
+    "nt": {
+        "path": ROOT / "data" / "nt" / "members.json",
+        "lower": 25,
+        "upper": 0,
+        "lower_label": "Assembly",
+        "upper_label": "Council",
+        "vacancy_lower": {"Assembly", "lower"},
+        "unicameral": True,
+    },
 }
 
 
@@ -143,7 +152,7 @@ def validate_one(key: str, cfg: dict, errors: list[str]) -> None:
             fail(f"{key}/{label}: upper-house member missing region", errors)
         if chamber not in {"lower", "upper"}:
             fail(f"{key}/{label}: invalid chamber {chamber!r}", errors)
-        if key in {"federal", "nsw", "qld", "wa", "sa", "tas", "act"} and m.get("parliament") not in {key, None}:
+        if key in {"federal", "nsw", "qld", "wa", "sa", "tas", "act", "nt"} and m.get("parliament") not in {key, None}:
             fail(f"{key}/{label}: parliament field {m.get('parliament')!r}", errors)
         if cfg.get("unicameral") and chamber == "upper":
             fail(f"{key}/{label}: unicameral parliament must not have upper chamber", errors)
