@@ -598,6 +598,54 @@
     if (els.mapDesc) els.mapDesc.textContent = cfg.mapDesc;
   }
 
+  var pendingFocus = null; // { seat: string, chamber: "lower"|"upper"|"" }
+
+  function applyPendingFocus() {
+    if (!pendingFocus) return;
+    var want = pendingFocus;
+    pendingFocus = null;
+    if (typeof setView === "function") setView("list", false);
+    if (want.chamber) {
+      els.chamber.value = want.chamber;
+      syncSeatGroups();
+    }
+    if (want.seat) {
+      var options = Array.prototype.slice.call(els.seat.options);
+      var match = null;
+      for (var i = 0; i < options.length; i++) {
+        if (options[i].value && options[i].value.toLowerCase() === String(want.seat).toLowerCase()) {
+          match = options[i];
+          break;
+        }
+      }
+      if (match) els.seat.value = match.value;
+      else els.q.value = want.seat;
+    }
+    render();
+    var results = document.getElementById("results");
+    if (results) {
+      if (results.scrollIntoView) results.scrollIntoView({ behavior: "smooth", block: "start" });
+      if (typeof results.focus === "function") results.focus();
+    }
+  }
+
+  function focusSeat(parliament, seatName, chamber) {
+    if (!PARLIAMENTS[parliament]) return;
+    pendingFocus = {
+      seat: seatName || "",
+      chamber: chamber || "lower"
+    };
+    if (parliamentKey === parliament && rows.length) {
+      applyPendingFocus();
+      return;
+    }
+    loadParliament(parliament);
+  }
+
+  window.PolicyDeskAU = window.PolicyDeskAU || {};
+  window.PolicyDeskAU.focusSeat = focusSeat;
+  window.PolicyDeskAU.parliaments = PARLIAMENTS;
+
   function load(data) {
     if (!data || data.parliament !== parliamentKey) return;
     var members = (data.members || []).map(function (m) {
@@ -647,6 +695,7 @@
     } else {
       render();
     }
+    applyPendingFocus();
   }
 
   function loadParliament(key) {

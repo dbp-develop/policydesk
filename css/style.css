@@ -87,6 +87,7 @@ a:hover { text-decoration-thickness: 2px; }
 /* Saffron fill needs a page-coloured gap, or the ring disappears into the button. */
 .btn:focus-visible,
 .news-btn:focus-visible,
+.find-seat-open:focus-visible,
 .toggle[aria-pressed="true"]:focus-visible,
 .seat-btn[aria-current="true"]:focus-visible,
 #zoom-australia[aria-current="true"]:focus-visible,
@@ -169,6 +170,94 @@ a:hover { text-decoration-thickness: 2px; }
 #data-line.is-loading { color: var(--muted); }
 #data-line.is-error { font-weight: 600; }
 
+.find-seat {
+  margin: 0 0 24px;
+  padding: 16px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.find-seat h2 {
+  margin: 0 0 8px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.75rem;
+}
+.find-seat-lede {
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-size: 0.9375rem;
+  line-height: 1.375rem;
+}
+.find-seat-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0 0 12px;
+}
+.find-seat-status {
+  min-height: 1.25rem;
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+.find-seat-status.is-error { color: var(--ink); font-weight: 600; }
+.find-seat-results {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 8px 0 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+.find-seat-where { margin: 0; font-weight: 600; }
+.find-seat-multi {
+  margin: 0;
+  padding: 10px 12px;
+  background: var(--page);
+  border-left: 3px solid var(--saffron);
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+.find-seat-level h3 {
+  margin: 0 0 8px;
+  font-size: 1.0625rem;
+  font-weight: 700;
+}
+.find-seat-block {
+  margin: 0 0 12px;
+  padding: 12px;
+  background: var(--page);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.find-seat-block h4 {
+  margin: 0 0 6px;
+  font-size: 1rem;
+  font-weight: 700;
+}
+.find-seat-share,
+.find-seat-empty,
+.find-seat-member {
+  margin: 0 0 6px;
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+.find-seat-member strong { color: var(--ink); font-weight: 600; }
+.find-seat-profile {
+  display: inline-block;
+  margin: 0 12px 8px 0;
+  font-size: 0.9375rem;
+}
+.find-seat-open { margin-top: 4px; }
+.find-seat-note {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 0.8125rem;
+  line-height: 1.25rem;
+}
+.find-seat-note a { color: var(--muted); }
+
 /* Filters. Search is its own row. The other controls wrap together. */
 .filters {
   display: flex;
@@ -182,6 +271,9 @@ a:hover { text-decoration-thickness: 2px; }
   gap: 8px;
 }
 .field { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+/* display:flex above would otherwise override the HTML hidden attribute */
+.field[hidden],
+.find-seat-results[hidden] { display: none !important; }
 .field label {
   font-weight: 600;
   font-size: 0.875rem;
@@ -724,6 +816,13 @@ a:hover { text-decoration-thickness: 2px; }
   }
   .filter-row .field { flex: 1 1 18rem; }
   .filter-row .field-actions { flex-basis: 100%; }
+  .find-seat-form {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-end;
+  }
+  .find-seat-form .field { flex: 1 1 12rem; }
+  .find-seat-form .field-actions { flex: 0 0 auto; }
   .cards {
     grid-template-columns: 1fr 1fr;
     gap: 16px;

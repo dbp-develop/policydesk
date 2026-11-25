@@ -1172,3 +1172,51 @@ The NT zip path is under `/data/dataset/…/download/`, which the `Disallow: /` 
 
 > This product (The Policy Desk AU map) incorporates or was developed using Administrative Boundaries © Geoscape Australia licensed by the Commonwealth of Australia under Creative Commons Attribution 4.0 International licence (CC BY 4.0). Simplified by The Policy Desk AU. Northern Territory Legislative Assembly divisions from the NOV26 GDA2020 Geoscape release (EFF_START 2024-08-24, in force for the 2024 election).
 
+
+---
+
+# Data sources — Find my seat (Stage 16)
+
+**Date checked:** 2026-11-26  
+**Checker User-Agent:** `PolicyDeskAU/1.0 (https://policydesk.au)`  
+**Intended use:** static offline lookup from Australian postcode (and suburb when a postcode spans seats) to **current** federal House division and state/territory lower-house district, then match sitting members from existing `members.json` files. No seat-win history.
+
+## Concordance used
+
+| | Political Gadgets electorate finder CSV |
+|---|---|
+| Title | Electorate finder — postcodes and suburbs |
+| Publisher | Political Gadgets |
+| Landing page | https://politicalgadgets.com/electorate_finder/ |
+| Downloads | https://politicalgadgets.com/electorate_finder/data/postcodes.csv · https://politicalgadgets.com/electorate_finder/data/suburbs.csv |
+| Licence on CSV | **Creative Commons Attribution 4.0 International (CC BY 4.0)** (stated on the widget/terms page and CSV note) |
+| Coverage (fetched 2026-11-26) | 2,641 postcode rows (3 incomplete rows without a state skipped); 15,329 suburb/locality rows |
+
+### Underlying geography (as stated by Political Gadgets)
+
+> Federal boundaries: Australian Electoral Commission (as at the 2025 federal election). State and council boundaries: incorporates or developed using Administrative Boundaries © Geoscape Australia licensed under CC BY 4.0.
+
+Official enrolment check (linked from the UI; not scraped): https://electorate.aec.gov.au/
+
+## Why this source
+
+- Open **CC BY 4.0** downloadable CSV for both **federal and state** seats (ABS postcode↔CED files cover federal only, and POA ≠ Australia Post postcodes).
+- Names match PolicyDesk lower-house seats after filtering cross-border noise (2 unmatched state-seat mentions dropped from suburb rows).
+- Results are **approximate** shares when a postcode/suburb spans seats. The UI asks for a suburb when needed and never invents a single seat.
+
+## Build outputs
+
+| File | Role |
+|------|------|
+| `data/seat_lookup/index.json` | Metadata + every usable postcode; unambiguous seats inline; suburb picker list when ambiguous |
+| `data/seat_lookup/suburbs-{vic,nsw,qld,wa,sa,tas,act,nt}.json` | Suburb → federal + state seat lists with `source` |
+| `scripts/build_seat_lookup.py` | Fetch or `--from-dir`; rebuild lookup |
+| `scripts/validate_seat_lookup.py` | Every stored seat name must exist in the matching `members.json` (or vacancy list) |
+
+## Attribution (our wording)
+
+> Postcode and suburb seat lookup: Political Gadgets electorate finder CSV, CC BY 4.0. Federal geography from the Australian Electoral Commission (2025 election boundaries, as cited by Political Gadgets). State electoral geography incorporates or was developed using Administrative Boundaries © Geoscape Australia licensed by the Commonwealth of Australia under CC BY 4.0. Approximate only — confirm enrolment with the AEC and your state or territory commission.
+
+## Out of scope (this stage)
+
+Seat-win history, council/LGA lookup UI, live geocoding, Cloudflare Workers.
