@@ -701,6 +701,12 @@
   var detailKey = "";
   var overviewDrawn = false;
 
+  function setLayerCopy(main, note) {
+    if (!els.mapLayer) return;
+    els.mapLayer.replaceChildren(document.createTextNode(main || ""));
+    if (note) els.mapLayer.appendChild(el("span", "map-note", note));
+  }
+
   function setMapCredit(d) {
     function link(text, href) {
       if (!httpsUrl(href)) return document.createTextNode(text);
@@ -1022,14 +1028,10 @@
     if (key === detailKey) return;
     detailKey = key;
     els.mapDetail.replaceChildren();
-    els.mapDetail.appendChild(el("p", "meta",
-      "Australia overview. Live on The Policy Desk AU today: Federal, Victoria, New South Wales, Queensland, Western Australia, South Australia, Tasmania, Australian Capital Territory, and Northern Territory. " +
-      "Tap a live state or territory, choose Federal from the list, or use the Parliament menu."));
     var current = PARLIAMENTS[parliamentKey];
-    if (current) {
-      els.mapDetail.appendChild(el("p", "meta",
-        "Parliament menu is on " + current.label + ". Opening a jurisdiction updates the member list to match."));
-    }
+    var where = current ? current.label : "the menu";
+    els.mapDetail.appendChild(el("p", "meta",
+      "The Parliament menu is on " + where + ". Tap a live state or territory, or choose a place from the list. The member list updates to match."));
   }
 
   function renderDetail(shown) {
@@ -1180,14 +1182,16 @@
     if (sel) sel.parentNode.appendChild(sel);  // draw selected outline on top
 
     var upperMatches = shown.filter(function (r) { return r.chamber === "upper"; }).length;
-    els.mapLayer.textContent = chamber === "upper"
-      ? cfg.mapUpper + (filtering ? " Highlighted areas match your filters." : "")
-      : cfg.mapLower +
-        (filtering ? " Highlighted areas match your filters." : "") +
-        (els.chamber.value ? "" : (filtering && upperMatches
-          ? " " + upperMatches + " matching " + chamberLabel("upper") + " member" +
-            (upperMatches > 1 ? "s are" : " is") + " not shown here:" + cfg.mapOtherHint
-          : cfg.mapOtherHint));
+    var layerMain = (chamber === "upper" ? cfg.mapUpper : cfg.mapLower) +
+      (filtering ? " Highlighted areas match your filters." : "");
+    var layerNote = "";
+    if (chamber !== "upper" && !els.chamber.value) {
+      layerNote = (filtering && upperMatches)
+        ? upperMatches + " matching " + chamberLabel("upper") + " member" +
+          (upperMatches > 1 ? "s are" : " is") + " not shown here:" + cfg.mapOtherHint
+        : (cfg.mapOtherHint || "").replace(/^\s+/, "");
+    }
+    setLayerCopy(layerMain, layerNote);
 
     var names = boundaries[layerKey].features.map(function (f) { return f.name; })
       .filter(function (n) { return matchSeats[n]; });
