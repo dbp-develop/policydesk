@@ -46,7 +46,7 @@ questions, brainstorm-later items): Project store
 
 | # | Stage | Status | Notes |
 |---|-------|--------|-------|
-| 16 | Find my seat | ⏳ | Postcode/suburb → electorate → member. Cited official lookup source required |
+| 16 | Find my seat | ⏳ | Postcode/suburb → **Federal MP + State MP** for that address (current members). Cited official lookup sources required. Seat-win history is **not** in v1 (later with historic map / timeline) |
 | 17 | Compare seats | ⏳ | Side-by-side seats/members from existing facts. Neutral |
 | 18 | About + elections primer | ⏳ | Short About + plain-English how-elections-work with official links (AEC/VEC/parliament). Not Wikipedia copy. Thin About may precede full Stage 15 |
 | 19 | Historic seat map (one parliament) | ⏳ | Pilot one parliament. Patterns/labels/symbols — not party colours. Owner picks parliament |
