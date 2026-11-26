@@ -1,0 +1,24 @@
+{
+ "member_id": "ben-carroll",
+ "member_name": "Ben Carroll",
+ "items": [
+  {
+   "title": "View from The Hill: Ben Carroll has elevated integrity in his campaign after passing it by in 2023",
+   "source": "The Conversation",
+   "url": "https://theconversation.com/view-from-the-hill-ben-carroll-has-elevated-integrity-in-his-campaign-after-passing-it-by-in-2023-296273",
+   "published": "2026-11-24",
+   "verified": true,
+   "match_reason": "headline",
+   "licence": "CC BY-ND 4.0"
+  },
+  {
+   "title": "Albanese’s ratings plunge to new low in Newspoll; Victorian Coalition set to win election",
+   "source": "The Conversation",
+   "url": "https://theconversation.com/albaneses-ratings-plunge-to-new-low-in-newspoll-victorian-coalition-set-to-win-election-297157",
+   "published": "2026-11-22",
+   "verified": false,
+   "match_reason": "electorate",
+   "licence": "CC BY-ND 4.0"
+  }
+ ]
+}
