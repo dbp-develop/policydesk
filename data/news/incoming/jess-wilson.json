@@ -1,5 +1,15 @@
 {
  "member_id": "jess-wilson",
  "member_name": "Jess Wilson",
- "items": []
+ "items": [
+  {
+   "title": "Coalition set for a big win in Victorian election as One Nation fades in final polls",
+   "source": "The Conversation",
+   "url": "https://theconversation.com/coalition-set-for-a-big-win-in-victorian-election-as-one-nation-fades-in-final-polls-297630",
+   "published": "2026-11-26",
+   "verified": false,
+   "match_reason": "electorate",
+   "licence": "CC BY-ND 4.0"
+  }
+ ]
 }
